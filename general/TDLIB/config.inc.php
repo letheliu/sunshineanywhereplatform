@@ -4,7 +4,7 @@
 //------------------------------------------------------------------
 
 
-require_once('inc/oa_config.php');
+require_once($_SERVER['DOCUMENT_ROOT']."/inc/oa_config.php");
 
 //$MYSQL_SERVER = "127.0.0.1:3336";
 //$MYSQL_SERVER="127.0.0.1:5432";
