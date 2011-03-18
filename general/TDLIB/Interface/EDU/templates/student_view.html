@@ -1,0 +1,122 @@
+
+<br><table class=TableBlock cellpadding=3 align=center width=600 >
+<TR><TD class=TableHeader align=center colSpan=6>
+&nbsp;<{$UnitName}>学生学籍(基本信息)卡 &nbsp &nbsp </TD>
+</TR>
+	<TR>
+    <td nowrap  colspan=6><B>姓名：</B> <B><font color='#FF0000'><{$Name}></font></B>
+  &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp  &nbsp <B>   就读学校：<{$UnitName}></B></td>
+  </tr>
+
+<tr class=TableHeader>
+<td nowrap class="TableContent" >学号:</td>
+<td class="TableData" colspan=1 nowrap><{$Code}></td>
+<td nowrap class="TableContent" >专业:</td>
+<td class="TableData" colspan=1 nowrap>&nbsp;<{$ZhuanYe}></td>
+<td nowrap class="TableContent" width=20%>班级:</td>
+<td class="TableData" colspan=1 nowrap>&nbsp;<{$BanJi}></td>
+</tr>
+<trclass=TableHeader>
+<td nowrap class="TableContent"  >性别:</td>
+<td class="TableData" colspan=1 nowrap>&nbsp;<{$Sex}></td>
+<td nowrap class="TableContent"  >籍贯:</td>
+<td class="TableData" colspan=1 nowrap>&nbsp;<{$JiGuan}></td>
+<td nowrap class="TableContent"  >去向:</td>
+<td class="TableData" colspan=1 nowrap>&nbsp;<{$QuXiang}></td>
+</tr>
+<tr>
+<td nowrap class="TableContent"  >出生日期:</td>
+<td class="TableData" colspan=1 nowrap>&nbsp;<{$BirthDay}></td>
+<td nowrap class="TableContent"  >户口所在地:</td>
+<td class="TableData" colspan=2 nowrap>&nbsp;<{$HuKou}> </td>
+<TD class=TableData noWrap rowspan=7>
+<img src="<{$Picture}>" border=0 width=130>
+</TD> 
+</tr>
+<tr>
+<td nowrap class="TableContent"  >民族:</td>
+<td class="TableData" colspan=1>&nbsp;<{$National}> </td>
+<td nowrap class="TableContent"  >家庭地址:</td>
+<td class="TableData" colspan=2>&nbsp;<{$HomeAddr}>  </td>
+</tr>
+<TR><TD class=TableContent noWrap>政治面貌:</TD>
+<TD class=TableData noWrap colspan="1">&nbsp;<{$Poli}></TD>
+<td nowrap class="TableContent" >邮政编码:</td>
+<td class="TableData" colspan=2>&nbsp;<{$HomePost}> </td>
+</TR>
+<tr>
+<td nowrap class="TableContent"  >家庭电话:</td>
+<td class="TableData" colspan=1>&nbsp;<{$HomePhone}> </td>
+<td nowrap class="TableContent"  >移动电话:</td>
+<td class="TableData" colspan=2>&nbsp;<{$StudentPhone}></td>
+</tr>
+<tr>
+<td nowrap class="TableContent"  >健康状况:</td>
+<td class="TableData" colspan=1>&nbsp;<{$Heal}></td>
+<td nowrap class="TableContent"  >学生宿舍:</td>
+<td class="TableData" colspan=2>&nbsp;<{$XUESHENGSUSHE}></td>
+</tr>
+<tr>
+<td nowrap class="TableContent"  >就读方式:</td>
+<td class="TableData" colspan=1>&nbsp;<{$JiuDuFangShi}></td>
+<td nowrap class="TableContent"  >学籍号:</td>
+<td class="TableData" colspan=2>&nbsp;<{$XueJiHao}></td>
+</tr>
+<tr>
+<td nowrap class="TableContent"  >入学学历:</td>
+<td class="TableData" colspan=1>&nbsp; </td>
+<td nowrap class="TableContent"  >入学时间:</td>
+<td class="TableData" colspan=2>&nbsp;<{$InSchoolDate}></td>
+</tr>
+<tr>
+<td nowrap class="TableContent"  >学制:</td>
+<td class="TableData" colspan=1>&nbsp;  </td>
+<td nowrap class="TableContent"  >身份证号码:</td>
+<td class="TableData" colspan=3>&nbsp;<{$IdCard}></td>
+</tr>
+<tr>
+<td nowrap class="TableContent" rowspan=3 >家庭主要成员</td>
+<td nowrap class="TableContent"  >称谓</td>
+<td nowrap class="TableContent"  >姓名</td>
+<td nowrap class="TableContent" >工作单位</td>
+<td nowrap class="TableContent"  >联系电话</td>
+<td nowrap class="TableContent"  >身份证号</td>
+</tr>
+
+<tr>
+<td nowrap class="TableContent"  >父亲:</td>
+<td class="TableData" colspan=1><{$FatherName}></td>
+<td class="TableData" colspan=1><{$FatherUnit}></td>
+<td class="TableData" colspan=1><{$FatherPhone}></td>
+<td class="TableData" colspan=1><{$ShenFenZhengHaoFuQin}></td>
+</tr>
+
+
+<tr>
+<td nowrap class="TableContent"  >母亲:</td>
+<td class="TableData" colspan=1><{$MotherName}></td>
+<td class="TableData" colspan=1><{$MotherUnit}></td>
+<td class="TableData" colspan=1><{$MotherPhone}></td>
+<td class="TableData" colspan=1><{$ShenFenZhengHaoMuQin}></td>
+</tr>
+
+<tr>
+<td nowrap class="TableContent" >原毕业学校:</td>
+<td class="TableData" colspan=1>&nbsp;<{$YuanBiYeXueXiao}></td>
+<td nowrap class="TableContent" >原毕业证书号:</td>
+<td class="TableData" colspan=1>&nbsp;<{$YuanZhengShuHao}></td>
+<td nowrap class="TableContent" width=20%>总分:</td>
+<td class="TableData" colspan=1>&nbsp;<{$YuanBiYeZongFen}></td>
+</tr>
+
+<tr>
+<td nowrap class="TableContent" >一卡通卡号:</td>
+<td class="TableData" colspan=1><{$ONECARD_KAHAO}></td>
+<td nowrap class="TableContent" >一卡通编号:</td>
+<td class="TableData" colspan=1>&nbsp;<{$ONECARD_BIANHAO}></td>
+<td nowrap class="TableContent" width=20%>适用收费标准:</td>
+<td class="TableData" colspan=1>&nbsp;<{$SHIYONGSHOUFEIBIAOZHUN}></td>
+</tr>
+
+</table>
+</form>

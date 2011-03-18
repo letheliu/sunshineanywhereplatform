@@ -1,0 +1,51 @@
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #3333ff; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+#menubar .root {
+	BORDER-BOTTOM: rgb(212,208,200) 1px solid; BORDER-LEFT: rgb(212,208,200) 1px solid; PADDING-LEFT: 2pt; PADDING-RIGHT: 2pt; BORDER-TOP: rgb(212,208,200) 1px solid; BORDER-RIGHT: rgb(212,208,200) 1px solid
+}
+#menubar TABLE {
+	BORDER-BOTTOM: gray 2px solid; POSITION: absolute; BORDER-LEFT: #eeeeee 2px solid; PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; DISPLAY: none; FONT: menu; BACKGROUND: rgb(212,208,200); BORDER-TOP: #eeeeee 2px solid; BORDER-RIGHT: gray 2px solid; PADDING-TOP: 0pt
+}
+#menubar TABLE TD {
+	PADDING-BOTTOM: 2pt; MARGIN: 0pt; PADDING-LEFT: 12pt; PADDING-RIGHT: 15pt; PADDING-TOP: 2pt
+}
+#menubar .highlight {
+	BACKGROUND: #08246b; COLOR: white
+}
+#menubar .disabledhighlight {
+	BACKGROUND: rgb(212,208,200); COLOR: gray
+}
+#menubar #break {
+	COLOR: gray
+}
+#menubar .disabled {
+	COLOR: gray
+}
+#menubar #break {
+	PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; PADDING-RIGHT: 0pt; PADDING-TOP: 0pt
+}
+#menubar SPAN.more {
+	POSITION: relative; PADDING-BOTTOM: 0pt; MARGIN: 0pt; PADDING-LEFT: 0pt; WIDTH: 0.8em; PADDING-RIGHT: 0pt; FONT: 9pt webdings; FLOAT: right; HEIGHT: 9pt; TOP: -2pt; PADDING-TOP: 0pt; LEFT: 14pt
+}
+#menubar .TBHandle {
+	POSITION: absolute; BORDER-LEFT: buttonhighlight 1px solid; BACKGROUND-COLOR: menu; WIDTH: 3px; HEIGHT: 22px; FONT-SIZE: 1px; BORDER-TOP: buttonhighlight 1px solid; TOP: 1px; BORDER-RIGHT: buttonshadow 1px solid
+}
+#menubar .yToolbar {
+	BORDER-BOTTOM: buttonshadow 1px solid; POSITION: relative; BORDER-LEFT: buttonhighlight 1px solid; BACKGROUND-COLOR: menu; HEIGHT: 27px; BORDER-TOP: buttonhighlight 1px solid; TOP: 0px; BORDER-RIGHT: buttonshadow 1px solid; LEFT: 0px
+}
+.handbtn {
+	BORDER-BOTTOM: buttonshadow 1px solid; BORDER-LEFT: buttonhighlight 1px solid; WIDTH: 3px; BACKGROUND: buttonface; HEIGHT: 21px; BORDER-TOP: buttonhighlight 1px solid; BORDER-RIGHT: buttonshadow 1px solid
+}
+.sepbtn1 {
+	BORDER-LEFT: buttonshadow 1px ridge; WIDTH: 2px; BORDER-RIGHT: buttonhighlight 1px solid
+}

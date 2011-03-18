@@ -1,0 +1,322 @@
+<table% border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><strong><font color="#000000"><{$TitleName}>课表</font></strong></td>
+    <td><div align="right"><strong><font color="#000000">http://<{$Website}></font></strong></div></td>
+  </tr>
+</table>
+
+<hr% height="1" align="$align" color="#000000">
+<table% border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><font color="#000000"><strong></strong></font></td>
+
+    <td><div align="right"><font color="#000000">更新时间:<{$UpdateDate}></font>　　 
+        <input type="button" value="打印" class="SmallButton" onclick="execCommand('Print');" title="打印本页">　<input type="button" value="关闭" class="SmallButton" onclick="window.close();" title="关闭本页">
+      </div></td>
+  </tr>
+</table>
+<br>
+
+<table cellspacing="0" class="TableBlock" >
+  <tr align="center" class="TableContent"> 
+    <td nowrap colspan="2" align="center" rowspan="2"><div align=center>班级名称</div></td>
+    <td nowrap colspan="<{$COLSPAN}>" align="center"><div align="center">周一</div></td>
+    <td nowrap colspan="<{$COLSPAN}>" align="center"><div align="center">周二</div></td>
+    <td nowrap colspan="<{$COLSPAN}>" align="center"><div align="center">周三</div></td>
+    <td nowrap colspan="<{$COLSPAN}>" align="center"><div align="center">周四</div></td>
+    <td nowrap colspan="<{$COLSPAN}>" align="center"><div align="center">周五</div></td>
+    <{if $IS6 == "1"}><td nowrap colspan="<{$COLSPAN}>" align="center"><div align="center" >周六</div></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap colspan="<{$COLSPAN}>" align="center"><div align="center" >周日</div></td><{/if}>
+  </tr>
+  <tr align="center" class="TableContent"> 
+    <{if $ISZAOSHANG == "1"}><td nowrap >早上</td><{/if}>
+	<td nowrap >1,2</td>
+	
+	<td nowrap >3,4</td>
+	
+	<td nowrap >5,6</td>
+	
+	<td nowrap >7,8</td>
+	
+	<{if $ISWANSHANG == "1"}><td nowrap >9,10</td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap >11,12</td><{/if}>
+	
+
+	<{if $ISZAOSHANG == "1"}><td nowrap >早上</td><{/if}>
+	<td nowrap >1,2</td>
+	
+	<td nowrap >3,4</td>
+	
+	<td nowrap >5,6</td>
+	
+	<td nowrap >7,8</td>
+	
+	<{if $ISWANSHANG == "1"}><td nowrap >9,10</td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap >11,12</td><{/if}>
+
+	<{if $ISZAOSHANG == "1"}><td nowrap >早上</td><{/if}>
+	<td nowrap >1,2</td>
+	
+	<td nowrap >3,4</td>
+	
+	<td nowrap >5,6</td>
+	
+	<td nowrap >7,8</td>
+	
+	<{if $ISWANSHANG == "1"}><td nowrap >9,10</td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap >11,12</td><{/if}>
+	
+
+	 <{if $ISZAOSHANG == "1"}><td nowrap >早上</td><{/if}>
+	<td nowrap >1,2</td>
+	
+	<td nowrap >3,4</td>
+	
+	<td nowrap >5,6</td>
+	
+	<td nowrap >7,8</td>
+	
+	<{if $ISWANSHANG == "1"}><td nowrap >9,10</td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap >11,12</td><{/if}>
+
+
+	<{if $ISZAOSHANG == "1"}><td nowrap >早上</td><{/if}>
+	<td nowrap >1,2</td>
+	
+	<td nowrap >3,4</td>
+	
+	<td nowrap >5,6</td>
+	
+	<td nowrap >7,8</td>
+	
+	<{if $ISWANSHANG == "1"}><td nowrap >9,10</td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap >11,12</td><{/if}>
+	
+
+<{if $IS6 == "1"}>
+	<{if $ISZAOSHANG == "1"}><td nowrap >早上</td><{/if}>
+	<td nowrap >1,2</td>
+	
+	<td nowrap >3,4</td>
+	
+	<td nowrap >5,6</td>
+	
+	<td nowrap >7,8</td>
+	
+	<{if $ISWANSHANG == "1"}><td nowrap >9,10</td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap >11,12</td><{/if}>
+	
+
+<{/if}>
+<{if $IS7 == "1"}>
+	<{if $ISZAOSHANG == "1"}><td nowrap >早上</td><{/if}>
+	<td nowrap >1,2</td>
+	
+	<td nowrap >3,4</td>
+	
+	<td nowrap >5,6</td>
+	
+	<td nowrap >7,8</td>
+	
+	<{if $ISWANSHANG == "1"}><td nowrap >9,10</td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap >11,12</td><{/if}>
+	
+
+<{/if}>
+  </tr>
+
+<{section name=ClassCodeList loop=$ClassCodeList}>
+
+<tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt"><{$ClassCodeList[ClassCodeList].ClassName}></font></td>
+    <td nowrap width="54">课程</td>
+    <{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.1.0}></td><{/if}>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.1.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.1.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.1.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.1.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.1.9}></td><{/if}>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.1.11}></td><{/if}>
+    
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.2.0}></td><{/if}>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.2.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.2.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.2.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.2.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.2.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.2.11}></td><{/if}>
+
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.3.0}></td><{/if}>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.3.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.3.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.3.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.3.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.3.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.3.11}></td><{/if}>
+
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.4.0}></td><{/if}>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.4.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.4.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.4.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.4.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.4.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.4.11}></td><{/if}>
+   
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.5.0}></td><{/if}>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.5.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.5.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.5.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.5.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.5.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.5.11}></td><{/if}>
+
+	<{if $IS6 == "1"}>
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.6.0}></td><{/if}>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.6.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.6.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.6.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.6.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.6.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.6.11}></td><{/if}>
+	<{/if}>
+
+	<{if $IS7 == "1"}>
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.7.0}></td><{/if}>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.7.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.7.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.7.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.7.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.7.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$ClassCodeList[ClassCodeList].classtablename.7.11}></td><{/if}>
+	<{/if}>
+
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.1.0}></td><{/if}>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.1.1}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.1.3}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.1.5}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.1.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.1.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.1.11}></td><{/if}>
+    
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.2.0}></td><{/if}>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.2.1}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.2.3}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.2.5}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.2.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.2.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.2.11}></td><{/if}>
+
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.3.0}></td><{/if}>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.3.1}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.3.3}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.3.5}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.3.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.3.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.3.11}></td><{/if}>
+	
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.4.0}></td><{/if}>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.4.1}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.4.3}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.4.5}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.4.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.4.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.4.11}></td><{/if}>
+
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.5.0}></td><{/if}>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.5.1}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.5.3}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.5.5}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.5.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.5.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.5.11}></td><{/if}>
+
+<{if $IS6 == "1"}>
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.6.0}></td><{/if}>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.6.1}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.6.3}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.6.5}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.6.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.6.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.6.11}></td><{/if}>
+<{/if}>
+
+<{if $IS7 == "1"}>
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.7.0}></td><{/if}>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.7.1}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.7.3}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.7.5}></td>
+    <td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.7.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.7.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#CCFFCC" class=td1 ><{$ClassCodeList[ClassCodeList].teachername.7.11}></td><{/if}>
+<{/if}>
+
+</tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.1.0}></td><{/if}>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.1.1}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.1.3}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.1.5}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.1.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.1.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.1.11}></td><{/if}>
+   
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.2.0}></td><{/if}>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.2.1}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.2.3}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.2.5}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.2.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.2.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.2.11}></td><{/if}>
+
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.3.0}></td><{/if}>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.3.1}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.3.3}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.3.5}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.3.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.3.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.3.11}></td><{/if}>
+
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.4.0}></td><{/if}>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.4.1}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.4.3}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.4.5}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.4.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.4.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.4.11}></td><{/if}>
+
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.5.0}></td><{/if}>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.5.1}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.5.3}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.5.5}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.5.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.5.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.5.11}></td><{/if}>
+
+<{if $IS6 == "1"}>
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.6.0}></td><{/if}>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.6.1}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.6.3}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.6.5}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.6.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.6.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.6.11}></td><{/if}>
+<{/if}>
+
+<{if $IS7 == "1"}>
+	<{if $ISZAOSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.7.0}></td><{/if}>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.7.1}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.7.3}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.7.5}></td>
+    <td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.7.7}></td>
+    <{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.7.9}></td><{/if}>
+	<{if $ISWANSHANG == "1"}><td nowrap bgcolor="#ffffCC" class=td1 ><{$ClassCodeList[ClassCodeList].classroomname.7.11}></td><{/if}>
+<{/if}>
+
+</tr>
+<{/section}>
+</table>
+

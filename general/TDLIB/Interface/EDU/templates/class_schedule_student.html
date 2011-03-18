@@ -1,0 +1,418 @@
+
+<table border="1" cellspacing="0" class="small" bordercolor="#000000" cellpadding="3" align="center" width="100%" style="border-collapse:collapse">
+  <tr align="center" class="TableData"> 
+    <td nowrap colspan="2" rowspan="1"><div align=center>星期</div></td>
+    <td nowrap colspan="1" width=100><div align="center">周一</div></td>
+    <td nowrap colspan="1" width=100><div align="center">周二</div></td>
+    <td nowrap colspan="1" width=100><div align="center">周三</div></td>
+    <td nowrap colspan="1" width=100><div align="center">周四</div></td>
+    <td nowrap colspan="1" width=100><div align="center">周五</div></td>
+    <{if $IS6 == "1"}><td nowrap colspan="1" width=100><div align="center" >周六</div></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap colspan="1" width=100><div align="center" >周日</div></td><{/if}>
+  </tr>
+
+
+<{if $ISZAOSHANG == "1"}>
+  <tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">早上</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.0}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.0}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.0}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.0}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.0}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.0}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.0}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.0}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.0}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.0}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.0}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.0}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.0}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.0}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.0}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.0}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.0}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.0}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.0}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.0}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.0}></td><{/if}>
+  </tr>
+<tr class="TableData"> 
+    <td nowrap rowspan="1" height=3 Colspan="9">&nbsp; </td>
+</tr>
+<{/if}>
+
+<tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">上午 <br>第1节</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.1}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.1}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.1}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.1}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.1}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.1}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.1}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.1}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.1}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.1}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.1}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.1}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.1}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.1}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.1}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.1}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.1}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.1}></td><{/if}>
+  </tr>
+
+  <tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">上午 <br>第2节</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.2}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.2}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.2}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.2}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.2}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.2}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.2}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.2}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.2}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.2}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.2}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.2}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.2}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.2}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.2}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.2}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.2}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.2}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.2}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.2}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.2}></td><{/if}>
+  </tr>
+
+  <tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">上午 <br>第3节</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.3}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.3}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.3}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.3}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.3}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.3}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.3}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.3}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.3}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.3}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.3}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.3}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.3}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.3}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.3}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.3}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.3}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.3}></td><{/if}>
+  </tr>
+
+  <tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">上午 <br>第4节</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.4}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.4}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.4}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.4}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.4}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.4}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.4}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.4}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.4}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.4}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.4}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.4}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.4}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.4}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.4}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.4}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.4}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.4}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.4}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.4}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.4}></td><{/if}>
+  </tr>
+
+<tr class="TableData"> 
+    <td nowrap rowspan="1" height=3 Colspan="9">&nbsp; </td>
+</tr>
+
+<tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">下午 <br>第1节</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.5}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.5}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.5}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.5}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.5}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.5}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.5}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.5}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.5}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.5}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.5}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.5}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.5}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.5}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.5}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.5}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.5}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.5}></td><{/if}>
+  </tr>
+
+
+
+<tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">下午 <br>第2节</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.6}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.6}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.6}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.6}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.6}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.6}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.6}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.6}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.6}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.6}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.6}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.6}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.6}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.6}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.6}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.6}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.6}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.6}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.6}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.6}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.6}></td><{/if}>
+  </tr>
+
+
+<tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">下午 <br>第7节</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.7}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.7}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.7}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.7}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.7}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.7}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.7}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.7}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.7}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.7}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.7}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.7}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.7}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.7}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.7}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.7}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.7}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.7}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.7}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.7}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.7}></td><{/if}>
+  </tr>
+
+
+<tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">下午 <br>第8节</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.8}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.8}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.8}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.8}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.8}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.8}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.8}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.8}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.8}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.8}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.8}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.8}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.8}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.8}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.8}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.8}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.8}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.8}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.8}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.8}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.8}></td><{/if}>
+  </tr>
+
+<{if $ISWANSHANG == "1"}>
+
+<tr class="TableData"> 
+    <td nowrap rowspan="1" height=3 Colspan="9">&nbsp; </td>
+</tr>
+
+<tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">晚上1</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.9}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.9}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.9}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.9}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.9}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.9}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.9}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.9}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.9}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.9}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.9}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.9}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.9}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.9}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.9}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.9}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.9}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.9}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.9}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.9}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.9}></td><{/if}>
+  </tr>
+<tr class="TableData"> 
+    <td nowrap width="90" rowspan="3"><font color=blue style="font-size:9pt">晚上2</font></td>
+    <td nowrap width="54">课程</td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.1.10}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.2.10}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.3.10}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.4.10}></td>
+    <td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.5.10}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.6.10}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor="#ffccff" class=td1 ><{$classtablename.7.10}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td>教师</td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.1.10}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.2.10}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.3.10}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.4.10}></td>
+    <td nowrap bgcolor=#CCFFCC><{$teachername.5.10}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.6.10}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#CCFFCC><{$teachername.7.10}></td><{/if}>
+  </tr>
+<tr class="TableData">
+    <td nowrap width=60>教室</td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.1.10}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.2.10}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.3.10}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.4.10}></td>
+    <td nowrap bgcolor=#ffffCC><{$classroomname.5.10}></td>
+
+    <{if $IS6 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.6.10}></td><{/if}>
+    <{if $IS7 == "1"}><td nowrap bgcolor=#ffffCC><{$classroomname.7.10}></td><{/if}>
+  </tr>
+<{/if}>
+</table>
