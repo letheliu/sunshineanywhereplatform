@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<TITLE>Sunshine Anywhere 中小学教育管理软件</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<LINK href="../../theme/1/style.css" type=text/css rel=stylesheet>
+
+<BODY class=bodycolor topMargin=5 >
+
+<FORM name=form1 onsubmit="return FormCheck();" 
+ action="?action=add_data" method=post encType=multipart/form-data>
+<table  class=TableBlock align=center width=450 ><TR><TD class=TableHeader align=left colSpan=5>&nbsp;查看学生</TD></TR>
+
+
+<td nowrap class="TableData" width=20%>学号:<{$Code}></td>
+<td nowrap class="TableData" width=20%>姓名:<{$Name}></td>
+<TD class=TableData noWrap>班号:<{$ClassCode}></td>
+<TD class=TableData noWrap>&nbsp;</td>
+<TD class=TableData noWrap>&nbsp;</td>
+</TR>
+<td nowrap class="TableHeader" width=20%>学生相片(<{$Name}>)</td>
+<td nowrap class="TableHeader" width=20%>监护人一相片(<{$NAME1}>)</td>
+<TD nowrap class=TableHeader noWrap>监护人二相片(<{$NAME2}>)</td>
+<TD nowrap class=TableHeader noWrap>监护人三相片(<{$NAME3}>)</td>
+<TD nowrap class=TableHeader noWrap>监护人四相片(<{$NAME4}>)</td>
+</TR>
+<tr>
+<td class="TableData" align=center colspan=1><img src="<{$Picture1}>" border=0 width=130></td>
+<td class="TableData" align=center colspan=1><img src="<{$Picture2}>" border=0 width=130></td>
+<td class="TableData" align=center colspan=1><img src="<{$Picture3}>" border=0 width=130></td>
+<td class="TableData" align=center colspan=1><img src="<{$Picture4}>" border=0 width=130></td>
+<td class="TableData" align=center colspan=1><img src="<{$Picture5}>" border=0 width=130></td>
+</tr>
+<TR><TD class=TableControl noWrap align=middle  colspan="24">
+<div align="center">
+<input type=button accesskey="p" name="print" value=" 打印 " class=SmallButton onClick="document.execCommand('Print');">
+<input type=button accesskey="c" name="cancel" value=" 返回 " class=SmallButton onClick="history.back();" title="">
+</div>
+</TD></TR>
+</table>
+</form>

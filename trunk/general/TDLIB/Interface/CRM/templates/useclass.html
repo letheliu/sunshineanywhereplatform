@@ -1,0 +1,119 @@
+<div align=center><font color=white><strong>现代技术教育中心－－课程、活动安排表</strong></font></div>
+<BR>
+<table width="95%" cellspacing="" cellpadding="0" border=1 bordercolor=#000000 style="border-collapse:collapse">
+  <tr class=TableHeader> 
+    <td nowrap width="10%"><div align="center"><strong>活动安排</strong></div></td>
+    <td nowrap width="18%"><div align="center"><strong>时间</strong></div></td>
+    <td nowrap width="18%"><div align="center"><strong>地点</strong></div></td>
+    <td nowrap width="18%"><div align="center"><strong>所用设备</strong></div></td>
+    <td nowrap width="18%"><div align="center"><strong>用途</strong></div></td>
+    <td nowrap width="18%"><div align="left"><strong>使用人</strong></div></td>
+  </tr>
+ <{if $user_class1 ne '' }>
+  <{foreach item=rs from=$user_class1 }>
+  <tr class=TableData> 
+    <td>星期一</td>
+    <td><{$rs.userclassduan}></td>
+    <td><{$rs.classroomname}></td>
+    <td><{$rs.usedevice}></td>
+    <td><{$rs.usefor}></td>
+    <td><{$rs.applyname}></td>
+  </tr>
+  <{/foreach }>
+  <tr class=TableData><td nowrap colspan=6><br></td></tr>
+<{/if}>
+
+  
+
+<{if $user_class2 ne '' }>
+  <{foreach item=rs from=$user_class2 }>
+  <tr class=TableData> 
+    <td>星期二</td>
+    <td><{$rs.userclassduan}></td>
+    <td><{$rs.classroomname}></td>
+    <td><{$rs.usedevice}></td>
+    <td><{$rs.usefor}></td>
+    <td><{$rs.applyname}></td>
+  </tr>
+  <{/foreach }>
+  <tr class=TableData><td nowrap colspan=6><br></td></tr>
+<{/if}>
+
+<{if $user_class3 ne '' }>
+  <{foreach item=rs from=$user_class3 }>
+  <tr class=TableData> 
+    <td>星期三</td>
+    <td><{$rs.userclassduan}></td>
+    <td><{$rs.classroomname}></td>
+    <td><{$rs.usedevice}></td>
+    <td><{$rs.usefor}></td>
+    <td><{$rs.applyname}></td>
+  </tr>
+  <{/foreach }>
+	<tr class=TableData><td nowrap colspan=6><br></td></tr>
+<{/if}>
+
+
+
+<{if $user_class4 ne '' }>
+  <{foreach item=rs from=$user_class4 }>
+  <tr class=TableData> 
+    <td>星期四</td>
+    <td><{$rs.userclassduan}></td>
+    <td><{$rs.classroomname}></td>
+    <td><{$rs.usedevice}></td>
+    <td><{$rs.usefor}></td>
+    <td><{$rs.applyname}></td>
+  </tr>
+  <{/foreach }>
+  <tr class=TableData><td nowrap colspan=6><br></td></tr>
+<{/if}>
+
+
+
+<{if $user_class5 ne '' }>
+  <{foreach item=rs from=$user_class5 }>
+  <tr class=TableData> 
+    <td>星期五</td>
+    <td><{$rs.userclassduan}></td>
+    <td><{$rs.classroomname}></td>
+    <td><{$rs.usedevice}></td>
+    <td><{$rs.usefor}></td>
+    <td><{$rs.applyname}></td>
+  </tr>
+  <{/foreach }>
+  <tr class=TableData><td nowrap colspan=6><br></td></tr>
+<{/if}>
+
+
+
+<{if $user_class6 ne '' }>
+  <{foreach item=rs from=$user_class6 }>
+  <tr class=TableData> 
+    <td>星期六</td>
+    <td><{$rs.userclassduan}></td>
+    <td><{$rs.classroomname}></td>
+    <td><{$rs.usedevice}></td>
+    <td><{$rs.usefor}></td>
+    <td><{$rs.applyname}></td>
+  </tr>
+  <{/foreach }>
+  <tr class=TableData><td nowrap colspan=6><br></td></tr>
+<{/if}>
+
+
+
+<{if $user_class0 ne '' }>
+  <{foreach item=rs from=$user_class0 }>
+  <tr class=TableData> 
+    <td>星期日</td>
+    <td><{$rs.userclassduan}></td>
+    <td><{$rs.classroomname}></td>
+    <td><{$rs.usedevice}></td>
+    <td><{$rs.usefor}></td>
+    <td><{$rs.applyname}></td>
+  </tr>
+  <{/foreach }>
+  <tr class=TableData><td nowrap colspan=6><br></td></tr>
+  <{/if}>
+</table>

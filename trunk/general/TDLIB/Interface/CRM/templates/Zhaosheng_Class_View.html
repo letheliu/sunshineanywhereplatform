@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<TITLE>Sunshine Anywhere 中小学教育管理软件 - 班级成绩查询打印</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<LINK href="../../theme/1/style.css" type=text/css rel=stylesheet>
+
+<BODY class=bodycolor topMargin=5 >
+<table width=720 border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><strong><font color="#000000"><{$ClassLevel}>级<{$ClassNo}>班</font></strong></td>
+    <td><div align="right"><strong><font color="#000000">http://<{$Website}></font></strong></div></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+<hr width=720 height="1" align="$align" color="#000000">
+<table width=720 border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><div align="right"><font color="#000000">更新时间:<{$UpdateDate}></font>　 
+        <input type="button" value="打印" class="SmallButton" onclick="execCommand('Print');" title="打印本页">　
+		<input type="button" value="刷新" class="SmallButton" onclick="execCommand('refresh');" title="刷新本页">　
+      </div></td>
+  </tr>
+</table>
+<br>
+<table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=720 style='border-collapse:collapse'>
+<tr align="center" class="TableData"> 
+<td nowrap colspan="1"><div align="center">序号</div></td>
+<td nowrap colspan="1"><div align="center">姓名</div></td>
+<td nowrap colspan="1"><div align="center">性别</div></td>
+<td nowrap colspan="1"><div align="center">出生日期</div></td>
+<td nowrap colspan="1"><div align="center">民族</div></td>
+<td nowrap colspan="1"><div align="center">籍贯</div></td>
+<td nowrap colspan="1"><div align="center">总分</div></td>
+</tr>

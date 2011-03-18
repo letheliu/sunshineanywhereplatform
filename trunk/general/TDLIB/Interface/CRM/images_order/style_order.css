@@ -1,0 +1,387 @@
+A:link {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #3333ff; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.A1:link {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.A1:visited {
+	COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A.A1:active {
+	COLOR: #3333ff; TEXT-DECORATION: underline
+}
+A.A1:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+BODY {
+	MARGIN: 0px; FONT-FAMILY: Verdana; FONT-SIZE: 12pt
+}
+.bodycolor {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; MARGIN: 0px; BACKGROUND: #dcdcdc; OVERFLOW: auto; BORDER-TOP: black 1px solid; BORDER-RIGHT: black 1px solid
+}
+.loginbodycolor {
+	BACKGROUND: #6ba2d8
+}
+.topbar {
+	BACKGROUND: url(/theme/1/topbar.gif) #c4d9ef; FONT-SIZE: 9pt
+}
+.topbar2 {
+	BACKGROUND: url(/theme/1/menubg.gif) #c4d9ef; FONT-SIZE: 9pt
+}
+#Nav A {
+	POSITION: relative; DISPLAY: block; COLOR: #000000
+}
+#Nav A:hover {
+	PADDING-BOTTOM: 4px; BACKGROUND-COLOR: #677cad; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #ffffff; PADDING-TOP: 4px
+}
+.panel {
+	BACKGROUND: #c4d9ef; COLOR: #654125
+}
+.timebar {
+	BACKGROUND: #cedff1
+}
+.statusbar {
+	BACKGROUND-IMAGE: url(/theme/1/statusbar.gif)
+}
+.col {
+	BACKGROUND: url(/theme/1/col.gif) #c4d9ef
+}
+.small {
+	MARGIN: 0px; FONT-SIZE: 9pt
+}
+.small1 {
+	MARGIN: 0px; COLOR: #3f3f7e; FONT-SIZE: 9pt
+}
+.big {
+	FONT-SIZE: 12pt
+}
+.big1 {
+	COLOR: #3f3f7e; FONT-SIZE: 12pt
+}
+.big2 {
+	COLOR: #3f3f7e; FONT-SIZE: 18pt
+}
+.big3 {
+	COLOR: #3f3f7e; FONT-SIZE: 12pt; FONT-WEIGHT: bold
+}
+.big4 {
+	COLOR: #ff0000
+}
+.verybig {
+	FONT-SIZE: 24pt
+}
+UNKNOWN {
+	BACKGROUND-IMAGE: url(/theme/1/button_back.gif); BORDER-BOTTOM: #104a7b 1px solid; BORDER-LEFT: black 1px solid; HEIGHT: 19px; COLOR: #000066; FONT-SIZE: 9pt; BORDER-TOP: black 1px solid; CURSOR: hand; BORDER-RIGHT: black 1px solid; TEXT-DECORATION: none
+}
+INPUT.SmallButton {
+	BORDER-BOTTOM: #104a7b 1px solid; BORDER-LEFT: black 1px solid; BACKGROUND-COLOR: #eeeecc; HEIGHT: 24px; COLOR: #000066; FONT-SIZE: 9pt; BORDER-TOP: black 1px solid; CURSOR: hand; BORDER-RIGHT: black 1px solid; TEXT-DECORATION: none
+}
+INPUT.BigButton {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: #104a7b 1px solid; BORDER-LEFT: black 1px solid; HEIGHT: 24px; COLOR: #000066; FONT-SIZE: 12pt; BORDER-TOP: black 1px solid; CURSOR: hand; BORDER-RIGHT: black 1px solid; TEXT-DECORATION: none
+}
+INPUT.SmallInput {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #f8f8f8; HEIGHT: 18px; COLOR: #000066; FONT-SIZE: 9pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+INPUT.SmallInput1 {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #f8f8f8; HEIGHT: 18px; COLOR: #000066; FONT-SIZE: 9pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: 0px
+}
+INPUT.SmallInput2 {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #f8f8f8; HEIGHT: 18px; COLOR: #000066; FONT-SIZE: 9pt; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+INPUT.SmallInput3 {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; WIDTH: 60px; BACKGROUND: #f8f8f8; HEIGHT: 18px; COLOR: #000066; FONT-SIZE: 9pt; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+INPUT.BigInput {
+	BORDER-BOTTOM: 1px double; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #f8f8f8; HEIGHT: 22px; COLOR: #000066; FONT-SIZE: 12pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+INPUT.BigInputMoney {
+	BORDER-BOTTOM: 1px double; TEXT-ALIGN: right; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #f8f8f8; HEIGHT: 22px; COLOR: #000066; FONT-SIZE: 12pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+INPUT.SmallStatic {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #e0e0e0; HEIGHT: 18px; COLOR: #000066; FONT-SIZE: 9pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+INPUT.BigStatic {
+	BORDER-BOTTOM: 1px double; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #e0e0e0; HEIGHT: 22px; COLOR: #000066; FONT-SIZE: 12pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+SELECT.BigSelect {
+	BORDER-BOTTOM: 1px double; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #f8f8f8; HEIGHT: 22px; COLOR: #000066; FONT-SIZE: 12pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+SELECT.SmallSelect {
+	BORDER-BOTTOM: 1px double; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #f8f8f8; HEIGHT: 18px; COLOR: #000066; FONT-SIZE: 9pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+SELECT.BigStatic {
+	BORDER-BOTTOM: 1px double; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #e0e0e0; HEIGHT: 22px; COLOR: #000066; FONT-SIZE: 12pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+SELECT.SmallStatic {
+	BORDER-BOTTOM: black 1px solid; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #e0e0e0; HEIGHT: 18px; COLOR: #000066; FONT-SIZE: 9pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+TEXTAREA.BigInput {
+	BORDER-BOTTOM: 1px double; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #f8f8f8; COLOR: #000066; FONT-SIZE: 10pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+TEXTAREA.BigStatic {
+	BORDER-BOTTOM: 1px double; BORDER-LEFT: black 1px solid; LINE-HEIGHT: normal; FONT-VARIANT: normal; FONT-STYLE: normal; BACKGROUND: #e0e0e0; COLOR: #000066; FONT-SIZE: 10pt; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: black 1px solid
+}
+.TableControl {
+	BACKGROUND: #e6e6fa
+}
+.TableHeader {
+	BACKGROUND: #99ccff; COLOR: #3f3f7e; FONT-SIZE: 11pt; FONT-WEIGHT: bold
+}
+.TableHeader1 {
+	BACKGROUND: url(/theme/1/button_back.gif) #d3e5fa; COLOR: #000066; CURSOR: hand
+}
+.TableHeader2 {
+	BACKGROUND: url(/theme/1/menubg.gif) #d3e5fa; COLOR: #000066; CURSOR: hand; FONT-WEIGHT: bold
+}
+.TableContent {
+	BACKGROUND: #dcdcdc
+}
+.TableData {
+	BACKGROUND: #ffffff; COLOR: #000000
+}
+.TableLine7 {
+	BACKGROUND: #33cc33
+}
+.TableLine6 {
+	BACKGROUND: #e2a7a7
+}
+.TableLine5 {
+	BACKGROUND: #dfbe9e
+}
+.TableLine4 {
+	BACKGROUND: #48d1cc
+}
+.TableLine3 {
+	BACKGROUND: #9663cb
+}
+.TableLine2 {
+	BACKGROUND: #ffd700
+}
+.TableLine1 {
+	BACKGROUND: #eeeecc
+}
+.TextColor1 {
+	COLOR: #ff6600
+}
+.TextColor2 {
+	COLOR: #ff0000
+}
+.top {
+	COLOR: #ff0000; FONT-WEIGHT: bold
+}
+.tabpane-frame {
+	BORDER-BOTTOM: black 1px outset; BORDER-LEFT: black 1px outset; WIDTH: 100%; HEIGHT: 100%; OVERFLOW: hidden; BORDER-TOP: black 1px outset; BORDER-RIGHT: black 1px outset
+}
+.tabpane-selected {
+	BORDER-BOTTOM: #fa843c 0px solid; POSITION: relative; BORDER-LEFT: #fa843c 0px solid; WHITE-SPACE: nowrap; BACKGROUND: #f6f6f6; VERTICAL-ALIGN: bottom; BORDER-TOP: #fa843c 0px solid; BORDER-RIGHT: #fa843c 0px solid
+}
+.tabpane-unselected {
+	BORDER-BOTTOM: #fa843c 0px solid; POSITION: relative; BORDER-LEFT: #fa843c 0px solid; WHITE-SPACE: nowrap; BACKGROUND: #f6f6f6; VERTICAL-ALIGN: bottom; BORDER-TOP: #fa843c 0px solid; BORDER-RIGHT: #fa843c 0px solid
+}
+.tabpane-selected {
+	BACKGROUND-IMAGE: url(/theme/1/ka_di(1).gif); BORDER-BOTTOM: 0px; PADDING-BOTTOM: 0px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 30px; COLOR: #ff650a; FONT-SIZE: 14px; TOP: 1px; PADDING-TOP: 6px
+}
+.tabpane-unselected {
+	BACKGROUND-IMAGE: url(/theme/1/ka_di1(1).gif); PADDING-BOTTOM: 0px; BORDER-TOP-COLOR: #9c9c9c; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 30px; COLOR: black; BORDER-RIGHT-COLOR: #9c9c9c; FONT-SIZE: 14px; BORDER-LEFT-COLOR: #9c9c9c; TOP: 0px; PADDING-TOP: 6px
+}
+.tabpane-pane0 {
+	BACKGROUND: #f6f6f6; FONT-SIZE: 1px; OVERFLOW: hidden
+}
+.tabpane-pane {
+	BACKGROUND: #fa843c; FONT-SIZE: 1px; OVERFLOW: hidden
+}
+.dataLabel {
+	TEXT-ALIGN: right; LINE-HEIGHT: 16px; BACKGROUND-COLOR: #f5f5f5; FONT-FAMILY: Arial, ËÎÌו; COLOR: #000000; FONT-SIZE: 10pt; FONT-WEIGHT: normal
+}
+.required {
+	COLOR: #ff0000
+}
+.formOuterBorder {
+	BORDER-BOTTOM: #afc8e4 1px solid; BORDER-LEFT: #afc8e4 1px solid; MARGIN-TOP: 2px; BACKGROUND: #ffffff; BORDER-TOP: #afc8e4 1px solid; BORDER-RIGHT: #afc8e4 1px solid
+}
+.formSecHeader {
+	BACKGROUND-COLOR: #99ccff; PADDING-LEFT: 2px; FONT-FAMILY: ËÎÌו; HEIGHT: 20px; FONT-SIZE: 14px; FONT-WEIGHT: bold
+}
+.formHeader {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: #fd4102; FONT-SIZE: 14px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.formHeaderULine {
+	BORDER-BOTTOM: #000 1px solid
+}
+.formBorder {
+	BORDER-BOTTOM: #ffffff 1px solid; BORDER-LEFT: #ffffff 1px solid; BACKGROUND-COLOR: #c6d7ec; FONT-SIZE: 6px; BORDER-TOP: #ffffff 1px solid; BORDER-RIGHT: #ffffff 1px solid
+}
+.formFooter {
+	BACKGROUND-COLOR: #c6d7ec; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: #ffffff; FONT-WEIGHT: normal; TEXT-DECORATION: none
+}
+.moduleTitle {
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: #242471; FONT-SIZE: 16px; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+.hline {
+	BORDER-BOTTOM: #ccc 1px solid
+}
+.fieldListTitle {
+	BORDER-LEFT: #fff 1px solid; BACKGROUND-COLOR: #eee; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: #000000; FONT-SIZE: 10pt; BORDER-TOP: #fff 1px solid; FONT-WEIGHT: normal; TEXT-DECORATION: none
+}
+.listFormHeaderLinks {
+	FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica, sans-serif; COLOR: #000000; FONT-SIZE: 10pt; FONT-WEIGHT: lighter; TEXT-DECORATION: none
+}
+.moduleListTitle {
+	BORDER-LEFT: #fff 1px solid; BACKGROUND-COLOR: #eee; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; COLOR: #000000; FONT-SIZE: 9pt; BORDER-TOP: #fff 1px solid; FONT-WEIGHT: normal; TEXT-DECORATION: none
+}
+.evenListRow {
+	BACKGROUND-COLOR: #f5f5f5; FONT-SIZE: 8pt
+}
+.oddListRow {
+	BACKGROUND-COLOR: #ffffff; FONT-SIZE: 8pt
+}
+.button {
+	BORDER-RIGHT-WIDTH: 1px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BORDER-TOP-WIDTH: 1px; BORDER-BOTTOM-WIDTH: 1px; FONT-SIZE: 8pt; BORDER-LEFT-WIDTH: 1px; CURSOR: pointer; FONT-WEIGHT: bold
+}
+.blackLine {
+	BACKGROUND-COLOR: #afc8e4
+}
+.operator {
+	COLOR: #132222; FONT-SIZE: 10pt
+}
+.static {
+	BORDER-BOTTOM: #afc8e4 1px solid; BORDER-LEFT: #afc8e4 1px solid; MARGIN-TOP: 2px; BACKGROUND: #f0f0f0; BORDER-TOP: #afc8e4 1px solid; BORDER-RIGHT: #afc8e4 1px solid; backgroud-color: #FFFFFF
+}
+.listText {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 100%; PADDING-RIGHT: 2px; FONT-FAMILY: Arial; FONT-SIZE: 12px; CURSOR: default; PADDING-TOP: 2px
+}
+.sel {
+	BACKGROUND: #0a246a; COLOR: #fff
+}
+.uline {
+	BORDER-BOTTOM: #f0f0f0 1px solid
+}
+.mustmarker {
+	COLOR: #ff0000
+}
+A:link {
+	COLOR: #3535a2; FONT-SIZE: 10pt
+}
+A:active {
+	COLOR: #3535a2; FONT-SIZE: 10pt
+}
+A:visited {
+	COLOR: #3535a2; FONT-SIZE: 10pt
+}
+A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+TABLE {
+	FONT: 12px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: #000
+}
+TD {
+	FONT: 12px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: #000
+}
+A {
+	FONT: 12px Verdana, Geneva, Arial, Helvetica, sans-serif; COLOR: #000
+}
+.td {
+	nowrap: 'true'
+}
+DIV.tableContainer {
+	BORDER-BOTTOM: #963 0px solid; BORDER-LEFT: #963 0px solid; WIDTH: 100%; ; HEIGHT: expression(document.body.clientHeight - 40-this.offsetTop); CLEAR: both; OVERFLOW: auto; BORDER-TOP: #963 0px solid; BORDER-RIGHT: #963 0px solid
+}
+.queryBgColor {
+	BACKGROUND: #eeeecc
+}
+HTML DIV.tableContainer {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 16px; PADDING-TOP: 0px
+}
+HTML > BODY DIV.tableContainer {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; HEIGHT: auto; PADDING-TOP: 0px
+}
+HEAD:first-child + BODY DIV[class].tableContainer {
+	WIDTH: 756px; HEIGHT: 285px; OVERFLOW: hidden
+}
+DIV.tableContainer TABLE {
+	WIDTH: 100%; FLOAT: left
+}
+HTML DIV.tableContainer TABLE {
+	MARGIN: 0px -16px 0px 0px
+}
+HTML > BODY DIV.tableContainer TABLE {
+	MARGIN: 0px; WIDTH: 100%; FLOAT: none
+}
+HEAD:first-child + BODY DIV[class].tableContainer TABLE {
+	WIDTH: 100%
+}
+THEAD.fixedHeader TR {
+	POSITION: relative; ; TOP: expression(document.getElementById("tableContainer").scrollTop)
+}
+HEAD:first-child + BODY THEAD[class].fixedHeader TR {
+	DISPLAY: block
+}
+THEAD.fixedHeader TH {
+	TEXT-ALIGN: center; PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BACKGROUND: #99ccff; BORDER-TOP: #aaa 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: #aaa 1px solid; PADDING-TOP: 1px
+}
+THEAD.fixedHeader A {
+	WIDTH: 100%; DISPLAY: block; COLOR: #fff; TEXT-DECORATION: none
+}
+THEAD.fixedHeader A:link {
+	WIDTH: 100%; DISPLAY: block; COLOR: #fff; TEXT-DECORATION: none
+}
+THEAD.fixedHeader A:visited {
+	WIDTH: 100%; DISPLAY: block; COLOR: #fff; TEXT-DECORATION: none
+}
+THEAD.fixedHeader A:hover {
+	WIDTH: 100%; DISPLAY: block; COLOR: #fff; TEXT-DECORATION: underline
+}
+HEAD:first-child + BODY TBODY[class].scrollContent {
+	WIDTH: 100%; DISPLAY: block; HEIGHT: 262px; OVERFLOW: auto
+}
+TBODY.scrollContent TD {
+	BORDER-BOTTOM: #eee 1px solid; BORDER-LEFT: #eee 1px solid; PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BORDER-TOP: #aaa 1px solid; BORDER-RIGHT: #aaa 1px solid; PADDING-TOP: 1px
+}
+TBODY.scrollContent TR.normalRow TD {
+	BORDER-BOTTOM: #eee 1px solid; BORDER-LEFT: #eee 1px solid; PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; PADDING-RIGHT: 1px; BORDER-TOP: #aaa 1px solid; BORDER-RIGHT: #aaa 1px solid; PADDING-TOP: 1px
+}
+TBODY.scrollContent TR.alternateRow TD {
+	BORDER-BOTTOM: #eee 1px solid; BORDER-LEFT: #eee 1px solid; PADDING-BOTTOM: 2px; PADDING-LEFT: 3px; PADDING-RIGHT: 3px; BACKGROUND: #eee; BORDER-TOP: #aaa 1px solid; BORDER-RIGHT: #aaa 1px solid; PADDING-TOP: 2px
+}
+HEAD:first-child + BODY THEAD[class].fixedHeader TH {
+	WIDTH: 200px
+}
+HEAD:first-child + BODY THEAD[class].fixedHeader TH + TH {
+	WIDTH: 250px
+}
+HEAD:first-child + BODY THEAD[class].fixedHeader TH + TH + TH {
+	PADDING-BOTTOM: 4px; PADDING-LEFT: 3px; WIDTH: 316px; PADDING-RIGHT: 4px; BORDER-RIGHT: medium none; PADDING-TOP: 4px
+}
+HEAD:first-child + BODY TBODY[class].scrollContent TD {
+	WIDTH: 200px
+}
+HEAD:first-child + BODY TBODY[class].scrollContent TD + TD {
+	WIDTH: 250px
+}
+HEAD:first-child + BODY TBODY[class].scrollContent TD + TD + TD {
+	PADDING-BOTTOM: 2px; PADDING-LEFT: 3px; PADDING-RIGHT: 4px; BORDER-RIGHT: medium none; PADDING-TOP: 2px
+}
+.TitleHeader {
+	BORDER-BOTTOM: #000000 1px solid; BACKGROUND: #99ccff; COLOR: #3f3f7e; FONT-SIZE: 11pt; FONT-WEIGHT: bold
+}
+.InputMap {
+	BACKGROUND: #ffffff; COLOR: #000000
+}
+.ButtonMap {
+	BACKGROUND: #ffffff; COLOR: #000000
+}
+.ExpandMap {
+	BACKGROUND: #eeeecc; COLOR: #000000
+}
+P {
+	TEXT-INDENT: 2em
+}
