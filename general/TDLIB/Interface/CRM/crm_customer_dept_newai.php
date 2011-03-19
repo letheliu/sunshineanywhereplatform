@@ -4,7 +4,7 @@
 	error_reporting(E_WARNING | E_ERROR);
 	require_once('lib.inc.php');
 	$GLOBAL_SESSION=returnsession();
-	
+
 	/*
 	if($_GET['action']=="add_default_data")		{
 		//print_R($_GET);print_R($_POST);//exit;
@@ -19,6 +19,13 @@
 	*/
 
 	CRM系统过滤部门权限();
+
+
+	//查看客户数据
+	if($_GET['action']=="view_default"||$_GET['action']=="view_customer")		{
+		//点击查看学生档案时的内容,放到下面文件之中
+		include_once("crm_customer_view_model.php");
+	}
 
 	//数据表模型文件,对应Model目录下面的crm_customer_newai.ini文件
 	//如果是需要复制此模块,则需要修改$parse_filename参数的值,然后对应到Model目录 新文件名_newai.ini文件

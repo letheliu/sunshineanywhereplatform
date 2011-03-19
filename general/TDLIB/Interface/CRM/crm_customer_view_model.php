@@ -140,24 +140,48 @@ function CustomerInforView($编号)		{
 
 <?
 
-function 返回客户详细信息汇总($tablename,$FieldList,$Number)					{
+
+function 返回客户详细信息汇总($tablename,$FieldList,$Number,$title="客户费用及沟通成本明细")					{
 	global $db;
+	$html_etc = returnsystemlang($tablename);
 	$sql = "select $FieldList from $tablename order by 编号 limit $Number";
 	$rs = $db->Execute($sql);
 	$rs_a = $rs->GetArray();
-	print "<table class=TableBlock  align=center width=80% >";
-	print "<TR class=TableHeader>";
+
 	$FieldListArray = explode(',',$FieldList);
-	for($=0;$i<sizeof($FieldListArray);$i++)			{
+
+	print "<BR><table class=TableBlock  align=center width=80% >";
+	print "<TR class=TableHeader>";
+	print "<TD nowrap colspan='".sizeof($FieldListArray)."'>&nbsp;".$title."</td>";
+	print "</TR>";
+	print "<TR class=TableHeader>";
+
+	for($i=0;$i<sizeof($FieldListArray);$i++)			{
 		$FieldName = $FieldListArray[$i];
-		print "<TD>".."</td>";
+		print "<TD nowrap>&nbsp;".$html_etc[$tablename][$FieldName]."</td>";
 	}
 	print "</TR>";
+
+
+	for($ix=0;$ix<sizeof($rs_a);$ix++)						{
+		print "<TR class=TableData>";
+		for($i=0;$i<sizeof($FieldListArray);$i++)			{
+			$FieldName = $FieldListArray[$i];
+			print "<TD nowrap>&nbsp;".$rs_a[$ix][$FieldName]."</td>";
+		}
+		print "</TR>";
+	}
+	print "</table>";
+
 
 }
 
 
+返回客户详细信息汇总('crm_expense',"费用单号,费用沟通概述,客户名称,联系人,发生时间,费用类型,费用金额,是否报销,发票情况,报销对象",10,"客户费用及沟通成本明细");
 
+返回客户详细信息汇总('crm_service',"服务编号,服务阶段,最后期限,服务概述,客户名称,联系人,严重程度,解决人员,解决方法,解决状态",10,"客户费用及沟通成本明细");
+
+返回客户详细信息汇总('crm_contract',"合同编号,客户名称,服务类型,合同总金额,合同签订时间,预计第一次付款时间,预计第一次付款金额,审核人",10,"客户费用及沟通成本明细");
 
 exit;
 //$学号 = $rs_a[0]['学号'];
