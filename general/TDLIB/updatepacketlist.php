@@ -5,7 +5,7 @@ ini_set('error_reporting', E_ALL);
 // display warnings and errors
 error_reporting(E_WARNING | E_ERROR);
 
-$TargetDatetime = "2011-03-08 10:40:00";
+$TargetDatetime = "2011-03-19 09:52:00";
 
 //if(date("Y")!="2025")			{
 //	print "当前系统时间不为2025,请重新设定!";
