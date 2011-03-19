@@ -26,7 +26,7 @@ $ADODB_CACHE_DIR='./cache';
 //$MYSQL_USER="TD_OA";
 //$MYSQL_DB="TD_OA";
 //$MYSQL_PASS="myoa888";
-$SYSTEM_MODE = "1";
+//$SYSTEM_MODE = "1";
 ?><?
 /*
 	版权归属:郑州单点科技软件有限公司;
