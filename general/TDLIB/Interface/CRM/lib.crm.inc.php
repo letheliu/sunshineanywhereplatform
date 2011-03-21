@@ -18,7 +18,7 @@ function CRM系统过滤部门权限()				{
 	for($i=0;$i<sizeof($rs_a);$i++)			{
 		$部门名称[] = $rs_a[$i]['MODULE'];
 	}
-	$部门名称TEXT = "'".join("'",$部门名称)."'";
+	$部门名称TEXT = "'".join("','",$部门名称)."'";
 	$sql = "	select USER_ID from user,department
 				where
 				user.DEPT_ID=department.DEPT_ID
