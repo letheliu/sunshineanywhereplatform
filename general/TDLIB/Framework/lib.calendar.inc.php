@@ -5,20 +5,20 @@ function get_code_name( $CODE_NO, $PARENT_NO )
 {
     global $db,$_SESSION;
 	if($_SESSION['SYSTEM_IS_TD_OA']==1)			{
-		$query = "SELECT CODE_NAME from TD_OA.SYS_CODE where PARENT_NO='".$PARENT_NO."' and find_in_set(CODE_NO,'{$CODE_NO}')";
+		$query = "SELECT CODE_NAME from TD_OA.sys_code where PARENT_NO='".$PARENT_NO."' and find_in_set(CODE_NO,'{$CODE_NO}')";
 	}
 	else	{
-		$query = "SELECT CODE_NAME from SYS_CODE where PARENT_NO='".$PARENT_NO."' and find_in_set(CODE_NO,'{$CODE_NO}')";
+		$query = "SELECT CODE_NAME from sys_code where PARENT_NO='".$PARENT_NO."' and find_in_set(CODE_NO,'{$CODE_NO}')";
 	}
 	//print $query;
     $rs = $db->Execute($query);
-    while ( !$rs->EOF )
-    {
-        $CODE_NAME .= $rs->fields['CODE_NAME']."£¬";
-		$rs->MoveNext();
-    }
+	$rs_a = $rs->GetArray();
+	for($i=0;$i<sizeof($rs_a);$i++)			{
+		$CODE_NAME .= $rs_a[$i]['CODE_NAME']."£¬";
+	}
     return substr( $CODE_NAME, 0, -2 );
 }
+
 
 
 function compare_time( $TIME1, $TIME2 )

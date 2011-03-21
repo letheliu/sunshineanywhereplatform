@@ -1,5 +1,6 @@
 <?
 session_start();
+require_once('lib.inc.php');
 ?>
 <link rel="stylesheet" type="text/css" href="/theme/<?=$_SESSION['LOGIN_THEME']?>/style.css">
 
@@ -123,7 +124,7 @@ function MyUnload()
 </script>
 </head>
 
-<body class="statusbar" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
+<body class="panel" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0">
 
 <table border="0" width="100%" cellspacing="1" cellpadding="0" class="small">
   <tr>
@@ -135,6 +136,7 @@ function MyUnload()
        <span id="new_sms_sound" style="width:1px;height:1px;"></span>
     </td>
     <td id="status_text_container" align="center" style="font-weight: bold;">
+	<?=$Ê×Ò³BANNER±êÌâ?>
     </td>
     <td align="center" width="80">&nbsp;
        <span id="new_letter"></span>
