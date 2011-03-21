@@ -1,5 +1,80 @@
 <?
 
+function Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö($Ä¿±êÅĞ¶Ï×Ö¶Î)					{
+	global $db,$SYSTEM_ADD_SQL,$SYSTEM_PRINT_SQL;
+	if($_GET['action']==""||$_GET['action']=="init_default")			{
+		print "<form name=formadd><table class=TableBlock width=100% ><tr><td nowrap class=TableContent align=left>";
+		if($_GET['µ±Ç°ËÑË÷·½Ê½']=="µ±Ìì")	$_GET['µ±Ç°ËÑË÷·½Ê½'] = "µ±Ìì&nbsp;&nbsp;&nbsp;&nbsp;";
+		if($_GET['µ±Ç°ËÑË÷·½Ê½']=="")		$_GET['µ±Ç°ËÑË÷·½Ê½'] = "Ã»ÓĞÑ¡Ôñ";
+		print "<font color=green>°´".$Ä¿±êÅĞ¶Ï×Ö¶Î."ËÑË÷:".$_GET['µ±Ç°ËÑË÷·½Ê½']."";
+
+		$FormPageAction = FormPageAction("¿ªÊ¼Ê±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d"),date("Y"))),
+											"½áÊøÊ±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d"),date("Y"))),
+											'',
+											"µ±Ç°ËÑË÷·½Ê½","µ±Ìì"
+										);
+		print "&nbsp;&nbsp;<a href=\"?$FormPageAction\">µ±Ìì</a>";
+
+		$FormPageAction = FormPageAction("¿ªÊ¼Ê±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d")-3,date("Y"))),
+											"½áÊøÊ±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d"),date("Y"))),
+											'',
+											"µ±Ç°ËÑË÷·½Ê½","×î½üÈıÌì"
+										);
+		print "&nbsp;&nbsp;<a href=\"?$FormPageAction\">×î½üÈıÌì</a>";
+
+		$FormPageAction = FormPageAction("¿ªÊ¼Ê±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d")-7,date("Y"))),
+											"½áÊøÊ±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d"),date("Y"))),
+											'',
+											"µ±Ç°ËÑË÷·½Ê½","×î½üÒ»ÖÜ"
+										);
+		print "&nbsp;&nbsp;<a href=\"?$FormPageAction\">×î½üÒ»ÖÜ</a>";
+
+		$FormPageAction = FormPageAction("¿ªÊ¼Ê±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d")-15,date("Y"))),
+											"½áÊøÊ±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d"),date("Y"))),
+											'',
+											"µ±Ç°ËÑË÷·½Ê½","×î½ü°ëÔÂ"
+										);
+		print "&nbsp;&nbsp;<a href=\"?$FormPageAction\">×î½ü°ëÔÂ</a>";
+
+		$FormPageAction = FormPageAction("¿ªÊ¼Ê±¼äADD",date("Y-m-d",mktime(0,0,1,date("m")-1,date("d"),date("Y"))),
+											"½áÊøÊ±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d"),date("Y"))),
+											'',
+											"µ±Ç°ËÑË÷·½Ê½","×î½üÒ»ÔÂ"
+										);
+		print "&nbsp;&nbsp;<a href=\"?$FormPageAction\">×î½üÒ»ÔÂ</a>";
+
+		$FormPageAction = FormPageAction("¿ªÊ¼Ê±¼äADD",date("Y-m-d",mktime(0,0,1,date("m")-2,date("d"),date("Y"))),
+											"½áÊøÊ±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d"),date("Y"))),
+											'',
+											"µ±Ç°ËÑË÷·½Ê½","×î½üÁ½ÔÂ"
+										);
+		print "&nbsp;&nbsp;<a href=\"?$FormPageAction\">×î½üÁ½ÔÂ</a>";
+
+		$FormPageAction = FormPageAction("¿ªÊ¼Ê±¼äADD",date("Y-m-d",mktime(0,0,1,date("m")-3,date("d"),date("Y"))),
+											"½áÊøÊ±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d"),date("Y"))),
+											'',
+											"µ±Ç°ËÑË÷·½Ê½","×î½üÈıÔÂ"
+										);
+		print "&nbsp;&nbsp;<a href=\"?$FormPageAction\">×î½üÈıÔÂ</a>";
+
+		$FormPageAction = FormPageAction("¿ªÊ¼Ê±¼äADD",date("Y-m-d",mktime(0,0,1,date("m")-6,date("d"),date("Y"))),
+											"½áÊøÊ±¼äADD",date("Y-m-d",mktime(0,0,1,date("m"),date("d"),date("Y"))),
+											'',
+											"µ±Ç°ËÑË÷·½Ê½","×î½üÁùÔÂ"
+										);
+		print "&nbsp;&nbsp;<a href=\"?$FormPageAction\">×î½üÁùÔÂ</a>";
+
+		print "</font></td></tr></table></form><BR>";
+		if($_GET['¿ªÊ¼Ê±¼äADD']!=""&&$_GET['½áÊøÊ±¼äADD']!="")				{
+			$SYSTEM_ADD_SQL .= "and $Ä¿±êÅĞ¶Ï×Ö¶Î>='".$_GET['¿ªÊ¼Ê±¼äADD']." 00:01:00' and $Ä¿±êÅĞ¶Ï×Ö¶Î<='".$_GET['½áÊøÊ±¼äADD']." 23:59:59'";
+		}
+
+	}
+
+	//$SYSTEM_PRINT_SQL = "1";
+
+}
+
 
 function ³õÊ¼»¯½ÌÊ¦¿¼ÇÚÀïÃæ´íÎóÖÜ´ÎĞÅÏ¢($µ±Ç°Ñ§ÆÚ)		{
 	global $db;
@@ -137,42 +212,62 @@ function ÊÖ¶¯µ¼³öËùÓĞËŞÉáÂ¥ĞÅÏ¢()			{
 			$ËŞÉáÂ¥Ãû³Æ_lin .= "&nbsp;<a href='?".base64_encode("XX=XX&XX&ËŞÉáÂ¥=$ËŞÉáÂ¥Ãû³Æ&ÆÀ±ÈÈÕÆÚ_¿ªÊ¼Ê±¼ä=$ÆÀ±ÈÈÕÆÚ&ÆÀ±ÈÈÕÆÚ_½áÊøÊ±¼ä=$ÆÀ±ÈÈÕÆÚ&¿ìËÙ²éÑ¯=¿ìËÙ²éÑ¯&pageid=1&action=export_default_data&exportfield=1,2,3,4,5,6,7,8,9,10,11&tablename=edu_susheweishengday&XX=XX")."'>$ËŞÉáÂ¥Ãû³Æ</a>";
 		}
 		$PrintText .= "<table  class=TableBlock align=center width=100%>";
-		$PrintText .= "<TR class=TableData><td ><font color=green >$ËŞÉáÂ¥Ãû³Æ_lin
+		$PrintText .= "<TR class=TableContent><td ><font color=green >$ËŞÉáÂ¥Ãû³Æ_lin
 		</font></td></table><BR>";
 		print $PrintText;
 	}
 }
 
 
-function Í¬²½ËŞÉá·¿¼äĞÅÏ¢µ½Ã¿ÌìÆÀ±ÈÒ³Ãæ()			{
+function Í¬²½°à¼¶ĞÅÏ¢µ½Ã¿Ìì¼ÍÂÉÎÀÉúÆÀ±ÈÒ³Ãæ($ÆÀ±ÈÈÕÆÚ='')			{
 	global $db;
-	$ĞÇÆÚ = date("w");
+	if($ÆÀ±ÈÈÕÆÚ=='')		$ÆÀ±ÈÈÕÆÚ = date("Y-m-d");
+	$ĞÇÆÚ					= ·µ»Ø¸ø¶¨Ê±¼äµÄĞÇÆÚĞÅÏ¢($ÆÀ±ÈÈÕÆÚ);
 	if($ĞÇÆÚ>=1&&$ĞÇÆÚ<=5)							{
-		$sql = "select COUNT(*) AS NUM from edu_susheweishengday where ÆÀ±ÈÈÕÆÚ='$ÆÀ±ÈÈÕÆÚ'";
-		$rs = $db->Execute($sql);
-		$NUM = $rs->fields['NUM'];
-		if($NUM==0)			{
-			$ÆÀ±ÈÈÕÆÚ = date("Y-m-d");
-			$´´½¨Ê±¼ä = date("Y-m-d H:i:s");
-			$ÖÜ´Î	= returnCurWeekIndex($ÆÀ±ÈÈÕÆÚ);
-			$ĞÇÆÚ = date("w");
-			$µ±Ç°Ñ§ÆÚ = returntablefield("edu_xueqiexec","µ±Ç°Ñ§ÆÚ",'1',"Ñ§ÆÚÃû³Æ");
-			$sql = "select ·¿¼äÃû³Æ,ËŞÉáÂ¥ from dorm_room order by ·¿¼äÃû³Æ";
+		$´´½¨Ê±¼ä = date("Y-m-d H:i:s");
+		$ÖÜ´Î	= returnCurWeekIndex($ÆÀ±ÈÈÕÆÚ);
+		$µ±Ç°Ñ§ÆÚ = returntablefield("edu_xueqiexec","µ±Ç°Ñ§ÆÚ",'1',"Ñ§ÆÚÃû³Æ");
+		$sql = "select °à¼¶Ãû³Æ from edu_banji where ±ÏÒµÊ±¼ä>='".date('Y-m-d')."'";
+		$rs = $db->CacheExecute(150,$sql);
+		$rs_a = $rs->GetArray();
+		for($i=0;$i<sizeof($rs_a);$i++)		{
+			$°à¼¶Ãû³Æ = $rs_a[$i]['°à¼¶Ãû³Æ'];
+			$sql = "select COUNT(*) AS NUM from edu_banjiweishengday where °à¼¶='$°à¼¶Ãû³Æ' and ÈÕÆÚ='$ÆÀ±ÈÈÕÆÚ'";
 			$rs = $db->Execute($sql);
-			$rs_a = $rs->GetArray();
-			for($i=0;$i<sizeof($rs_a);$i++)		{
-				$·¿¼äÃû³Æ = $rs_a[$i]['·¿¼äÃû³Æ'];
-				$ËŞÉáÂ¥ = $rs_a[$i]['ËŞÉáÂ¥'];
-				$sql = "select COUNT(*) AS NUM from edu_susheweishengday where ·¿¼äÃû³Æ='$·¿¼äÃû³Æ' and ÆÀ±ÈÈÕÆÚ='$ÆÀ±ÈÈÕÆÚ'";
+			$NUM = $rs->fields['NUM'];
+			if($NUM==0)			{
+				$sql = "INSERT INTO edu_banjiweishengday  VALUES ('','$µ±Ç°Ñ§ÆÚ','$°à¼¶Ãû³Æ', '$ÆÀ±ÈÈÕÆÚ','$ÖÜ´Î','$ĞÇÆÚ','$ÆÀ¼ÛÈË','$ÎÀÉú·ÖÊı','$ÎÀÉú¿Û·ÖÔ­Òò','$¼ÍÂÉ·ÖÊı','$¼ÍÂÉ¿Û·ÖÔ­Òò','$´´½¨Ê±¼ä','".$_SESSION['LOGIN_USER_ID']."')";
 				$rs = $db->Execute($sql);
-				$NUM = $rs->fields['NUM'];
-				if($NUM==0)			{
-					$sql = "INSERT INTO `edu_susheweishengday`  VALUES ('','$µ±Ç°Ñ§ÆÚ','$ËŞÉáÂ¥', '$·¿¼äÃû³Æ', '$ÆÀ±ÈÈÕÆÚ','$ÖÜ´Î','$ĞÇÆÚ','$ÆÀ¼ÛÈË','$ÎÀÉú·ÖÊı','$ÎÀÉú¿Û·ÖÔ­Òò','$¼ÍÂÉ·ÖÊı','$¼ÍÂÉ¿Û·ÖÔ­Òò','$´´½¨Ê±¼ä','$´´½¨ÈË')";
-					$rs = $db->Execute($sql);
-					//print $sql."<BR>";
-				}
+				//print $sql."<BR>";
 			}
-		}//NUM==0
+		}
+	}//ĞÇÆÚ==5
+}//±àºÅ  Ñ§ÆÚ  ËŞÉáÂ¥  ·¿¼äÃû³Æ  ÆÀ±ÈÈÕÆÚ  ÖÜ´Î  ĞÇÆÚ  ÆÀ¼ÛÈË  ÎÀÉú·ÖÊı  ÎÀÉú¿Û·ÖÔ­Òò  ¼ÍÂÉ·ÖÊı  ¼ÍÂÉ¿Û·ÖÔ­Òò  ´´½¨Ê±¼ä
+
+
+function Í¬²½ËŞÉá·¿¼äĞÅÏ¢µ½Ã¿ÌìÆÀ±ÈÒ³Ãæ($ÆÀ±ÈÈÕÆÚ='')			{
+	global $db;
+	if($ÆÀ±ÈÈÕÆÚ=='')		$ÆÀ±ÈÈÕÆÚ = date("Y-m-d");
+	$ĞÇÆÚ					= ·µ»Ø¸ø¶¨Ê±¼äµÄĞÇÆÚĞÅÏ¢($ÆÀ±ÈÈÕÆÚ);
+	if($ĞÇÆÚ>=1&&$ĞÇÆÚ<=5)									{
+		$´´½¨Ê±¼ä = date("Y-m-d H:i:s");
+		$ÖÜ´Î	= returnCurWeekIndex($ÆÀ±ÈÈÕÆÚ);
+		$µ±Ç°Ñ§ÆÚ = returntablefield("edu_xueqiexec","µ±Ç°Ñ§ÆÚ",'1',"Ñ§ÆÚÃû³Æ");
+		$sql = "select ·¿¼äÃû³Æ,ËŞÉáÂ¥ from dorm_room order by ·¿¼äÃû³Æ";
+		$rs = $db->CacheExecute(150,$sql);
+		$rs_a = $rs->GetArray();
+		for($i=0;$i<sizeof($rs_a);$i++)		{
+			$·¿¼äÃû³Æ	= $rs_a[$i]['·¿¼äÃû³Æ'];
+			$ËŞÉáÂ¥		= $rs_a[$i]['ËŞÉáÂ¥'];
+			$sql		= "select COUNT(*) AS NUM from edu_susheweishengday where ·¿¼äÃû³Æ='$·¿¼äÃû³Æ' and ÆÀ±ÈÈÕÆÚ='$ÆÀ±ÈÈÕÆÚ'";
+			$rs			= $db->Execute($sql);
+			$NUM		= $rs->fields['NUM'];
+			if($NUM==0)			{
+				$sql = "INSERT INTO `edu_susheweishengday`  VALUES ('','$µ±Ç°Ñ§ÆÚ','$ËŞÉáÂ¥', '$·¿¼äÃû³Æ', '$ÆÀ±ÈÈÕÆÚ','$ÖÜ´Î','$ĞÇÆÚ','$ÆÀ¼ÛÈË','$ÎÀÉú·ÖÊı','$ÎÀÉú¿Û·ÖÔ­Òò','$¼ÍÂÉ·ÖÊı','$¼ÍÂÉ¿Û·ÖÔ­Òò','$´´½¨Ê±¼ä','".$_SESSION['LOGIN_USER_ID']."')";
+				$rs = $db->Execute($sql);
+				//print $sql."<BR>";
+			}
+		}
 	}//ĞÇÆÚ==5
 }//±àºÅ  Ñ§ÆÚ  ËŞÉáÂ¥  ·¿¼äÃû³Æ  ÆÀ±ÈÈÕÆÚ  ÖÜ´Î  ĞÇÆÚ  ÆÀ¼ÛÈË  ÎÀÉú·ÖÊı  ÎÀÉú¿Û·ÖÔ­Òò  ¼ÍÂÉ·ÖÊı  ¼ÍÂÉ¿Û·ÖÔ­Òò  ´´½¨Ê±¼ä
 
@@ -826,6 +921,41 @@ function ĞŞ¸ÄÊ±Í¬²½Ñ§ÆÚÊı¾İ($ĞÂÖµ,$¾ÉÖµ) {
   $db->Execute($sql);
   $sql = "update paikao_banjikemu set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
   $db->Execute($sql);
+  $sql = "update edu_scheduleroles set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_xuanke_record set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update ceping_mingcheng set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_jiaocaistudent set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_xueshengqingjia set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_jiafang set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_banfeiguanli set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_banjihuodong set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_susheweishengday set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_meizhoubeiwang set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_ketangjilvbanji set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_xuanke_jiaoxueban set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_xuanke_rule_allowchoose set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_xuanke_rule_general set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_xuanke_rule_notallowchoose set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_xuanke_rule_notallowcourse set Ñ§ÆÚ='$ĞÂÖµ' where Ñ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+  $sql = "update edu_planexec set ¿ª¿ÎÑ§ÆÚ='$ĞÂÖµ' where ¿ª¿ÎÑ§ÆÚ='$¾ÉÖµ'";
+  $db->Execute($sql);
+
 }
 function ĞŞ¸ÄÊ±Í¬²½×¨ÒµÊı¾İ($ĞÂÖµ,$¾ÉÖµ) {
   global $_GET,$_POST,$db;
@@ -951,230 +1081,220 @@ function ĞŞ¸ÄÊ±Í¬²½ÏµÊı¾İ($ĞÂÖµ,$¾ÉÖµ) {
   $sql = "update newedu_gerenchufen set Ïµ='$ĞÂÖµ' where Ïµ='$¾ÉÖµ'";
   $db->Execute($sql);
 }
-function ĞŞ¸ÄÊ±Í¬²½ĞÕÃûÊı¾İ($ĞÂÖµ,$¾ÉÖµ) {
+
+function ĞŞ¸ÄÊ±Í¬²½ĞÕÃûÊı¾İ($Ñ§ºÅ,$ĞÕÃû) {
   global $_GET,$_POST,$db;
-  if($ĞÂÖµ==$¾ÉÖµ||$ĞÂÖµ=='') {
-    return '';
-  }
-  $sql = "update bukao_laoshi set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update bukao_student set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update bukao_student set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update dorm_changelog set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update dorm_changelog set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update dorm_liusu set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update dorm_liusu set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update dorm_rooming set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update dorm_rooming set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_banfeiguanli set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_banfeiguanli set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_banweiguanli set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_banweiguanli set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_biyejianding set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_biyejianding set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_biyezheng set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_biyezheng set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_diaochamingxi set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_dangyuan_work_check_register set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_dierketangbaoming set Ñ§ÉúĞÕÃû='$ĞÕÃû' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_dangyuan_yearcheck set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_dierketangpingfen set Ñ§ÉúĞÕÃû='$ĞÕÃû' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_diaochamingxi set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_evaluatepersonal set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_dierketangbaoming set Ñ§ÉúĞÕÃû='$ĞÂÖµ' where Ñ§ÉúĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_exam set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_dierketangpingfen set Ñ§ÉúĞÕÃû='$ĞÂÖµ' where Ñ§ÉúĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_grad set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_evaluatepersonal set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_jiafang set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_exam set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_jiangxuejin set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_grad set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_kechengshenqing set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_jiafang set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_kewaifudao set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_jiangxuejin set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  //$sql = "update edu_leaguefee set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_leaguemember set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_kechengshenqing set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_louzhangguanli set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_kewaifudao set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  //$sql = "update edu_partyfee set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_partymember set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_leaguefee set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_partymember2 set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_leaguemember set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_passwordlog set ĞÕÃû='$ĞÕÃû' where ±àºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_louzhangguanli set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_passwordlog2 set ĞÕÃû='$ĞÕÃû' where ±àºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_newstudent set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_pingjiamingxi set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_partyfee set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_qimopingyu set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_partymember set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_qingongjianxue set Ñ§ÉúĞÕÃû='$ĞÕÃû' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_partymember2 set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_shenghuobuzhu set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_passwordlog set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_shixishenqing set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_passwordlog2 set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_shoufeidan set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_pingjiamingxi set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_shoufeidanprint set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_qimopingyu set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  //$sql = "update edu_smsfetion set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_smsrecord set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_qingongjianxue set Ñ§ÉúĞÕÃû='$ĞÂÖµ' where Ñ§ÉúĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_stubad set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_shenghuobuzhu set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_student set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_shixishenqing set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentcardkaoqin set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_shoufeidan set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentcardkaoqinmingxi set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_shoufeidanprint set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentchange set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_smsfetion set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentcourse set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_smsrecord set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentflow set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_stubad set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentjiangcheng set Ñ§ÉúĞÕÃû='$ĞÕÃû' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_student set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentjiesong set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_studentcardkaoqin set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentjiuye set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_studentcardkaoqinmingxi set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentkaoqin set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_studentchange set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_studentpingjiamingxi set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_studentcourse set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
+  $sql = "update edu_tanhuajilu set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
   $db->Execute($sql);
-  $sql = "update edu_studentflow set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_studentjiangcheng set Ñ§ÉúĞÕÃû='$ĞÂÖµ' where Ñ§ÉúĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_studentjiesong set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_studentjiuye set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_studentkaoqin set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_studentpingjiamingxi set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_studentreg set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_tanhuajilu set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_teacher set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_teacher_partyfee set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_teacher_partymember set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_teacher_partymember2 set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_teacher_work_check_register set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_teacherjingli set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_teachermanage set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_teacherxuexijingli set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_tuibandengji set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_tuifeidan set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_tuijianjiuye set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_uchome set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_waichuzhufang set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_wanguixinxi set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_weijihuizong set Ñ§ÉúĞÕÃû='$ĞÂÖµ' where Ñ§ÉúĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_weizhangxinxi set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_xiaoyou set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_xingzheng_work_check_register set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_xingzheng_yearcheck set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_youxiubiyesheng set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_zhaopinshenqin set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_zhengshuguanli set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update edu_zuoweixinxi set Ñ§ÉúĞÕÃû='$ĞÂÖµ' where Ñ§ÉúĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_educationalexperience set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_expense set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_file set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_file_fuzhi set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_file_lizhi set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_file_luyong set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_laboringskill set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_reward_punishment set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_salary_tongji set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_socialrelation set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_transfer set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_worker_hetong set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_worker_zhengzhao set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_worker_zhicheng set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_workexperience set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update hrms_zprencaiku set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_gerenchufen set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_gongyihuodong set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_keyanxiangmu set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_luquxuesheng set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_peixunjingli set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_shehuishijian set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_tijianjilu set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_xianxuejilu set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_xiaowaijiangcheng set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_xiaowaishetuan set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_xueshengjingli set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_zhengshuguanli set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update newedu_zhuxuedaikuan set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update remote_courseapply set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update school_homeworkupload set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update tiku_chengji set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
-  $sql = "update tiku_examdata set ĞÕÃû='$ĞÂÖµ' where ĞÕÃû='$¾ÉÖµ'";
-  $db->Execute($sql);
+  //$sql = "update edu_teacher set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update edu_teacher_partyfee set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update edu_teacher_partymember set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update edu_teacher_partymember2 set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update edu_teacher_work_check_register set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update edu_teacherjingli set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update edu_teachermanage set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update edu_teacherxuexijingli set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_tuibandengji set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_tuifeidan set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_tuijianjiuye set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_uchome set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_waichuzhufang set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_wanguixinxi set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_weijihuizong set Ñ§ÉúĞÕÃû='$ĞÕÃû' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_weizhangxinxi set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_xiaoyou set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //$sql = "update edu_xingzheng_work_check_register set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update edu_xingzheng_yearcheck set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_youxiubiyesheng set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_zhaopinshenqin set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_zhengshuguanli set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_zuoweixinxi set Ñ§ÉúĞÕÃû='$ĞÕÃû' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //$sql = "update hrms_educationalexperience set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_expense set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_file set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_file_fuzhi set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_file_lizhi set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_file_luyong set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_laboringskill set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_reward_punishment set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_salary_tongji set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_socialrelation set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_transfer set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_worker_hetong set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_worker_zhengzhao set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_worker_zhicheng set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_workexperience set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update hrms_zprencaiku set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_gerenchufen set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_gongyihuodong set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_keyanxiangmu set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_luquxuesheng set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_peixunjingli set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_shehuishijian set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_tijianjilu set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_xianxuejilu set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_xiaowaijiangcheng set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_xiaowaishetuan set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_xueshengjingli set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_zhengshuguanli set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update newedu_zhuxuedaikuan set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  //$sql = "update remote_courseapply set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update school_homeworkupload set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update tiku_chengji set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update tiku_examdata set ĞÕÃû='$ĞÕÃû' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //exit;
 }
+
 function ĞŞ¸ÄÊ±Í¬²½Ñ§ºÅÊı¾İ($ĞÂÖµ,$¾ÉÖµ) {
   global $_GET,$_POST,$db;
   if($ĞÂÖµ==$¾ÉÖµ||$ĞÂÖµ=='') {
@@ -1330,7 +1450,170 @@ function ĞŞ¸ÄÊ±Í¬²½Ñ§ºÅÊı¾İ($ĞÂÖµ,$¾ÉÖµ) {
   $db->Execute($sql);
   $sql = "update wygl_baoxiuxinxi set Ñ§ÉúÑ§ºÅ='$ĞÂÖµ' where Ñ§ÉúÑ§ºÅ='$¾ÉÖµ'";
   $db->Execute($sql);
+  //print $sql;exit;
 }
+
+
+//Ê¹ÓÃ"Í¬²½Ñ§Éú×ª°à¶ø´øÀ´µÄ°à¼¶ĞÅÏ¢±ä»¯"º¯Êı
+/*
+function ĞŞ¸ÄÊ±Í¬²½Ñ§ÉúµÄ°à¼¶Ãû³ÆÊı¾İ($Ñ§ºÅ,$°à¼¶Ãû³Æ)								{
+  global $_GET,$_POST,$db;
+  if($ĞÂÖµ==$¾ÉÖµ||$ĞÂÖµ=='') {
+    return '';
+  }
+  $sql = "update bukao_student set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update dorm_changelog set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update dorm_liusu set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update dorm_rooming set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_banfeiguanli set ËùÊô°à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_banweiguanli set ËùÊô°à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_biyejianding set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_biyezheng set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_diaochamingxi set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_dierketangbaoming set °à¼¶Ãû³Æ='$°à¼¶Ãû³Æ' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //$sql = "update edu_dierketangpingfen set °à¼¶Ãû³Æ='$°à¼¶Ãû³Æ' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_evaluatepersonal set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_exam set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_grad set °àºÅ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_growfiles set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_jiafang set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_jiangxuejin set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //$sql = "update edu_kechengshenqing set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_kewaifudao set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_leaguemember set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_louzhangguanli set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //$sql = "update edu_newstudent set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_partymember set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_partymember2 set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_pingjiamingxi set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_qimopingyu set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_qingongjianxue set Ñ§Éú°à¼¶='$°à¼¶Ãû³Æ' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_shenghuobuzhu set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_shixishenqing set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_shoufeidan set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_shoufeidanprint set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_smsrecord set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_stubad set Ô­°àºÅ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_student set °àºÅ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //$sql = "update edu_studentcardkaoqin set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_studentcardkaoqinmingxi set °à¼¶Ãû³Æ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_studentchange set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_studentcourse set °à¼¶Ãû³Æ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //$sql = "update edu_studentflow set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_studentjiangcheng set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_studentjiesong set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_studentjiuye set °àºÅ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_studentkaoqin set °à¼¶Ãû³Æ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_studentpingjiamingxi set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //$sql = "update edu_stulog set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+  $sql = "update edu_tanhuajilu set ËùÊô°à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_tuibandengji set °à¼¶Ãû³Æ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_tuifeidan set °à¼¶Ãû³Æ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_tuijianjiuye set °àºÅ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_uchome set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_waichuzhufang set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_wanguixinxi set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_weijihuizong set °à¼¶Ãû³Æ='$°à¼¶Ãû³Æ' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_weizhangxinxi set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_xiaoyou set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_youxiubiyesheng set °àºÅ='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_zhaopinshenqin set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_zhengshuguanli set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update edu_zuoweixinxi set ËùÊô°à¼¶='$°à¼¶Ãû³Æ' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_gerenchufen set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_gongyihuodong set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_keyanxiangmu set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_peixunjingli set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_shehuishijian set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_tijianjilu set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_xianxuejilu set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_xiaowaijiangcheng set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_xiaowaishetuan set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_xueshengjingli set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_zhengshuguanli set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update newedu_zhuxuedaikuan set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update school_homeworkupload set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update tiku_chengji set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  $sql = "update tiku_examdata set °à¼¶='$°à¼¶Ãû³Æ' where Ñ§ºÅ='$Ñ§ºÅ'";
+  $db->Execute($sql);
+  //$sql = "update wygl_baoxiuxinxi set Ñ§Éú°à¼¶='$°à¼¶Ãû³Æ' where Ñ§ÉúÑ§ºÅ='$Ñ§ºÅ'";
+  //$db->Execute($sql);
+}
+*/
+
 function ĞŞ¸ÄÊ±Í¬²½½Ì²ÄÊı¾İ($ĞÂÖµ,$¾ÉÖµ) {
   global $_GET,$_POST,$db;
   if($ĞÂÖµ==$¾ÉÖµ||$ĞÂÖµ=='') {
@@ -1511,10 +1794,24 @@ function returnArrayMingCi($Result='')				{
 	return $NewSortArray;
 }
 
-//·µ»Ø¸ø¶¨Ê±¼äµÄÖÜ´ÎĞÅÏ¢
-function returnCurWeekIndex($Target='')				{
+//·µ»Ø¸ø¶¨Ê±¼äµÄĞÇÆÚĞÅÏ¢
+function ·µ»Ø¸ø¶¨Ê±¼äµÄĞÇÆÚĞÅÏ¢($Target='')							{
 	global $db;
-	$sql = "select ¿ªÊ¼Ê±¼ä from edu_xueqiexec where µ±Ç°Ñ§ÆÚ='1'";
+	if($Target=="") $Target = date("Y-m-d");
+	$TargetArray = explode('-',$Target);
+	$w = date('w',mktime(2,1,1,$TargetArray[1],$TargetArray[2],$TargetArray[0]));
+	return $w;
+}
+//·µ»Ø¸ø¶¨Ê±¼äµÄÖÜ´ÎĞÅÏ¢
+function returnCurWeekIndex($Target='',$Ñ§ÆÚÃû³Æ='')				{
+	global $db;
+
+	if($Ñ§ÆÚÃû³Æ=='')		{
+		$sql = "select ½áÊøÊ±¼ä,¿ªÊ¼Ê±¼ä from edu_xueqiexec where µ±Ç°Ñ§ÆÚ='1'";
+	}
+	else	{
+		$sql = "select ½áÊøÊ±¼ä,¿ªÊ¼Ê±¼ä from edu_xueqiexec where Ñ§ÆÚÃû³Æ='$Ñ§ÆÚÃû³Æ'";
+	}
 	$rs = $db->Execute($sql);
 	$rs_a = $rs->GetArray();
 	$¿ªÊ¼Ê±¼ä = $rs_a[0]['¿ªÊ¼Ê±¼ä'];
@@ -1576,7 +1873,7 @@ function returnBanjiCourseList($ClassCode,$returnCurXueQiIndex,$¿¼ÊÔÃû³Æ='')				
 	//print $SCHOOL_MODEL_TEXT;
 	if($SCHOOL_MODEL_TEXT=="4")			{
 		$¿ª¿ÎÑ§ÆÚ = returntablefield("edu_xueqiexec","µ±Ç°Ñ§ÆÚ",'1',"Ñ§ÆÚÃû³Æ");
-		$sql = "select distinct ¿Î³ÌÃû³Æ from edu_planexec where °à¼¶Ãû³Æ='$ClassCode' and ¿ª¿ÎÑ§ÆÚ='$¿ª¿ÎÑ§ÆÚ'";
+		$sql = "select distinct ¿Î³ÌÃû³Æ from edu_planexec where °à¼¶Ãû³Æ='$ClassCode' and ¿ª¿ÎÑ§ÆÚ='$¿ª¿ÎÑ§ÆÚ' and ¿Î³ÌÃû³Æ!=''";
 	}
 	else		{
 		//´Ó¿¼ÊÔ³É¼¨±íÀïÃæµÃµ½Ñ§ÆÚÃû³Æ
@@ -1586,7 +1883,7 @@ function returnBanjiCourseList($ClassCode,$returnCurXueQiIndex,$¿¼ÊÔÃû³Æ='')				
 		$Ñ§ÆÚÃû³Æ = $rs_a[0]['Ñ§ÆÚÃû³Æ'];
 		$¼¶±ğ = returntablefield("edu_banji","°à¼¶Ãû³Æ",$ClassCode,"ÈëÑ§Äê·İ");
 		$returnCurXueQiIndex = returnCurXueQiIndex($¼¶±ğ,$Ñ§ÆÚÃû³Æ);
-		$sql = "select distinct ¿Î³ÌÃû³Æ from edu_planexec where ¿ª¿ÎÑ§ÆÚ='$returnCurXueQiIndex' and °à¼¶Ãû³Æ='$ClassCode' order by ¿Î³ÌÃû³Æ";
+		$sql = "select distinct ¿Î³ÌÃû³Æ from edu_planexec where ¿ª¿ÎÑ§ÆÚ='$returnCurXueQiIndex' and °à¼¶Ãû³Æ='$ClassCode' and ¿Î³ÌÃû³Æ!='' order by ¿Î³ÌÃû³Æ";
 	}
 	//print $sql;exit;
 
@@ -1599,25 +1896,24 @@ function returnBanjiCourseList($ClassCode,$returnCurXueQiIndex,$¿¼ÊÔÃû³Æ='')				
 		$¿Î³ÌÃû³ÆArray2[$¿Î³ÌÃû³Æ] = $¿Î³ÌÃû³Æ;
 	}
 
-	if($¿¼ÊÔÃû³Æ!="")						{
+	if($¿¼ÊÔÃû³Æ!="")									{
 		//´ÓÏÖÓĞµÄ³É¼¨Êı¾İÖĞ¸´¼Ó¿Î³ÌĞÅÏ¢
-		$sql = "select distinct ¿Î³Ì from edu_exam  where ¿¼ÊÔÃû³Æ='$¿¼ÊÔÃû³Æ' and °à¼¶='$ClassCode' and Ñ§ÆÚÃû³Æ='$Ñ§ÆÚÃû³Æ'";
+		$sql = "select distinct ¿Î³Ì from edu_exam  where ¿¼ÊÔÃû³Æ='$¿¼ÊÔÃû³Æ' and °à¼¶='$ClassCode' and Ñ§ÆÚÃû³Æ='$Ñ§ÆÚÃû³Æ' and ¿Î³Ì!=''";
 		$rs = $db->Execute($sql);
 		$rs_a = $rs->GetArray();//print_R($rs_a);
-		for($i=0;$i<count($rs_a);$i++)			{
+		for($i=0;$i<count($rs_a);$i++)					{
 			$¿Î³Ì = $rs_a[$i]['¿Î³Ì'];
-			if(@!in_array($¿Î³Ì,$¿Î³ÌÃû³ÆArray1))		{
-				$¿Î³ÌÃû³ÆArray1[] = $¿Î³Ì;
-				$¿Î³ÌÃû³ÆArray2[$¿Î³Ì] = $¿Î³Ì;
+			if(@!in_array($¿Î³Ì,$¿Î³ÌÃû³ÆArray1)&&$¿Î³Ì!='')		{
+				$¿Î³ÌÃû³ÆArray1[]		= $¿Î³Ì;
+				$¿Î³ÌÃû³ÆArray2[$¿Î³Ì]	= $¿Î³Ì;
 			}
 		}
 	}
 	$¿Î³ÌÃû³ÆArray = @array_keys($¿Î³ÌÃû³ÆArray2);
-	for($i=0;$i<count($¿Î³ÌÃû³ÆArray);$i++)			{
+	for($i=0;$i<count($¿Î³ÌÃû³ÆArray);$i++)				{
 		$¿Î³ÌÃû³Æ = $¿Î³ÌÃû³ÆArray[$i];
-		$rs_amX[$i]['¿Î³ÌÃû³Æ'] = $¿Î³ÌÃû³Æ;
+		if($¿Î³ÌÃû³Æ!="")	$rs_amX[$i]['¿Î³ÌÃû³Æ'] = $¿Î³ÌÃû³Æ;
 	}
-
 	return $rs_amX;
 }
 
@@ -1954,7 +2250,7 @@ return $NewArray;
 //·µ»ØÓ¦½»Ñ§·ÑÊı×é-¸ßĞ£²¿·Ö
 function ReturnOfficeFee($ZYDM='1211',$NJ='2006',$XN='ÉèÖÃËùÓĞÑ§ÄêÑ§·Ñ',$ÊÊÓÃÊÕ·Ñ±ê×¼='ÆÕÍ¨')		{
 	global $db;
-	if($XN=='ÉèÖÃËùÓĞÑ§ÄêÑ§·Ñ')		{
+	if($XN=='ÉèÖÃËùÓĞÑ§ÄêÑ§·Ñ'||$XN=='ÉèÖÃËùÓĞÑ§ÆÚÑ§·Ñ')		{
 		$sql = "select * from edu_zhuanyeshoufei where ×¨Òµ´úÂë='$ZYDM' and Äê¼¶='$NJ' and ÊÊÓÃÊÕ·Ñ±ê×¼='$ÊÊÓÃÊÕ·Ñ±ê×¼'";
 	}
 	else		{
@@ -1976,15 +2272,16 @@ function ReturnOfficeFee($ZYDM='1211',$NJ='2006',$XN='ÉèÖÃËùÓĞÑ§ÄêÑ§·Ñ',$ÊÊÓÃÊÕ·
 
 
 //·µ»ØÓ¦½»Ñ§·ÑÊı×é-ÖĞĞ¡Ñ§²¿·Ö
-function ReturnOfficeFeeMiddleSchool($XN='2006-2007',$NJ='2006',$ÊÊÓÃÊÕ·Ñ±ê×¼='ÆÕÍ¨')		{
+function ReturnOfficeFeeMiddleSchool($NJ='2006',$XN='2006-2007',$ÊÊÓÃÊÕ·Ñ±ê×¼='ÆÕÍ¨')		{
 	global $db;
 	// and Ñ§Äê='$XN'
-	if($XN=='ÉèÖÃËùÓĞÑ§ÄêÑ§·Ñ')		{
+	if($XN=='ÉèÖÃËùÓĞÑ§ÄêÑ§·Ñ'||$XN=='ÉèÖÃËùÓĞÑ§ÆÚÑ§·Ñ')		{
 		$sql = "select * from edu_zhuanyeshoufei where Äê¼¶='$NJ' and ÊÊÓÃÊÕ·Ñ±ê×¼='$ÊÊÓÃÊÕ·Ñ±ê×¼'";
 	}
 	else		{
 		$sql = "select * from edu_zhuanyeshoufei where Äê¼¶='$NJ' and Ñ§Äê='$XN' and ÊÊÓÃÊÕ·Ñ±ê×¼='$ÊÊÓÃÊÕ·Ñ±ê×¼'";
 	}
+	//print $sql;
 	$rs = $db->Execute($sql);
     $rs_a = $rs->GetArray();
 	$NewArray = array();
@@ -2008,6 +2305,7 @@ function Ñ§ÉúÅúÁ¿½É·Ñ×Ô¶¯¿Û¿îº¯Êı($Ñ§ºÅ,$ĞÕÃû,$°à¼¶,$×¨Òµ,$Äê¼¶,$·ÑÓÃ½ğ¶î,$ÊÕ·Ñµ
 	$XN = $XNARRAY[0];
 	$Ö§¸¶·½Ê½ = $_POST['½É·Ñ·½Ê½'];
 	if($Ö§¸¶·½Ê½=='') $Ö§¸¶·½Ê½ = 'ÏÖ½ğ';
+	//print_R($_POST);exit;
 	$ÕË»§±àºÅ = "µ¥Î»ÕË»§";
 	$±¸×¢ = $·¢Æ±½ÏÑéÂë;
 	$YEAR  = date("Y");
@@ -2138,11 +2436,10 @@ function Ñ§Éú½É·Ñ($XH,$XM,$BJMC,$ZYMC,$XMC,$NJ)				{
 	}
 	//print_R($_POST);
 	$XNARRAY = explode('_',$MiddleNamePOST);
-	$ÊÕ·ÑÏîÄ¿Ãû³Æ = "½É·Ñ½ğ¶î";
 	$XN = $XNARRAY[0];
-	$Ö§¸¶·½Ê½ = "ÏÖ½ğ";
+	$Ö§¸¶·½Ê½ = $_POST['½É·Ñ·½Ê½'];
 	$ÕË»§±àºÅ = "µ¥Î»ÕË»§";
-	$±¸×¢ = "±¸×¢";
+	$±¸×¢ = $_POST['µ¥¾İ½ÏÑéÂë'];
 	$ÊÕ·ÑÈÕÆÚ = date("Y-m-d H:i:s",mktime(date("H"),date("i"),date("s")+$i,date("m"),date("d"),date("Y")));
 	if($ÊÕ·Ñµ¥¾İ!="")		{
 		//$ÊÕ·Ñµ¥ºÅ = $ÊÕ·Ñµ¥¾İ;
@@ -2154,7 +2451,7 @@ function Ñ§Éú½É·Ñ($XH,$XM,$BJMC,$ZYMC,$XMC,$NJ)				{
 	$·ÑÓÃ½ğ¶î = $Êµ½É·Ñ½ğ¶î;//2010-8-21ÈÕ¸ÄÎª½É·Ñ½ğ¶îÎªÊµ¼Ê²ğ·Ö½ğ¶îµÄÖ®ºÍ
 	$Â¼ÈëÔ± = $_SESSION['SUNSHINE_USER_NAME'];
 	$ÊÕ·ÑÏîÄ¿´úÂë = returntablefield("dict_shoufeixiangmu","Ãû³Æ",$ÊÕ·ÑÏîÄ¿Ãû³Æ,"±àºÅ");
-	$ÕªÒª= "´æÈë:".$XM."(".$XH.")".$XN."Ñ§Äê".$ÊÕ·ÑÏîÄ¿Ãû³Æ."".$·ÑÓÃ½ğ¶î."Ôª";
+	$ÕªÒª= "´æÈë:".$XM."(".$XH.")".$XN." ".$ÊÕ·ÑÏîÄ¿Ãû³Æ."".$·ÑÓÃ½ğ¶î."Ôª";
 	$sql = "insert into edu_shoufeidanprint values('','$ÊÕ·Ñµ¥ºÅ','$ÊÕ·ÑÈÕÆÚ','$XH','$XM','$BJMC','$ÕªÒª','$·ÑÓÃ½ğ¶î','$Ö§¸¶·½Ê½','$ÕË»§±àºÅ','$±¸×¢','$Â¼ÈëÔ±','$Óà¶î','$ZYMC','$XMC','$XN','$NJ');";
 	//print $sql."<BR>";
 	//print_R($XNARRAY);
@@ -2226,15 +2523,4 @@ function returnPrivMenu($ModuleName)		{
 function base64_encode2($value)		{
 	return $value;
 }
-?><?
-/*
-	°æÈ¨¹éÊô:Ö£Öİµ¥µã¿Æ¼¼Èí¼şÓĞÏŞ¹«Ë¾;
-	ÁªÏµ·½Ê½:0371-69663266;
-	¹«Ë¾µØÖ·:ºÓÄÏÖ£Öİ¾­¼Ã¼¼Êõ¿ª·¢ÇøµÚÎå´ó½Ö¾­±±ÈıÂ·Í¨ĞÅ²úÒµÔ°ËÄÂ¥Î÷ÄÏ;
-	¹«Ë¾¼ò½é:Ö£Öİµ¥µã¿Æ¼¼Èí¼şÓĞÏŞ¹«Ë¾Î»ÓÚÖĞ¹úÖĞ²¿³ÇÊĞ-Ö£Öİ,³ÉÁ¢ÓÚ2007Äê1ÔÂ,ÖÂÁ¦ÓÚ°Ñ»ùÓÚÏÈ½øĞÅÏ¢¼¼Êõ£¨°üÀ¨Í¨ĞÅ¼¼Êõ£©µÄ×î¼Ñ¹ÜÀíÓëÒµÎñÊµ¼ùÆÕ¼°µ½½ÌÓıĞĞÒµ¿Í»§µÄ¹ÜÀíÓëÒµÎñ´´ĞÂ»î¶¯ÖĞ£¬È«ÃæÌá¹©¾ßÓĞ×ÔÖ÷ÖªÊ¶²úÈ¨µÄ½ÌÓı¹ÜÀíÈí¼ş¡¢·şÎñÓë½â¾ö·½°¸£¬ÊÇÖĞ²¿×îÓÅĞãµÄ¸ßĞ£½ÌÓı¹ÜÀíÈí¼ş¼°ÖĞĞ¡Ñ§Ğ£¹ÜÀíÈí¼şÌá¹©ÉÌ¡£Ä¿Ç°¼º¾­ÓĞ¶à¼Ò¸ßÖ°ºÍÖĞÖ°ÀàÔºĞ£Ê¹ÓÃÍ¨´ïÖĞ²¿ÑĞ·¢ÖĞĞÄ¿ª·¢µÄÈí¼şºÍ·şÎñ;
-
-	Èí¼şÃû³Æ:µ¥µã¿Æ¼¼Èí¼ş¿ª·¢»ù´¡ĞÔ¼Ü¹¹Æ½Ì¨,ÒÔ¼°ÔÚÆä»ù´¡Ö®ÉÏÀ©Õ¹µÄÈÎºÎĞÔÈí¼ş×÷Æ·;
-	·¢ĞĞĞ­Òé:Êı×Ö»¯Ğ£Ô°²úÆ·ÎªÉÌÒµÈí¼ş,·¢ĞĞĞí¿ÉÎªLICENSE·½Ê½;µ¥µãCRMÏµÍ³¼´SunshineCRMÏµÍ³ÎªGPLV3Ğ­ÒéĞí¿É,GPLV3Ğ­ÒéĞí¿ÉÄÚÈİÇëµ½°Ù¶ÈËÑË÷;
-	ÌØÊâÉùÃ÷:Èí¼şËùÊ¹ÓÃµÄADODB¿â,PHPEXCEL¿â,SMTARY¿â¹éÔ­×÷ÕßËùÓĞ,ÓàÏÂ´úÂëÑØÓÃÉÏÊöÉùÃ÷;
-	*/
 ?>
