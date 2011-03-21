@@ -1,10 +1,15 @@
 <?
+ini_set('display_errors', 1);
+ini_set('error_reporting', E_ALL);
+
+// display warnings and errors
+error_reporting(E_WARNING | E_ERROR);
 //######################教育组件-权限较验部分##########################
 SESSION_START();
 require_once("lib.inc.php");
 $GLOBAL_SESSION=returnsession();
 require_once("systemprivateinc.php");
-//CheckSystemPrivate("数字化校园系统设置-数字化校园权限");
+CheckSystemPrivate("系统信息设置-组织机构设置");
 //######################教育组件-权限较验部分##########################
 
 

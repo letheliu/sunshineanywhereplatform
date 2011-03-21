@@ -24,6 +24,7 @@ $rs			=	$db->CacheExecute(150,$sql);
 $NAME		=	$rs->fields['NAME'];
 $CONTENT	=	$rs->fields['CONTENT'];
 $CONTENTArray = explode(',',$CONTENT);
+
 for($i=0;$i<sizeof($CONTENTArray);$i++)						{
 	if(strlen($i)==1)		$iText = "0".$i; else	$iText = $i;
 	$ElementArray = explode('-',$CONTENTArray[$i]);

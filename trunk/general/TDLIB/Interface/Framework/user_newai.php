@@ -1,9 +1,17 @@
 <?
-	ini_set('display_errors', 1);
-	ini_set('error_reporting', E_ALL);
-	error_reporting(E_WARNING | E_ERROR);
-	require_once('lib.inc.php');
-	$GLOBAL_SESSION=returnsession();
+ini_set('display_errors', 1);
+ini_set('error_reporting', E_ALL);
+
+// display warnings and errors
+error_reporting(E_WARNING | E_ERROR);
+//######################教育组件-权限较验部分##########################
+SESSION_START();
+require_once("lib.inc.php");
+$GLOBAL_SESSION=returnsession();
+require_once("systemprivateinc.php");
+CheckSystemPrivate("系统信息设置-组织机构设置");
+//######################教育组件-权限较验部分##########################
+
 
 	/*
 	if($_GET['action']=="add_default_data")		{
@@ -40,6 +48,18 @@
 		print_infor("您的操作己成功,请返回....",'',"location='?'","?");
 		exit;
 	}
+
+
+	//自动较验数据库表格式
+	$Columns = $db->MetaColumns("user");
+	if($Columns['UID']->primary_key!=1)				{
+		$sql = "ALTER TABLE `user` ADD PRIMARY KEY ( `UID` ) ";
+		$db->Execute($sql);
+	};
+	if($Columns['UID']->auto_increment!=1)				{
+		$sql = "ALTER TABLE `user` CHANGE `UID` `UID` INT( 11 ) NOT NULL AUTO_INCREMENT ";
+		$db->Execute($sql);
+	};
 
 
 	//$SYSTEM_PRINT_SQL  = 0;

@@ -17,12 +17,26 @@
 		//print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?'>";
 	}
 	*/
+	//自动较验数据库表格式
+	$Columns = $db->MetaColumns("department");
+	if($Columns['DEPT_ID']->primary_key!=1)				{
+		$sql = "ALTER TABLE `department` ADD PRIMARY KEY ( `DEPT_ID` ) ";
+		$db->Execute($sql);
+	};
+	if($Columns['DEPT_ID']->auto_increment!=1)				{
+		$sql = "ALTER TABLE `department` CHANGE `DEPT_ID` `DEPT_ID` INT( 11 ) NOT NULL AUTO_INCREMENT ";
+		$db->Execute($sql);
+	};
+
+	//当部门数量为0时,自动默认一个部门进去
+	$sql = "select COUNT(*) AS NUM from department";
+	$rs = $db->Execute($sql);;
+	if($rs->fields['NUM']==0)				{
+		$sql = "insert into department (DEPT_NAME) values('默认部门');";
+		$db->Execute($sql);
+	}
 
 	//$SYSTEM_PRINT_SQL  = 0;
-	//$sql = "ALTER TABLE `department` ADD PRIMARY KEY ( `DEPT_ID` ) ";
-	//$db->Execute($sql);
-	//$sql = "ALTER TABLE `department` CHANGE `DEPT_ID` `DEPT_ID` INT( 11 ) NOT NULL AUTO_INCREMENT ";
-	//$db->Execute($sql);
 	//数据表模型文件,对应Model目录下面的department_newai.ini文件
 	//如果是需要复制此模块,则需要修改$parse_filename参数的值,然后对应到Model目录 新文件名_newai.ini文件
 	$filetablename		=	'department';
