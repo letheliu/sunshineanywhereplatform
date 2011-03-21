@@ -1,10 +1,18 @@
 <?
-	ini_set('display_errors', 1);
-	ini_set('error_reporting', E_ALL);
-	error_reporting(E_WARNING | E_ERROR);
-	require_once('lib.inc.php');
-	$GLOBAL_SESSION=returnsession();
-	
+ini_set('display_errors', 1);
+ini_set('error_reporting', E_ALL);
+
+// display warnings and errors
+error_reporting(E_WARNING | E_ERROR);
+//######################教育组件-权限较验部分##########################
+SESSION_START();
+require_once("lib.inc.php");
+$GLOBAL_SESSION=returnsession();
+require_once("systemprivateinc.php");
+CheckSystemPrivate("系统信息设置-组织机构设置");
+//######################教育组件-权限较验部分##########################
+
+
 	/*
 	if($_GET['action']=="add_default_data")		{
 		//print_R($_GET);print_R($_POST);//exit;

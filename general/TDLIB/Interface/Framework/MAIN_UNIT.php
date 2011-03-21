@@ -13,12 +13,12 @@ CheckSystemPrivate("系统信息设置-组织机构设置");
 //######################教育组件-权限较验部分##########################
 
 //判断学期信息是否为空
-$当前学期 = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
-if($当前学期=="")		{
-	page_css("您的学期信息没有设置");
-	print_infor("您的学期信息没有设置,请在教务管理->教学基本信息->学期中设置");
-	exit;
-}
+//$当前学期 = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
+//if($当前学期=="")		{
+//	page_css("您的学期信息没有设置");
+//	print_infor("您的学期信息没有设置,请在教务管理->教学基本信息->学期中设置");
+//	exit;
+//}
 
 
 $GLOBAL_SESSION=returnsession();

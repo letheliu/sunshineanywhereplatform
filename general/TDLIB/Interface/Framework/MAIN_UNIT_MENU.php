@@ -4,9 +4,14 @@ ini_set('error_reporting', E_ALL);
 
 // display warnings and errors
 error_reporting(E_WARNING | E_ERROR);
-require_once('lib.inc.php');
-
+//######################教育组件-权限较验部分##########################
+SESSION_START();
+require_once("lib.inc.php");
 $GLOBAL_SESSION=returnsession();
+require_once("systemprivateinc.php");
+CheckSystemPrivate("系统信息设置-组织机构设置");
+//######################教育组件-权限较验部分##########################
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
