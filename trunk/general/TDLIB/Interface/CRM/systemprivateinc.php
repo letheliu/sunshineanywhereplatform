@@ -23,7 +23,8 @@ $PRIVATE_SYSTEM['我的公司业务']['供应商']	= array("crm_provider_newai.php","供应
 $PRIVATE_SYSTEM['我的公司业务']['订单']		= array("crm_order_newai.php","客户订单");
 $PRIVATE_SYSTEM['我的公司业务']['订单2']	= array("crm_order2_newai.php","客户订单2");
 $PRIVATE_SYSTEM['我的公司业务']['合同']		= array("crm_contract_newai.php","客户合同");
-$PRIVATE_SYSTEM['我的公司业务']['部门权限管理']				= array("inc_crm_priv.php","部门权限管理");
+$PRIVATE_SYSTEM['我的公司业务']['部门权限管理']	= array("inc_crm_priv.php","部门权限管理");
+$PRIVATE_SYSTEM['我的公司业务']['CRM工具集']	= array("inc_crm_tools.php","CRM工具集");
 
 
 //$PRIVATE_SYSTEM['部门经理权限']['日程']	= array("crm_clendar_newai.php","日程");
