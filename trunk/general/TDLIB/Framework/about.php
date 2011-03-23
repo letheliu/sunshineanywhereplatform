@@ -20,7 +20,8 @@ require_once('lib.inc.php');
 if($LOGIN_THEME=="")$LOGIN_THEME = 3;
 print "<LINK href=\"/theme/$LOGIN_THEME/style.css\" rel=stylesheet>";
 if(!is_file('license.ini'))		{
-	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=register.php'>";
+	//print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=register.php'>";
+	phpinfo();
 	exit;
 }
 ?>
