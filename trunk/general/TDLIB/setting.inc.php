@@ -1,4 +1,9 @@
 <?
+ini_set('display_errors', 1);
+ini_set('error_reporting', E_ALL);
+ini_set('allow_call_time_pass_reference',0);
+error_reporting(E_WARNING | E_ERROR);
+
 $SYSTEM_EXEC_TIME = time();
 
 //$SYSTEM_DB_TYPE = "MYSQL";
@@ -21,7 +26,8 @@ if($SUNSHINE_MYSQL_VERSION>='5.0.0')				{
 }
 */
 //$db->Execute("set names EUC_CN");
-$db->Execute("set names gbk");
+$db->Execute("set names gbk;");
+$db->Execute("SET sql_mode='';");
 
 $uploadsfilesize=2000000;
 $ADODB_FETCH_MODE=ADODB_FETCH_ASSOC;
