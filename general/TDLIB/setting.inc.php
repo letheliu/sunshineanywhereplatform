@@ -45,6 +45,20 @@ $SUNSHINE_USER_LANG_VAR='SUNSHINE_USER_LANG';
 $SUNSHINE_USER_SMS_ON_VAR='SUNSHINE_USER_SMS_ON';
 $SUNSHINE_USER_MENU_HIDE_VAR='SUNSHINE_USER_MENU_HIDE';
 
+
+//重新初始化变更,应对REGISTER_GLOBALS为OFF时的情况
+$_GETKeyArray = @array_keys($_GET);
+for($i=0;$i<sizeof($_GETKeyArray);$i++)			{
+	$_GETKey	= $_GETKeyArray[$i];
+	$$_GETKey	= $_GET[$_GETKey];
+}
+
+$_POSTKeyArray = @array_keys($_POST);
+for($i=0;$i<sizeof($_POSTKeyArray);$i++)			{
+	$_POSTKey	= $_POSTKeyArray[$i];
+	$$_POSTKey	= $_POST[$_POSTKey];
+}
+
 ?><?
 /*
 	版权归属:郑州单点科技软件有限公司;
