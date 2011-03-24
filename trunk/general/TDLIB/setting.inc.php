@@ -48,7 +48,7 @@ $SUNSHINE_USER_MENU_HIDE_VAR='SUNSHINE_USER_MENU_HIDE';
 
 //重新初始化变更,应对REGISTER_GLOBALS为OFF时的情况
 $_GETKeyArray = @array_keys($_GET);
-for($i=0;$i<sizeof($_GETKeyArray);$i++)			{
+for($i=0;$i<sizeof($_GETKeyArray);$i++)				{
 	$_GETKey	= $_GETKeyArray[$i];
 	$$_GETKey	= $_GET[$_GETKey];
 }
@@ -58,6 +58,13 @@ for($i=0;$i<sizeof($_POSTKeyArray);$i++)			{
 	$_POSTKey	= $_POSTKeyArray[$i];
 	$$_POSTKey	= $_POST[$_POSTKey];
 }
+
+$LOGIN_THEME		= $_SESSION['LOGIN_THEME'];
+$LOGIN_USER_ID		= $_SESSION['LOGIN_USER_ID'];
+$LOGIN_USER_NAME	= $_SESSION['LOGIN_USER_NAME'];
+$LOGIN_DEPT_ID		= $_SESSION['LOGIN_DEPT_ID'];
+$LOGIN_USER_PRIV	= $_SESSION['LOGIN_USER_PRIV'];
+
 
 ?><?
 /*
