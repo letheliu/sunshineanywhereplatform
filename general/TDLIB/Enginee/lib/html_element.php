@@ -765,6 +765,7 @@ function print_picturefile($showtext,$var,$var_value="",$size="25",$colspan=1)	{
 }
 function print_tdoafile($showtext,$var,$var_value="",$size="25",$colspan=1)	{
 	 //形成通达OA下载文件所需要的变量格式
+	 //print_R($_SESSION);
 	 $var_value_array = explode('||',$var_value);
 	 $ATTACHMENT_ID	=	$var_value_array[1];
 	 $ATTACHMENT_NAME = $var_value_array[0];
@@ -804,7 +805,12 @@ function print_tdoafile($showtext,$var,$var_value="",$size="25",$colspan=1)	{
 				  }
 				}
 			</script>\n";
-	 print "<script>ShowAddFile();ShowAddImage();</script>\n";
+	 if($_SESSION['SYSTEM_IS_TD_OA']!='1')			{
+		 print "<script>ShowAddFile(\"\",0);ShowAddImage();</script>\n";
+	 }
+	 else	{
+		 print "<script>ShowAddFile();ShowAddImage();</script>\n";
+	 }
 	 print "<INPUT type=hidden name='通达格式上传文件' value=\"$var\">\n";
 
 	 print "

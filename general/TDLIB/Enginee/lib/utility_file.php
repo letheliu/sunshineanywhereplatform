@@ -1,5 +1,23 @@
-<?php
+<?
+ini_set('display_errors', 1);
+ini_set('error_reporting', E_ALL);
+ini_set('allow_call_time_pass_reference',0);
+error_reporting(E_WARNING | E_ERROR);
+
 //通达OA2009库文件,2010-3-6用于教育组件 ,同时加入find_id函数用于兼容性问题解决
+session_start();
+
+if($_SESSION['SYSTEM_IS_TD_OA']!='1')			{
+	$ATTACH_PATH2	=	realpath($_SERVER['DOCUMENT_ROOT'])."/attach/";
+	//创建附件目录
+	if(!@is_dir($ATTACH_PATH2))					@mkdir($ATTACH_PATH2);
+}
+
+function Button_Back( )
+{
+echo "<br><center><input type=\"button\" class=\"BigButton\" value=\"返回\" onclick=\"history.back();\"></center>";
+}
+
 function attach_sub_dir( )
 {
 				if ( substr( $_SERVER['SCRIPT_NAME'], 0, 9 ) == "/general/" )
@@ -113,7 +131,7 @@ function attach_link( $ATTACHMENT_ID, $ATTACHMENT_NAME, $SHOW_SIZE = 0, $DOWN_PR
 								}
 								$ATTACHMENT_ID_ENCODED = attach_id_encode( $ATTACHMENT_ID, $ATTACHMENT_NAME_ARRAY[$I] );
 								$HEX_ID = dechex( $ATTACHMENT_ID_ENCODED );
-								$ATTACH_LINK .= "<span onmouseover=\"showMenu(this.id);\" id=\"attach_".$HEX_ID."\"><img src=\"/general/netdisk/images/".$ATTACH_IMAGE."\" align=\"absmiddle\"> ";
+								$ATTACH_LINK .= "<span onmouseover=\"showMenu(this.id);\" id=\"attach_".$HEX_ID."\"><img src=\"../../Framework/images_attach/".$ATTACH_IMAGE."\" align=\"absmiddle\"> ";
 								if ( $SHOW_SIZE )
 								{
 												$ATTACH_SIZE = attach_size( $ATTACHMENT_ID_ARRAY[$I], $ATTACHMENT_NAME_ARRAY[$I], $MODULE );
@@ -137,33 +155,13 @@ function attach_link( $ATTACHMENT_ID, $ATTACHMENT_NAME, $SHOW_SIZE = 0, $DOWN_PR
 								{
 												if ( $DOWN_PRIV_OFFICE_I || !is_office( $ATTACHMENT_NAME_ARRAY[$I] ) && $MODULE == "workflow" && is_ppt_xls( $ATTACHMENT_NAME_ARRAY[$I] ) )
 												{
-																$ATTACH_LINK .= "<a class=\"attach_name\" href=\"/inc/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."\"".( $ATTACH_OFFICE_OPEN_IN_IE ? " target=\"_blank\"" : "" ).">".htmlspecialchars( $ATTACHMENT_NAME_ARRAY[$I] )."</a></span>&nbsp;\n";
+																$ATTACH_LINK .= "<a class=\"attach_name\" href=\"../../Enginee/lib/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."\"".( $ATTACH_OFFICE_OPEN_IN_IE ? " target=\"_blank\"" : "" ).">".htmlspecialchars( $ATTACHMENT_NAME_ARRAY[$I] )."</a></span>&nbsp;\n";
 																if ( $SHOW_SIZE )
 																{
 																				$ATTACH_LINK .= "(".$ATTACH_SIZE.")&nbsp;";
 																}
 																$ATTACH_LINK .= "<div id=\"attach_".$HEX_ID."_menu\" class=\"attach_div\" title=\"".$ATTACHMENT_NAME_ARRAY[$I]."\">";
-																$ATTACH_LINK .= "<a href=\"/inc/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."\"".( $ATTACH_OFFICE_OPEN_IN_IE ? " target=\"_blank\"" : "" ).">下载</a>\n";
-																if ( is_media( $ATTACHMENT_NAME_ARRAY[$I] ) )
-																{
-																				$ATTACH_LINK .= "<a href=\"javascript:;\" onClick=\"window.open('/module/mediaplayer/index.php?MEDIA_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."&MEDIA_URL=".urlencode( "/inc/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] ) )."','media".$ATTACHMENT_ID."','menubar=0,toolbar=0,status=1,scrollbars=1,resizable=1,width=800,height=600');\">播放</a>\n";
-																}
-																if ( $SAVE_FILE )
-																{
-																				$ATTACH_LINK .= "<a href=\"javascript:;\" onClick=\"SaveFile('".$MODULE.",";
-																				if ( $YM )
-																				{
-																								$ATTACH_LINK .= $YM."_";
-																				}
-																				if ( is_office( $ATTACHMENT_NAME_ARRAY[$I] ) && $SIGN_KEY != "" )
-																				{
-																								$ATTACH_LINK .= $ATTACHMENT_ID_ENCODED.".".$SIGN_KEY."','".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."');\">转存</a>\n";
-																				}
-																				else
-																				{
-																								$ATTACH_LINK .= $ATTACHMENT_ID_ENCODED."','".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."');\">转存</a>\n";
-																				}
-																}
+																$ATTACH_LINK .= "<a href=\"../../Enginee/lib/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."\"".( $ATTACH_OFFICE_OPEN_IN_IE ? " target=\"_blank\"" : "" ).">下载</a>\n";
 												}
 												else
 												{
@@ -174,30 +172,19 @@ function attach_link( $ATTACHMENT_ID, $ATTACHMENT_NAME, $SHOW_SIZE = 0, $DOWN_PR
 																}
 																$ATTACH_LINK .= "<div id=\"attach_".$HEX_ID."_menu\" class=\"attach_div\" title=\"".$ATTACHMENT_NAME_ARRAY[$I]."\">";
 												}
-												if ( is_office( $ATTACHMENT_NAME_ARRAY[$I] ) )
-												{
-																if ( strtolower( substr( $ATTACHMENT_NAME_ARRAY[$I], -4 ) ) == ".xls" )
-																{
-																				$ATTACH_LINK .= "<a href=\"javascript:;\" onClick=\"window.open('/module/xls_preview?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."&OP=".( $DOWN_PRIV_OFFICE_I || $EDIT_PRIV )."','preview".$ATTACHMENT_ID."','menubar=0,toolbar=0,status=0,scrollbars=0,resizable=1');\">快速预览</a>\n";
-																}
-																$ATTACH_LINK .= "<a href=\"javascript:;\" onClick=\"window.open('/module/OC?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."&SIGN_KEY=".$SIGN_KEY."&OP=".( $EDIT_PRIV || $DOWN_PRIV_OFFICE_I ? "7" : "5" )."&PRINT=".$PRINT_PRIV_OFFICE."','read".$ATTACHMENT_ID."','menubar=0,toolbar=0,status=1,scrollbars=1,resizable=1');\">阅读</a>\n";
-																if ( $EDIT_PRIV )
-																{
-																				$ATTACH_LINK .= "<a href=\"javascript:;\" onClick=\"window.open('/module/OC?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."&SIGN_KEY=".$SIGN_KEY."&OP=4','edit".$ATTACHMENT_ID."','menubar=0,toolbar=0,status=1,scrollbars=1,resizable=1');\">编辑</a>\n";
-																}
-												}
+
 												if ( $DELETE_PRIV )
 												{
 																$ATTACH_LINK .= "<a href=\"javascript:delete_attach('".$ATTACHMENT_ID_ARRAY[$I]."','".$ATTACHMENT_NAME_ARRAY[$I]."');\">删除</a>\n";
 												}
 												if ( $CREATE_IMAGE && is_image( $ATTACHMENT_NAME_ARRAY[$I] ) )
 												{
-																//$ATTACH_LINK .= "<a id=\"insert_image_link_".$HEX_ID."\" href=\"javascript:InsertImage('".urlencode( "/inc/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] ) )."');\" title=\"".$ATTACHMENT_NAME_ARRAY[$I]."\">插入正文</a>\n";
+																//$ATTACH_LINK .= "<a id=\"insert_image_link_".$HEX_ID."\" href=\"javascript:InsertImage('".urlencode( "../../Enginee/lib/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] ) )."');\" title=\"".$ATTACHMENT_NAME_ARRAY[$I]."\">插入正文</a>\n";
 												}
 												$EXT_NAME = strtolower( substr( strrchr( $ATTACHMENT_NAME_ARRAY[$I], "." ), 1 ) );
 												if ( $FORMAT && ( $EXT_NAME == "mht" || $EXT_NAME == "htm" || $EXT_NAME == "html" ) && !$DELETE_PRIV )
 												{
-																$ATTACH_LINK .= "<a href=\"javascript:;\" onClick=\"mhtFrame.location='/inc/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."&DIRECT_VIEW=1';\">查看</a>\n";
+																$ATTACH_LINK .= "<a href=\"javascript:;\" onClick=\"mhtFrame.location='../../Enginee/lib/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$I] )."&DIRECT_VIEW=1';\">查看</a>\n";
 												}
 												$ATTACH_LINK .= "</div>";
 								}
@@ -340,7 +327,7 @@ function upload_old( $ATTACHMENT, $ATTACHMENT_NAME )
 								}
 				}
 				$FILENAME = $PATH."/".$ATTACHMENT_NAME;
-				copy( $ATTACHMENT, $FILENAME );
+				@copy( $ATTACHMENT, $FILENAME );
 				@unlink( $ATTACHMENT );
 				if ( !file_exists( $FILENAME ) )
 				{
@@ -398,87 +385,87 @@ function upload( $PREFIX = "ATTACHMENT", $MODULE = "" )
 				{
 								if ( !( $ATTACHMENT['error'] == 4 ) )
 								{
-												if ( $KEY != $PREFIX && substr( $KEY, 0, strlen( $PREFIX ) + 1 ) != $PREFIX."_" )
-												{
-																break;
-												}
+									if ( $KEY != $PREFIX && substr( $KEY, 0, strlen( $PREFIX ) + 1 ) != $PREFIX."_" )
+									{
+										break;
+									}
 								}
 								else
 								{
-												continue;
+									continue;
 								}
 								$ATTACH_NAME = $ATTACHMENT['name'];
 								$ATTACH_SIZE = $ATTACHMENT['size'];
 								$ATTACH_FILE = $ATTACHMENT['tmp_name'];
 								if ( strstr( $ATTACH_NAME, "/" ) || strstr( $ATTACH_NAME, "\\" ) )
 								{
-												message( "错误", "禁止上传此文件类型(".$ATTACH_NAME.")。" );
+									message( "错误", "禁止上传此文件类型(".$ATTACH_NAME.")。" );
 								}
 								else
 								{
-												$EXT_NAME = strtolower( substr( $ATTACH_NAME, strrpos( $ATTACH_NAME, "." ) + 1 ) );
-												if ( $EXT_NAME == "" || $EXT_NAME == $ATTACH_NAME )
-												{
-																$EXT_NAME = "*";
-												}
-												if ( !( $UPLOAD_LIMIT == 1 ) && find_id( $UPLOAD_LIMIT_TYPE, $EXT_NAME ) || $UPLOAD_LIMIT == 2 && !find_id( $UPLOAD_LIMIT_TYPE, $EXT_NAME ) )
-												{
-																message( "错误", "禁止上传此文件类型(".$EXT_NAME.")。" );
-												}
-												else
-												{
-																$UPLOAD_MAX_FILESIZE = get_cfg_var( "upload_max_filesize" );
-																if ( !file_exists( $ATTACH_FILE ) )
-																{
-																				message( $ATTACH_NAME."上传失败", "原因：附件文件为空或文件名太长，或附件大于 ".$UPLOAD_MAX_FILESIZE." 字节，或文件路径不存在！" );
-																}
-																else if ( $ATTACH_SIZE == 0 )
-																{
-																				message( "错误", "请勿上传空文件，请点击浏览按钮，选择一个正确的文件。" );
-																}
-																else if ( strstr( $ATTACH_NAME, "'" ) )
-																{
-																				message( $ATTACH_NAME."上传失败", "原因：附件文件名不能含有'号！" );
-																}
-																else
-																{
-																				$ATTACH_ID = mt_rand( );
-																				global $ATTACH_PATH2;
-																				$YM = date( "ym", time( ) );
-																				if ( $MODULE == "" )
-																				{
-																								$MODULE = attach_sub_dir( );
-																				}
-																				$PATH = $ATTACH_PATH2.$MODULE;
-																				if ( !file_exists( $PATH ) )
-																				{
-																								mkdir( $PATH, 448 );
-																				}
-																				$PATH = $PATH."/".$YM;
-																				if ( !file_exists( $PATH ) )
-																				{
-																								mkdir( $PATH, 448 );
-																				}
-																				$FILENAME = $PATH."/".$ATTACH_ID.".".$ATTACH_NAME;
-																				if ( file_exists( $FILENAME ) )
-																				{
-																								$ATTACH_ID = mt_rand( );
-																								$FILENAME = $PATH."/".$ATTACH_ID.".".$ATTACH_NAME;
-																				}
-																				//print $FILENAME;
-																				@copy( $ATTACH_FILE, $FILENAME );
-																				@unlink( $ATTACH_FILE );
-																				if ( !file_exists( $FILENAME ) )
-																				{
-																								message( $ATTACH_NAME."上传失败", "原因：附件文件为空或文件名太长，或附件大于 ".$UPLOAD_MAX_FILESIZE." 字节，或文件路径不存在！" );
-																				}
-																				else
-																				{
-																								$ATTACHMENTS['ID'] .= $YM."_".$ATTACH_ID.",";
-																								$ATTACHMENTS['NAME'] .= $ATTACH_NAME."*";
-																				}
-																}
-												}
+									$EXT_NAME = strtolower( substr( $ATTACH_NAME, strrpos( $ATTACH_NAME, "." ) + 1 ) );
+									if ( $EXT_NAME == "" || $EXT_NAME == $ATTACH_NAME )
+									{
+										$EXT_NAME = "*";
+									}
+									if ( !( $UPLOAD_LIMIT == 1 ) && find_id( $UPLOAD_LIMIT_TYPE, $EXT_NAME ) || $UPLOAD_LIMIT == 2 && !find_id( $UPLOAD_LIMIT_TYPE, $EXT_NAME ) )
+									{
+										message( "错误", "禁止上传此文件类型(".$EXT_NAME.")。" );
+									}
+									else
+									{
+										$UPLOAD_MAX_FILESIZE = get_cfg_var( "upload_max_filesize" );
+										if ( !file_exists( $ATTACH_FILE ) )
+										{
+											message( $ATTACH_NAME."上传失败", "原因：附件文件为空或文件名太长，或附件大于 ".$UPLOAD_MAX_FILESIZE." 字节，或文件路径不存在！" );
+										}
+										else if ( $ATTACH_SIZE == 0 )
+										{
+											message( "错误", "请勿上传空文件，请点击浏览按钮，选择一个正确的文件。" );
+										}
+										else if ( strstr( $ATTACH_NAME, "'" ) )
+										{
+											message( $ATTACH_NAME."上传失败", "原因：附件文件名不能含有'号！" );
+										}
+										else
+										{
+											$ATTACH_ID = mt_rand( );
+											global $ATTACH_PATH2;
+											$YM = date( "ym", time( ) );
+											if ( $MODULE == "" )
+											{
+															$MODULE = attach_sub_dir( );
+											}
+											$PATH = $ATTACH_PATH2.$MODULE;
+											if ( !file_exists( $PATH ) )
+											{
+															mkdir( $PATH, 448 );
+											}
+											$PATH = $PATH."/".$YM;
+											if ( !file_exists( $PATH ) )
+											{
+															mkdir( $PATH, 448 );
+											}
+											$FILENAME = $PATH."/".$ATTACH_ID.".".$ATTACH_NAME;
+											if ( file_exists( $FILENAME ) )
+											{
+															$ATTACH_ID = mt_rand( );
+															$FILENAME = $PATH."/".$ATTACH_ID.".".$ATTACH_NAME;
+											}
+											//print $FILENAME;exit;
+											@copy( $ATTACH_FILE, $FILENAME );
+											@unlink( $ATTACH_FILE );
+											if ( !file_exists( $FILENAME ) )
+											{
+															message( $ATTACH_NAME."上传失败", "原因：附件文件为空或文件名太长，或附件大于 ".$UPLOAD_MAX_FILESIZE." 字节，或文件路径不存在！" );
+											}
+											else
+											{
+															$ATTACHMENTS['ID'] .= $YM."_".$ATTACH_ID.",";
+															$ATTACHMENTS['NAME'] .= $ATTACH_NAME."*";
+											}
+										}
+									}
 								}
 				}
 				return $ATTACHMENTS;
@@ -985,14 +972,15 @@ function trim_office_attach( $ATTACHMENT_ID, $ATTACHMENT_NAME )
 
 function doc2txt( $path )
 {
-				exec( $_SERVER['DOCUMENT_ROOT'].( "inc/doc2txt.exe -q -s ".$path ), &$OUT_ARRAY );
-				$count = count( $OUT_ARRAY );
-				$i = 0;
-				for ( ;	$i < $count;	++$i	)
-				{
-								$OUT .= $OUT_ARRAY[$i]."\n";
-				}
-				return $OUT;
+				//exec( $_SERVER['DOCUMENT_ROOT'].( "../../Framework/images_attach/maketxt.exe -q -s ".$path ), &$OUT_ARRAY );
+				//$count = count( $OUT_ARRAY );
+				//$i = 0;
+				//for ( ;	$i < $count;	++$i	)
+				//{
+				//	$OUT .= $OUT_ARRAY[$i]."\n";
+				//}
+				//return $OUT;
+				return '';
 }
 
 function dir_size( $dir )
@@ -1144,9 +1132,9 @@ function delete_dir( $DIR, $MYOA_IS_RECYCLE = 1, $ATTACH_PATH2 = "" )
 												{
 																$FILE_NAME = substr( $FILE_PATH, strrpos( $FILE_PATH, "/" ) );
 																$RECYCLE_FILE_PATH = $THIS_PATH.$FILE_NAME;
-																copy( $FILE_PATH, $RECYCLE_FILE_PATH );
+																@copy( $FILE_PATH, $RECYCLE_FILE_PATH );
 												}
-												unlink( $FILE_PATH );
+												@unlink( $FILE_PATH );
 								}
 				}
 				rmdir( $DIR );
@@ -1173,7 +1161,7 @@ function CreateThumb( $file, $maxwdt, $maxhgt, $dest, $quality = 1 )
 				}
 				if ( $owdt <= $maxwdt && $ohgt <= $maxhgt )
 				{
-								copy( $file, $dest );
+								@copy( $file, $dest );
 								chmod( $dest, 420 );
 								return TRUE;
 				}
@@ -1338,7 +1326,7 @@ function ReplaceImageSrc( $CONTENT, $ATTACHMENTS = array( ), $MODULE = "" )
 								}
 								$ATTACHMENT_ID_ENCODED = attach_id_encode( $ATTACHMENT_ID, $NAME_ARRAY[$I] );
 								$REG_ARRAY[] = "/\\ssrc=\\\\\"file:\\/\\/?[^\"']+\\/".preg_quote( $NAME_ARRAY[$I] )."\\\\\"\\s/i";
-								$TO_ARRAY[] = " src=\"/inc/attach.php?MODULE=".$MODULE."&amp;YM=".$YM."&amp;ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&amp;ATTACHMENT_NAME=".urlencode( $NAME_ARRAY[$I] )."\" ";
+								$TO_ARRAY[] = " src=\"../../Enginee/lib/attach.php?MODULE=".$MODULE."&amp;YM=".$YM."&amp;ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&amp;ATTACHMENT_NAME=".urlencode( $NAME_ARRAY[$I] )."\" ";
 				}
 				return preg_replace( $REG_ARRAY, $TO_ARRAY, $CONTENT );
 }
@@ -1393,7 +1381,7 @@ function backup_file( $FILE_SRC )
 				$MICROTIME = microtime( TRUE );
 				$MICROTIME = substr( $MICROTIME, strpos( $MICROTIME, "." ), 4 );
 				$FILE_DES = $FILE_PATH."/".date( "d.His" ).$MICROTIME.".".$FILE_NAME;
-				copy( $FILE_SRC, $FILE_DES );
+				@copy( $FILE_SRC, $FILE_DES );
 				return substr( $FILE_DES, strlen( $ATTACH_PATH2."/bak" ) + 1 );
 }
 

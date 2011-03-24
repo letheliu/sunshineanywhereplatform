@@ -475,7 +475,7 @@ function AddFile(file_type)
    }
    
    var attach_name = file.value.substring(file.value.lastIndexOf("\\")+1);
-   attach_div.innerHTML+="<span id='"+prefix+"_span_"+id+"' title='"+file.value+"'><img src='/images/attach.png' align='absMiddle'>"+attach_name+"<img src='/images/remove.png' onclick='RemoveFile(this)' align='absMiddle' style='cursor:hand;'>;&nbsp;</span>";
+   attach_div.innerHTML+="<span id='"+prefix+"_span_"+id+"' title='"+file.value+"'><img src='../../Framework/images_attach/attach.png' align='absMiddle'>"+attach_name+"<img src='../../Framework/images_attach/remove.png' onclick='RemoveFile(this)' align='absMiddle' style='cursor:hand;'>;&nbsp;</span>";
    file.style.zIndex = "-1";
    form_el.appendChild(file);
    

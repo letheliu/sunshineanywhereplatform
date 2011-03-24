@@ -547,10 +547,7 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 					else
 					   $file_path = attach_link($ATTACHMENT_ID,$ATTACHMENT_NAME,1,1,1,0,0,1,1,0);
 					//print_R($ATTACHMENT_NAME);exit;
-					if(is_file("../DanDian/Enginee/lib/attach.js"))
-						 print "<script src=\"../DanDian/Enginee/lib/attach.js\"></script>";
-					else if(is_file("../../Enginee/lib/attach.js"))
-						 print "<script src=\"../../Enginee/lib/attach.js\"></script>";
+					print "<script src=\"../../Enginee/lib/attach.js\"></script>";
 					print "
 					<input type=\"hidden\" name=\"ATTACHMENT_ID_OLD\" value=\"$ATTACHMENT_ID\">
 					<input type=\"hidden\" name=\"ATTACHMENT_NAME_OLD\" value=\"$ATTACHMENT_NAME\">";

@@ -440,50 +440,33 @@ foreach($fields['value'] as $list)		{
 					{
 						if ($ATTACHMENT_ID_ARRAY[$IX]!="")
 						{
-								if ( !( $ATTACHMENT_ID_ARRAY[$IX] == "" ) )
-								{
-												if ( $ATTACHMENT_NAME_ARRAY[$IX] == "" )
-												{
-																break;
-												}
-								}
-								else
-								{
-												continue;
-								}
 								$ATTACH_IMAGE = image_mimetype( $ATTACHMENT_NAME_ARRAY[$IX] );
+								//print $ATTACH_IMAGE;
 								$ATTACHMENT_ID = $ATTACHMENT_ID_ARRAY[$IX];
-								$YM = substr_cut( $ATTACHMENT_ID, strpos( $ATTACHMENT_ID, "_" ) );
-								//print_R($YM);
-								if ( $YM )
-								{
-												$ATTACHMENT_ID = substr_cut( $ATTACHMENT_ID, strpos( $ATTACHMENT_ID, "_" ) + 1 );
-								}
+								//print_R($ATTACHMENT_ID);
+								$ATTACHMENT_ID_ARRAY2 = explode('_',$ATTACHMENT_ID);
+								$YM				= $ATTACHMENT_ID_ARRAY2[0];
+								$ATTACHMENT_ID	= $ATTACHMENT_ID_ARRAY2[1];
 								$SIGN_KEY = "";
 								//$SIGN_KEY = substr( $ATTACHMENT_ID, strpos( $ATTACHMENT_ID, "." ) + 1 );
 								//$ATTACHMENT_ID = substr( $ATTACHMENT_ID, 0, strpos( $ATTACHMENT_ID, "." ) );
-								if ( strstr( $ATTACHMENT_ID, "." ) )
-									{
-													$SIGN_KEY = substr_cut( $ATTACHMENT_ID, strpos( $ATTACHMENT_ID, "." ) + 1 );
-													$ATTACHMENT_ID = substr_cut( $ATTACHMENT_ID, strpos( $ATTACHMENT_ID, "." ) );
-									}
-							//print_R($ATTACHMENT_ID);
-							$ATTACHMENT_ID_ENCODED = attach_id_encode( $ATTACHMENT_ID,$ATTACHMENT_NAME_ARRAY[$IX] );
-							$ATTACH_SIZE = attach_size( $ATTACHMENT_ID_ARRAY[$IX], $ATTACHMENT_NAME_ARRAY[$IX], $MODULE );
-												if ( 0 < floor( $ATTACH_SIZE / 1024 / 1024 ) )
-												{
-																$ATTACH_SIZE = round( $ATTACH_SIZE / 1024 / 1024, 2 )."MB";
-												}
-												else if ( 0 < floor( $ATTACH_SIZE / 1024 ) )
-												{
-																$ATTACH_SIZE = round( $ATTACH_SIZE / 1024, 2 )."KB";
-												}
-												else
-												{
-																$ATTACH_SIZE .= "字节";
-												}
-							$ATTACH_LINK .= "<img src=\"/general/netdisk/images/".$ATTACH_IMAGE."\" align=\"absmiddle\"
-							title='".urldecode( $ATTACHMENT_NAME_ARRAY[$IX] )." 大小:$ATTACH_SIZE'><a href=\"/inc/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$IX] )."\" ".( $ATTACH_OFFICE_OPEN_IN_IE ? " target=\"_blank\"" : "" )."
+								//print_R($ATTACHMENT_ID);
+								$ATTACHMENT_ID_ENCODED = attach_id_encode( $ATTACHMENT_ID,$ATTACHMENT_NAME_ARRAY[$IX] );
+								$ATTACH_SIZE = attach_size( $ATTACHMENT_ID_ARRAY[$IX], $ATTACHMENT_NAME_ARRAY[$IX], $MODULE );
+								if ( 0 < floor( $ATTACH_SIZE / 1024 / 1024 ) )
+								{
+												$ATTACH_SIZE = round( $ATTACH_SIZE / 1024 / 1024, 2 )."MB";
+								}
+								else if ( 0 < floor( $ATTACH_SIZE / 1024 ) )
+								{
+												$ATTACH_SIZE = round( $ATTACH_SIZE / 1024, 2 )."KB";
+								}
+								else
+								{
+												$ATTACH_SIZE .= "字节";
+								}
+							$ATTACH_LINK .= "<img src=\"../../Framework/images_attach/".$ATTACH_IMAGE."\" align=\"absmiddle\"
+							title='".urldecode( $ATTACHMENT_NAME_ARRAY[$IX] )." 大小:$ATTACH_SIZE'><a href=\"../../Enginee/lib/attach.php?MODULE=".$MODULE."&YM=".$YM."&ATTACHMENT_ID=".$ATTACHMENT_ID_ENCODED."&ATTACHMENT_NAME=".urlencode( $ATTACHMENT_NAME_ARRAY[$IX] )."\" ".( $ATTACH_OFFICE_OPEN_IN_IE ? " target=\"_blank\"" : "" )."
 							title='".urldecode( $ATTACHMENT_NAME_ARRAY[$IX] )." 大小:$ATTACH_SIZE'
 							>".urldecode( $ATTACHMENT_NAME_ARRAY[$IX] )."</a>\n";
 
