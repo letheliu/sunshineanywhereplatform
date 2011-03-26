@@ -15,7 +15,6 @@ $isBase64==1?CheckBase64():'';
 $SERVER_NAME = $_SERVER['SERVER_NAME'];
 
 
-
 require_once('../adodb/adodb.inc.php');
 require_once('../config.inc.php');
 require_once('../setting.inc.php');
