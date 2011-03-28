@@ -178,6 +178,9 @@ if(($DEPT_PARENT!=""&&$PRIV_NO_FLAG=="JIBIE")||($SCHOOL_MODEL==3&&$PRIV_NO_FLAG=
 			$模式201003 = "0";
 		}
 	}
+	if(sizeof($rs_a)==0)		{
+		$模式201003 = "0";
+	}
 	if($模式201003=="0")					{
 		//正常模式
 		$ACTION_MODE_201003 = "BANJI";

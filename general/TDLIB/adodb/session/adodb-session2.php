@@ -12,34 +12,36 @@ function returnsession()			{
 	//$ServerInfo = print_r($db->ServerInfo());
 	//判断当前版本是2009还是2010
 	//Array ( [PHPSESSID] => 593ca32ab7a3343c6f590904bf26d633 [USER_NAME_COOKIE] => admin [SID_1] => 2e0d5357 [UI_COOKIE] => 0 [SID_10] => a76b05df )
+	
+	//判断是组件版本还是独立的系统
+	session_register("SYSTEM_IS_TD_OA");
+	session_register("SYSTEM_OA_VERSION");
+	$MetaDatabases = $db->MetaDatabases();
+	if(in_array("TD_OA",$MetaDatabases))						{
+		$_SESSION['SYSTEM_IS_TD_OA']		=	"1";
+		$sql = "select TABLE_NAME from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='TD_OA' and TABLE_NAME='session'";
+		$rs = $db->CacheExecute(150,$sql);
+		$rs_a = $rs->GetArray();
+		//判断OA版本是2010还是2009		
+		if($rs_a[0]['TABLE_NAME']=="session")		{
+			$SYSTEM_PRE_TABLE = "TD_OA.";
+			$_SESSION['SYSTEM_OA_VERSION']		=	"TDOA2010";
+		}
+		else	{
+			$SYSTEM_PRE_TABLE = "";
+			$_SESSION['SYSTEM_OA_VERSION']		=	"TDOA2009";
+		}
+	}
+	else	{
+		$_SESSION['SYSTEM_IS_TD_OA']		=	"0";
+		$_SESSION['SYSTEM_OA_VERSION']		=	"";
+		$SYSTEM_PRE_TABLE					= 	"";
+	}
 
-	$sql = "select TABLE_NAME from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='TD_OA' and TABLE_NAME='session'";
-	$rs = $db->CacheExecute(150,$sql);
-	$rs_a = $rs->GetArray();
 	//print_R($rs_a);
 	//强制初始化OA2010版本SESSION
 	//$_SESSION['LOGIN_USER_ID']="";
 
-	//判断OA版本是2010还是2009
-	session_register("SYSTEM_OA_VERSION");
-	if($rs_a[0]['TABLE_NAME']=="session")		{
-		$SYSTEM_PRE_TABLE = "TD_OA.";
-		$_SESSION['SYSTEM_OA_VERSION']		=	"TDOA2010";
-	}
-	else	{
-		$SYSTEM_PRE_TABLE = "";
-		$_SESSION['SYSTEM_OA_VERSION']		=	"TDOA2009";
-	}
-
-	//判断是组件版本还是独立的系统
-	session_register("SYSTEM_IS_TD_OA");
-	$MetaDatabases = $db->MetaDatabases();
-	if(in_array("TD_OA",$MetaDatabases))						{
-		$_SESSION['SYSTEM_IS_TD_OA']		=	"1";
-	}
-	else	{
-		$_SESSION['SYSTEM_IS_TD_OA']		=	"0";
-	}
 
 	//判断是教育组件还是CRM组件以及物业组件
 	session_register("SYSTEM_EDU_CRM_WUYE");
@@ -65,7 +67,7 @@ function returnsession()			{
 
 		)
 		&&$_COOKIE['PHPSESSID']!=""
-		&&$rs_a[0]['TABLE_NAME']=="session"
+		&&$_SESSION['SYSTEM_OA_VERSION']=="TDOA2010"
 		)		{
 		global $SYSTEM_ADD_STRIP;
 		//2010版本,重新注册所需要变量
@@ -79,7 +81,7 @@ function returnsession()			{
 		session_register("LOGIN_PHPSESSID");
 
 		$SYSTEM_PRE_TABLE = "TD_OA.";
-		if($rs_a[0]['TABLE_NAME']=="session")		{
+		if($_SESSION['SYSTEM_OA_VERSION']=="TDOA2010")		{
 			$sql = "select SESS_DATA from ".$SYSTEM_PRE_TABLE."session where SESS_ID='".$_COOKIE['PHPSESSID']."'";
 			$rs = $db->CacheExecute(150,$sql);
 			$rs_a = $rs->GetArray();
@@ -145,7 +147,7 @@ function returnsession()			{
 	if($_SESSION['SUNSHINE_COPY_TIME']=="")	$_SESSION['SUNSHINE_COPY_TIME']=time();
 
 	$sql = "select USER_PRIV_OTHER from ".$SYSTEM_PRE_TABLE."user where USER_ID='".TRIM($_SESSION['LOGIN_USER_ID'])."'";
-	$rsXX = $db->Execute($sql);
+	$rsXX = $db->CacheExecute(15,$sql);
 	$_SESSION['LOGIN_USER_PRIV_OTHER']	= $rsXX->fields['USER_PRIV_OTHER'];
 
 
