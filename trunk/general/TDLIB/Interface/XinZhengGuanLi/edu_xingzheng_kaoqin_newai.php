@@ -11,9 +11,9 @@ require_once("lib.inc.php");
 
 $GLOBAL_SESSION=returnsession();
 
-	require_once("systemprivateinc.php");
+require_once("systemprivateinc.php");
 
-	CheckSystemPrivate("人力资源-行政考勤-原始打卡");
+CheckSystemPrivate("人力资源-行政考勤-原始打卡");
 //######################教育组件-权限较验部分##########################
 
 $当前学期 = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
