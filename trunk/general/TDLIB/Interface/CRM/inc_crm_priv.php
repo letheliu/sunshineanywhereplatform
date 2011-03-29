@@ -46,7 +46,7 @@ if($_GET['FileNameSELF']!="")						{
 	echo " <table border=\"0\" width=\"100%\" cellspacing=\"0\" cellpadding=\"3\" class=\"small\">
 	<tr>
 	<td class=\"small\">
-	<img src=\"/images/edit.gif\" WIDTH=\"22\" HEIGHT=\"20\" align=\"absmiddle\">
+	<img src=\"images/attention.gif\" WIDTH=\"22\" HEIGHT=\"20\" align=\"absmiddle\">
 	<span class=\"big3\"> 指定权限</span> ";
 	echo "本模块子菜单默认条件下所有用户都可访问,设定可访问人员或范围以后只被允许访问人员可访问";
 	echo "

@@ -1121,26 +1121,21 @@ function print_tr_auto_incrementdate($showtext,$var,$var_value='',$colspan=1,$ad
 function returnDateAutoIncrement($FieldName,$tablename,$value="",$addText="")		{
 	global $db;
 	global $primarykey_index;
-	$sql = "select max($primarykey_index) as NUM from $tablename";//print $addText;
+	$sql = "select max($primarykey_index) as NUM from $tablename";//print $sql;
 	$rs = $db->Execute($sql);
 	$number = $rs->fields['NUM'];
-	$sql = "select $FieldName from $tablename where $primarykey_index='$number'";//print $addText;
+	$sql = "select $FieldName from $tablename where $primarykey_index='$number'";//print $sql;
 	$rs = $db->Execute($sql);
 	$PKNAME = $rs->fields[$FieldName];
-	$substr = substr($PKNAME,0,4);
-	//$substr = (int)$substr;
-	if(is_string($substr))					{
-		$LeftNumber = substr($PKNAME,4);
+	$substr = substr($PKNAME,-4);
+	if($PKNAME!="")					{
+		$LeftNumber = $PKNAME+1;
 	}
 	else	{
-		$LeftNumber = $PKNAME;
+		$LeftNumber = Date("Ym")."0000";
+		$LeftNumber = (int)$LeftNumber;
+		$LeftNumber += 1;
 	}
-	$Init = Date("Ym")."0000";
-	$Init = (int)$Init;
-	if($LeftNumber<$Init)	{
-		$LeftNumber = $Init;
-	}
-	$LeftNumber += 1;
 	$LeftNumber = $addText.$LeftNumber;
 	if($value!="")	return $value;
 	else		return $LeftNumber;
