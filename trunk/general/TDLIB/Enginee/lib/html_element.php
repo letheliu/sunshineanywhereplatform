@@ -352,7 +352,12 @@ function print_search($showtext,$var,$action)	{
 }
 function print_tr($showtext,$var,$var_value="",$size="25",$colspan=1,$class="SmallInput",$addtext="",$type='text',$readonly='',$i='',$fieldtype='')	{
 	 global $custom_type;
-	 global $common_html;
+	 global $common_html,$tablename;
+	 global $uniquekey,$columns;
+	 $唯一字段名称 = $columns[$uniquekey];
+	 if($唯一字段名称==$var&&$var!='')		{
+		 //print_R($columns);
+	 }
 
 	 //用户类型限制条件##########################开始
 	 global $fields;
@@ -406,10 +411,59 @@ function print_tr($showtext,$var,$var_value="",$size="25",$colspan=1,$class="Sma
 	 print "<TR>\n";
      print "<TD class=TableData noWrap width=20%>$showtext</TD>\n";
 	 print "<input type=hidden name='".$var."_原始值' value='$var_value'>\n";
-     print "<TD class=TableData noWrap colspan=\"$colspan\">
+     print "<TD class=TableData noWrap colspan=\"$colspan\">";
+	 //实时判断是否有重复
+	 if($唯一字段名称==$var&&$var!='')								{
+		 //进行相关JS输出
+		 print "
+		 <script>
+			//设定客户端信息
+			function GetResult_Unique_".$唯一字段名称."(str)
+			{
+				var oBao = new ActiveXObject(\"Microsoft.XMLHTTP\");
+				oBao.open(\"GET\",str,false);
+				oBao.send();
+				//服务器端处理返回的是经过escape编码的字符串.
+				//通过XMLHTTP返回数据,开始构建Select.
+				//alert(unescape(oBao.responseText));
+				//document.form1.".$唯一字段名称.".value	= unescape(oBao.responseText);
+				TEXT_".$唯一字段名称.".innerHTML		= unescape(oBao.responseText)+\"&nbsp;&nbsp;\";
+			}
+		 </script>
+		 ";
+		 if(is_dir("../Enginee"))			{
+			$TempDirPath = "../Interface/EDU/";
+		 }
+		 else if(is_file("../../Enginee"))	 {
+			$TempDirPath = "../../Interface/EDU/";
+		 }
+		 else	{
+			$TempDirPath = "../../Interface/EDU/";
+		 }
+		 $openDir = "dd=as&TableName=$tablename&FieldName=$唯一字段名称&dddd=dddsss";
+		 $openDir = $TempDirPath."newai_unique.php?".base64_encode($openDir);
+		 print "
 			<INPUT type=\"$type\" title='".$ShowTitleTEXT."'
+				onkeydown=\"if(event.keyCode==13)event.keyCode=9\"
+				accesskey='$i'
+				class=\"$class\"
+				$custom_type
+				maxLength=200
+				size=\"$size\"
+				name='$var'
+				value=\"$var_value\"
+					onkeyup=\"GetResult_Unique_".$唯一字段名称."('".$openDir."&FieldValue='+this.value);\"
+				$onkeypress
+				$readonly
+				>&nbsp;\n";
+		print "<span id='TEXT_".$唯一字段名称."'></span>";
+	 }
+	 //普通输出INPUT
+	 else		{
+		 print "<INPUT type=\"$type\" title='".$ShowTitleTEXT."'
 			onkeydown=\"if(event.keyCode==13)event.keyCode=9\" accesskey='$i' class=\"$class\" $custom_type maxLength=200 size=\"$size\"
 			name='$var' value=\"$var_value\" $onkeypress $readonly>&nbsp;\n";
+	 }
 	 //实时更新字段信息后面的补充语言信息-定义部分
 	 print $addtext = FilterFieldAddText($addtext,$var);
 	 print "</TD></TR>\n";
