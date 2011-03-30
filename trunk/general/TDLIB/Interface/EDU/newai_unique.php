@@ -1,4 +1,5 @@
 <?
+header("Content-type:text/html;charset=gbk");
 
 require_once("lib.inc.php");
 //?dd=as&TableName=edu_student&FieldName=Ñ§ºÅ&dddd=dddsss&FieldValue=0929645086
