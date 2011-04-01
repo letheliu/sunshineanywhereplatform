@@ -127,7 +127,8 @@ if($_GET['action']==''||$_GET['action']=='init_default')		{
 	//print_R($_GET);
 	print "<BR><FORM name=form1 action=\"?action=DataDealDelte&pageid=1\" method=post encType=multipart/form-data>";
 	print "<table class=TableBlock width=100%>";
-	print "<tr class=TableContent><td><input type=button class=BigButton name='初始化对象库' onClick=\"location='?".base64_encode("xx=xx&学期名称=".$_GET['学期名称']."&action2=初始化对象库&xx=xx")."'\" value='初始化对象库'><font color=green>&nbsp;初始化要进行字段信息库.</font></td></tr>";
+	print "<tr class=TableContent><td><input type=button class=BigButton name='初始化对象库' onClick=\"location='?".base64_encode("xx=xx&学期名称=".$_GET['学期名称']."&action2=初始化对象库&xx=xx")."'\" value='初始化对象库'><font color=green>&nbsp;初始化对象库的意思就是针对数据库现存的表和字段信息插入到数据对象的数据表中去,这样在新建消息提醒规则时就可以得到相关的表和字段的信息.</font></td></tr>";
+
 	print "</table>";
 	print "</FORM>";
 }
