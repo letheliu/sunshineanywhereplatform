@@ -217,7 +217,7 @@ for ( ; $I <= date( "t", strtotime( $YEAR."-".$MONTH."-".$DAY ) ); ++$I )
 }
 echo "        </select><input type=\"button\" value=\" > \" class=\"ArrowButton\" style=\"font-weight:bold\" title=\"下一天\" onclick=\"set_day(1);\">\r\n      </td>\r\n      <td align=\"right\">\r\n        <select name=\"VIEW\" class=\"SmallSelect\" onchange=\"set_view();\">\r\n          <option value=\"day\" selected>&nbsp;日列表</option>\r\n          <option value=\"week\">&nbsp;周列表</option>\r\n          <option value=\"month\">&nbsp;月列表</option>\r\n        </select>\r\n      </td>\r\n    </tr>\r\n   </form>\r\n  </table>";
 $CUR_TIME = date( "Y-m-d H:i:s", time( ) );
-$query = "SELECT * from CALENDAR where USER_ID='".$LOGIN_USER_ID."' and TO_DAYS(CAL_TIME)=TO_DAYS('{$YEAR}-{$MONTH}-{$DAY}') order by CAL_TIME";
+$query = "SELECT * from calendar where USER_ID='".$LOGIN_USER_ID."' and TO_DAYS(CAL_TIME)=TO_DAYS('{$YEAR}-{$MONTH}-{$DAY}') order by CAL_TIME";
 $rs		= $db->Execute($query);
 $CAL_COUNT = 0;
 while (!$rs->EOF)
@@ -256,7 +256,7 @@ while (!$rs->EOF)
     $MANANAMER_NAME = "";
     if ( $MANAGER_ID != "" )
     {
-        $query = "SELECT USER_NAME from USER where USER_ID='".$MANAGER_ID."'";
+        $query = "SELECT USER_NAME from user where USER_ID='".$MANAGER_ID."'";
         $cursor1 = exequery( $connection, $query );
         if ( $ROW1 = mysql_fetch_array( $cursor1 ) )
         {
@@ -283,7 +283,7 @@ while (!$rs->EOF)
     $CAL_ARRAY[date( "G", strtotime( $CAL_TIME ) )] .= $CONTENT;
 	$rs->MoveNext();
 }
-$query = "SELECT * from AFFAIR where USER_ID='".$LOGIN_USER_ID."' and BEGIN_TIME<='".date( "Y-m-d", $DATE )." 23:59:59' and (TYPE='2' or TYPE='3' and REMIND_DATE='".date( "w", $DATE )."' or TYPE='4' and REMIND_DATE='".date( "j", $DATE )."' or TYPE='5' and REMIND_DATE='".date( "n-j", $DATE )."') order by BEGIN_TIME desc";
+$query = "SELECT * from affair where USER_ID='".$LOGIN_USER_ID."' and BEGIN_TIME<='".date( "Y-m-d", $DATE )." 23:59:59' and (TYPE='2' or TYPE='3' and REMIND_DATE='".date( "w", $DATE )."' or TYPE='4' and REMIND_DATE='".date( "j", $DATE )."' or TYPE='5' and REMIND_DATE='".date( "n-j", $DATE )."') order by BEGIN_TIME desc";
 $rs		= $db->Execute($query);
 while (!$rs->EOF)
 {

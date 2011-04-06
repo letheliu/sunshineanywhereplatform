@@ -17,7 +17,7 @@ $MONTH	= $_GET['MONTH'];
 $DAY	= $_GET['DAY'];
 
 echo "<html>";
-$query  = "select * from CALENDAR where CAL_ID='".$CAL_ID."' and USER_ID='{$LOGIN_USER_ID}'";
+$query  = "select * from calendar where CAL_ID='".$CAL_ID."' and USER_ID='{$LOGIN_USER_ID}'";
 $rs		= $db->Execute($query);
 if (!$rs->EOF)
 {
@@ -32,7 +32,7 @@ if (!$rs->EOF)
     $MANAGER_NAME = "";
     if ( $MANAGER_ID != "" )
     {
-        $query		= "SELECT * from USER where USER_ID='".$MANAGER_ID."'";
+        $query		= "SELECT * from user where USER_ID='".$MANAGER_ID."'";
         $rss		= $db->Execute($query);
         $MANAGER_NAME = "<br>°²ÅÅÈË£º".$rss->fields['USER_NAME'];
     }

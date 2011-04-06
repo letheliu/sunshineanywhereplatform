@@ -17,7 +17,7 @@ $YEAR	= $_GET['YEAR'];
 $MONTH	= $_GET['MONTH'];
 $DAY	= $_GET['DAY'];
 
-$query = "UPDATE CALENDAR SET OVER_STATUS='".$OVER_STATUS."' WHERE USER_ID='{$LOGIN_USER_ID}' and CAL_ID='{$CAL_ID}'";
+$query = "UPDATE calendar SET OVER_STATUS='".$OVER_STATUS."' WHERE USER_ID='{$LOGIN_USER_ID}' and CAL_ID='{$CAL_ID}'";
 $db->Execute($query);
 
 print "<META HTTP-EQUIV=REFRESH CONTENT='0;URL={$GOBACK}.php?YEAR={$YEAR}&MONTH={$MONTH}&DAY={$DAY}'>\n";
