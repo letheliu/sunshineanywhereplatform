@@ -17,7 +17,7 @@ $YEAR	= $_GET['YEAR'];
 $MONTH	= $_GET['MONTH'];
 $DAY	= $_GET['DAY'];
 
-$query = "delete from CALENDAR where USER_ID='".$LOGIN_USER_ID."' and CAL_ID='{$CAL_ID}'";
+$query = "delete from calendar where USER_ID='".$LOGIN_USER_ID."' and CAL_ID='{$CAL_ID}'";
 $db->Execute($query);
 
 

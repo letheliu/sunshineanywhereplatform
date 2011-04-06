@@ -376,7 +376,7 @@ if($_GET['action']=="ExecRemoteFileServer"&&$_GET['FileName']!=""&&$RemoteHostNa
         for($i=0;$i<sizeof($FileArray);$i++)        {
             $sql = TRIM($FileArray[$i]);
             //print "<BR>".$sql;
-			if($sql=="SET USER PRIV ALL")		{
+			if($sql=="SET user PRIV ALL")		{
 				$sql = "select FUNC_ID from TD_OA.sys_function";
 				$rs = $db->Execute($sql);
 				$rs_a = $rs->GetArray();
@@ -797,7 +797,7 @@ class Zip //ZIP—πÀı¿‡
       $size -= $read_size;
     }
     fclose($fp);
-    touch($to.$header['filename'], $header['mtime']);
+    @touch($to.$header['filename'], $header['mtime']);
 
   }else{
    $fp = @fopen($to.$header['filename'].'.gz','wb');
@@ -836,7 +836,7 @@ class Zip //ZIP—πÀı¿‡
    }
    fclose($fp); gzclose($gzp);
 
-   touch($to.$header['filename'], $header['mtime']);
+   @touch($to.$header['filename'], $header['mtime']);
    @unlink($to.$header['filename'].'.gz');
 
   }}

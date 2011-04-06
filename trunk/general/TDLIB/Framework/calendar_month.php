@@ -232,7 +232,7 @@ echo "</select>
 </form>\r\n
 </table>";
 $CUR_TIME = date( "Y-m-d H:i:s", time( ) );
-$query = "SELECT * from CALENDAR where USER_ID='".$LOGIN_USER_ID."' and year(CAL_TIME)={$YEAR} and month(CAL_TIME)={$MONTH} order by CAL_TIME";
+$query = "SELECT * from calendar where USER_ID='".$LOGIN_USER_ID."' and year(CAL_TIME)={$YEAR} and month(CAL_TIME)={$MONTH} order by CAL_TIME";
 $rs		= $db->Execute($query);
 
 while (!$rs->EOF)
@@ -270,7 +270,7 @@ while (!$rs->EOF)
     }
     if ( $MANAGER_ID != "" )
     {
-        $query = "SELECT USER_NAME from USER where USER_ID='".$MANAGER_ID."'";
+        $query = "SELECT USER_NAME from user where USER_ID='".$MANAGER_ID."'";
         $cursor1 = exequery( $connection, $query );
         if ( $ROW1 = mysql_fetch_array( $cursor1 ) )
         {
@@ -301,7 +301,7 @@ $I = 1;
 for ( ; $I <= date( "t", $DATE ); ++$I )
 {
     $DAY_I = strtotime( $YEAR."-".$MONTH."-".$I );
-    $query = "SELECT * from AFFAIR where USER_ID='".$LOGIN_USER_ID."' and BEGIN_TIME<='".date( "Y-m-d", $DAY_I )." 23:59:59' and (TYPE='2' or TYPE='3' and REMIND_DATE='".date( "w", $DAY_I )."' or TYPE='4' and REMIND_DATE='".date( "j", $DAY_I )."' or TYPE='5' and REMIND_DATE='".date( "n-j", $DAY_I )."') order by BEGIN_TIME desc";
+    $query = "SELECT * from affair where USER_ID='".$LOGIN_USER_ID."' and BEGIN_TIME<='".date( "Y-m-d", $DAY_I )." 23:59:59' and (TYPE='2' or TYPE='3' and REMIND_DATE='".date( "w", $DAY_I )."' or TYPE='4' and REMIND_DATE='".date( "j", $DAY_I )."' or TYPE='5' and REMIND_DATE='".date( "n-j", $DAY_I )."') order by BEGIN_TIME desc";
     $rs		= $db->Execute($query);
     while (!$rs->EOF)
     {
@@ -422,7 +422,7 @@ if ( $WEEK != 6 )
     echo "   </tr>\r\n";
 }
 $CUR_MONTH = $MONTH;
-$query = "SELECT USER_NAME,BIRTHDAY from USER where NOT_LOGIN!='1' and DEPT_ID!=0 order by SUBSTRING(BIRTHDAY,6,5),USER_NAME ASC";
+$query = "SELECT USER_NAME,BIRTHDAY from user where NOT_LOGIN!='1' and DEPT_ID!=0 order by SUBSTRING(BIRTHDAY,6,5),USER_NAME ASC";
 $rs		= $db->Execute($query);
 $PERSON_COUNT = 0;
 while (!$rs->EOF)
