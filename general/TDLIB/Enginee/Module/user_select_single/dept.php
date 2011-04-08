@@ -66,7 +66,7 @@ $xname = "user_select_single";
 $showButton = 0;
 include_once( "dept_list.php" );
 echo "  </div>\r\n  <li><a href=\"javascript:clickMenu('2');\" id=\"link_2\" title=\"点击伸缩列表\"><span>按角色选择</span></a></li>\r\n  <div id=\"module_2\" class=\"moduleContainer\" style=\"display:none\">\r\n    <table class=\"TableBlock trHover\" width=\"100%\" align=\"center\">\r\n";
-$query = "SELECT * from USER_PRIV order by PRIV_NO ";
+$query = "SELECT * from user_priv order by PRIV_NO ";
 $cursor = exequery( $connection, $query );
 $PRIV_COUNT = 0;
 while ( $ROW = mysql_fetch_array( $cursor ) )

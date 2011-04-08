@@ -48,7 +48,7 @@ $xname = "user_select";
 $showButton = 1;
 include_once( "dept_list.php" );
 echo "  </div>\r\n<!--============================ 角色 =======================================-->\r\n  <li><a href=\"javascript:clickMenu('3');\" id=\"link_3\" title=\"点击伸缩列表\"><span>按角色选择</span></a></li>\r\n  <div id=\"module_3\" class=\"moduleContainer\" style=\"display:none\">\r\n    <table class=\"TableBlock trHover\" width=\"100%\" align=\"center\">\r\n";
-$query = "SELECT * from USER_PRIV order by PRIV_NO ";
+$query = "SELECT * from user_priv order by PRIV_NO ";
 $cursor = exequery( $connection, $query );
 $PRIV_COUNT = 0;
 while ( $ROW = mysql_fetch_array( $cursor ) )
@@ -81,7 +81,7 @@ if ( $PRIV_COUNT == 0 )
 echo "    </table>\r\n  </div>\r\n\r\n";
 exit;
 print "<!--============================ 自定义组 =======================================-->\r\n  <li><a href=\"javascript:clickMenu('4');\" id=\"link_4\" title=\"点击伸缩列表\"><span>自定义组</span></a></li>\r\n  <div id=\"module_4\" class=\"moduleContainer\" style=\"display:none\">\r\n    <table class=\"TableBlock trHover\" width=\"100%\" align=\"center\">\r\n";
-$query = "SELECT * from USER_GROUP where USER_ID='".$LOGIN_USER_ID."' order by ORDER_NO ";
+$query = "SELECT * from user_group where USER_ID='".$LOGIN_USER_ID."' order by ORDER_NO ";
 $cursor = exequery( $connection, $query );
 $GROUP_COUNT = 0;
 while ( $ROW = mysql_fetch_array( $cursor ) )
@@ -105,7 +105,7 @@ while ( $ROW = mysql_fetch_array( $cursor ) )
     echo $GROUP_NAME;
     echo "</td>\r\n    </tr>\r\n";
 }
-$query = "SELECT * from USER_GROUP where USER_ID='' order by ORDER_NO ";
+$query = "SELECT * from user_group where USER_ID='' order by ORDER_NO ";
 $cursor = exequery( $connection, $query );
 $GROUP_COUNT1 = 0;
 while ( $ROW = mysql_fetch_array( $cursor ) )
