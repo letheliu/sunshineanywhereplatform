@@ -58,7 +58,7 @@ if(empty($action_array[1])||$action_array[1]==''||$in_array!=1)		{
 
 //定义显示文本
 $SHOWINFOR		= "xPq7ucO709C5usLytMvI7bz+LMjn0Oi5usLyx+vBqs+11qPW3bWlteO/xry8yO28/tPQz965q8u+";
-$SHOWINFORLIB	= "zai070NSTdfpvP4o09azxs2otO/I7bz+yrXR6crS1+m8/inOqsPit9HI7bz+LLXju/e9+NDQ1f2w5tHp1qQs0enWpLrztMvQxc+iz/vKpyE=";
+$SHOWINFORLIB	= "taW140NSTc+1zbPOqr+q1LTD4rfRyO28/izTw7unv8m1vc341b7XorLh08O7p8P7LLXHwry687/JyfqzydeisuHC6yzIu7rz1NrPtc2zytrIqLLLtaXW0NeisuE=";
 $SHOWURL		= "aHR0cDovL2VkdS50b25nZGEyMDAwLmNvbS8=";
 $SHOWURLLIB		= "aHR0cDovL2VkdS50b25nZGEyMDAwLmNvbS90ZGxpYnNlcnZpY2UvcmVnLnBocA==";
 $SHOWTIP		= "16Ky4bn9uvO0y9DFz6LP+8qn";
@@ -1030,7 +1030,7 @@ switch($action_type)		{
 			$执行时间 = number_format($执行时间, 2, '.', '');
 			$执行时间TEXT = "执行:".$执行时间."MS";;
 			if($是否是接口目录=="Interface"&&$FileDirName!="PGSQL")		{
-				print "<BR><div align=center><a href=\"../CONFIG/config.php?".base64_encode("XX=XX&action=".$_GET['action']."&Tablename=$tablename&FileIniname=$parse_filename&FileDirName=$FileDirName&actionconfig=config&GOBACKFILENAME=$FILE_SELF_NAME")."\" title='配置当前页面显示参数 $执行时间TEXT (此信息只在admin用户下面显示)'>定制当前页面显示字段及界面[".$执行时间TEXT."]".$己配置信息."</a>&nbsp;<a href=\"http://edu.tongda2000.com/book/index.php?action=add\" target=_blank title='将问题反馈给开发商进行解决(此信息只在admin用户下面显示)'>反馈问题</a></div>";
+				print "<BR><div align=center><a href=\"../CONFIG/config.php?".base64_encode("XX=XX&action=".$_GET['action']."&Tablename=$tablename&FileIniname=$parse_filename&FileDirName=$FileDirName&actionconfig=config&GOBACKFILENAME=$FILE_SELF_NAME")."\" title='配置当前页面显示参数 $执行时间TEXT (此信息只在admin用户下面显示)'>定制当前页面的字段显示及界面布局[".$执行时间TEXT."]".$己配置信息."</a>&nbsp;<a href=\"http://edu.tongda2000.com/book/index.php\" target=_blank title='将问题反馈给开发商进行解决(此信息只在admin用户下面显示)'>反馈问题及提出需求</a></div>";
 			}
 			else if($是否是接口目录=="Interface"&&$FileDirName=="PGSQL")		{
 				print "<BR><div align=center>$执行时间TEXT</div>";

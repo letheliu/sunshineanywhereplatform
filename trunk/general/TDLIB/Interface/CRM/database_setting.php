@@ -13,7 +13,7 @@ require_once('lib.zip.inc.php');
 
 $GLOBAL_SESSION=returnsession();
 
-page_css("通达软件实验室组件");
+page_css("单点CRM系统");
 $connection = OpenConnection2();
 
 
@@ -33,21 +33,21 @@ if($_GET['action']=='')							{
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <table border="0" width="70%" align=center cellspacing="0" cellpadding="3" class="TableBlock">
   <tr  class=TableHeader>
-    <td colspan="12" height=28>&nbsp;<img src="/images/sys_config.gif" align="absmiddle" > 通达软件实验室组件安装与删除管理(以下操作建议在软件开发商指导下进行)</td>
+    <td colspan="12" height=28>&nbsp;<img src="/images/sys_config.gif" align="absmiddle" > 单点CRM系统安装与删除管理(以下操作建议在软件开发商指导下进行)</td>
   </tr>
 
  <tr class="TableData">
  <td colspan="6" align=center height=32>
-    <input type="button"  value="实验室组件数据库备份" class="BigButton" onClick="javascript:if(confirm('你真的要进行此项操作么?'))location='?<?=base64_encode("action=Backup");?>'" title="数据库备份">
+    <input type="button"  value="CRM系统数据库备份" class="BigButton" onClick="javascript:if(confirm('你真的要进行此项操作么?'))location='?<?=base64_encode("action=Backup");?>'" title="数据库备份">
  </td>
- <td colspan="6" align=left width=80%><font color=green>备份实验室组件相关数据库文件,不含OA相关数据</font></td>
+ <td colspan="6" align=left width=80%><font color=green>备份CRM系统相关数据库文件,不含OA相关数据</font></td>
 </tr>
 
  <tr class="TableData">
  <td colspan="6" align=center height=32>
-    <input type="button"  value="实验室组件数据库删除" class="BigButton" onClick="javascript:if(confirm('你真的要进行此项操作么?'))location='?<?=base64_encode("action=DeleteTdEdu");?>'" title="数据库删除">
+    <input type="button"  value="CRM系统数据库删除" class="BigButton" onClick="javascript:if(confirm('你真的要进行此项操作么?'))location='?<?=base64_encode("action=DeleteTdEdu");?>'" title="数据库删除">
  </td>
- <td colspan="6" align=left width=80%><B><font color=red>删除实验室组件数据库,删除后不能正常使用,谨慎使用!</font></B></td>
+ <td colspan="6" align=left width=80%><B><font color=red>删除CRM系统数据库,删除后不能正常使用,谨慎使用!</font></B></td>
 </tr>
 
 

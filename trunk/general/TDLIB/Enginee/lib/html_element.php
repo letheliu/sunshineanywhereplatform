@@ -1444,7 +1444,10 @@ function checkLoginSearch()
 		print "</select>\n";
 	}
 
-
+	global $增加对查询日期快捷方式的支持_是否启用;
+	if($增加对查询日期快捷方式的支持_是否启用==1&&$_SESSION['增加对查询日期快捷方式的支持']=='设置为0')		{
+		print "&nbsp;&nbsp;<a href='?".FormPageAction("增加对查询日期快捷方式的支持GET","设置为1")."'><font color=gray title=\"启用'增加对查询日期快捷方式的支持'功能\">打开查询日期显示</font></a>";
+	}
 	//提示信息显示
 	print "</td>\n";
 	print "<td nowrap width=60%><DIV class=InputError id=Searchvalue_CSS></DIV></td>\n";
