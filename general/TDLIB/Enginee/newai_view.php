@@ -762,6 +762,57 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 					break;
 			}//idnumfile
 			break;
+		//JUMPDEPTINFOR,弹出窗口的部门名和部门ID
+		case 'depttoid':
+			$colspan = 2;
+			switch($mode)	{
+				case 'add':
+				case 'edit':
+					$fieldValue = $fields['value'][$fieldname];
+					$showtext	= $html_etc[$tablename][$fieldname];
+					//$colspan = $fields['other']['inputcols'];
+					$fieldnameID = $fieldname."_ID";
+					$fieldValueName = returntablefield("department","DEPT_ID",$fieldValue,"DEPT_NAME");
+					print "<TR>";
+					print "<TD class=TableData noWrap>".$showtext."</TD>\n";
+					print "<TD class=TableData noWrap colspan=\"$colspan\">\n";
+					print "<input type=\"hidden\" name=\"$fieldname\" value=\"$fieldValue\">\n";
+					print "<input type=\"text\" name=\"$fieldnameID\" value=\"$fieldValueName\" readonly class=\"SmallStatic\" size=\"20\">\n";
+					print "<a href=\"javascript:;\" class=\"orgAdd\" onClick=\"SelectDeptSingle('','$fieldname', '$fieldnameID')\">选择</a>\n";
+					print "<a href=\"#\" class=\"orgClear\" onClick=\"ClearUser('$fieldname', '$fieldnameID')\" title=\"清空\">清空</a>";
+					print $addtext = FilterFieldAddText($addtext,$fieldname);
+					print "</TD></TR>\n";
+					break;
+				case 'view':
+					print_text_tr($html_etc[$tablename][$fieldname].":",returntablefield("department","DEPT_ID",$fields['value'][$fieldname],"DEPT_NAME"),$colspan,$system_picture_line,$notnulltext);
+					break;
+			}//idnumfile
+			break;
+		//JUMPDEPTINFOR,弹出窗口的部门名和部门ID
+		case 'depttoname':
+			$colspan = 2;
+			switch($mode)	{
+				case 'add':
+				case 'edit':
+					$fieldValue = $fields['value'][$fieldname];
+					$showtext	= $html_etc[$tablename][$fieldname];
+					$fieldnameID = $fieldname."_ID";
+					$fieldValueName = returntablefield("department","DEPT_NAME",$fieldValue,"DEPT_ID");
+					print "<TR>";
+					print "<TD class=TableData noWrap>".$showtext."</TD>\n";
+					print "<TD class=TableData noWrap colspan=\"$colspan\">\n";
+					print "<input type=\"hidden\" name=\"$fieldnameID\" value=\"$fieldValueName\">\n";
+					print "<input type=\"text\" name=\"$fieldname\" value=\"$fieldValue\" readonly class=\"SmallStatic\" size=\"20\">\n";
+					print "<a href=\"javascript:;\" class=\"orgAdd\" onClick=\"SelectDeptSingle('','$fieldnameID', '$fieldname')\">选择</a>\n";
+					print "<a href=\"#\" class=\"orgClear\" onClick=\"ClearUser('$fieldnameID', '$fieldname')\" title=\"清空\">清空</a>";
+					//print $addtext = FilterFieldAddText($addtext,$fieldname);
+					print "</TD></TR>\n";
+					break;
+				case 'view':
+					print_text_tr($html_etc[$tablename][$fieldname].":",$fields['value'][$fieldname],$colspan,$system_picture_line,$notnulltext);
+					break;
+			}//idnumfile
+			break;
 		//弹出课程的窗口
 		case 'jumpcourse':
 			$colspan = 2;

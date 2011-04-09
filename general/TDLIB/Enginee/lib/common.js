@@ -1068,7 +1068,7 @@ function SelectAllInforSingle(MODULE_URL,MODULE_ID,TO_ID, TO_NAME, MANAGE_FLAG, 
 
 function SelectDept(MODULE_ID,TO_ID, TO_NAME, PRIV_OP)
 {
-  URL="/module/dept_select/index.php?MODULE_ID="+MODULE_ID+"&TO_ID="+TO_ID+"&TO_NAME="+TO_NAME+"&PRIV_OP="+PRIV_OP;
+  URL="../../Enginee/Module/dept_select/index.php?MODULE_ID="+MODULE_ID+"&TO_ID="+TO_ID+"&TO_NAME="+TO_NAME+"&PRIV_OP="+PRIV_OP;
   loc_y=loc_x=200;
   if(is_ie)
   {
@@ -1079,7 +1079,7 @@ function SelectDept(MODULE_ID,TO_ID, TO_NAME, PRIV_OP)
 }
 function SelectDeptSingle(MODULE_ID,TO_ID, TO_NAME, PRIV_OP)
 {
-  URL="/module/dept_select_single/index.php?MODULE_ID="+MODULE_ID+"&TO_ID="+TO_ID+"&TO_NAME="+TO_NAME+"&PRIV_OP="+PRIV_OP;
+  URL="../../Enginee/Module/dept_select_single/index.php?MODULE_ID="+MODULE_ID+"&TO_ID="+TO_ID+"&TO_NAME="+TO_NAME+"&PRIV_OP="+PRIV_OP;
   loc_y=loc_x=200;
   if(is_ie)
   {
