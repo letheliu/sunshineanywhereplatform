@@ -139,6 +139,6 @@ table_end();
 print "<BR>";
 table_begin("100%");
 print "<tr class=TableHeader><td>事项说明:</td></tr>";
-print "<tr class=TableData><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每一个访问模块(子菜单)中,可管理人员为空时,表示此模块只有查看权限,OA管理员角色拥有所有权限.</td></tr>";
+print "<tr class=TableData><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;每个部门指定一个管理员,那么这个管理员可以在'部门级管理'这个菜单中管理对应所属部门的相关信息;这个功能适用于分部门权限管理情形.</td></tr>";
 table_end();
 ?>
