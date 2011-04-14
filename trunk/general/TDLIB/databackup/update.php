@@ -30,6 +30,12 @@ if(in_array("TDLIB",$PHP_SELF_ARRAY))		{
 	$通达数字化校园 = "单点CRM系统";
 	$本次更新内容 = "http://edu.tongda2000.com/crm/updatelog.php";
 }
+elseif(in_array("WUYE",$PHP_SELF_ARRAY))		{
+	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacketwuye";
+	$RemoteHostNameURL = "http://".$RemoteHostName."/hostlist2010.php";
+	$通达数字化校园 = "单点物业系统";
+	$本次更新内容 = "http://edu.tongda2000.com/wuye/updatelog.php";
+}
 else	{
 	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacket";
 	$RemoteHostNameURL = "http://".$RemoteHostName."/hostlist2010.php";
@@ -248,7 +254,7 @@ if($_GET['action']=="")                                {
 
     print "<BR><table width='600'  border='0' align='center' cellpadding='0' cellspacing='0' class='small' style='border:1px solid #006699;'>
 	<tr><td align='center' height=60 valign='middle'>";
-    print "<a href='http://edu.tongda2000.com' target=_blank><font color=green>通达数字化校园 发行单位:郑州单点科技软件有限公司 http://edu.tongda2000.com</font></a>
+    print "<a href='http://edu.tongda2000.com' target=_blank><font color=green>$通达数字化校园 发行单位:郑州单点科技软件有限公司 http://edu.tongda2000.com</font></a>
 	<BR><BR>
 	如果您是正版用户,请联系QQ:83102413,取得软件授权书及使用手册";
 
