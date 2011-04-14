@@ -12,18 +12,21 @@ function returnsession()			{
 	//$ServerInfo = print_r($db->ServerInfo());
 	//判断当前版本是2009还是2010
 	//Array ( [PHPSESSID] => 593ca32ab7a3343c6f590904bf26d633 [USER_NAME_COOKIE] => admin [SID_1] => 2e0d5357 [UI_COOKIE] => 0 [SID_10] => a76b05df )
-	
+
 	//判断是组件版本还是独立的系统
 	session_register("SYSTEM_IS_TD_OA");
 	session_register("SYSTEM_OA_VERSION");
 	$MetaDatabases = $db->MetaDatabases();
 	if(in_array("TD_OA",$MetaDatabases))						{
 		$_SESSION['SYSTEM_IS_TD_OA']		=	"1";
-		$sql = "select TABLE_NAME from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='TD_OA' and TABLE_NAME='session'";
-		$rs = $db->CacheExecute(150,$sql);
+		//$sql = "select TABLE_NAME from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='TD_OA' and TABLE_NAME='session'";
+		$sql = "show tables from TD_OA like '%session%'";
+		$rs = $db->CacheExecute(36000,$sql);
 		$rs_a = $rs->GetArray();
-		//判断OA版本是2010还是2009		
-		if($rs_a[0]['TABLE_NAME']=="session")		{
+		$KEY_SESSION = @array_values($rs_a[0]);
+		//print_R($KEY_SESSION);exit;
+		//判断OA版本是2010还是2009
+		if($KEY_SESSION[0]=="session")							{
 			$SYSTEM_PRE_TABLE = "TD_OA.";
 			$_SESSION['SYSTEM_OA_VERSION']		=	"TDOA2010";
 		}
