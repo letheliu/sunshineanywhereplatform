@@ -407,7 +407,7 @@ class ADODB_mysql extends ADOConnection {
 		$ADODB_FETCH_MODE = ADODB_FETCH_NUM;
 
 		if ($this->fetchMode !== false) $savem = $this->SetFetchMode(false);
-		$rs = $this->Execute(sprintf($this->metaColumnsSQL,$table));
+		$rs = $this->CacheExecute(150,sprintf($this->metaColumnsSQL,$table));
 
 		if ($schema) {
 			$this->SelectDB($dbName);
