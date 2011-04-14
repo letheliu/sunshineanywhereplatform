@@ -8,6 +8,9 @@ error_reporting(E_WARNING | E_ERROR);
 //header("Content-Type:text/html;charset=gbk");
 //######################教育组件-权限较验部分##########################
 require_once("lib.inc.php");
+require_once("../../Enginee/lib/version.php");
+require_once("lib.xingzheng.inc.php");
+//require_once("../EDU/lib.xiaoli.inc.php");
 //
 //$GLOBAL_SESSION=returnsession();
 //require_once("systemprivateinc.php");
@@ -16,10 +19,37 @@ require_once("lib.inc.php");
 
 //$SHOWTEXT = '1';
 
-//杨成辉
 $CurXueQi = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
 
-require_once("lib.xingzheng.inc.php");
+//先同步考勤机里面的数据到MYSQL数据库
+//得到现有MYSQL里面最近一次考勤记录ID的值
+$sql = "select max(考勤机ID值) AS 编号 from edu_teacherkaoqin";
+$rs = $db->Execute($sql);
+$最近一次考勤记录ID的值 = $rs->fields['编号'];
+if($最近一次考勤记录ID的值>0)		 $AddSqlKaoQinJiText = "where $考勤表_主EKY>'$最近一次考勤记录ID的值'";
+else	$AddSqlKaoQinJiText = "";
+
+//#######################################################################################
+//使用MSSQL数据连接部分代码-开始
+//#######################################################################################
+if($SYSTEM_VERSION_CONTENT=="TONGDA")					{
+	page_css("自动检测是否安装MSSQL数据库信息");
+	print_infor("您的服务器没有检测到考勤机SQL SERVER数据库信息,请确认装有指定型号的考勤机类型和数据库后再进行读取考勤信息操作",'?',"location='?'");
+	//exit;
+}
+
+if($SYSTEM_VERSION_CONTENT=="JMQX")					{
+	$_GET['action'] = "DataDeal";
+	include "../EDU/KAOQINJI_JMQX.php";
+	//exit;
+}
+
+if($SYSTEM_VERSION_CONTENT=="HCVT")					{
+	$_GET['action'] = "DataDeal";
+	include "../EDU/KAOQINJI_HCVT.php";
+	//exit;
+}
+
 
 function 排班人员List($考勤日期)			{
 	global $db;
@@ -80,15 +110,4 @@ print "+OK";
 
 
 
-?><?
-/*
-	版权归属:郑州单点科技软件有限公司;
-	联系方式:0371-69663266;
-	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
-
-	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
-	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
-	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
 ?>
