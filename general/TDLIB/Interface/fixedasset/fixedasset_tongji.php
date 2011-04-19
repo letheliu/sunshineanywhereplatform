@@ -45,12 +45,6 @@ print "</td></tr></table></form>  ";
 
 //开始处理收费(借方)和退费(贷方)的现金日记账表
 
-
-print "<table  class=TableBlock align=center width=100%>
-<TR><TD class=TableHeader align=left colSpan=4>&nbsp;固定资产信息按购买时间进行分科室分类别统计 <a href='fixedasset_tongjijianjie.php?开始时间=".$_GET['开始时间']."&结束时间=".$_GET['结束时间']."'>简洁统计</a></TD></TR>
-";
-
-
 $开始时间 = $_GET['开始时间'];
 $结束时间 = $_GET['结束时间'];
 $开始时间ARRAY  = explode('-',$开始时间);
@@ -82,6 +76,13 @@ for($i=0;$i<sizeof($rs_a);$i++)				{
 }
 
 $资产总金额 = @array_sum($资产信息汇总DEPT['资产总金额']);
+
+$部门列表 = @array_keys($所属部门列表);
+
+print "<table  class=TableBlock align=center width=100%>
+<TR><TD class=TableHeader align=left colSpan='".(4+sizeof($部门列表))."'>&nbsp;固定资产信息按购买时间进行分科室分类别统计 <a href='fixedasset_tongjijianjie.php?开始时间=".$_GET['开始时间']."&结束时间=".$_GET['结束时间']."'>简洁统计</a></TD></TR>
+";
+
 //处理最终结果表格输出
 
 print "<tr class=TableHeader>
@@ -90,7 +91,7 @@ print "<tr class=TableHeader>
 <td nowrap>资产名称</td>
 <td nowrap>合计</td>
 ";
-$部门列表 = @array_keys($所属部门列表);
+
 for($i=0;$i<sizeof($部门列表);$i++)		{
 	print "<td nowrap>{$部门列表[$i]}</td>";
 }
@@ -127,15 +128,8 @@ for($IX=0;$IX<sizeof($资产信息汇总Array);$IX++)		{
 
 }
 
-
-
-
-
-
-
-
 $现有库存ALL = (int)$现有库存ALL;
-$资产总金额 = number_format($资产总金额,2);
+$资产总金额 = number_format($资产总金额,2,'.','');
 print "<tr class=TableContent>
 <td nowrap colspan=4>从 ".$_GET['开始时间']." 到 ".$_GET['结束时间']." 数量合计:".$总数."个 金额合计:".$资产总金额."元</td>
 ";
@@ -147,6 +141,64 @@ for($xi=0;$xi<sizeof($部门列表);$xi++)		{
 }
 print "</tr>";
 print "</table>";
+
+
+//#######################################################################################
+
+print "<BR><table  class=TableBlock align=center width=100%>
+<TR><TD class=TableHeader align=left colSpan=4>&nbsp;固定资产信息按购买时间分状态进行统计</TD></TR>
+";
+$NewArray = array();
+$SortArray = array();
+$总数 = 0;
+$资产信息汇总DEPT = array();
+//处理基本表数据  and 所属状态!='资产己报废'
+$sql = "select SUM(数量) AS 资产数量,SUM(数量*单价) AS 资产总金额,所属状态 from fixedasset where 购买日期>='$开始时间' and 购买日期<='$结束时间' and 资产名称!='' group by 所属状态";
+$rs = $db->Execute($sql);
+$rs_a = $rs->GetArray();
+for($i=0;$i<sizeof($rs_a);$i++)				{
+	$Element = $rs_a[$i];
+	$所属状态 = $Element['所属状态'];
+	$资产数量 = $Element['资产数量'];
+	$所属状态列表[$所属状态] = $资产数量;
+
+	$资产信息汇总DEPT['资产总金额'][$所属状态] += $Element['资产总金额'];
+	$资产信息汇总DEPT['资产数量'][$所属状态] += $Element['资产数量'];
+	$总数 += $资产数量;
+}
+$资产总金额 = @array_sum($资产信息汇总DEPT['资产总金额']);
+//处理最终结果表格输出
+print "<tr class=TableHeader>
+<td nowrap>序号</td>
+<td nowrap>部门名称</td>
+<td nowrap>资产数量(所有资产数量的和)</td>
+<td nowrap>资产金额</td>
+</tr>
+";
+$所属状态列表Array = @array_keys($所属状态列表);
+for($IX=0;$IX<sizeof($所属状态列表Array);$IX++)		{
+	$所属状态 = $所属状态列表Array[$IX];
+	$资产数量 = $资产信息汇总DEPT['资产数量'][$所属状态];
+	$资产金额 = $资产信息汇总DEPT['资产总金额'][$所属状态];
+	print "<tr class=TableData>
+	<td nowrap>&nbsp;".($IX+1)."</td>
+	<td nowrap>&nbsp;$所属状态</td>
+	<td nowrap>&nbsp;<a href=\"fixedasset_view.php?".base64_encode("所属状态=$所属状态")."\" target=_blank>$资产数量</a></td>
+	<td nowrap>&nbsp;$资产金额</td>
+	";
+}
+$现有库存ALL = (int)$现有库存ALL;
+$资产总金额 = number_format($资产总金额,2,'.','');
+$资产总金额大写 = num2rmb($资产总金额);
+print "<tr class=TableContent>
+<td nowrap colspan=4>从 ".$_GET['开始时间']." 到 ".$_GET['结束时间']." 数量合计:".$总数."个 金额合计:".$资产总金额."元 $资产总金额大写</td>
+";
+print "</tr>";
+print "</table>";
+
+
+
+
 exit;
 
 
