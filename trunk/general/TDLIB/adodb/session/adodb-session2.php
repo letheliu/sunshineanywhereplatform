@@ -20,7 +20,7 @@ function returnsession()			{
 	if(in_array("TD_OA",$MetaDatabases))						{
 		$_SESSION['SYSTEM_IS_TD_OA']		=	"1";
 		//$sql = "select TABLE_NAME from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='TD_OA' and TABLE_NAME='session'";
-		$sql = "show tables from TD_OA like '%session%'";
+		$sql = "show tables from TD_OA like 'session'";
 		$rs = $db->CacheExecute(36000,$sql);
 		$rs_a = $rs->GetArray();
 		$KEY_SESSION = @array_values($rs_a[0]);
@@ -65,7 +65,7 @@ function returnsession()			{
 	if(
 		(
 			$_SESSION['LOGIN_USER_ID']==""||
-			($_SESSION['LOGIN_PHPSESSID']!=$_COOKIE['PHPSESSID']&&$_SESSION['LOGIN_PHPSESSID']!="")||
+			($_SESSION['LOGIN_PHPSESSID']!=$_COOKIE['PHPSESSID'])||
 			($_COOKIE['OA_USER_ID']!=$_SESSION['LOGIN_USER_ID'])
 
 		)
@@ -125,6 +125,8 @@ function returnsession()			{
 	else	{
 		//2009∞Ê±æ,ºÊ»›÷¥––
 	}
+	//print_R($_SESSION);
+	//print_R($_COOKIE);
 	//exit;
 	session_register("SUNSHINE_USER_ID");
 	session_register("SUNSHINE_USER_NAME");
