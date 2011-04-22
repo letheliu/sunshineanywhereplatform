@@ -32,7 +32,27 @@ if($_GET['action']=="operation_piliangtongguo"&&$_GET['selectid']!="")			{
 			if($审核状态!=1){
 			$sql = "update edu_xingzheng_kaoqinbudeng set 审核状态='1',审核人='$审核人',审核时间='$审核时间' where 编号='$Element'";
 			$rs = $db->Execute($sql);
-			$sql."<BR>"; 
+			
+			$sql = "select * from edu_xingzheng_kaoqinbudeng where 编号='$Element' and 审核状态 =1";
+			$rs = $db->Execute($sql);
+			$rs_a=$rs->GetArray();
+			$时间 = $rs_a[0]['时间'];
+			$班次 = $rs_a[0]['班次'];
+			$补登项目 = $rs_a[0]['补登项目'];
+			$人员用户名 = $rs_a[0]['人员用户名'];
+			//print_R($rs_a);exit;           编号  学期  部门  人员  日期  周次  星期  班次  上班实际刷卡   
+
+			if($补登项目 == '上班考勤补登')	
+			{
+				$query = "update edu_xingzheng_kaoqinmingxi set 上班考勤状态='考勤补登' where 日期='$时间' and 班次='$班次' and 人员用户名='$人员用户名'  ";
+			}
+			else
+			{
+			$query = "update edu_xingzheng_kaoqinmingxi set 下班考勤状态='考勤补登' where 日期='$时间' and 班次='$班次' and 人员用户名='$人员用户名'  ";
+			}
+			
+
+			$db->Execute($query);
 			}
 		}
 	}

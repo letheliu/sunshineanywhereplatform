@@ -497,7 +497,8 @@ function FilterFieldName($showtext,$var)		{
 //实时更新字段信息后面的补充语言信息-定义部分
 function FilterFieldAddText($showtext,$var)		{
 	global $sessionkey,$tablename,$db;
-	global $_SESSION;
+	global $_SESSION,$html_etc;
+	//print_R($html_etc);
 
 	//用于支持PGSQL
 	$PHP_SELF_ARRAY = explode('/',$_SERVER['PHP_SELF']);
@@ -524,11 +525,12 @@ function FilterFieldAddText($showtext,$var)		{
 	 $showtext = $showtextArray[0];
 	 $language = $_SESSION['SUNSHINE_USER_LANG'];
 
-	 //判断REMARK标识
-	 $sql = "select remark from systemlang where tablename ='$tablename' and fieldname='$var'";
-	 $rs = $db->CacheExecute(150,$sql);
-	 $rs_a = $rs->GetArray();
-	 $remark = TRIM($rs_a[0]['remark']);
+	 //判断REMARK标识 2011-04-21更改显示方便,改由html_etc变更进行显示备注信息
+	 //$sql = "select remark,fieldname from systemlang where tablename ='$tablename'";
+	 //$rs = $db->CacheExecute(150,$sql);
+	 //$rs_a = $rs->GetArray();
+	 //$remark = TRIM($rs_a[0]['remark']);
+	 $remark = $html_etc[$tablename][$var."_remark"];
 	 //$openDir = "sessionkey=$sessionkey&action=fieldaddtext&tablename=$tablename&fieldname=$fieldname&language=$language";
 	 //if(is_file("newai_ajax.php"))	 $TempDirPath = "./";
 	 //else if(is_file("../../Framework/newai_ajax.php"))	 $TempDirPath = "../../Framework/";

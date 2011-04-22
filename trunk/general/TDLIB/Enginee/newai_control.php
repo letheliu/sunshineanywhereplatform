@@ -17,9 +17,9 @@ if($SYSTEM_PRIV_STOP!="1"&&$SYSTEM_TABLE_VISION_MODE!="1")		{
 
 $ExecTimeBegin=getmicrotime();
 
-$lang=returnsystemlang();
 
-$html_etc=returnsystemlang($filetablename,$SYTEM_CONFIG_TABLE,$newtablename);
+
+$html_etc=returnsystemlang($filetablename,$SYTEM_CONFIG_TABLE);
 
 $SYTEM_CONFIG_TABLE!=""?$filetablename=$SYTEM_CONFIG_TABLE:'';
 

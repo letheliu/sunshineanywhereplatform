@@ -78,6 +78,7 @@ $ReadZipFileList .= ReadZipFileList("Enginee/Module/xuanke_select_single/",$Targ
 $ReadZipFileList .= ReadZipFileList("Enginee/Module/user_select_single/",$TargetDatetime);
 $ReadZipFileList .= ReadZipFileList("Enginee/Module/user_select/",$TargetDatetime);
 $ReadZipFileList .= ReadZipFileList("Enginee/Module/customer_select_single/",$TargetDatetime);
+$ReadZipFileList .= ReadZipFileList("Enginee/Module/dept_select_single/",$TargetDatetime);
 
 $ReadZipFileList .= ReadZipFileList("Framework/",$TargetDatetime);
 $ReadZipFileList .= ReadZipFileList("Framework/Model/",$TargetDatetime);
