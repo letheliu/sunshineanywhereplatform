@@ -91,29 +91,29 @@ if(in_array("TD_OA",$MetaDatabases))				{
 
 
 
-	$sql = "ALTER TABLE `TD_EDU`.`user` ADD PRIMARY KEY ( `UID` ) ;";$db->Execute($sql);
-	$sql = "ALTER TABLE `TD_EDU`.`user` CHANGE `UID` `UID` INT( 11 ) NOT NULL AUTO_INCREMENT ;";$db->Execute($sql);
+	$sql = "ALTER TABLE `td_crm`.`user` ADD PRIMARY KEY ( `UID` ) ;";$db->Execute($sql);
+	$sql = "ALTER TABLE `td_crm`.`user` CHANGE `UID` `UID` INT( 11 ) NOT NULL AUTO_INCREMENT ;";$db->Execute($sql);
 
-	$sql = "DROP TABLE IF EXISTS `TD_EDU`.`user`";$db->Execute($sql);
-	$sql = "create table `TD_EDU`.`user` select * from `TD_OA`.`user`";$db->Execute($sql);
+	$sql = "DROP TABLE IF EXISTS `td_crm`.`user`";$db->Execute($sql);
+	$sql = "create table `td_crm`.`user` select * from `TD_OA`.`user`";$db->Execute($sql);
 
-	$sql = "DROP TABLE IF EXISTS `TD_EDU`.`user_priv`";$db->Execute($sql);
-	$sql = "create table `TD_EDU`.`user_priv` select * from `TD_OA`.`user_priv`";$db->Execute($sql);
+	$sql = "DROP TABLE IF EXISTS `td_crm`.`user_priv`";$db->Execute($sql);
+	$sql = "create table `td_crm`.`user_priv` select * from `TD_OA`.`user_priv`";$db->Execute($sql);
 
-	$sql = "DROP TABLE IF EXISTS `TD_EDU`.`department`";$db->Execute($sql);
-	$sql = "create table `TD_EDU`.`department` select * from `TD_OA`.`department`";$db->Execute($sql);
+	$sql = "DROP TABLE IF EXISTS `td_crm`.`department`";$db->Execute($sql);
+	$sql = "create table `td_crm`.`department` select * from `TD_OA`.`department`";$db->Execute($sql);
 
-	$sql = "DROP TABLE IF EXISTS `TD_EDU`.`unit`";$db->Execute($sql);
-	$sql = "create table `TD_EDU`.`unit` select * from `TD_OA`.`unit`";$db->Execute($sql);
+	$sql = "DROP TABLE IF EXISTS `td_crm`.`unit`";$db->Execute($sql);
+	$sql = "create table `td_crm`.`unit` select * from `TD_OA`.`unit`";$db->Execute($sql);
 
-	$sql = "DROP TABLE IF EXISTS `TD_EDU`.`sys_function`";$db->Execute($sql);
-	$sql = "create table `TD_EDU`.`sys_function` select * from `TD_OA`.`sys_function`";$db->Execute($sql);
+	$sql = "DROP TABLE IF EXISTS `td_crm`.`sys_function`";$db->Execute($sql);
+	$sql = "create table `td_crm`.`sys_function` select * from `TD_OA`.`sys_function`";$db->Execute($sql);
 
-	$sql = "DROP TABLE IF EXISTS `TD_EDU`.`interface`";$db->Execute($sql);
-	$sql = "create table `TD_EDU`.`interface` select * from `TD_OA`.`interface`";$db->Execute($sql);
+	$sql = "DROP TABLE IF EXISTS `td_crm`.`interface`";$db->Execute($sql);
+	$sql = "create table `td_crm`.`interface` select * from `TD_OA`.`interface`";$db->Execute($sql);
 
-	$sql = "DROP TABLE IF EXISTS `TD_EDU`.`sys_menu`";$db->Execute($sql);
-	$sql = "create table `TD_EDU`.`sys_menu` select * from `TD_OA`.`sys_menu`";$db->Execute($sql);
+	$sql = "DROP TABLE IF EXISTS `td_crm`.`sys_menu`";$db->Execute($sql);
+	$sql = "create table `td_crm`.`sys_menu` select * from `TD_OA`.`sys_menu`";$db->Execute($sql);
 	print "<tr class=\"TableData\">
 		<td colspan=\"12\" align=left width=80%>&nbsp;<font color=gray>系统己完成数据同步工作</font></td></tr>";
 
@@ -130,8 +130,8 @@ if(in_array("TD_OA",$MetaDatabases))				{
 	$sql = "ALTER TABLE `user_priv` CHANGE `USER_PRIV` `USER_PRIV` INT( 11 ) NOT NULL AUTO_INCREMENT ";		$db->Execute($sql);
 	$sql = "ALTER TABLE `department` ADD PRIMARY KEY ( `DEPT_ID` ) ";										$db->Execute($sql);
 	$sql = "ALTER TABLE `department` CHANGE `DEPT_ID` `DEPT_ID` INT( 11 ) NOT NULL AUTO_INCREMENT ";		$db->Execute($sql);
-	$sql = "ALTER TABLE `user` ADD PRIMARY KEY ( `UID` ) ";										$db->Execute($sql);
-	$sql = "ALTER TABLE `user` CHANGE `UID` `UID` INT( 11 ) NOT NULL AUTO_INCREMENT ";			$db->Execute($sql);
+	$sql = "ALTER TABLE `user` ADD PRIMARY KEY ( `UID` ) ";													$db->Execute($sql);
+	$sql = "ALTER TABLE `user` CHANGE `UID` `UID` INT( 11 ) NOT NULL AUTO_INCREMENT ";						$db->Execute($sql);
 
 
 }
@@ -311,7 +311,7 @@ if($_GET['action']=="DeleteTestData"&&$_SESSION['LOGIN_USER_ID']=='admin')						
 	$rs_a = $rs->GetArray();
 	$放行表名单 = array("user","user_priv","department","sys_function","sys_menu","edu_xi","edu_zhuanye","edu_banji","edu_student","systemprivate","systemlang");
 	for($i=0;$i<sizeof($rs_a);$i++)		{
-		$TableName = trim($rs_a[$i]['Tables_in_td_edu']);
+		$TableName = trim($rs_a[$i]['Tables_in_td_crm']);
 		$字段列表  = $db->MetaColumnNames($TableName);
 		$字段列表  = @array_keys($字段列表);
 		if(sizeof($字段列表)>3&&!in_array($TableName,$放行表名单))			{

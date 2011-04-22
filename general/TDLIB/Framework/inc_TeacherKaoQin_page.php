@@ -34,6 +34,7 @@ $MenuArray[] = array('290','node_user','设定教师别名信息','EDU/Interface/EDU/edu
 if($_SESSION['SUNSHINE_BANJI_LIST']=="")		$MenuArray[] = array('290','node_user','设定打卡有效时间区间','EDU/Interface/EDU/edu_teacherkaoqinmingxi_type.php');
 $MenuArray[] = array('290','node_user','设定节次上课时间信息','EDU/Interface/EDU/schedule_timesetting.php');
 if($_SESSION['SUNSHINE_BANJI_LIST']=="")		$MenuArray[] = array('290','node_user','自动获取考勤机数据','EDU/Interface/EDU/edu_teacherkaoqinmingxi_automake.php');
+$MenuArray[] = array('290','node_user','教师考勤操作工具集','EDU/Interface/EDU/edu_teacherkaoqin_tools.php');
 $MenuArray[] = array('290','node_user','教师考勤操作流程图','EDU/Interface/Help/flowgraph_teacherkaoqin.php');
 
 

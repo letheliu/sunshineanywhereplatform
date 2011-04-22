@@ -444,6 +444,7 @@ function returnsystemlang($tablename='department',$addtablename='')	{
 	//	$MetaTablesArray[] = $MetaTables[$i];
 	//}
 	global $SYSTEM_TABLE_VISION_MODE;
+	//print $SYSTEM_TABLE_VISION_MODE;
 	if($SYSTEM_TABLE_VISION_MODE=="1"&&$tablename!="common_html")		{
 		$MetaColumns = $db->MetaColumnNames($tablename);
 		$MetaColumns = @array_values($MetaColumns);
@@ -524,15 +525,17 @@ function returnsystemlang($tablename='department',$addtablename='')	{
 		$index=$list['tablename'];
 		if($databaseType=="oracle"&&$tablename!="common_html")	{
 			//ORACLE时所有字段调整为大写
-			$fieldname=strtoupper($list['fieldname']);
+			$fieldname = strtoupper($list['fieldname']);
 		}
 		else	{
 			$fieldname = $list['fieldname'];
 		}
-		$chinese=$list['chinese'];
-		$english=$list['english'];
+		$chinese = $list['chinese'];
+		$english = $list['english'];
+		$remark  = $list['remark'];
 		$html_temp['zh'][$tablename][$fieldname]=$chinese;
 		$html_temp['en'][$tablename][$fieldname]=$english;
+		$html_temp['zh'][$tablename][$fieldname."_remark"]=$remark;
 	}//print_R($_SESSION);exit;
 	if($_SESSION[$SUNSHINE_USER_LANG_VAR]=='')	{
 		$systemlang='zh';
