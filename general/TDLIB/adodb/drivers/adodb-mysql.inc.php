@@ -58,6 +58,7 @@ class ADODB_mysql extends ADOConnection {
 	}
 
 
+
 	function MetaTables($ttype=false,$showSchema=false,$mask=false)
 	{
 		$save = $this->metaTablesSQL;
@@ -555,12 +556,12 @@ class ADODB_mysql extends ADOConnection {
 			if($TablenameTemp!=""&&$操作记录编号!='')	$this->_开始处理消息中心('UPDATE',$TablenameTemp,$操作记录编号);
 		}
 		if(substr($sqllower,0,strlen("delete from"))=="delete from")		{
-			$sqlArray = explode('delete from ',$sql);
-			$sqlArray = explode(' ',$sqlArray[0]);
+			//$sqlArray = explode('delete from ',$sql);
+			//$sqlArray = explode(' ',$sqlArray[0]);
 			//print_R($sqlArray);
-			$TablenameTemp = TRIM($sqlArray[0]);
+			//$TablenameTemp = TRIM($sqlArray[2]);
 			//print $sql."<BR>";
-			if($TablenameTemp!="")	$this->_开始处理消息中心('DELETE',$TablenameTemp,$操作记录编号);
+			//if($TablenameTemp!="")	$this->_开始处理消息中心('DELETE',$TablenameTemp,$操作记录编号);
 		}
 		//exit;
 		#########################################################################################################
@@ -610,6 +611,8 @@ class ADODB_mysql extends ADOConnection {
 			mysql_query($sql,$this->_connectionID);
 			//print $sql;
 		}
+
+
 
 		//返回结果
 		return $mysql_query;

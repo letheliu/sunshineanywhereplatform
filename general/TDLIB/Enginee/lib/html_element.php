@@ -509,44 +509,29 @@ function FilterFieldAddText($showtext,$var)		{
 		return '';
 		exit;
 	}
-	//正常进行
-	$SUNSHINE_USER_NAME = $_SESSION['SUNSHINE_USER_NAME'];
-	if($SUNSHINE_USER_NAME=="admin")		{
-	 $fieldname = $var;
-	 //print_R($_SESSION);
-	 $showtextArray = explode('(',$showtext);
-	 if(sizeof($showtextArray)>1)	{
-		 $showtext = $showtextArray[1];
-	 }
-	 else	{
-		 $showtext = $showtextArray[0];
-	 }
-	 $showtextArray = explode(')',$showtext);
-	 $showtext = $showtextArray[0];
-	 $language = $_SESSION['SUNSHINE_USER_LANG'];
-
-	 //判断REMARK标识 2011-04-21更改显示方便,改由html_etc变更进行显示备注信息
-	 //$sql = "select remark,fieldname from systemlang where tablename ='$tablename'";
-	 //$rs = $db->CacheExecute(150,$sql);
-	 //$rs_a = $rs->GetArray();
-	 //$remark = TRIM($rs_a[0]['remark']);
-	 $remark = $html_etc[$tablename][$var."_remark"];
-	 //$openDir = "sessionkey=$sessionkey&action=fieldaddtext&tablename=$tablename&fieldname=$fieldname&language=$language";
-	 //if(is_file("newai_ajax.php"))	 $TempDirPath = "./";
-	 //else if(is_file("../../Framework/newai_ajax.php"))	 $TempDirPath = "../../Framework/";
-	 //else $TempDirPath = '';
-	 //$openDir = $TempDirPath."newai_ajax.php?".$openDir;
-
-	 if($remark!="")		$showtext = $remark;
-
-	 if($showtext!="")		{
-		 //$showtext = "(<SPAN title='备注信息设定' onclick=\"listTable_editfieldlang(this,'$openDir')\">".$showtext."</SPAN>)";
-	 }
-	 else	{
-		// $showtext = "<SPAN title='备注信息设定' onclick=\"listTable_editfieldlang(this,'$openDir')\">&nbsp;&nbsp;&nbsp;&nbsp;</SPAN>";
-	 }
+	$fieldname = $var;
+	//print_R($_SESSION);
+	$showtextArray = explode('(',$showtext);
+	if(sizeof($showtextArray)>1)	{
+		$showtext = $showtextArray[1];
 	}
+	else	{
+		$showtext = $showtextArray[0];
+	}
+	$showtextArray = explode(')',$showtext);
+	$showtext = $showtextArray[0];
+
+	//判断REMARK标识 2011-04-21更改显示方便,改由html_etc变更进行显示备注信息
+	//$sql = "select remark,fieldname from systemlang where tablename ='$tablename'";
+	//$rs = $db->CacheExecute(150,$sql);
+	//$rs_a = $rs->GetArray();
+	//$remark = TRIM($rs_a[0]['remark']);
+	$remark = $html_etc[$tablename][$var."_remark"];
+
+	if($remark!="")		$showtext = $remark;
+
 	if(strlen($showtext)>20) $showtext = "<BR>".$showtext;
+
 	return $showtext;
 }
 
