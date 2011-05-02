@@ -12,16 +12,12 @@ require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
 
 
-//$MenuArray[] = array('302','node_user','学院信息设置','EDU/Interface/EDU/edu_xueyuan_newai.php');
-//$MenuArray[] = array('290','node_user','学校基本信息','EDU/Interface/EDU/edu_schoolbaseinfor_newai.php');
 $MenuArray[] = array('286','node_user','学校校区信息','EDU/Interface/EDU/edu_xiaoqu_newai.php');
-//$MenuArray[] = array('290','node_user','主要资产信息','EDU/Interface/EDU/edu_schoolmainasset_newai.php');
-//$MenuArray[] = array('290','node_user','组织机构及教职工','EDU/Interface/EDU/edu_schooldeptteacher_newai.php');
-//$MenuArray[] = array('290','node_user','学校办学情况','EDU/Interface/EDU/edu_schoolbanxueinfor_newai.php');
 $MenuArray[] = array('302','node_user',"学校".$_SESSION['SUNSHINE_REGISTER_XI'].'设置','EDU/Interface/EDU/edu_xi_newai.php');
 $MenuArray[] = array('290','node_user','学校专业设置','EDU/Interface/EDU/edu_zhuanye_newai.php');
 
 
+//$MenuArray[] = array('302','node_user','学院信息设置','EDU/Interface/EDU/edu_xueyuan_newai.php');
 
 
 $DateY = Date("Y");
@@ -48,10 +44,8 @@ print "\n<style>\nli span{\n
   padding-top:3px;\n
   padding-left:16px;\n
 }</style>\n";
-print "
-<ul>\n
-   <li>\n
-   <span>学校基本信息</span></li>\n
+print "<ul>";
+print "<li><span>学校基本信息</span></li>\n
    <div id=module_1 class=moduleContainer style=\"display:;\">\n
 	   <table class=\"TableBlock trHover\" width=100% align=center>\n
 	   ";
@@ -68,8 +62,63 @@ for($i=0;$i<sizeof($MenuArray);$i++)			{
 		   ";
 	}
 }
-print "</table>
-   </div>";
+print "</table></div>";
+
+
+/*
+//上报教育局数据
+$MenuArray2[] = array('290','node_user','学校基本信息','EDU/Interface/EDU/edu_schoolbaseinfor_newai.php');
+$MenuArray2[] = array('290','node_user','主要资产信息','EDU/Interface/EDU/edu_schoolmainasset_newai.php');
+$MenuArray2[] = array('290','node_user','组织机构及教职工','EDU/Interface/EDU/edu_schooldeptteacher_newai.php');
+$MenuArray2[] = array('290','node_user','学校办学情况','EDU/Interface/EDU/edu_schoolbanxueinfor_newai.php');
+
+print "<li><span>上报教育局数据</span></li>\n
+   <div id=module_1 class=moduleContainer style=\"display:;\">\n
+	   <table class=\"TableBlock trHover\" width=100% align=center>\n
+	   ";
+
+for($i=0;$i<sizeof($MenuArray2);$i++)			{
+	$菜单代码 = $MenuArray2[$i][1];
+	$菜单名称 = $MenuArray2[$i][2];
+	$菜单地址 = $MenuArray2[$i][3];
+	$returnPrivMenu = returnPrivMenu($菜单名称);
+	if($returnPrivMenu)		{
+		print "
+		 <tr class=TableData align=left><td nowrap onclick=\"parent.edu_main.location='../../".$菜单地址."'\" style=\"cursor:pointer;\">&nbsp;&nbsp;$菜单名称</td>
+		   </tr>
+		   ";
+	}
+}
+print "</table></div>";
+
+
+
+
+//开始上报数据
+$MenuArray3[] = array('100','node_user','数据上报操作',"EDU/Interface/JIAOYUJU2/jiaoyuju_submitlog_data.php","数据上报操作");
+$MenuArray3[] = array('100','node_user','数据上报日志',"EDU/Interface/JIAOYUJU2/jiaoyuju_submitlog_newai.php","数据上报日志");
+$MenuArray3[] = array('100','node_user','系统在线状态',"EDU/Interface/JIAOYUJU2/check_server_offline_online.php","系统在线状态");
+$MenuArray3[] = array('100','node_user','中心服务器设置',"EDU/Interface/JIAOYUJU2/jiaoyuju_centerserver_config.php","中心服务器设置");
+
+print "<li><span>开始上报数据</span></li>\n
+   <div id=module_1 class=moduleContainer style=\"display:;\">\n
+	   <table class=\"TableBlock trHover\" width=100% align=center>\n
+	   ";
+
+for($i=0;$i<sizeof($MenuArray3);$i++)			{
+	$菜单代码 = $MenuArray3[$i][1];
+	$菜单名称 = $MenuArray3[$i][2];
+	$菜单地址 = $MenuArray3[$i][3];
+	$returnPrivMenu = returnPrivMenu($菜单名称);
+	if($returnPrivMenu)		{
+		print "
+		 <tr class=TableData align=left><td nowrap onclick=\"parent.edu_main.location='../../".$菜单地址."'\" style=\"cursor:pointer;\">&nbsp;&nbsp;$菜单名称</td>
+		   </tr>
+		   ";
+	}
+}
+print "</table></div>";
+*/
 /*
 print "
 <li>
@@ -80,15 +129,4 @@ print "
 */
 print "</ul>";
 
-?><?
-/*
-	版权归属:郑州单点科技软件有限公司;
-	联系方式:0371-69663266;
-	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
-
-	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
-	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
-	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
 ?>

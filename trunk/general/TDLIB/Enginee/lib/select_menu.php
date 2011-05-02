@@ -50,7 +50,7 @@ function returntablefield($tablename,$what,$value,$return,$groupfield='',$groupv
 	$rs=$db->CacheExecute(30,$sql);
 	//print $sql."<BR>";
 	$returnArray = explode(',',$return);
-	if($returnArray[1]!="")
+	if(@$returnArray[1]!="")
 		return $rs->fields;					//返回数组
 	else
 		return trim($rs->fields[$return]);	//返回某一字段的值
