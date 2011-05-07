@@ -2,7 +2,21 @@
 
 function Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö($Ä¿±êÅĞ¶Ï×Ö¶Î)					{
 	global $db,$SYSTEM_ADD_SQL,$SYSTEM_PRINT_SQL;
-	if($_GET['action']==""||$_GET['action']=="init_default")			{
+	global $Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö_ÊÇ·ñÆôÓÃ;
+	$Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö_ÊÇ·ñÆôÓÃ = 1;
+	session_register("Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö");
+	if($_SESSION['Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö']=='')					{
+		$_SESSION['Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö'] = 'ÉèÖÃÎª1';
+	}
+	if($_GET['Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³ÖGET']=="ÉèÖÃÎª0")					{
+		$_SESSION['Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö'] = 'ÉèÖÃÎª0';
+	}
+	elseif($_GET['Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³ÖGET']=="ÉèÖÃÎª1")					{
+		$_SESSION['Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö'] = 'ÉèÖÃÎª1';
+	}
+	//print $_SESSION['Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö'];
+
+	if(($_GET['action']==""||$_GET['action']=="init_default")&&$_SESSION['Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö']=='ÉèÖÃÎª1')			{
 		print "<form name=formadd><table class=TableBlock width=100% ><tr><td nowrap class=TableContent align=left>";
 		if($_GET['µ±Ç°ËÑË÷·½Ê½']=="µ±Ìì")	$_GET['µ±Ç°ËÑË÷·½Ê½'] = "µ±Ìì&nbsp;&nbsp;&nbsp;&nbsp;";
 		if($_GET['µ±Ç°ËÑË÷·½Ê½']=="")		$_GET['µ±Ç°ËÑË÷·½Ê½'] = "Ã»ÓĞÑ¡Ôñ";
@@ -64,9 +78,11 @@ function Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³Ö($Ä¿±êÅĞ¶Ï×Ö¶Î)					{
 										);
 		print "&nbsp;&nbsp;<a href=\"?$FormPageAction\">×î½üÁùÔÂ</a>";
 
+		print "&nbsp;&nbsp;<a href='?".FormPageAction("Ôö¼Ó¶Ô²éÑ¯ÈÕÆÚ¿ì½İ·½Ê½µÄÖ§³ÖGET","ÉèÖÃÎª0")."'><font color=gray>¹Ø±ÕÏÔÊ¾</font></a>";
+
 		print "</font></td></tr></table></form><BR>";
 		if($_GET['¿ªÊ¼Ê±¼äADD']!=""&&$_GET['½áÊøÊ±¼äADD']!="")				{
-			$SYSTEM_ADD_SQL .= "and $Ä¿±êÅĞ¶Ï×Ö¶Î>='".$_GET['¿ªÊ¼Ê±¼äADD']." 00:01:00' and $Ä¿±êÅĞ¶Ï×Ö¶Î<='".$_GET['½áÊøÊ±¼äADD']." 23:59:59'";
+			$SYSTEM_ADD_SQL .= "and $Ä¿±êÅĞ¶Ï×Ö¶Î>='".$_GET['¿ªÊ¼Ê±¼äADD']." 00:00:00' and $Ä¿±êÅĞ¶Ï×Ö¶Î<='".$_GET['½áÊøÊ±¼äADD']." 23:59:59'";
 		}
 
 	}
@@ -98,6 +114,23 @@ function ³õÊ¼»¯½ÌÊ¦¿¼ÇÚÀïÃæ´íÎóÖÜ´ÎĞÅÏ¢($µ±Ç°Ñ§ÆÚ)		{
 		$ÖÜ´Î = $rs_a[$i]['ÖÜ´Î'];
 		$ĞÂÖÜ´Î	= returnCurWeekIndex($¿¼ÇÚÈÕÆÚ);
 		$sql = "update edu_studentkaoqin set ÖÜ´Î='$ĞÂÖÜ´Î' where ÖÜ´Î='$ÖÜ´Î'";
+		$db->Execute($sql);
+		//print $sql."<BR>";
+	}
+
+}
+
+
+function ÖØĞÂ³õÊ¼»¯½ÌÊ¦¿¼ÇÚÀïÃæÖÜ´ÎĞÅÏ¢($µ±Ç°Ñ§ÆÚ)		{
+	global $db;
+	$sql = "select ¿¼ÇÚÈÕÆÚ from edu_teacherkaoqinmingxi where Ñ§ÆÚ='$µ±Ç°Ñ§ÆÚ' group by ¿¼ÇÚÈÕÆÚ";
+	$rs = $db->CacheExecute(30,$sql);
+	$rs_a = $rs->GetArray();
+	for($i=0;$i<sizeof($rs_a);$i++)		{
+		$¿¼ÇÚÈÕÆÚ = $rs_a[$i]['¿¼ÇÚÈÕÆÚ'];
+		$ÖÜ´Î = $rs_a[$i]['ÖÜ´Î'];
+		$ĞÂÖÜ´Î	= returnCurWeekIndex($¿¼ÇÚÈÕÆÚ);
+		$sql = "update edu_teacherkaoqinmingxi set ÖÜ´Î='$ĞÂÖÜ´Î' where ¿¼ÇÚÈÕÆÚ='$¿¼ÇÚÈÕÆÚ'";
 		$db->Execute($sql);
 		//print $sql."<BR>";
 	}
@@ -149,9 +182,9 @@ function ¶¨Ê±Ö´ĞĞº¯Êı($º¯ÊıÃû³Æ='Í¬²½½ÌÑ§¼Æ»®Ñ§·ÖĞÅÏ¢µ½³É¼¨Êı¾İ±íÖ®ÖĞ',$¼ä¸ôÊ±¼ä
 
 
 function ×Ô¶¯ÇåÀíĞĞÕş¿¼ÇÚÖĞÀëÖ°ÈËÔ±²úÉúµÄ¶àÓàÊı¾İ()			{
-	global $db;
-	$MetaDatabases = $db->MetaDatabases();
-	if(in_array("TD_OA",$MetaDatabases))				{
+	global $db,$_SESSION;
+	//$MetaDatabases = $db->MetaDatabases();
+	if($_SESSION['SYSTEM_IS_TD_OA']=="1")				{
 		$tablenamePRE = "TD_OA.user";
 	}
 	else	{
@@ -2314,9 +2347,10 @@ function Ñ§ÉúÅúÁ¿½É·Ñ×Ô¶¯¿Û¿îº¯Êı($Ñ§ºÅ,$ĞÕÃû,$°à¼¶,$×¨Òµ,$Äê¼¶,$·ÑÓÃ½ğ¶î,$ÊÕ·Ñµ
 	$Â¼ÈëÔ± = $_SESSION['SUNSHINE_USER_NAME'];
 	$Óà¶î = CashLeftNumber($ÊÕ·ÑÈÕÆÚ);
 
-	$ÊÊÓÃÊÕ·Ñ±ê×¼ = returntablefield("edu_student","Ñ§ºÅ",$Ñ§ºÅ,"ÊÊÓÃÊÕ·Ñ±ê×¼");
+	$ÊÊÓÃÊÕ·Ñ±ê×¼	= returntablefield("edu_student","Ñ§ºÅ",$Ñ§ºÅ,"ÊÊÓÃÊÕ·Ñ±ê×¼");
+	$×¨Òµ´úÂë		= returntablefield("edu_zhuanye","×¨ÒµÃû³Æ",$×¨Òµ,"×¨Òµ´úÂë");
 
-	$sql = "select * from edu_zhuanyeshoufei where ×¨ÒµÃû³Æ='$×¨Òµ' and Äê¼¶='$Äê¼¶' and ÊÊÓÃÊÕ·Ñ±ê×¼='$ÊÊÓÃÊÕ·Ñ±ê×¼' order by Ñ§Äê,ÊÕ·ÑÏîÄ¿´úÂë,ÊÕ·ÑÏîÄ¿Ãû³Æ";
+	$sql = "select * from edu_zhuanyeshoufei where ×¨Òµ´úÂë='$×¨Òµ´úÂë' and Äê¼¶='$Äê¼¶' and ÊÊÓÃÊÕ·Ñ±ê×¼='$ÊÊÓÃÊÕ·Ñ±ê×¼' order by Ñ§Äê,ÊÕ·ÑÏîÄ¿´úÂë,ÊÕ·ÑÏîÄ¿Ãû³Æ";
 	//print $sql."<BR>";
 	$rs = $db->Execute($sql);
     $rsX_a = $rs->GetArray();
@@ -2359,6 +2393,10 @@ function Ñ§ÉúÅúÁ¿½É·Ñ×Ô¶¯¿Û¿îº¯Êı($Ñ§ºÅ,$ĞÕÃû,$°à¼¶,$×¨Òµ,$Äê¼¶,$·ÑÓÃ½ğ¶î,$ÊÕ·Ñµ
 				$db->Execute($sql);
 				//print "±¾´ÎÑ§·Ñ:".$sql."<BR>";
 				//print $sql."<BR>";
+				//$ÕªÒªRETURN = "´æÈë:".$ĞÕÃû."(".$Ñ§ºÅ.")".$Ñ§Äê."Ñ§Äê".$ÊÕ·ÑÏîÄ¿Ãû³Æ."".$Êµ¼Ê½ğ¶î."Ôª";
+			}
+			else	{
+				//$ÕªÒªRETURN = "²»Ç··Ñ:".$ĞÕÃû."(".$Ñ§ºÅ.")".$Ñ§Äê;
 			}
 			if($break)  break;
 		}//Èç¹ûÃ»ÓĞ¼ÇÂ¼,$ÉÏ´Î¼º½ÉÊÕ·Ñ½ğ¶î Îª0
@@ -2366,11 +2404,16 @@ function Ñ§ÉúÅúÁ¿½É·Ñ×Ô¶¯¿Û¿îº¯Êı($Ñ§ºÅ,$ĞÕÃû,$°à¼¶,$×¨Òµ,$Äê¼¶,$·ÑÓÃ½ğ¶î,$ÊÕ·Ñµ
 	}
 	if($Êµ½»×Ü½ğ¶î>0)								{
 		$Óà¶î = CashLeftNumber($ÊÕ·ÑÈÕÆÚ);
-		$ÕªÒª= "´æÈë:".$ĞÕÃû."(".$Ñ§ºÅ.")".$Ñ§Äê."Ñ§Äê".$ÊÕ·ÑÏîÄ¿Ãû³Æ."".$Êµ½»×Ü½ğ¶î."Ôª";
+		$ÕªÒª= "´æÈë:".$ĞÕÃû."(".$Ñ§ºÅ.")".$Ñ§Äê."Ñ§Äê".$Êµ½»×Ü½ğ¶î."Ôª";
 		$sql = "insert into edu_shoufeidanprint values('','$ÊÕ·Ñµ¥ºÅ','$ÊÕ·ÑÈÕÆÚ','$Ñ§ºÅ','$ĞÕÃû','$°à¼¶','$ÕªÒª','$Êµ½»×Ü½ğ¶î','$Ö§¸¶·½Ê½','$ÕË»§±àºÅ','$±¸×¢','$Â¼ÈëÔ±','$Óà¶î','$×¨Òµ','$XDM','$Ñ§Äê','$Äê¼¶');";
 		$db->Execute($sql);
 		//print $sql."<BR>";
+		$ÕªÒªRETURN = "´æÈë:".$ĞÕÃû."(".$Ñ§ºÅ.")".$Ñ§Äê."Ñ§Äê".$Êµ½»×Ü½ğ¶î."Ôª";
 	}
+	else	{
+		$ÕªÒªRETURN = "²»Ç··Ñ:".$ĞÕÃû."(".$Ñ§ºÅ.")".$Ñ§Äê;
+	}
+	return $ÕªÒªRETURN;
 	//exit;
 }
 

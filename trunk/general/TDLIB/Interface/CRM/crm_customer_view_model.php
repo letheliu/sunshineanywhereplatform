@@ -141,10 +141,10 @@ function CustomerInforView($编号)		{
 <?
 
 
-function 返回客户详细信息汇总($tablename,$FieldList,$Number,$title="客户费用及沟通成本明细")					{
+function 返回客户详细信息汇总($tablename,$FieldList,$Number,$客户名称,$title="客户费用及沟通成本明细")					{
 	global $db;
 	$html_etc = returnsystemlang($tablename);
-	$sql = "select $FieldList from $tablename order by 编号 limit $Number";
+	$sql = "select $FieldList from $tablename where 客户名称='$客户名称' order by 编号 limit $Number";
 	$rs = $db->Execute($sql);
 	$rs_a = $rs->GetArray();
 
@@ -177,11 +177,11 @@ function 返回客户详细信息汇总($tablename,$FieldList,$Number,$title="客户费用及沟
 }
 
 
-返回客户详细信息汇总('crm_expense',"费用单号,费用沟通概述,客户名称,联系人,发生时间,费用类型,费用金额,是否报销,发票情况,报销对象",10,"客户费用及沟通成本明细");
+返回客户详细信息汇总('crm_expense',"费用单号,费用沟通概述,客户名称,联系人,发生时间,费用类型,费用金额,是否报销,发票情况,报销对象",10,$rs_a[0]['客户名称'],"客户费用及沟通成本明细");
 
-返回客户详细信息汇总('crm_service',"服务编号,服务阶段,最后期限,服务概述,客户名称,联系人,严重程度,解决人员,解决方法,解决状态",10,"客户费用及沟通成本明细");
+返回客户详细信息汇总('crm_service',"服务编号,服务阶段,最后期限,服务概述,客户名称,联系人,严重程度,解决人员,解决方法,解决状态",10,$rs_a[0]['客户名称'],"客户服务明细");
 
-返回客户详细信息汇总('crm_contract',"合同编号,客户名称,服务类型,合同总金额,合同签订时间,预计第一次付款时间,预计第一次付款金额,审核人",10,"客户费用及沟通成本明细");
+返回客户详细信息汇总('crm_contract',"合同编号,客户名称,服务类型,合同总金额,合同签订时间,预计第一次付款时间,预计第一次付款金额,审核人",10,$rs_a[0]['客户名称'],"客户合同明细");
 
 exit;
 //$学号 = $rs_a[0]['学号'];

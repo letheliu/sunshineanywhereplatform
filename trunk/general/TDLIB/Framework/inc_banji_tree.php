@@ -249,7 +249,7 @@ $入学年份 = $_GET['PARA_URL1'];
 $班级名称 = $_GET['PARA_URL2'];
 $所属系 = $DEPT_PARENT;
 $datetime = date("Y-m-d");
-$sql = "select 学号,姓名,座号 from edu_student where 班号 = '$班级名称'  and 学生状态='正常状态' order by 班号";
+$sql = "select 学号,姓名,座号 from edu_student where 班号 = '$班级名称'  and 学生状态='正常状态' order by 座号,学号,姓名";
 $rs = $db->Execute($sql);
 $rs_a = $rs->GetArray();
 //print $DIR;exit;
