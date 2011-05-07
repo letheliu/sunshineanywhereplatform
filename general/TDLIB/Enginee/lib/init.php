@@ -1196,7 +1196,7 @@ function 设置变量($MODULE,$CONTENT)			{
 	$sql = "select COUNT(*) AS NUM FROM systemconfig where MODULE='$MODULE'";
 	$rs = $db->Execute($sql);
 	if($rs->fields['NUM']==0)		{
-		$sql = "insert into systemconfig values('$MODULE','$CONTENT','$UNIT_NAME','','');";
+		$sql = "insert into systemconfig(MODULE,CONTENT,UNIT) values('$MODULE','$CONTENT','$UNIT_NAME');";
 	}
 	else	{
 		$sql = "update systemconfig set CONTENT='$CONTENT',UNIT='$UNIT_NAME' where MODULE='$MODULE'";
@@ -1204,11 +1204,11 @@ function 设置变量($MODULE,$CONTENT)			{
 	$db->Execute($sql);
 }
 
-function 得到变量($MODULE)					{
+function 得到变量($MODULE,$FIELDNAME='CONTENT')					{
 	global $db;
-	$sql = "select CONTENT FROM systemconfig where MODULE='$MODULE'";
+	$sql = "select $FIELDNAME FROM systemconfig where MODULE='$MODULE'";
 	$rs = $db->Execute($sql);
-	return $rs->fields['CONTENT'];
+	return $rs->fields[$FIELDNAME];
 }
 
 ?>

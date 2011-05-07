@@ -615,7 +615,7 @@ function FenDuanJiaoXuePlanExec($学期,$周次)		{
 			global $SHOWTEXT; if($SHOWTEXT)print "<font color=green>周次:$周次 ".$sql."</font><BR>";
 
 			//在新课表中加入新的课程安排(学期  班级  教室  教师  课程  星期  节次  单双周 )
-			$sql = "insert into edu_schedule values ('','$学期','$班级','$教室','$教师','$课程','$星期','$节次','$单双周','$教师用户名');";
+			$sql = "insert into edu_schedule values ('','$学期','$班级','$教室','$教师','$课程','$星期','$节次','$单双周','$教师用户名','$开始周','$结束周');";
 			$db->Execute($sql);
 			global $SHOWTEXT; if($SHOWTEXT)print "<font color=green>周次:$周次 ".$sql."</font><BR>";
 
@@ -659,7 +659,7 @@ function FenDuanJiaoXuePlanExec($学期,$周次)		{
 			global $SHOWTEXT; if($SHOWTEXT)print "<font color=green>周次:$周次 ".$sql."</font><BR>";
 
 			//在新课表中加入新的课程安排(学期  班级  教室  教师  课程  星期  节次  单双周 )
-			$sql = "insert into edu_schedule values ('','$学期','$班级','$教室','$教师','$课程','$星期','$节次','$单双周','$教师用户名');";
+			$sql = "insert into edu_schedule values ('','$学期','$班级','$教室','$教师','$课程','$星期','$节次','$单双周','$教师用户名','$开始周','$结束周');";
 			$db->Execute($sql);
 			global $SHOWTEXT; if($SHOWTEXT)print "<font color=green>周次:$周次 ".$sql."</font><BR>";
 
