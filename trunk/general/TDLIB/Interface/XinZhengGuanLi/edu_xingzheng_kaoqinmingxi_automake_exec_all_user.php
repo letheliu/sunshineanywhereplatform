@@ -39,15 +39,18 @@ if($SYSTEM_VERSION_CONTENT=="TONGDA")					{
 }
 
 if($SYSTEM_VERSION_CONTENT=="JMQX")					{
-	$_GET['action'] = "DataDeal";
 	include "../EDU/KAOQINJI_JMQX.php";
-	//exit;
+	exit;
 }
 
 if($SYSTEM_VERSION_CONTENT=="HCVT")					{
-	$_GET['action'] = "DataDeal";
 	include "../EDU/KAOQINJI_HCVT.php";
-	//exit;
+	exit;
+}
+
+if($SYSTEM_VERSION_CONTENT=="FJHG")					{
+	include "../EDU/KAOQINJI_FJHG.php";
+	exit;
 }
 
 

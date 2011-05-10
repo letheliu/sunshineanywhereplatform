@@ -65,5 +65,10 @@ if($SYSTEM_VERSION_CONTENT=="HCVT")					{
 	exit;
 }
 
+if($SYSTEM_VERSION_CONTENT=="FJHG")					{
+	include "../EDU/KAOQINJI_FJHG.php";
+	exit;
+}
+
 
 ?>

@@ -30,7 +30,7 @@ if($_GET['FileNameSELF']!="")						{
 	echo " <html> <head> <title>权限管理</title>
 	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gb2312\">
 	</head>  <body class=\"bodycolor\" topmargin=\"5\">  ";
-	$sql = "select * from td_edu.systemprivateinc where `FILE`='".$_GET['FileName']."' and `MODULE`='".$_GET['ModuleName']."'";
+	$sql = "select * from systemprivateinc where `FILE`='".$_GET['FileName']."' and `MODULE`='".$_GET['ModuleName']."'";
 	$rs = $db->Execute($sql);
 	$rs_a = $rs->GetArray();
 	$PRIV_DEPT  = $rs_a[0]['DEPT_ID'];
@@ -100,17 +100,17 @@ if($_GET['action']=='DataDeal')					{
 
 	//print_R($_POST);exit;
 
-	$sql = "select MODULE from td_edu.systemprivateinc where `FILE`='$FILE' and `MODULE`='$MODULE'";
+	$sql = "select MODULE from systemprivateinc where `FILE`='$FILE' and `MODULE`='$MODULE'";
 	$rs = $db->Execute($sql);
 	$rs_a = $rs->GetArray();
 	//print_R($cursor1);exit;
     $MODULE2 = TRIM($rs_a[0]['MODULE']);
 	//print $MODULE2;
 	if($MODULE2!="")		{
-		$sql = "update td_edu.systemprivateinc set `DEPT_ID`='$DEPT_ID',`USER_ID`='$USER_ID',`ROLE_ID`='$ROLE_ID',`DEPT_NAME`='$DEPT_NAME',`USER_NAME`='$USER_NAME',`ROLE_NAME`='$ROLE_NAME' where `FILE`='$FILE' and `MODULE`='$MODULE'";
+		$sql = "update systemprivateinc set `DEPT_ID`='$DEPT_ID',`USER_ID`='$USER_ID',`ROLE_ID`='$ROLE_ID',`DEPT_NAME`='$DEPT_NAME',`USER_NAME`='$USER_NAME',`ROLE_NAME`='$ROLE_NAME' where `FILE`='$FILE' and `MODULE`='$MODULE'";
 	}
 	else	{
-		$sql = "insert into td_edu.systemprivateinc values('','$FILE','$MODULE','$DEPT_ID','$DEPT_NAME','$ROLE_ID','$ROLE_NAME','$USER_ID','$USER_NAME')";
+		$sql = "insert into systemprivateinc values('','$FILE','$MODULE','$DEPT_ID','$DEPT_NAME','$ROLE_ID','$ROLE_NAME','$USER_ID','$USER_NAME')";
 	}
 	$db->Execute($sql);
 
