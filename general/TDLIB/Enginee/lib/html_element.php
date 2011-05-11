@@ -1072,8 +1072,8 @@ function print_date_js()	{
 //自动编码问题解决方案
 function print_tr_auto_increment($showtext,$var,$var_value='',$colspan=1)		{
 	global $db,$primarykey_index,$tablename;
-	$sql = "select max($var) as NUM from $tablename";//print $sql;
-	$rs = $db->CacheExecute(150,$sql);
+	$sql = "select max($var) as NUM from $tablename limit 1";//print $sql;
+	$rs = $db->Execute($sql);
 	$number = $rs->fields[NUM];
 	$number += 1;
 	$number = format_auto_increment($number);

@@ -9,7 +9,15 @@
 	$当前学期 = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
 	if($_GET['学期']=="") $_GET['学期'] = $当前学期;
 
+
+
 	增加对查询日期快捷方式的支持("日期");
+
+
+	if($_GET['人员用户名']!="")			{
+		$_GET['人员用户名'] = addslashes($_GET['人员用户名']);
+		$SYSTEM_ADD_SQL .= " and 人员用户名='".$_GET['人员用户名']."'";
+	}
 
 	$filetablename='edu_xingzheng_kaoqinmingxi';
 	require_once('include.inc.php');
