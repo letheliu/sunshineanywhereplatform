@@ -38,19 +38,21 @@ if($SYSTEM_VERSION_CONTENT=="TONGDA")					{
 	//exit;
 }
 
+$_GET['action'] = "DataDeal";
+
 if($SYSTEM_VERSION_CONTENT=="JMQX")					{
 	include "../EDU/KAOQINJI_JMQX.php";
-	exit;
+	//exit;
 }
 
 if($SYSTEM_VERSION_CONTENT=="HCVT")					{
 	include "../EDU/KAOQINJI_HCVT.php";
-	exit;
+	//exit;
 }
 
 if($SYSTEM_VERSION_CONTENT=="FJHG")					{
 	include "../EDU/KAOQINJI_FJHG.php";
-	exit;
+	//exit;
 }
 
 
