@@ -90,6 +90,7 @@ if($_GET['action']=='TiaoBan')				{
 	$星期 = $_GET['星期'];
 	$班次 = $_GET['班次'];
 	$日期 = $_GET['日期'];
+	$人员用户名 = $_SESSION['LOGIN_USER_ID'];
 
 	$星期XNAME = array('日','一','二','三','四','五','六');
 
@@ -112,7 +113,7 @@ if($_GET['action']=='TiaoBan')				{
 		$星期X = date("w",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
 		$当天X = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
 		$returnCurWeekIndex = returnCurWeekIndex($当天X);
-		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from td_edu.edu_xingzheng_paiban where 排班人员 like '%$人员%' and 学期名称='$学期名称' and 考勤日期='$当天X'";
+		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from td_edu.edu_xingzheng_paiban where (排班人员 like '%,$人员用户名,%' or 排班人员 like '$人员用户名,%') and 学期名称='$学期名称' and 考勤日期='$当天X'";
 		//$cursor = exequery($connection,$query);
 		$rs=$db->Execute($query);
 		$ROW=$rs->GetArray();

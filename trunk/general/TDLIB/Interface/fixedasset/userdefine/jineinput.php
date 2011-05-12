@@ -28,7 +28,7 @@ function jineinput_add($fields,$i)		{
 	</script>
 <TR>
 <TD class=TableData noWrap width=20%>单价:</TD>
-<TD class=TableData noWrap colspan=\"2\"><INPUT type=\"text\" title='' onkeydown=\"if(event.keyCode==13)event.keyCode=9\" accesskey='7' class=\"SmallInput\"  maxLength=200 size=\"30\" name=\"单价\" value=\"$单价\" onkeypress=\"check_input_num('MONEY');DoItInforJinEr();\"
+<TD class=TableData noWrap colspan=\"2\"><INPUT type=\"text\" title='' onkeydown=\"if(event.keyCode==13)event.keyCode=9\" accesskey='7' class=\"SmallInput\"  maxLength=200 size=\"30\" name=\"单价\" value=\"$单价\" onkeyup=\"check_input_num('MONEY');DoItInforJinEr();\"
 >&nbsp;
 </TD></TR>
 <TR>
