@@ -60,6 +60,7 @@ if($_GET['action']=='bubanaction')				{
 	$rs = $db->Execute($sql);
 	$ROW = $rs->GetArray();
 	$人员 = $ROW[0]['人员'];
+	$人员用户名 = $ROW[0]['人员用户名'];
 	$星期 = $ROW[0]['星期'];
 	$班次 = $ROW[0]['调休班次'];
 	$调休时间 = $ROW[0]['调休时间'];
@@ -86,7 +87,7 @@ if($_GET['action']=='bubanaction')				{
 		$星期X = date("w",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
 		$当天X = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
 		$returnCurWeekIndex = returnCurWeekIndex($当天X);
-		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from td_edu.edu_xingzheng_paiban where 排班人员 like '%$人员%' and 学期名称='$学期名称' and 考勤日期='$当天X'";
+		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from td_edu.edu_xingzheng_paiban where (排班人员 like '%,$人员用户名,%' or 排班人员 like '$人员用户名,%') and 学期名称='$学期名称' and 考勤日期='$当天X'";
 		$rs = $db->Execute($query);
 		$ROW=$rs->GetArray();
 		$班次Array = array();

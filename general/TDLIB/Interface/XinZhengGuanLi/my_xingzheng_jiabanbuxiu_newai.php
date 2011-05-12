@@ -313,7 +313,7 @@ if($_GET['action']=='add_default')
     </tr>
 <?
   $人员 = $_SESSION['LOGIN_USER_NAME'];
-  $人员 = $_SESSION['LOGIN_USER_NAME'];
+  $人员用户名 = $_SESSION['LOGIN_USER_ID'];
 
   $开始时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')-1,date('Y')));
   $结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
@@ -336,7 +336,7 @@ if($_GET['action']=='add_default')
 	for($i=-1;$i<14;$i++)		{
 		$星期X = date("w",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
 		$当天X = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
-		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from td_edu.edu_xingzheng_paiban where 排班人员 like '%$人员%' and 学期名称='$学期名称' and 考勤日期='$当天X'";
+		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from td_edu.edu_xingzheng_paiban where (排班人员 like '%,$人员用户名,%' or 排班人员 like '$人员用户名,%') and 学期名称='$学期名称' and 考勤日期='$当天X'";
 		//$cursor = exequery($connection,$query);
 		$rs=$db->CaCheExecute(30,$query);
 		$ROW=$rs->GetArray();
