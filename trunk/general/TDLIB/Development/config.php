@@ -1,1 +1,1 @@
-<? $SYSTEM_MODE_DIR = "XinZhengGuanLi" ; ?>
+<? $SYSTEM_MODE_DIR = "CRM" ; ?>
