@@ -24,6 +24,9 @@ $MenuArray[] = array('286','node_user','服务来源','crm_dict_servicesources_newai
 $MenuArray[] = array('286','node_user','服务状态','crm_dict_servicestatus_newai.php');
 $MenuArray[] = array('286','node_user','服务类型','crm_dict_servicetypes_newai.php');
 $MenuArray[] = array('286','node_user','产品分组','crm_product_group_newai.php');
+$MenuArray[] = array('286','node_user','业务类型','crm_yewu_type_newai.php');
+$MenuArray[] = array('286','node_user','票据类型','crm_piaoju_type_newai.php');
+$MenuArray[] = array('286','node_user','所属分类','crm_suoshufenlei_sq_newai.php');
 
 $DateY = Date("Y");
 $DateM = Date("m");
