@@ -1,8 +1,4 @@
 <?
-
-
-
-
 if($_SESSION['SYSTEM_IS_TD_OA']=="0")									{
 	$PRIVATE_SYSTEM['我的个人事务']['我的办公用品'] = array("../officeproduct/officeproduct_my.php","我的办公用品");
 	$PRIVATE_SYSTEM['我的个人事务']['我的固定资产'] = array("../fixedasset/my_fixedasset.php","我的固定资产");
@@ -37,6 +33,18 @@ $PRIVATE_SYSTEM['我的部门业务']['供应商']	= array("crm_provider_dept_newai.php",
 $PRIVATE_SYSTEM['我的部门业务']['订单']		= array("crm_order_dept_newai.php","客户订单");
 $PRIVATE_SYSTEM['我的部门业务']['合同']		= array("crm_contract_dept_newai.php","客户合同");
 
+//$PRIVATE_SYSTEM['我的部门业务']['申请管理']	= array("main_bumenshenqing.php","申请管理");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['PARENT']	= array("main_bumenshenqing.php","申请管理");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['开票申请']	= array("crm_kaipiao_sq_newai.php","开票申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['佣金申请']	= array("crm_yongjin_sq_newai.php","佣金申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['延误付款']	= array("crm_yanchifukuan_sq_newai.php","延误付款");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['加班申请']	= array("","加班申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['请假申请']	= array("","请假申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['费用申请']	= array("crm_feiyong_sq_newai.php","费用申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['其他申请']	= array("crm_qita_sq_newai.php","其他申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['费用报销']	= array("","费用报销");
+
+
 
 //$PRIVATE_SYSTEM['普通业务人员']['日程'] = array("crm_clendar_newai.php","日程");
 $PRIVATE_SYSTEM['我的个人业务']['消息']		= array("crm_clendar_person_newai.php","消息中心");
@@ -47,7 +55,20 @@ $PRIVATE_SYSTEM['我的个人业务']['产品']		= array("crm_product_person_newai.php",
 $PRIVATE_SYSTEM['我的个人业务']['供应商']	= array("crm_provider_person_newai.php","供应商");
 $PRIVATE_SYSTEM['我的个人业务']['订单']		= array("crm_order_person_newai.php","客户订单");
 $PRIVATE_SYSTEM['我的个人业务']['合同']		= array("crm_contract_person_newai.php","客户合同");
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']	= array("main_shenqing.php","申请管理");
 
+
+/* FXP 
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']['PARENT']	= array("MAIN_SHENQING.php","申请管理");
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']['开票申请']	= array("","开票申请");
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']['佣金申请']	= array("","佣金申请");
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']['延误付款']	= array("","延误付款");
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']['加班申请']	= array("","加班申请");
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']['请假申请']	= array("","请假申请");
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']['费用申请']	= array("","费用申请");
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']['其他申请']	= array("","其他申请");
+$PRIVATE_SYSTEM['我的个人业务']['申请管理']['费用报销']	= array("","费用报销");
+*/
 
 
 $PRIVATE_SYSTEM['人力资源']['人事管理']['PARENT']	= array("../XinZhengGuanLi/MAIN_RENSHI.php","人事管理");
@@ -179,7 +200,7 @@ $PRIVATE_SYSTEM['综合信息查询']['后勤管理查询']['物业管理'] = array("../InforSea
 
 
 if($_SESSION['SYSTEM_IS_TD_OA']=="0")									{
-	$PRIVATE_SYSTEM['系统信息设置']['组织机构设置'] = array("../Framework/MAIN_UNIT.php","组织机构设置");
+   $PRIVATE_SYSTEM['系统信息设置']['组织机构设置'] = array("../Framework/MAIN_UNIT.php","组织机构设置");
 }
 $PRIVATE_SYSTEM['系统信息设置']['数据库管理'] = array("database_setting.php","数据库管理");
 $PRIVATE_SYSTEM['系统信息设置']['系统权限'] = array("systemprivateview.php","系统权限");
