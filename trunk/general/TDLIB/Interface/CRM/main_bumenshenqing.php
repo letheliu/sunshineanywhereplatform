@@ -29,7 +29,7 @@ if(count($MenuArray)==1)	{
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN">
-<HEAD><TITLE>申请管理</TITLE>
+<HEAD><TITLE>部门申请管理</TITLE>
 <LINK href="/theme/<?=$LOGIN_THEME?>/style.css" type=text/css rel=stylesheet>
 <frameset rows="30,*"  cols="*" frameborder="0" border="0" framespacing="0" id="frame1">
     <frame name="file_title" scrolling="no" noresize src="main_bumenshenqing_menu.php" frameborder="0">

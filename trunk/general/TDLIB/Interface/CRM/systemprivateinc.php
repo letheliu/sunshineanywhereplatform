@@ -19,8 +19,23 @@ $PRIVATE_SYSTEM['我的公司业务']['供应商']	= array("crm_provider_newai.php","供应
 $PRIVATE_SYSTEM['我的公司业务']['订单']		= array("crm_order_newai.php","客户订单");
 //$PRIVATE_SYSTEM['我的公司业务']['订单2']	= array("crm_order2_newai.php","客户订单2");
 $PRIVATE_SYSTEM['我的公司业务']['合同']		= array("crm_contract_newai.php","客户合同");
+
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['PARENT']	= array("main_jinglishenqing.php","申请管理");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['开票申请']	= array("crm_kaipiao_jlsq_newai.php","开票申请");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['佣金申请']	= array("crm_yongjin_jlsq_newai.php","佣金申请");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['延误付款']	= array("crm_yanchifukuan_jlsq_newai.php","延误付款");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['费用申请']	= array("crm_expense_newai.php","费用申请");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['请假申请']	= array(".php","请假申请");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['加班申请']	= array(".php","加班申请");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['调休加班']	= array(".php","费用报销");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['调班申请']	= array(".php","调班申请");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['相互调班']	= array(".php","相互调班");
+$PRIVATE_SYSTEM['我的公司业务']['申请管理']['其他申请']	= array("crm_qita_jlsq_newai.php","其他申请");
+
+
 $PRIVATE_SYSTEM['我的公司业务']['部门权限管理']	= array("inc_crm_priv.php","部门权限管理");
 $PRIVATE_SYSTEM['我的公司业务']['CRM工具集']	= array("inc_crm_tools.php","CRM工具集");
+
 
 
 //$PRIVATE_SYSTEM['部门经理权限']['日程']	= array("crm_clendar_newai.php","日程");
@@ -33,16 +48,17 @@ $PRIVATE_SYSTEM['我的部门业务']['供应商']	= array("crm_provider_dept_newai.php",
 $PRIVATE_SYSTEM['我的部门业务']['订单']		= array("crm_order_dept_newai.php","客户订单");
 $PRIVATE_SYSTEM['我的部门业务']['合同']		= array("crm_contract_dept_newai.php","客户合同");
 
-//$PRIVATE_SYSTEM['我的部门业务']['申请管理']	= array("main_bumenshenqing.php","申请管理");
 $PRIVATE_SYSTEM['我的部门业务']['申请管理']['PARENT']	= array("main_bumenshenqing.php","申请管理");
-$PRIVATE_SYSTEM['我的部门业务']['申请管理']['开票申请']	= array("crm_kaipiao_sq_newai.php","开票申请");
-$PRIVATE_SYSTEM['我的部门业务']['申请管理']['佣金申请']	= array("crm_yongjin_sq_newai.php","佣金申请");
-$PRIVATE_SYSTEM['我的部门业务']['申请管理']['延误付款']	= array("crm_yanchifukuan_sq_newai.php","延误付款");
-$PRIVATE_SYSTEM['我的部门业务']['申请管理']['加班申请']	= array("","加班申请");
-$PRIVATE_SYSTEM['我的部门业务']['申请管理']['请假申请']	= array("","请假申请");
-$PRIVATE_SYSTEM['我的部门业务']['申请管理']['费用申请']	= array("crm_feiyong_sq_newai.php","费用申请");
-$PRIVATE_SYSTEM['我的部门业务']['申请管理']['其他申请']	= array("crm_qita_sq_newai.php","其他申请");
-$PRIVATE_SYSTEM['我的部门业务']['申请管理']['费用报销']	= array("","费用报销");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['开票申请']	= array("crm_kaipiao_bmsq_newai.php","开票申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['佣金申请']	= array("crm_yongjin_bmsq_newai.php","佣金申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['延误付款']	= array("crm_yanchifukuan_bmsq_newai.php","延误付款");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['费用申请']	= array("crm_expense_dept_newai.php","费用申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['请假申请']	= array("..\XinZhengGuanLi\my_xingzheng_qingjia_newai.php","请假申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['加班申请']	= array("..\XinZhengGuanLi\my_xingzheng_jiabanbuxiu_newai.php","加班申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['调休加班']	= array("..\XinZhengGuanLi\my_xingzheng_tiaoxiububan_newai.php","调休加班");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['调班申请']	= array("..\XinZhengGuanLi\my_xingzheng_tiaoban_newai.php","调班申请");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['相互调班']	= array("..\XinZhengGuanLi\my_xingzheng_tiaobanxianghu_newai.php","相互调班");
+$PRIVATE_SYSTEM['我的部门业务']['申请管理']['其他申请']	= array("crm_qita_bmsq_newai.php","其他申请");
 
 
 
