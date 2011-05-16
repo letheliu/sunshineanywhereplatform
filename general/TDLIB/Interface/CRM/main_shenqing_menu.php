@@ -53,15 +53,16 @@ require_once('systemprivateinc.php');
 $MenuArray[] = array("crm_kaipiao_sq_newai.php","¿ªÆ±ÉêÇë");
 $MenuArray[] = array("crm_yongjin_sq_newai.php","Ó¶½ğÉêÇë");
 $MenuArray[] = array("crm_yanchifukuan_sq_newai.php","ÑÓÎó¸¶¿î");
-$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_qingjia_newai.php","Çë¼ÙÉêÇë");
-$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_jiabanbuxiu_newai.php","¼Ó°àÉêÇë");
-
-$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_tiaoxiububan_newai.php","µ÷Ğİ¼Ó°à");
-$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_tiaoban_newai.php","µ÷°àÉêÇë");
-$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_tiaobanxianghu_newai.php","Ïà»¥µ÷°à");
-
 $MenuArray[] = array("crm_expense_person_newai.php","·ÑÓÃÉêÇë");
 $MenuArray[] = array("crm_qita_sq_newai.php","ÆäËûÉêÇë");
+
+$MenuArray[] = array("../Help/flowgraph_xingzhengkaoqin.php","Çë¼ÙÉêÇë");
+//$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_jiabanbuxiu_newai.php","¼Ó°à²¹ĞİÉêÇë");
+//$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_tiaoxiububan_newai.php","µ÷Ğİ²¹°àÉêÇë");
+//$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_tiaoban_newai.php","µ÷°àÉêÇëÉêÇë");
+//$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_tiaobanxianghu_newai.php","Ïà»¥µ÷°àÉêÇë");
+
+
 //$MenuArray[] = array("crm_baoxiao_sq_newai.php","·ÑÓÃ±¨Ïú");
 
 
