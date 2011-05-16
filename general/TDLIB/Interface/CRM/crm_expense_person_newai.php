@@ -25,7 +25,8 @@
 	$filetablename		=	'crm_expense';
 	$parse_filename		=	'crm_expense_person';
 	require_once('include.inc.php');
-	?><?
+	?>
+	<?
 /*
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;

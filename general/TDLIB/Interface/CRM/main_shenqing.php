@@ -13,7 +13,7 @@ require_once("systemprivateinc.php");
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN">
-<HEAD><TITLE>…Í«Îπ‹¿Ì</TITLE>
+<HEAD><TITLE>…Í«Î</TITLE>
 
 <LINK href="/theme/<?=$LOGIN_THEME?>/images/style.css" type=text/css rel=stylesheet>
 <frameset rows="30,*"  cols="*" frameborder="0" border="0" framespacing="0" id="frame1">

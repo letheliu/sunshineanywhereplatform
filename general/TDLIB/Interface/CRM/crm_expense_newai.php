@@ -9,6 +9,11 @@
 	if($_GET['action']=="edit_default_data")		{
 		//print_R($_GET);print_R($_POST);//exit;
 		global $db;
+
+        if($_POST[' «∑Ò…Û∫À'] == 1){
+		   $_POST[' «∑Ò…Û∫À'] = " «";
+		}
+
 		if($_POST[' «∑Ò…Û∫À']==" «")		{
 			$_POST['…Û∫À»À']	= $_SESSION['LOGIN_USER_ID'];
 			$_POST['…Û∫À ±º‰']	= date("Y-m-d H:i:s");

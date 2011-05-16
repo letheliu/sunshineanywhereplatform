@@ -53,11 +53,16 @@ require_once('systemprivateinc.php');
 $MenuArray[] = array("crm_kaipiao_sq_newai.php","开票申请");
 $MenuArray[] = array("crm_yongjin_sq_newai.php","佣金申请");
 $MenuArray[] = array("crm_yanchifukuan_sq_newai.php","延误付款");
-$MenuArray[] = array("crm_jiaban_sq_newai.php","加班申请");
-$MenuArray[] = array("crm_qingjia_sq_newai.php","请假申请");
-$MenuArray[] = array("crm_feiyong_sq_newai.php","费用申请");
+$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_qingjia_newai.php","请假申请");
+$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_jiabanbuxiu_newai.php","加班申请");
+
+$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_tiaoxiububan_newai.php","调休加班");
+$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_tiaoban_newai.php","调班申请");
+$MenuArray[] = array("..\XinZhengGuanLi\my_xingzheng_tiaobanxianghu_newai.php","相互调班");
+
+$MenuArray[] = array("crm_expense_person_newai.php","费用申请");
 $MenuArray[] = array("crm_qita_sq_newai.php","其他申请");
-$MenuArray[] = array("crm_baoxiao_sq_newai.php","费用报销");
+//$MenuArray[] = array("crm_baoxiao_sq_newai.php","费用报销");
 
 
 for($i=0;$i<sizeof($MenuArray);$i++)					{
