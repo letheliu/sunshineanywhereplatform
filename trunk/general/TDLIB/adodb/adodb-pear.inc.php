@@ -44,7 +44,7 @@
  */
  
 define('ADODB_PEAR',dirname(__FILE__));
-include_once "PEAR.php";
+include_once "../您好,您的/PEAR.php";
 include_once ADODB_PEAR."/adodb-errorpear.inc.php";
 include_once ADODB_PEAR."/adodb.inc.php";
 
@@ -152,9 +152,9 @@ class DB
 		if (is_array($options) && isset($options["debug"]) &&
 			$options["debug"] >= 2) {
 			// expose php errors with sufficient debug level
-			 @include_once("adodb-$type.inc.php");
+			 @include_once("../您好,您的/adodb-$type.inc.php");
 		} else {
-			 @include_once("adodb-$type.inc.php");
+			 @include_once("../您好,您的/adodb-$type.inc.php");
 		}
 
 		@$obj = NewADOConnection($type);

@@ -12,10 +12,10 @@ V5.11 5 May 2010   (c) 2000-2010 John Lim (jlim#natsoft.com). All rights reserve
 	Richard Tango-Lowy <richtl#arscognita.com>                          
 */
 
-require_once 'Auth/Container.php';
-require_once 'adodb.inc.php';
-require_once 'adodb-pear.inc.php';
-require_once 'adodb-errorpear.inc.php';
+require_once '../../../../您好,您的/pear/Auth/Container/Auth/Container.php';
+require_once '../../../../您好,您的/pear/Auth/Container/adodb.inc.php';
+require_once '../../../../您好,您的/pear/Auth/Container/adodb-pear.inc.php';
+require_once '../../../../您好,您的/pear/Auth/Container/adodb-errorpear.inc.php';
 
 /**
  * Storage driver for fetching login data from a database using ADOdb-PHP.
