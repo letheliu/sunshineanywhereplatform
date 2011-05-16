@@ -9,14 +9,30 @@
    
 	if($_GET['action']=="edit_default_data")		{
 		page_css("延迟付款");
+        
+		if($_POST['是否审核'] == 1 and $_POST['是否作废'] == 0){
+		   $_POST['审核日期'] = date("Y-m-d H:i:s");
+		   $审核人 = $_SESSION['LOGIN_USER_ID'];          
+		   $备注   = $_POST['备注'];
+		   //拆分字符串
+           $bz = substr($备注,0,7);
+		   if($bz != "<审核人"){
+		      $_POST['备注'] = "<审核人:".$审核人.">".$_POST['备注'];
+		   }   
+		}
+
+		if($_POST['是否作废'] == '1'){
+		   $_POST['作废日期'] = date("Y-m-d H:i:s"); 
+		   $作废人 = $_SESSION['LOGIN_USER_ID'];
+		   $_POST['备注'] = "<作废人：".$作废人.">".$_POST['备注'];
+		}
+
 
 		$单号 = $_POST['单号'];
 		$sql = "select 是否作废 from crm_yanchifukuan_sq where 单号='$单号'";
 		$rs = $db->Execute($sql);
 		$rs_a = $rs->GetArray();
-
-		if($rs_a[0]['是否作废'] == 1){
-			
+		if($rs_a[0]['是否作废'] == 1){		
 		   print "
 			<div align=\"center\" title=\"作废记录管理\">
 			<table class=\"MessageBox\" align=\"center\" width=\"650\"><tr><td class=\"msg info\">
