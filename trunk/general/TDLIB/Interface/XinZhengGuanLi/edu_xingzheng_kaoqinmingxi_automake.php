@@ -51,7 +51,7 @@ else	$AddSqlKaoQinJiText = "";
 //#######################################################################################
 if($SYSTEM_VERSION_CONTENT=="TONGDA")					{
 	page_css("自动检测是否安装MSSQL数据库信息");
-	print_infor("您的服务器没有检测到考勤机SQL SERVER数据库信息,请确认装有指定型号的考勤机类型和数据库后再进行读取考勤信息操作",'?',"location='?'");
+	print_infor("您的服务器没有检测到考勤机SQL SERVER数据库信息,请确认装有指定型号的考勤机类型和数据库后再进行读取考勤信息操作,VERSION INFOR IS ERROR",'?',"location='?'");
 	exit;
 }
 

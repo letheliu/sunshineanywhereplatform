@@ -15,16 +15,11 @@ session_start();
 
 $PrintText  = "<table  class=TableBlock align=center width=100%>";
 $PrintText .= "<TR class=TableHeader><td ><font color=green >
-教师考勤部分实施必读手册(流程图以及概念性说明)
+教材部分实施操作流程图
 </font></td></tr>";
 $PrintText .= "<TR class=TableData><td >
-<img src=\"flowgraph_teacherkaoqin.png\" border=0>
+<img src=\"flowgraph_jiaocai.png\" border=0>
 </td></tr></table>";
 	print $PrintText;
-
-require_once('../Help/module_teacherkaoqinmingxi_datalist.php');
-
-require_once('../Help/module_teacherkaoqin_yuanshidaka.php');
-
 
 ?>

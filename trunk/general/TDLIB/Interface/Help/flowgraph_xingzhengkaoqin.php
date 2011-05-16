@@ -14,7 +14,7 @@ session_start();
 <?
 
 $PrintText  = "<table  class=TableBlock align=center width=100%>";
-$PrintText .= "<TR class=TableContent><td ><font color=green >
+$PrintText .= "<TR class=TableHeader><td ><font color=green >
 行政考勤部分实施必读手册(流程图以及概念性说明)
 </font></td></tr>";
 $PrintText .= "<TR class=TableData><td >
