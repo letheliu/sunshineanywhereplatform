@@ -40,7 +40,7 @@ if($_GET['action']=="operation_tiaoxiutongguo"&&$_GET['selectid']!="")			{
 	}
 	$pageid = $_GET['pageid'];
 	page_css("调休审核审批");
-	print_nouploadfile("你的数据操作己经成功!");
+	print_nouploadfile("你的数据操作已经成功!");
 	echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?pageid=$pageid'>\n";
 	exit;
 }
@@ -70,7 +70,7 @@ if($_GET['action']=="operation_bubantongguo"&&$_GET['selectid']!="")			{
 	}
 	$pageid = $_GET['pageid'];
 	page_css("补班审核审批");
-	print_nouploadfile("你的数据操作己经成功!");
+	print_nouploadfile("你的数据操作已经成功!");
 	echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?pageid=$pageid'>\n";
 	exit;
 }

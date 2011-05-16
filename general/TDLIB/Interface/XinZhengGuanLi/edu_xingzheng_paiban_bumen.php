@@ -259,13 +259,13 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 			case 7: $星期 = "星期日";break;
 		}
 
-		//形成己加入人员列表
+		//形成已加入人员列表
 		$考勤日期 = 返回目标日期($当前周次,$当前星期);
 		$sql = "select * from edu_xingzheng_paiban where 学期名称='".$当前学期."' and 周次='".$当前周次."' and 班次名称='".$班次名称."' and 考勤日期='$考勤日期' order by 星期 asc";
 		$rs = $db -> Execute($sql);
 		$rs_a = $rs -> GetArray();
 		$排班人员 = $rs_a[0]['排班人员'];
-		$己有人员 = $排班人员;
+		$已有人员 = $排班人员;
 		$排班人员数据K = explode(',',$排班人员);
 ?>
 
@@ -276,7 +276,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 </tr>
 <tr class="TableData">
 <td><font color="red">&nbsp;当前学期:<?=$当前学期;?></font>&nbsp;<BR>&nbsp;<font color="green">当前周次:第<?=$当前周次;?>周</font>&nbsp;<BR>&nbsp;<font color="green">当前星期:<?=$星期;?></font>&nbsp;<BR>&nbsp;<font color="blue">当前班次:<?=$班次名称;?>(<?=$考勤时间段;?>)</font>
-<BR>&nbsp;<font color="blue">己有人员:<?=useridtoname($己有人员);?></font>
+<BR>&nbsp;<font color="blue">已有人员:<?=useridtoname($已有人员);?></font>
 </td>
 </tr>
 <tr class="TableHeader">
@@ -338,7 +338,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 	}
 
 	print "<tr class=TableData><td>";
-	print "己选人员:<BR>".$SHOWTEXT;
+	print "已选人员:<BR>".$SHOWTEXT;
 	print "</td></tr>";
 	print "<tr class=TableData><td>";
 	print "未选人员:<BR>".$SHOWTEXT2;
@@ -425,7 +425,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 			//}
 
 		}
-		print_infor("你的数据己经初始化完成.",'',"location='?当前周次=".$当前周次."'");
+		print_infor("你的数据已经初始化完成.",'',"location='?当前周次=".$当前周次."'");
 		print "<meta http-equiv='refresh' content=0;url='?当前周次=".$当前周次."'>";
 		exit;
 	}
@@ -435,7 +435,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 	//本周有数据,或上周无数据,都会停止导入动作
 	if(sizeof($rs_a)==0||sizeof($rs_a本周)>0)		{
 		//没有记录,不能获取数据
-		$disabled_上周 = "disabled readonly title='本周己经有排班数据或上周无排班数据,不能从上周获取信息'";
+		$disabled_上周 = "disabled readonly title='本周已经有排班数据或上周无排班数据,不能从上周获取信息'";
 	}
 
 
@@ -472,7 +472,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 
 
 		}
-		print_infor("你的数据己经初始化完成.",'',"location='?当前周次=".$当前周次."'");
+		print_infor("你的数据已经初始化完成.",'',"location='?当前周次=".$当前周次."'");
 		print "<meta http-equiv='refresh' content=0;url='?当前周次=".$当前周次."'>";
 		exit;
 	}
@@ -482,7 +482,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 	//本周有数据,或上周无数据,都会停止导入动作
 	if(sizeof($rs_a)==0||sizeof($rs_a本周)>0)		{
 		//没有记录,不能获取数据
-		$disabled_前周 = "disabled readonly title='本周己经有排班数据或上周无排班数据,不能从上周获取信息'";
+		$disabled_前周 = "disabled readonly title='本周已经有排班数据或上周无排班数据,不能从上周获取信息'";
 	}
 
 
@@ -695,15 +695,4 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 		}
 		return $DescSecondWeekDate;
 	}
-?><?
-/*
-	版权归属:郑州单点科技软件有限公司;
-	联系方式:0371-69663266;
-	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
-
-	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
-	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
-	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
 ?>

@@ -55,7 +55,7 @@ $结束时间 = date("Y-m-d H:i:s",mktime(0,0,1,$结束时间ARRAY[1],$结束时间ARRAY[2]+
 $NewArray = array();
 $SortArray = array();
 //处理基本表数据
-$sql = "select 资产编号,资产名称,SUM(数量) AS 资产数量,SUM(数量*单价) AS 资产总金额,所属部门,资产名称,资产编号 from fixedasset where 购买日期>='$开始时间' and 购买日期<='$结束时间' and 资产名称!='' and 所属状态!='资产己报废' group by 所属部门,资产名称";
+$sql = "select 资产编号,资产名称,SUM(数量) AS 资产数量,SUM(数量*单价) AS 资产总金额,所属部门,资产名称,资产编号 from fixedasset where 购买日期>='$开始时间' and 购买日期<='$结束时间' and 资产名称!='' and 所属状态!='资产已报废' group by 所属部门,资产名称";
 $rs = $db->Execute($sql);
 $rs_a = $rs->GetArray();
 for($i=0;$i<sizeof($rs_a);$i++)				{
@@ -152,7 +152,7 @@ $NewArray = array();
 $SortArray = array();
 $总数 = 0;
 $资产信息汇总DEPT = array();
-//处理基本表数据  and 所属状态!='资产己报废'
+//处理基本表数据  and 所属状态!='资产已报废'
 $sql = "select SUM(数量) AS 资产数量,SUM(数量*单价) AS 资产总金额,所属状态 from fixedasset where 购买日期>='$开始时间' and 购买日期<='$结束时间' and 资产名称!='' group by 所属状态";
 $rs = $db->Execute($sql);
 $rs_a = $rs->GetArray();

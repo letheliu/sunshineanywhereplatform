@@ -115,7 +115,7 @@ if(in_array("TD_OA",$MetaDatabases))				{
 	$sql = "DROP TABLE IF EXISTS `td_crm`.`sys_menu`";$db->Execute($sql);
 	$sql = "create table `td_crm`.`sys_menu` select * from `TD_OA`.`sys_menu`";$db->Execute($sql);
 	print "<tr class=\"TableData\">
-		<td colspan=\"12\" align=left width=80%>&nbsp;<font color=gray>系统己完成数据同步工作</font></td></tr>";
+		<td colspan=\"12\" align=left width=80%>&nbsp;<font color=gray>系统已完成数据同步工作</font></td></tr>";
 
 	//自动清除七天以前的历史记录
 	$sql = "delete from system_logall where datediff(now(),当前时间)>7";
@@ -278,7 +278,7 @@ if($_GET['action']=="DeleteSchedule")								{
 	$sql = "TRUNCATE TABLE edu_schedule";
 	$db->Execute($sql);
 	table_begin("500");
-	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>排课数据表己经清空&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
+	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>排课数据表已经清空&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
 	table_end();exit;
 }
 
@@ -286,7 +286,7 @@ if($_GET['action']=="DeleteExam")								{
 	$sql = "TRUNCATE TABLE edu_exam";
 	$db->Execute($sql);
 	table_begin("500");
-	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>成绩数据表己经清空&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
+	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>成绩数据表已经清空&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
 	table_end();exit;
 }
 
@@ -299,7 +299,7 @@ if($_GET['action']=="DeleteStudentFee")								{
 	$sql = "TRUNCATE TABLE edu_qitashouru";		$db->Execute($sql);
 	$sql = "TRUNCATE TABLE edu_qitazhichu";		$db->Execute($sql);
 	table_begin("500");
-	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>与学生交费相关的财务数据己经清空&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
+	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>与学生交费相关的财务数据已经清空&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
 	table_end();
 	exit;
 }
@@ -322,11 +322,11 @@ if($_GET['action']=="DeleteTestData"&&$_SESSION['LOGIN_USER_ID']=='admin')						
 	}
 
 	$handle = fopen ("is_running.ini", "w+");
-	fwrite($handle,"测试数据己清空");
+	fwrite($handle,"测试数据已清空");
 	fclose($handle);
 
 	table_begin("500");
-	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>系统之中的测试数据己经完成,您可以重新开始使用本系统了.&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
+	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>系统之中的测试数据已经完成,您可以重新开始使用本系统了.&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
 	table_end();
 	exit;
 }
@@ -352,7 +352,7 @@ if($_GET['action']=="DeleteTeacherTeaching")								{
 	$sql = "TRUNCATE TABLE edu_jiaoan";				$db->Execute($sql);
 
 	table_begin("500");
-	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>己经清空与教师教学及管理学生产生的数据&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
+	print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>已经清空与教师教学及管理学生产生的数据&nbsp;&nbsp;<BR><input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
 	table_end();
 	exit;
 }
@@ -372,7 +372,7 @@ while($TABLE=mysql_fetch_row($TABLE_ARRAY))
 		$TABLE_NAME=$TABLE[0];
 		$sql = "DROP TABLE IF EXISTS $TABLE_NAME;\n";
 		$db->Execute($sql);
-		//print "己经删除数据表：".$Tablename."<BR>";
+		//print "已经删除数据表：".$Tablename."<BR>";
 	}
 }
 
@@ -381,7 +381,7 @@ $sql = "delete from `sys_menu` where MENU_ID='cd'";	$db->Execute($sql);
 $sql = "delete from `sys_menu` where MENU_ID='ce'";	$db->Execute($sql);
 $sql = "delete from sys_function where FUNC_ID>='372' and FUNC_ID<='385'";	$db->Execute($sql);
 table_begin("500");
-print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>数据库己经清空,总计清空相关数据表".count($NewTableArray)."个<BR>&nbsp;&nbsp;<input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
+print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center>数据库已经清空,总计清空相关数据表".count($NewTableArray)."个<BR>&nbsp;&nbsp;<input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
 table_end();
 exit;
 }
@@ -417,7 +417,7 @@ while($TABLE=mysql_fetch_row($TABLE_ARRAY))
 	$TablenameArray = explode('_',$Tablename);
 	if(1)
 	{
-	//print "己经备份数据表：".$Tablename."<BR>";
+	//print "已经备份数据表：".$Tablename."<BR>";
 	array_push($NewTableArray,$Tablename);
    //---------------- 获得DROP TABLE语句 -----------------------
    $TABLE_NAME=$TABLE[0];
@@ -484,7 +484,7 @@ if(@fputs(@fopen("../../databackup/".$key,"wb"), $zip->get_file()))	{
 
 
 table_begin("500");
-print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center> <a href=\"$filename\" title='点击右键,选择目标另存为'>数据库己经备份完成,总备份".count($NewTableArray)."个数据表,点击右键选择目标另存为下载数据库SQL文件</a><BR>&nbsp;&nbsp;<input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
+print  "<tr class=\"TableControl\"> <td colspan=\"12\" align=center> <a href=\"$filename\" title='点击右键,选择目标另存为'>数据库已经备份完成,总备份".count($NewTableArray)."个数据表,点击右键选择目标另存为下载数据库SQL文件</a><BR>&nbsp;&nbsp;<input type=button  value=返回 class=BigButton onClick=\"location='?'\" title=返回> </td></tr>";
 table_end();
 
 }
@@ -571,7 +571,7 @@ function PrintError2( $MSG )
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;
 	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
+	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前已经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
 
 	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
 	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;

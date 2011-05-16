@@ -73,7 +73,7 @@
 			}////||substr($Tablename,0,5)=="books"
 
 		}//end for
-		print_infor('您的操作己成功,您可以操作使用其它功能','',"location='?'","?");
+		print_infor('您的操作已成功,您可以操作使用其它功能','',"location='?'","?");
 		exit;
 	}
 

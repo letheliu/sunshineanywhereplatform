@@ -246,13 +246,13 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 			case 7: $星期 = "星期日";break;
 		}
 
-		//形成己加入人员列表
+		//形成已加入人员列表
 		$考勤日期 = 返回目标日期($当前周次,$当前星期);
 		$sql = "select * from edu_xingzheng_paiban where 学期名称='".$当前学期."' and 周次='".$当前周次."' and 班次名称='".$班次名称."' and 考勤日期='$考勤日期' order by 星期 asc";
 		$rs = $db -> Execute($sql);
 		$rs_a = $rs -> GetArray();
 		$排班人员 = $rs_a[0]['排班人员'];
-		$己有人员 = $排班人员;
+		$已有人员 = $排班人员;
 		$排班人员数据K = explode(',',$排班人员);
 ?>
 
@@ -263,7 +263,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 </tr>
 <tr class="TableData">
 <td><font color="red">&nbsp;当前学期:<?=$当前学期;?></font>&nbsp;<BR>&nbsp;<font color="green">当前周次:第<?=$当前周次;?>周</font>&nbsp;<BR>&nbsp;<font color="green">当前星期:<?=$星期;?></font>&nbsp;<BR>&nbsp;<font color="blue">当前班次:<?=$班次名称;?>(<?=$考勤时间段;?>)</font>
-<BR>&nbsp;<font color="blue">己有人员:<?=useridtoname($己有人员);?></font>
+<BR>&nbsp;<font color="blue">已有人员:<?=useridtoname($已有人员);?></font>
 </td>
 </tr>
 <tr class="TableHeader">
@@ -325,7 +325,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 	}
 
 	print "<tr class=TableData><td>";
-	print "己选人员:<BR>".$SHOWTEXT;
+	print "已选人员:<BR>".$SHOWTEXT;
 	print "</td></tr>";
 	print "<tr class=TableData><td>";
 	print "未选人员:<BR>".$SHOWTEXT2;
@@ -412,7 +412,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 			//}
 
 		}
-		print_infor("你的数据己经初始化完成.",'',"location='?当前周次=".$当前周次."'");
+		print_infor("你的数据已经初始化完成.",'',"location='?当前周次=".$当前周次."'");
 		print "<meta http-equiv='refresh' content=0;url='?当前周次=".$当前周次."'>";
 		exit;
 	}
@@ -422,7 +422,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 	//本周有数据,或上周无数据,都会停止导入动作
 	if(sizeof($rs_a)==0||sizeof($rs_a本周)>0)		{
 		//没有记录,不能获取数据
-		$disabled_上周 = "disabled readonly title='本周己经有排班数据或上周无排班数据,不能从上周获取信息'";
+		$disabled_上周 = "disabled readonly title='本周已经有排班数据或上周无排班数据,不能从上周获取信息'";
 	}
 
 
@@ -459,7 +459,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 
 
 		}
-		print_infor("你的数据己经初始化完成.",'',"location='?当前周次=".$当前周次."'");
+		print_infor("你的数据已经初始化完成.",'',"location='?当前周次=".$当前周次."'");
 		print "<meta http-equiv='refresh' content=0;url='?当前周次=".$当前周次."'>";
 		exit;
 	}
@@ -469,7 +469,7 @@ $考勤日期 = 返回目标日期($当前周次,$当前星期);
 	//本周有数据,或上周无数据,都会停止导入动作
 	if(sizeof($rs_a)==0||sizeof($rs_a本周)>0)		{
 		//没有记录,不能获取数据
-		$disabled_前周 = "disabled readonly title='本周己经有排班数据或上周无排班数据,不能从上周获取信息'";
+		$disabled_前周 = "disabled readonly title='本周已经有排班数据或上周无排班数据,不能从上周获取信息'";
 	}
 
 ?>

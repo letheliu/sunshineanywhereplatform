@@ -67,7 +67,7 @@ fclose($handle);
 
 //print_R($_POST);
 
-print_infor("你的数据操作己经成功,请返回","location='?'","location='?'","?");
+print_infor("你的数据操作已经成功,请返回","location='?'","location='?'","?");
 
 exit;
 

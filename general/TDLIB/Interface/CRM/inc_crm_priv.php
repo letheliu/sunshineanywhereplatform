@@ -118,7 +118,7 @@ if($_GET['action']=='DataDeal')					{
 	}
 	$db->Execute($sql);
 
-	print_infor("您的配置己经完成",'',"location='?'","?");
+	print_infor("您的配置已经完成",'',"location='?'","?");
 	exit;
 
 }

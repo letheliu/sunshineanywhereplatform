@@ -75,7 +75,7 @@ if($_GET['action']=='DataDeal')
 	$query = "delete from td_edu.edu_xingzheng_kaoqinbudeng where 编号='$编号'  and 审核状态=0 ";
 	//print_R($_POST);
 	//print $query;exit;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	$db->Execute($query);
 	//dandian_sql_log($connection,$query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?'>\n";
@@ -88,7 +88,7 @@ if($_GET['action2']=='DataDeal')
 	$query = "delete from td_edu.edu_xingzheng_kaoqinbudeng where 编号='$编号'  and 审核状态=0 ";
 	//print_R($_POST);
 	//print $query;exit;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	$db->Execute($query);
 	//dandian_sql_log($connection,$query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?'>\n";
