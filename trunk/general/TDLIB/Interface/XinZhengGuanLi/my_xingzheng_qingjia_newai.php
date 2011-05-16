@@ -29,7 +29,7 @@ if($_GET['action']=='QingJiaDataDeal')				{
 	$query = "insert into td_edu.edu_xingzheng_qingjia values('','$学期名称','$部门','$人员','$日期','$周次','$班次','','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
 	//print_R($_GET);
 	//print $query;exit;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	//exequery($connection,$query);
 	$db->Execute($query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?action=add_default&RUN_ID=$RUN_ID'>\n";
@@ -46,7 +46,7 @@ if($_GET['action']=='QingJiaDelete')				{
 	$编号 = $_GET['编号'];
 	$query = "delete from td_edu.edu_xingzheng_qingjia where 编号='$编号'  and 审核状态='0'";
 	//print $query;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	//exequery($connection,$query);
 	$db->Execute($query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?action=add_default&RUN_ID=$RUN_ID'>\n";
@@ -62,7 +62,7 @@ if($_GET['action2']=='QingJiaDelete')				{
 	$编号 = $_GET['编号'];
 	$query = "delete from td_edu.edu_xingzheng_qingjia where 编号='$编号'  and 审核状态='0'";
 	//print $query;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	//exequery($connection,$query);
 	$db->Execute($query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?RUN_ID=$RUN_ID'>\n";
@@ -127,7 +127,7 @@ if($_GET['action']=='KaoQinBudeng')				{
 	//print_R($_GET);
 	print $query;exit;
 	*/
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	//exequery($connection,$query);
 	//$db->Execute($query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?action=add_default&RUN_ID=$RUN_ID'>\n";
@@ -195,7 +195,7 @@ if($_GET['action']=='add_default')
 	$通过编号		= $ROWXX[0]["编号"];
 
 $请假外出 = "<input type=checkbox name='CHECK_1_".$LINE_COUNTER."_VALUE' checked />请假外出";
-$己申请 = "<input type=checkbox name='CHECK_2_".$LINE_COUNTER."_VALUE' disabled />己申请";
+$已申请 = "<input type=checkbox name='CHECK_2_".$LINE_COUNTER."_VALUE' disabled />已申请";
 
 	print "
 		 <tr class=\"TableData\">
@@ -210,7 +210,7 @@ $己申请 = "<input type=checkbox name='CHECK_2_".$LINE_COUNTER."_VALUE' disabled 
    print "<input size=6 type=hidden class=SmallInput name='NAME_".$LINE_COUNTER."_VALUE' value='1'/>";
 
    if($通过编号!="")	{
-	   print " <a><font color=red>己申请通过</font></a>";
+	   print " <a><font color=red>已申请通过</font></a>";
 	   //$新上班时间 = $日期;
    }
    else
@@ -219,7 +219,7 @@ $己申请 = "<input type=checkbox name='CHECK_2_".$LINE_COUNTER."_VALUE' disabled 
 		   print "<td nowrap align=\"center\">
 		   <a href=\"?action=QingJiaDelete&RUN_ID=$RUN_ID&人员=$人员&班次=$班次&星期=$星期&班次=$班次&日期=$日期&编号=$请假编号&部门=$部门&周次=$周次\">
 		   取消</a>
-		   $己申请</td>";
+		   $已申请</td>";
 		   //$新上班时间 = $日期;
 	   }
 	   else		{

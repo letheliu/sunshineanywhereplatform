@@ -34,7 +34,7 @@ if($_GET['action']=="DeleteCurMonth")					{
 	//exit;
 	print "
 		<table border=0 class=TableBlock width=100% height=20>
-		<tr class=TableHeader><td valign=bottom align=left>当月考勤信息己经被删除,你可以重新导入该月考勤数据,系统返回中...<BR></td></tr>
+		<tr class=TableHeader><td valign=bottom align=left>当月考勤信息已经被删除,你可以重新导入该月考勤数据,系统返回中...<BR></td></tr>
 		</table><BR>
 		";
 	EDU_Indextopage('?',$nums='0');

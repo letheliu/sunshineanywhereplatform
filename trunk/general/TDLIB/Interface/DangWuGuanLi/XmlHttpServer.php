@@ -180,7 +180,7 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 		$sql = "select count(`教室`) as NUM from edu_schedule where `学期`='$CurXueQi' and `班级`='$ClassCode' and `星期`='$Week' and `节次`='$JieCi'";
 		$rs = $db->Execute($sql);
 		if($rs->fields['NUM']>0)		{
-			print $returnText .= "<font color=red><B>* 该教室在该时间己经安按有课程！<BR></B></font><BR>";
+			print $returnText .= "<font color=red><B>* 该教室在该时间已经安按有课程！<BR></B></font><BR>";
 			//重新获取数据
 			$returnCourseStatistics = '';
 			$returnCourseStatistics = returnCourseStatistics($CurXueQi,$ClassCode);
@@ -194,7 +194,7 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 		$sql = "select count(教师) as NUM from edu_schedule where `学期`='$CurXueQi' and `班级`='$ClassCode' and `星期`='$Week' and `节次`='$JieCi' $DanShuangZhouSQL";
 		$rs = $db->Execute($sql);
 		if($rs->fields['NUM']>0)		{
-			print $returnText .= " <font color=red><B>* 该教师在该时间己经安按有课程！</B></font><BR>";
+			print $returnText .= " <font color=red><B>* 该教师在该时间已经安按有课程！</B></font><BR>";
 			//重新获取数据
 			$returnCourseStatistics = '';
 			$returnCourseStatistics = returnCourseStatistics($CurXueQi,$ClassCode);
@@ -217,7 +217,7 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 		}
 
 
-		//形成己排课程的课时安排计划
+		//形成已排课程的课时安排计划
 		//1.查询“2001级一班”的课表信息时显示星期一上午第二节： 课程：语文 　教师：聂海 　教室：1001
 		//2.查询“2001级二班”的课表信息时显示星期一上午第二节： 课程：语文 　教师：聂海 　教室：1111
 		//判断一个老师-班级-教室条件,合班上课时教室只能一个,所以教室要=值判断
@@ -227,10 +227,10 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 		$rs_a = $rs->GetArray();
 		//print_R($rs_a);
 		//exit;
-		//形成己排课程的课时安排计划
+		//形成已排课程的课时安排计划
 		//为了支持合班情况上课,特把判断条件改为:课程,合班时课程为一样的
 		if($rs_a[0]['课程']!=$CourseName&&$rs_a[0]['课程']!="")		{
-			print $returnText .= "<font color=red><B>* ".$TeacherName."老师己经在".$rs_a[0]['教室']."所带\"".$rs_a[0]['课程']."\"课程,不能再安排\"".$CourseName."\"课程同一老师不能在同一时间和教室上不同的课程！<BR>条件冲突,请新排课</B></font><BR>";
+			print $returnText .= "<font color=red><B>* ".$TeacherName."老师已经在".$rs_a[0]['教室']."所带\"".$rs_a[0]['课程']."\"课程,不能再安排\"".$CourseName."\"课程同一老师不能在同一时间和教室上不同的课程！<BR>条件冲突,请新排课</B></font><BR>";
 			//重新获取数据
 			$returnCourseStatistics = '';
 			$returnCourseStatistics = returnCourseStatistics($CurXueQi,$ClassCode);
@@ -239,9 +239,9 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 			exit;
 		}
 
-		//合班时,可以在己经有的课程里面加入其它班级,判断冲突条件为:课程,所以此处判断条件为最多三个班一起上课
+		//合班时,可以在已经有的课程里面加入其它班级,判断冲突条件为:课程,所以此处判断条件为最多三个班一起上课
 		if($rs_a[3]['班级']!="")		{
-			print $returnText .= "<font color=red><B>* ".$TeacherName."老师己经".$rs_a[0]['教室']."所带".$CourseName."课程,上课班级为:".$rs_a[0]['班级'].",".$rs_a[1]['班级'].",".$rs_a[2]['班级']."<BR>条件冲突,请新排课</B></font><BR>";
+			print $returnText .= "<font color=red><B>* ".$TeacherName."老师已经".$rs_a[0]['教室']."所带".$CourseName."课程,上课班级为:".$rs_a[0]['班级'].",".$rs_a[1]['班级'].",".$rs_a[2]['班级']."<BR>条件冲突,请新排课</B></font><BR>";
 			//重新获取数据
 			$returnCourseStatistics = '';
 			$returnCourseStatistics = returnCourseStatistics($CurXueQi,$ClassCode);
@@ -263,7 +263,7 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 			$CheckNumber = $OneClassNumber+$ClassNumber;
 			if($CheckNumber>$ClassroomNumber)			{
 				//将要排进去该班的人数超过该教室最大的容纳数量
-				print "<font color=red><B>教室($fixedClassroom)座位数:$ClassroomNumber,己经安装班级人数:$OneClassNumber,将要安排班级人数:$ClassNumber,合起来为:$CheckNumber,超过该教室的最大容纳值:$ClassroomNumber,故排课失败,如果执行本次操作,请在教室管理里面重新调高教室($fixedClassroom)的座位数($ClassroomNumber),以满足排课条件要求.排课中断</B></font>";
+				print "<font color=red><B>教室($fixedClassroom)座位数:$ClassroomNumber,已经安装班级人数:$OneClassNumber,将要安排班级人数:$ClassNumber,合起来为:$CheckNumber,超过该教室的最大容纳值:$ClassroomNumber,故排课失败,如果执行本次操作,请在教室管理里面重新调高教室($fixedClassroom)的座位数($ClassroomNumber),以满足排课条件要求.排课中断</B></font>";
 				exit;
 			}
 		}
@@ -274,7 +274,7 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 			$CheckNumber = $OneClassNumber+$TwoClassNumber+$ClassNumber;
 			if($CheckNumber>$ClassroomNumber)			{
 				//将要排进去该班的人数超过该教室最大的容纳数量
-				print "<font color=red><B>教室($fixedClassroom)座位数:$ClassroomNumber,己经安装班级人数:".$OneClassNumber."和$TwoClassNumber,将要安排班级人数:$ClassNumber,合起来为:$CheckNumber,超过该教室的最大容纳值:$ClassroomNumber,故排课失败,如果执行本次操作,请在教室管理里面重新调高教室($fixedClassroom)的座位数($ClassroomNumber),以满足排课条件要求.排课中断</B></font>";
+				print "<font color=red><B>教室($fixedClassroom)座位数:$ClassroomNumber,已经安装班级人数:".$OneClassNumber."和$TwoClassNumber,将要安排班级人数:$ClassNumber,合起来为:$CheckNumber,超过该教室的最大容纳值:$ClassroomNumber,故排课失败,如果执行本次操作,请在教室管理里面重新调高教室($fixedClassroom)的座位数($ClassroomNumber),以满足排课条件要求.排课中断</B></font>";
 				exit;
 			}
 		}
@@ -284,7 +284,7 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 
 
 
-		//形成己排课程的课时安排计划
+		//形成已排课程的课时安排计划
 		//处理:按班排课中可以将同一个教室安排2门及以上不同的课程
 		//判断条件:教室,课程,时间,一个教室在同一时间,只允许上同一门课程
 		$sql = "select `课程` as NUM from edu_schedule where `学期`='$CurXueQi' and `教室`='$fixedClassroom' and `课程`!='$CourseName' and `星期`='$Week' and `节次`='$JieCi' $DanShuangZhouSQL";
@@ -294,7 +294,7 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 		//print_R($rs_a);
 		//exit;
 		if(strlen($rs_a[0]['课程'])>0)		{
-			print $returnText .= "<font color=red><B>* 教室:".$fixedClassroom." 课程:".$CourseName." 己经安排有班级上课,一个教室在同一时间,只允许上同一门课程！<BR>条件冲突,请新排课</B></font><BR>";
+			print $returnText .= "<font color=red><B>* 教室:".$fixedClassroom." 课程:".$CourseName." 已经安排有班级上课,一个教室在同一时间,只允许上同一门课程！<BR>条件冲突,请新排课</B></font><BR>";
 			//重新获取数据
 			$returnCourseStatistics = '';
 			$returnCourseStatistics = returnCourseStatistics($CurXueQi,$ClassCode);
@@ -302,7 +302,7 @@ if($_GET['action']=="Schedule"&&$_GET['selectName']!="")
 			print $returnCourseStatistics;
 			exit;
 		}
-		//形成己排课程的课时安排计划
+		//形成已排课程的课时安排计划
 
 		//安排课程信息
 		$sql = "insert into edu_schedule values('','$CurXueQi','$ClassCode','$fixedClassroom','$TeacherName','$CourseName','$Week','$JieCi','$DanShuangInsert','$TeacherCode');";
@@ -400,7 +400,7 @@ else		{
 
 function returnCourseStatistics($CurXueQi,$ClassCode)		{
 	global $db;
-	//对己经安排的课程进行初始化操作
+	//对已经安排的课程进行初始化操作
 	$sql = "select * from edu_schedule where `学期`='$CurXueQi' and `班级`='$ClassCode'";
 	$rs = $db->Execute($sql);
 	$rs_a = $rs->GetArray();
@@ -431,15 +431,4 @@ function returnCourseStatistics($CurXueQi,$ClassCode)		{
 	//print $Text;
 	return $Text;
 }
-?><?
-/*
-	版权归属:郑州单点科技软件有限公司;
-	联系方式:0371-69663266;
-	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
-
-	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
-	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
-	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
 ?>

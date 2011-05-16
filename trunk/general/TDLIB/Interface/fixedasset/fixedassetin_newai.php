@@ -38,12 +38,35 @@ if($_GET['action']=="add_default_data")		{
 		for($i=1;$i<=$数量;$i++)			{
 
 			//得到资产编号
-			$sql = "select 资产编号 from fixedasset order by 编号 desc limit 1";
+			$sql = "select * from fixedasset where 资产名称='$采购标识' and 所属状态!='资产已报废' order by 编号 desc limit 1";
 			$rs = $db->Execute($sql);
 			$资产编号 = $rs->fields['资产编号'];
+			//print $资产编号;
 			if($资产编号!="")			{
-				$资产编号  = $资产编号+1;
-				$资产名称 = $采购标识;//."".date("Ymd")
+				$资产编号前缀 = substr($资产编号,0,-3);
+				$资产编号后缀 = substr($资产编号,-3);
+				$资产编号后缀 = (int)$资产编号后缀;
+				$资产编号后缀  = $资产编号后缀+1;
+				if($资产编号后缀>0)			{
+					switch(strlen($资产编号后缀))		{
+						case 3:
+							$资产编号后缀  = $资产编号后缀+1;
+							break;
+						case 2:
+							$资产编号后缀  = "0".$资产编号后缀;
+							break;
+						case 1:
+							$资产编号后缀  = "00".$资产编号后缀;
+							break;
+					}
+
+					$资产编号  = $资产编号前缀.$资产编号后缀;
+				}
+				else	{
+					$资产编号  = $资产编号."001";
+				}
+				$资产名称 = $采购标识;
+				//."".date("Ymd")
 			}
 			else	{
 				$资产编号1 = substr($资产编号,0,10);
@@ -59,8 +82,10 @@ if($_GET['action']=="add_default_data")		{
 			$金额 = $单价*$数量;
 			//处理固定资产表的数据
 			$sql = "insert into fixedasset
-				(资产名称,资产编号,资产类别,采购标识,所属部门,所属状态,创建人,创建时间,单价,数量,金额)
-				values('$资产名称','$资产编号','$资产类别','$采购标识','$所属部门','购置未分配','$创建人','$创建时间','$单价','$数量','$金额');";
+				(资产名称,资产编号,资产类别,采购标识,所属部门,所属状态,创建人,创建时间,单价,数量,金额,规格型号,单位,资产批次)
+				values('$资产名称','$资产编号','".$rs->fields['资产类别']."','$采购标识','$所属部门','购置未分配','$创建人','$创建时间','$单价','$数量','$金额','".$rs->fields['规格型号']."','".$rs->fields['单位']."','".$rs->fields['资产批次']."');";
+
+			//print $sql;exit;
 			$db->Execute($sql);
 
 			//处理固定资产采购表的数据
@@ -71,7 +96,7 @@ if($_GET['action']=="add_default_data")		{
 			//print $sql."<BR>";
 		}
 		//print_R($_POST);exit;
-		print_infor("你的操作己经完成!",$infor='trip',$return="location='fixedasset_newai.php?'",$indexto='fixedasset_newai.php');
+		print_infor("你的操作已经完成!",$infor='trip',$return="location='fixedasset_newai.php?'",$indexto='fixedasset_newai.php');
 
 
 		//Array ( [采购标识] => 台式电脑 [数量] => 6 [所属部门] => 行政管理部 [批准人_ID] => admin [批准人] => 系统管理员 [备注] => [创建人] => admin [创建时间] => 2009-08-27 16:52:16 [submit] => 保存 )
@@ -91,15 +116,4 @@ if($_GET['action']=="add_default_data")		{
 
 $filetablename='fixedassetin';
 require_once('include.inc.php');
-?><?
-/*
-	版权归属:郑州单点科技软件有限公司;
-	联系方式:0371-69663266;
-	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
-
-	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
-	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
-	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
 ?>

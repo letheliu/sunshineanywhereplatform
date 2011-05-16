@@ -32,7 +32,7 @@ if($_GET['action']=='BuXiuDelete')				{
 	$query = "update td_edu.edu_xingzheng_jiabanbuxiu set 补休时间='0000-00-00' where 编号='$编号'";
 	//print_R($_POST);
 	//print $query;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	$db->Execute($query);
 	//exequery($connection,$query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?action=buxiuaction&RUN_ID=$RUN_ID'>\n";
@@ -102,7 +102,7 @@ if($_GET['action']=='BuXiuDataDeal')				{
 	$query = "update td_edu.edu_xingzheng_jiabanbuxiu set 补休时间='$补休时间',补休班次='$补休班次',补休工作流ID号='$RUN_ID' where 编号='$编号'";
 	//print_R($_POST);
 	//print $query;exit;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	$db->Execute($query);
 	//exequery($connection,$query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?RUN_ID=$RUN_ID'>\n";
@@ -179,7 +179,7 @@ if($_GET['action']=='buxiuaction')
    <td nowrap align=\"center\">";
    print "<input size=6 type=hidden class=SmallInput name='NAME_".$LINE_COUNTER."_VALUE' value='1'/>";
    if($补休时间!="")	{
-	   print "&nbsp;己申请 <a href=\"?action=BuXiuDelete&RUN_ID=$RUN_ID&人员=$人员&部门=$部门&星期=$星期&班次=$加班班次&日期=$加班时间&编号=$编号\" >删除</a>";
+	   print "&nbsp;已申请 <a href=\"?action=BuXiuDelete&RUN_ID=$RUN_ID&人员=$人员&部门=$部门&星期=$星期&班次=$加班班次&日期=$加班时间&编号=$编号\" >删除</a>";
 	   //$补休时间 = $日期;
    }
    else		{
@@ -249,7 +249,7 @@ if($_GET['action']=='JiaBanDataDeal')				{
 	$query = "insert into td_edu.edu_xingzheng_jiabanbuxiu values('','$学期名称','$部门','$人员','$加班时间','$加班班次','$补休时间','$补休班次','0','$RUN_ID','$审核人','$审核时间','0','','','','".$_SESSION['LOGIN_USER_ID']."');";
 	//print_R($_POST);
 	//print $query;exit;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	//exequery($connection,$query);
 	$db->Execute($query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?action=add_default&RUN_ID=$RUN_ID'>\n";
@@ -265,7 +265,7 @@ if($_GET['action']=='JiaBanDelete')				{
 	$query = "delete from td_edu.edu_xingzheng_jiabanbuxiu where 编号='$编号' and 加班班次='$班次' and 学期='$学期名称' and 人员='$人员' and 加班审核状态='0' and 加班工作流ID号='$RUN_ID' ";
 	//print_R($_POST);
 	//print $query;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	$db->Execute($query);
 	//exequery($connection,$query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?action=add_default&RUN_ID=$RUN_ID'>\n";
@@ -280,7 +280,7 @@ if($_GET['action2']=='JiaBanDelete')				{
 	$query = "delete from td_edu.edu_xingzheng_jiabanbuxiu where 编号='$编号'  ";
 	//print_R($_POST);
 	//print $query;exit;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	$db->Execute($query);
 	//exequery($connection,$query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?RUN_ID=$RUN_ID'>\n";
@@ -393,13 +393,13 @@ if($_GET['action']=='add_default')
 
 	
 			   if($通过编号!="")	{
-				   print "<a><font color=red>己申请通过<font></a>";
+				   print "<a><font color=red>已申请通过<font></a>";
 				   $补休时间 = $日期;
 			   }
 			   else
 			   {
 			   	   if($编号!="")	{
-					   print "&nbsp;己申请 <a href=\"?action=JiaBanDelete&RUN_ID=$RUN_ID&人员=$人员&班次=$班次&星期=$星期&部门=$部门&日期=$日期&编号=$编号\" >删除</a>";
+					   print "&nbsp;已申请 <a href=\"?action=JiaBanDelete&RUN_ID=$RUN_ID&人员=$人员&班次=$班次&星期=$星期&部门=$部门&日期=$日期&编号=$编号\" >删除</a>";
 					   $补休时间 = $日期;
 				   }
 				   else		{

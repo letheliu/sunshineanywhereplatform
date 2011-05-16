@@ -50,7 +50,7 @@ if($_GET['action']=='TiaoKeDataDeal')				{
 	}
 	//print_R($_POST);
 	//print $query;exit;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	$db->Execute($query);
 	//exequery($connection,$query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?action=add_default&RUN_ID=$RUN_ID'>\n";
@@ -66,7 +66,7 @@ if($_GET['action']=='TiaoKeDelete')				{
 	$query = "delete from td_edu.edu_xingzheng_tiaobanxianghu where 编号='$编号' and 原班次='$班次' and 学期='$学期名称' and 审核状态='0'";
 	//print_R($_POST);
 	//print $query;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	$db->Execute($query);
 	//exequery($connection,$query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?action=add_default&RUN_ID=$RUN_ID'>\n";
@@ -81,7 +81,7 @@ if($_GET['action2']=='TiaoKeDelete')				{
 	$query = "delete from td_edu.edu_xingzheng_tiaobanxianghu where 编号='$编号'  and 审核状态='0'";
 	//print_R($_POST);
 	//print $query;
-	print "<BR><BR><div align=center><font color=green>你的操作己经处理!</font></div>";
+	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	$db->Execute($query);
 	//exequery($connection,$query);
 	print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?RUN_ID=$RUN_ID'>\n";

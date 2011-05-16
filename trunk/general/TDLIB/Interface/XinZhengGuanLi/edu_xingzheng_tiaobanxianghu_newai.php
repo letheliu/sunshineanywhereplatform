@@ -44,7 +44,7 @@ if($_GET['action']=="operation_piliangtongguo"&&$_GET['selectid']!="")			{
 	}
 	$pageid = $_GET['pageid'];
 	page_css("相互调班审批");
-	print_nouploadfile("你的数据操作己经成功!");
+	print_nouploadfile("你的数据操作已经成功!");
 	echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?pageid=$pageid'>\n";
 	exit;
 }

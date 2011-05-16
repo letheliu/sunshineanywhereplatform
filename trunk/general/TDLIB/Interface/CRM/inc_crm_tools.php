@@ -41,7 +41,7 @@ if($_GET['action']=="转移用户A的客户所有相关信息给用户B")								{
 		$sql = "update crm_service set 创建人='$用户B_ID' where 创建人='$用户A_ID'";
 		$db->Execute($sql);		print $sq."<BR>";
 
-		print_infor("您的操作己经完成,请返回!&nbsp;&nbsp;",'',"location='?'","?",1);
+		print_infor("您的操作已经完成,请返回!&nbsp;&nbsp;",'',"location='?'","?",1);
 		exit;
 	}
 	else	{
@@ -69,7 +69,7 @@ if($_GET['action']=="处理单一客户转给某用户")								{
 		$sql = "update crm_service set 创建人='$用户名' where 客户名称='$客户名称'";
 		$db->Execute($sql);		print $sq."<BR>";
 
-		print_infor("您的操作己经完成,请返回!&nbsp;&nbsp;",'',"location='?'","?",1);
+		print_infor("您的操作已经完成,请返回!&nbsp;&nbsp;",'',"location='?'","?",1);
 		exit;
 	}
 	else	{

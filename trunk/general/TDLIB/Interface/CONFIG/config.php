@@ -54,7 +54,7 @@ if($_GET['action2']=="恢复初始化状态")			{
 			where 目录='$FileDirName' and 表='$Tablename' and 对象='$FileIniname' and 视图='$action'";
 	$rs		= $db->Execute($sql);
 	$actionURL = "?".base64_encode("XX=XX&action=".$_GET['action']."&Tablename=".$_GET['Tablename']."&FileIniname=".$_GET['FileIniname']."&FileDirName=".$_GET['FileDirName']."&actionconfig=".$_GET['actionconfig']."&GOBACKFILENAME=".$_GET['GOBACKFILENAME']."&XX=XX")."";
-	print_infor("你己经清除当前模块配置信息.","","location='$actionURL'",$actionURL);
+	print_infor("你已经清除当前模块配置信息.","","location='$actionURL'",$actionURL);
 	exit;
 }
 
@@ -67,7 +67,7 @@ if($_GET['actionconfig']=="config_data")			{
 			where 目录='$FileDirName' and 表='$Tablename' and 对象='$FileIniname' and 视图='$action'";
 	$rs		= $db->Execute($sql);
 	$rs_a	= $rs->GetArray();
-	$己有字段	= $rs_a[0]['字段'];
+	$已有字段	= $rs_a[0]['字段'];
 	$其它信息	= $rs_a[0]['其它'];
 	$action		= $_GET['action'];
 	$NewArray	= array();
@@ -116,7 +116,7 @@ if($_GET['actionconfig']=="config_data")			{
 
 	//对最后落实显示的字段进行自定义排序操作
 	$action_orderindex = $_POST['action_orderindex'];
-	//对排序信息进行排序,得到的值是己经排好的,得到的KEYS值是对应字段的索引
+	//对排序信息进行排序,得到的值是已经排好的,得到的KEYS值是对应字段的索引
 	@asort($action_orderindex);
 	$action_orderindex_KEYS = array_keys($action_orderindex);
 	//print_R($action_orderindex);
@@ -167,7 +167,7 @@ if($_GET['actionconfig']=="config_data")			{
 
 	$其它信息 = serialize($其它);
 
-	if($己有字段=="")		{
+	if($已有字段=="")		{
 		$sql = "insert into systemprivateconfig values('','$FileDirName','$Tablename','$FileIniname','$action','$更新字段','$其它信息','".$_SESSION['LOGIN_USER_ID']."','".date("Y-m-d H:i:s")."');";
 	}
 	else	{
@@ -184,7 +184,7 @@ if($_GET['actionconfig']=="config_data")			{
 	//print_R($_GET);print_R($_POST);print_R($NewArray);
 	//print $sql;
 	$actionURL = "../$FileDirName/$GOBACKFILENAME";
-	print_infor("你的设置己经完成,请返回[系统设置最迟在150秒后生效].","","location='$actionURL'",$actionURL);
+	print_infor("你的设置已经完成,请返回[系统设置最迟在150秒后生效].","","location='$actionURL'",$actionURL);
 	exit;
 }
 
@@ -212,19 +212,19 @@ if($_GET['actionconfig']=="config")			{
 			where 目录='$FileDirName' and 表='$Tablename' and 对象='$FileIniname' and 视图='$action'";
 	$rs = $db->Execute($sql);
 	$rs_a = $rs->GetArray();
-	$己有字段 = $rs_a[0]['字段'];
+	$已有字段 = $rs_a[0]['字段'];
 	$其它 = $rs_a[0]['其它'];
 	$其它信息 = unserialize($其它);
 	//没有时全部显示
-	if($己有字段=='')				{
-		$己有字段 = $file_ini['showlistfieldlist'];
+	if($已有字段=='')				{
+		$已有字段 = $file_ini['showlistfieldlist'];
 		$配置信息TEXT = "<font color=gray>现有状态:本模块不存在配置信息</font>";
 	}
 	else	{
-		//己经有配置信息
-		$配置信息TEXT = "<font color=green>本模块己经存在配置信息,</font><a href=\"javascript:if(confirm('你真的想要恢复初始化状态吗？'))location='?".base64_encode("XX=XX&action2=恢复初始化状态&action=".$_GET['action']."&Tablename=".$_GET['Tablename']."&FileIniname=".$_GET['FileIniname']."&FileDirName=".$_GET['FileDirName']."&actionconfig=".$_GET['actionconfig']."&GOBACKFILENAME=".$_GET['GOBACKFILENAME']."&XX=XX")."'\" title='如果你对当前模块己有配置信息不满意,可以清除配置,恢复初始化状态'>点击恢复初始化状态</a>";
+		//已经有配置信息
+		$配置信息TEXT = "<font color=green>本模块已经存在配置信息,</font><a href=\"javascript:if(confirm('你真的想要恢复初始化状态吗？'))location='?".base64_encode("XX=XX&action2=恢复初始化状态&action=".$_GET['action']."&Tablename=".$_GET['Tablename']."&FileIniname=".$_GET['FileIniname']."&FileDirName=".$_GET['FileDirName']."&actionconfig=".$_GET['actionconfig']."&GOBACKFILENAME=".$_GET['GOBACKFILENAME']."&XX=XX")."'\" title='如果你对当前模块已有配置信息不满意,可以清除配置,恢复初始化状态'>点击恢复初始化状态</a>";
 	}
-	$己有字段Array = explode(',',$己有字段);
+	$已有字段Array = explode(',',$已有字段);
 
 
 
@@ -436,12 +436,12 @@ if($_GET['actionconfig']=="config")			{
 	}
 
 	//得到行排序的值
-	$己有字段Array反序 = array_flip($己有字段Array);
-	$行排序值 = $己有字段Array反序[$FieldIndex];
+	$已有字段Array反序 = array_flip($已有字段Array);
+	$行排序值 = $已有字段Array反序[$FieldIndex];
 	$行排序值TEXT = "<td>&nbsp;<input name='action_orderindex[]' type=input size=3 class=SmallInput value='".$行排序值."' checked></td>";
 
 		if($PRINT_MODE == "CONFIG")							{
-			if(in_array($FieldIndex,$己有字段Array))		{
+			if(in_array($FieldIndex,$已有字段Array))		{
 				$checkbox = "checked";
 			}
 			else		{
@@ -475,15 +475,4 @@ if($_GET['actionconfig']=="config")			{
 }
 
 //print_R($_GET);
-?><?
-/*
-	版权归属:郑州单点科技软件有限公司;
-	联系方式:0371-69663266;
-	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
-
-	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
-	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
-	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
 ?>

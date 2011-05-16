@@ -46,7 +46,7 @@
 		$_POST['单价'] = number_format($_POST['单价'], 2, '.', '');
 	}
 
-	$_GET['所属状态'] = "购置未分配,购置已分配,资产已分配,资产己归还";
+	$_GET['所属状态'] = "购置未分配,购置已分配,资产已分配,资产已归还";
 
 	$filetablename='fixedasset';
 	require_once('include.inc.php');

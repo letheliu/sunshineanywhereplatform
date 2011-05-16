@@ -18,7 +18,7 @@ require_once("systemprivateinc.php");
 //######################教育组件-权限较验部分##########################
 
 
-//作用:只用于同步考勤机数据到edu_teacherkaoqin表,注:己经在教师考勤中实现,此处属于备份使用
+//作用:只用于同步考勤机数据到edu_teacherkaoqin表,注:已经在教师考勤中实现,此处属于备份使用
 //2010-2-26修改
 
 $CurXueQi = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");

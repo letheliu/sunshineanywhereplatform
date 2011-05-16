@@ -80,8 +80,8 @@ print "
 </tr>
 <tr class=TableHeader>
 <td nowrap>行政人员姓名</td><td nowrap>总需考勤次数</td>
-<td nowrap>上班己考勤</td><td nowrap>上班考勤缺</td>
-<td nowrap>下班己考勤</td><td nowrap>下班考勤缺</td>
+<td nowrap>上班已考勤</td><td nowrap>上班考勤缺</td>
+<td nowrap>下班已考勤</td><td nowrap>下班考勤缺</td>
 <td colspan=1>点击查阅明细</td>
 </tr>
 ";
@@ -98,9 +98,9 @@ for($i=0;$i<sizeof($rs_a);$i++)						{
 	print "<tr class=TableData>
 	<td colspan=1>$真实姓名</td>
 	<td colspan=1><a href=\"?".base64_encode("action=StaticSingleTeacher&开始时间=$开始时间&结束时间=$结束时间&真实姓名=$真实姓名&TYPE=总需考勤次数")."\" target=_blank>".$TextX['总需考勤次数']."</a></td>
-	<td colspan=1><a href=\"?".base64_encode("action=StaticSingleTeacher&开始时间=$开始时间&结束时间=$结束时间&真实姓名=$真实姓名&TYPE=上班己考勤,考勤补登")."\" target=_blank><font color=red>".$TextX['上班己考勤']."</font></a></td>
+	<td colspan=1><a href=\"?".base64_encode("action=StaticSingleTeacher&开始时间=$开始时间&结束时间=$结束时间&真实姓名=$真实姓名&TYPE=上班已考勤,考勤补登")."\" target=_blank><font color=red>".$TextX['上班已考勤']."</font></a></td>
 	<td colspan=1><a href=\"?".base64_encode("action=StaticSingleTeacher&开始时间=$开始时间&结束时间=$结束时间&真实姓名=$真实姓名&TYPE=上班考勤缺")."\" target=_blank>".$TextX['上班考勤缺']."</a></td>
-	<td colspan=1><a href=\"?".base64_encode("action=StaticSingleTeacher&开始时间=$开始时间&结束时间=$结束时间&真实姓名=$真实姓名&TYPE=下班己考勤,考勤补登")."\" target=_blank><font color=red>".$TextX['下班己考勤']."</font></a></td>
+	<td colspan=1><a href=\"?".base64_encode("action=StaticSingleTeacher&开始时间=$开始时间&结束时间=$结束时间&真实姓名=$真实姓名&TYPE=下班已考勤,考勤补登")."\" target=_blank><font color=red>".$TextX['下班已考勤']."</font></a></td>
 	<td colspan=1><a href=\"?".base64_encode("action=StaticSingleTeacher&开始时间=$开始时间&结束时间=$结束时间&真实姓名=$真实姓名&TYPE=下班考勤缺")."\" target=_blank>".$TextX['下班考勤缺']."</a></td>
 	<td colspan=1><a href=\"?".base64_encode("action=StaticSingleTeacher&开始时间=$开始时间&结束时间=$结束时间&真实姓名=$真实姓名&TYPE=总需考勤次数")."\" target=_blank>点击查阅明细</a></td>
 	</tr>";
@@ -241,13 +241,13 @@ switch($TYPE)		{
 	case '总需考勤次数':
 		$AddSql = "";
 		break;
-	case '上班己考勤':
+	case '上班已考勤':
 		$AddSql = " and (上班考勤状态 = '正常刷卡' or 上班考勤状态 = '上班迟到')";
 		break;
 	case '上班考勤缺':
 		$AddSql = " and (上班考勤状态 = '' or 上班考勤状态 = '上班缺打卡' or 上班考勤状态 = '旷工')";
 		break;
-	case '下班己考勤':
+	case '下班已考勤':
 		$AddSql = " and (下班考勤状态 = '正常刷卡' or 下班考勤状态 = '下班早退' )";
 		break;
 	case '下班考勤缺':
@@ -328,7 +328,7 @@ if($_GET['action']=="init_default"||$_GET['action']=="")					{
 
 			[<a href=\"?".base64_encode("action=StaticAllFenLei&Month=$DateMonth")."\" >该月考勤统计数据</a>]
 
-			[需要考勤".$Number."条,己完成".$Number2."条]";
+			[需要考勤".$Number."条,已完成".$Number2."条]";
 			print "<BR>";
 
 		}
@@ -468,25 +468,14 @@ function returnKaoQinMingXi($人员,$开始时间='',$结束时间='')		{
 	$rs = $db->CacheExecute(150,$sql);
 	$rs_a = $rs->GetArray();
 	$Number3 = $rs_a[0]['NUM'];
-	//$Text = "总需考勤次数:".$Number1." 上班己考勤:".$Number2." 缺".($Number1-$Number2)." 下班己考勤:".$Number3." 缺".($Number1-$Number3)."";
+	//$Text = "总需考勤次数:".$Number1." 上班已考勤:".$Number2." 缺".($Number1-$Number2)." 下班已考勤:".$Number3." 缺".($Number1-$Number3)."";
 	$Text['总需考勤次数'] = $Number1;
-	$Text['上班己考勤'] = $Number2;
+	$Text['上班已考勤'] = $Number2;
 	$Text['上班考勤缺'] = $Number1-$Number2;
-	$Text['下班己考勤'] = $Number3;
+	$Text['下班已考勤'] = $Number3;
 	$Text['下班考勤缺'] = $Number1-$Number3;
 	return $Text;
 
 }
 
-?><?
-/*
-	版权归属:郑州单点科技软件有限公司;
-	联系方式:0371-69663266;
-	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
-
-	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
-	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
-	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
 ?>

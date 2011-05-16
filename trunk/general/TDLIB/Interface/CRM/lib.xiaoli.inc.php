@@ -182,7 +182,7 @@ function 修正教师停课复课操作信息()  {
 		$课程		= $rsX_a[$XX]['课程'];
 		//无论状态如何,都要先进行赋0000-00-00操作
 		if($编号!=""&&$复课审核状态!='1')			{
-			//删除的操作很少见,加入此操作是因为之前初始化时把己经停课的记录重新加入到考勤列表中去,现在重新过滤出去
+			//删除的操作很少见,加入此操作是因为之前初始化时把已经停课的记录重新加入到考勤列表中去,现在重新过滤出去
 			//停课复课的操作是通过把日期改为0000-00-00的形式来实现的,而不是删除和新增操作,是一个零和的操作,不会新带来数据或减少数据
 			$sql = "update edu_teacherkaoqinmingxi
 					set 应该填写时间='0000-00-00',考勤日期='0000-00-00',最迟填写时间='0000-00-00'
@@ -239,7 +239,7 @@ function 修正教师停课复课操作信息()  {
 			$最迟填写时间 = date("Y-m-d",mktime(1,1,1,$新上课时间Array[1],$新上课时间Array[2]+5,$新上课时间Array[0]));
 			$星期 = date("w",mktime(1,1,1,$新上课时间Array[1],$新上课时间Array[2],$新上课时间Array[0]));
 			$sql = "update edu_teacherkaoqinmingxi set 周次='$周次',星期='$星期',应该填写时间='$新上课时间',考勤日期='$新上课时间',节次='$新节次',最迟填写时间='$最迟填写时间' $TempSQL where 班级='$班级' and 课程='$课程' and 教师姓名='$教师' and 教师用户名='$教师用户名' and 节次='$原节次' and 考勤日期='0000-00-00'";
-			//删除的操作很少见,加入此操作是因为之前初始化时把己经停课的记录重新加入到考勤列表中去,现在重新过滤出去
+			//删除的操作很少见,加入此操作是因为之前初始化时把已经停课的记录重新加入到考勤列表中去,现在重新过滤出去
 			//停课复课的操作是通过把日期改为0000-00-00的形式来实现的,而不是删除和新增操作,是一个零和的操作,不会新带来数据或减少数据
 			$db->Execute($sql);
 			global $SHOWTEXT; if($SHOWTEXT)print "<BR>修正教师停课复课操作信息:".$sql."<BR>";
@@ -545,7 +545,7 @@ function 教务科调课()		{
 		$sql = "update edu_schedulechange set 执行状态='1' where 流水号='$流水号'";
 		$db->Execute($sql);
 		global $SHOWTEXT; if($SHOWTEXT)print $sql."<BR>";
-		//去除教师考勤信息里面的己经有的值
+		//去除教师考勤信息里面的已经有的值
 		$sql = "delete from edu_teacherkaoqinmingxi where 教师用户名='$原教师用户名' and 教师姓名='$原教师' and 考勤日期>='$执行时间' and 课程='$原课程' and 班级='$原班级'";
 		$db->Execute($sql);
 	    global $SHOWTEXT; if($SHOWTEXT)print $sql."<BR>";
@@ -598,12 +598,12 @@ function FenDuanJiaoXuePlanExec($学期,$周次)		{
 		$教师用户名X = $rs->fields['教师用户名'];
 		$课程X = $rs->fields['课程'];
 		global $SHOWTEXT; if($SHOWTEXT)print "<font color=green>周次:$周次 ".$sql."</font><BR>";
-		//去除教师考勤信息里面的己经有的值
+		//去除教师考勤信息里面的已经有的值
 		global $SHOWTEXT; if($SHOWTEXT)print "<font color=red>教师:$教师 课程:$课程 课程X:$课程X 教师X:$教师X 周次:$周次 </font><BR>";
 		if($教师X!=""&&$课程X!=""&&($教师X!=$教师||$课程X!=$课程))		{
 			global $SHOWTEXT; if($SHOWTEXT)print "<font color=red>教师:$教师 课程:$课程 课程X:$课程X 教师X:$教师X 周次:$周次 </font><BR>";
 
-			//清除掉己经存在于课表的数据,为新的周次信息加入留出空间
+			//清除掉已经存在于课表的数据,为新的周次信息加入留出空间
 			//为某一班级,在某一时间段内上课信息,教师,课程,教室信息有所变化
 			$sql = "delete from edu_schedule where 教师用户名='$教师用户名X' and 学期='$学期' and 班级='$班级' and 星期='$星期' and 节次='$节次' $AddSql";
 			$db->Execute($sql);
@@ -642,12 +642,12 @@ function FenDuanJiaoXuePlanExec($学期,$周次)		{
 		$班级X = $rs->fields['班级'];
 		$课程X = $rs->fields['课程'];
 		global $SHOWTEXT; if($SHOWTEXT)print "<font color=green>周次:$周次 ".$sql."</font><BR>";
-		//去除教师考勤信息里面的己经有的值
+		//去除教师考勤信息里面的已经有的值
 		global $SHOWTEXT; if($SHOWTEXT)print "<font color=red>班级:$班级 课程:$课程 课程X:$课程X 班级X:$班级X 周次:$周次 </font><BR>";
 		if($班级X!=""&&$课程X!=""&&($班级X!=$班级||$课程X!=$课程))		{
 			global $SHOWTEXT; if($SHOWTEXT)print "<font color=red>班级:$班级 课程:$课程 课程X:$课程X 班级X:$班级X 周次:$周次 </font><BR>";
 
-			//清除掉己经存在于课表的数据,为新的周次信息加入留出空间
+			//清除掉已经存在于课表的数据,为新的周次信息加入留出空间
 			//为某一班级,在某一时间段内上课信息,班级,课程,教室信息有所变化
 			$sql = "delete from edu_schedule where 教师用户名='$教师用户名X' and 学期='$学期' and 班级='$班级X' and 星期='$星期' and 节次='$节次' $AddSql";
 			$db->Execute($sql);
@@ -1135,8 +1135,8 @@ function   Init_Teacher_KaoQin_Data($节假日调课_调整后时间,$默认教师名称,$教师用
 	$学期开始时间 = $rs->fields['开始时间'];
 	$学期结束时间 = $rs->fields['结束时间'];
 	if($节假日调课_调整后时间>$学期结束时间&&$CurXueQi!="")			{
-		//表示此学期己经结束,不在有效学期时间之内,不进行初始化操作
-		//print "$节假日调课_调整后时间 表示此学期己经结束,不在有效学期时间之内,不进行初始化操作";
+		//表示此学期已经结束,不在有效学期时间之内,不进行初始化操作
+		//print "$节假日调课_调整后时间 表示此学期已经结束,不在有效学期时间之内,不进行初始化操作";
 		//清除多余的数据
 		$sql = "delete from edu_teacherkaoqinmingxi where 学期='$CurXueQi' and 考勤日期>'$学期结束时间'";
 		$db->Execute($sql);
@@ -1215,7 +1215,7 @@ function   Init_Teacher_KaoQin_Data($节假日调课_调整后时间,$默认教师名称,$教师用
 			$WeekDaySchedule = array();
 			$WeekDaySchedule = $ReturnTeacherSchedule[$TargetWeekDay];
 			//print_R($TargetWeekDay);print_R($WeekDaySchedule);exit;
-			global $SHOWTEXT; if($SHOWTEXT)print "<BR>星期:$TargetWeekDay [节假日]当天课表数组信息 $节假日调课_调整后时间 $节假日调课_原上课时间 己省不显示<BR>";
+			global $SHOWTEXT; if($SHOWTEXT)print "<BR>星期:$TargetWeekDay [节假日]当天课表数组信息 $节假日调课_调整后时间 $节假日调课_原上课时间 已省不显示<BR>";
 			//global $SHOWTEXT; if($SHOWTEXT)print_R($WeekDaySchedule);
 			global $SHOWTEXT; if($SHOWTEXT)print "<BR>当天时间:$节假日调课_调整后时间 上课日期:$节假日调课_原上课时间 ";
 			//昨到这一天的节次信息
@@ -1362,7 +1362,7 @@ function   Init_Teacher_KaoQin_Data($节假日调课_调整后时间,$默认教师名称,$教师用
 						$db->Execute($sql);
 					}
 					else	{
-						$sql = "数据己经存在 ".$sql;
+						$sql = "数据已经存在 ".$sql;
 					}
 					global $SHOWTEXT; if($SHOWTEXT)print "<BR><font color=red>-----------$sql </font><BR>";
 					//print_R($Element['节次']);print "教师:".$真实姓名.",班级:".$班级.",课程:".$课程.",星期:".$TargetWeekDay.",节次:$节次<BR>";
@@ -1558,7 +1558,7 @@ function DealTimeJieCiXiaKe($教师姓名,$教师用户名,$考勤日期,$时间)		{
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;
 	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
+	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前已经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
 
 	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
 	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
