@@ -56,7 +56,7 @@ for($i=0;$i<sizeof($listarray);$i++)		{
 
 	//过滤用户是否为可编辑选项
 	if(sizeof($PrivateElementArray)>0&&$PrivateElementArray[0]!="")	{
-		//己经定义，按定义值处理
+		//已经定义，按定义值处理
 		//||$USER_PRIV==1||$USER_PRIV==2||$USER_PRIV==3 定义管理员和总经理为可写权限 经理秘书通过权限书写解决
 		if(in_array($USER_PRIV,$PrivateElementArray)||$USER_PRIV==1||$USER_PRIV==2||$USER_PRIV==3)		{
 			$SYSTEM_PRIVATE_USER_DEFINE_CONTROL = 0;
@@ -747,7 +747,7 @@ function show_search_element($mark)	{
 		//&&$FileDirName=="Teacher" 只有在Teacher目录下面使用 2010-9-25 正常使用
 		//用于PGSQL下面不进行数据较验
 		//print $_SESSION['LOGIN_USER_ID'];
-		//如果强制GET变量己经进行过预定义,那么沿用预定义内容进行 2010-9-2
+		//如果强制GET变量已经进行过预定义,那么沿用预定义内容进行 2010-9-2
 		$GET参数值 = explode(',',$_GET[$index_name]);
 		global $_GET权限限制变量值;//2010-9-25定义权限限制变量名称
 		$GET参数值_权限限制变量值 = explode(',',$_GET权限限制变量值[$index_name]);
@@ -763,7 +763,7 @@ function show_search_element($mark)	{
 			$sql_parent = "select DISTINCT $index_name from $tablename where $index_name in ($附加判断条件) order by $index_name";
 		}
 		//print $sql_parent."<BR>";
-		//以下数据形成从己经有的数据里面生成
+		//以下数据形成从已经有的数据里面生成
 		$rs_parent = $db->CacheExecute(150,$sql_parent);
 		$rs_parent_Array = $rs_parent->GetArray();
 
@@ -777,7 +777,7 @@ function show_search_element($mark)	{
 		$fieldid=$columns_["".$temp_array[2].""];
 		$fieldname=$columns_["".$temp_array[3].""];
 		//##############################################################################
-		//2008-10-30$temp_array[4]和$temp_array[5]的使用用途己经遗忘,记起来时则补回来.
+		//2008-10-30$temp_array[4]和$temp_array[5]的使用用途已经遗忘,记起来时则补回来.
 		//##############################################################################
 		if($temp_array[4]!=""&&$temp_array[5]!=""&&strlen($temp_array[5])>3)		{
 			$columns_add = returntablecolumn($temp_array[5]);

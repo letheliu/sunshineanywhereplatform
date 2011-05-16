@@ -702,7 +702,7 @@ switch($action_type)		{
 				$rs_a = $rs->GetArray();
 				//print_R($rs_a);
 				//print $sql;exit;
-				//对己经有的结果集进行过滤运算,主要是tablefilter,boolean两种过滤算法
+				//对已经有的结果集进行过滤运算,主要是tablefilter,boolean两种过滤算法
 				for($k=0;$k<sizeof($rs_a);$k++)					{
 					//对用户要求的显示的字段进行过滤
 					for($i=0;$i<sizeof($exportfield_array);$i++)	{
@@ -908,7 +908,7 @@ switch($action_type)		{
 		$action_model		= $returnsystemprivateconfig['action_model'];;
 		$action_search		= $returnsystemprivateconfig['action_search'];;
 		$systemorder		= $returnsystemprivateconfig['systemorder'];;
-		$己配置信息			= $returnsystemprivateconfig['己配置信息'];;
+		$已配置信息			= $returnsystemprivateconfig['已配置信息'];;
 
 
 
@@ -1030,7 +1030,7 @@ switch($action_type)		{
 			$执行时间 = number_format($执行时间, 2, '.', '');
 			$执行时间TEXT = "执行:".$执行时间."MS";;
 			if($是否是接口目录=="Interface"&&$FileDirName!="PGSQL")		{
-				print "<BR><div align=center><a href=\"../CONFIG/config.php?".base64_encode("XX=XX&action=".$_GET['action']."&Tablename=$tablename&FileIniname=$parse_filename&FileDirName=$FileDirName&actionconfig=config&GOBACKFILENAME=$FILE_SELF_NAME")."\" title='配置当前页面显示参数 $执行时间TEXT (此信息只在admin用户下面显示)'>定制当前页面的字段显示及界面布局[".$执行时间TEXT."]".$己配置信息."</a>&nbsp;<a href=\"http://edu.tongda2000.com/book/index.php\" target=_blank title='将问题反馈给开发商进行解决(此信息只在admin用户下面显示)'>反馈问题及提出需求</a></div>";
+				print "<BR><div align=center><a href=\"../CONFIG/config.php?".base64_encode("XX=XX&action=".$_GET['action']."&Tablename=$tablename&FileIniname=$parse_filename&FileDirName=$FileDirName&actionconfig=config&GOBACKFILENAME=$FILE_SELF_NAME")."\" title='配置当前页面显示参数 $执行时间TEXT (此信息只在admin用户下面显示)'>定制当前页面的字段显示及界面布局[".$执行时间TEXT."]".$已配置信息."</a>&nbsp;<a href=\"http://edu.tongda2000.com/book/index.php\" target=_blank title='将问题反馈给开发商进行解决(此信息只在admin用户下面显示)'>反馈问题及提出需求</a></div>";
 			}
 			else if($是否是接口目录=="Interface"&&$FileDirName=="PGSQL")		{
 				print "<BR><div align=center>$执行时间TEXT</div>";

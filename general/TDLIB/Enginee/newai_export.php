@@ -157,7 +157,7 @@ function newai_export($fields,$mode='table')		{
 			//print_R($group_filter_Array);
 			if($group_filter!=""&&$_GET['actionadv']!="exportadv_default")					{
 
-				//如果强制GET变量己经进行过预定义,那么沿用预定义内容进行 2010-9-2
+				//如果强制GET变量已经进行过预定义,那么沿用预定义内容进行 2010-9-2
 				$TableFieldIndex = $group_filter_Array[0];
 				$KeyName = $columns[$TableFieldIndex];
 				$PHP_SELF_ARRAY = explode('/',$_SERVER['PHP_SELF']);
@@ -165,7 +165,7 @@ function newai_export($fields,$mode='table')		{
 				$FileDirName = array_pop($PHP_SELF_ARRAY);
 				//用于PGSQL下面不进行数据较验
 				//print $_SESSION['LOGIN_USER_ID'];
-				//如果强制GET变量己经进行过预定义,那么沿用预定义内容进行 2010-9-2
+				//如果强制GET变量已经进行过预定义,那么沿用预定义内容进行 2010-9-2
 				//&&$FileDirName=="Teacher" 只有在Teacher目录下面使用 2010-9-25 正常使用
 				if($_GET[$KeyName]!="")			{
 					//$ChildTableName = $group_filter_Array[1];

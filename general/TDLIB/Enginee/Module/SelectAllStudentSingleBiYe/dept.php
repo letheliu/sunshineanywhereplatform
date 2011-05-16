@@ -92,7 +92,7 @@ function click_node(the_id,checked,para_id,para_value)
 <?
 	print "
 		<tr class=TableContent>
-		<td align=center >班级列表<BR>[含毕业生及己毕业学生]</td>
+		<td align=center >班级列表<BR>[含毕业生及已毕业学生]</td>
 		</tr>
 	";
 	$当前时间 = date("Y-m-d",mktime(1,1,1,7,30,date('Y')+1));

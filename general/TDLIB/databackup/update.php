@@ -195,7 +195,7 @@ if($_GET['action']=="")                                {
 		$URL = "http://$RemoteHostName/".$fileName.".zip";
 
 		if(@in_array($fileName,$PacketNameArray))        {
-			$Status = "<font color=green>文件己下载</font>";
+			$Status = "<font color=green>文件已下载</font>";
 			$LocalSize = $PacketNameSize[$fileName];
 			//print $RemoteSize."||".$LocalSize."<HR>";
 			if(TRIM($RemoteSize)==TRIM($LocalSize))        {
@@ -218,7 +218,7 @@ if($_GET['action']=="")                                {
 		if($FILE_EXEC=="1")                        {
 			//print_R($PacketNameUpdate);
 			if($PacketNameUpdate[$fileName]=="1")        {
-				$ReDownload = "<a href=?".base64_encode("action=ExecRemoteFileServer&FileName=$fileName&RemoteHostName=".$RemoteHostName."")."><font color=003399 title='己安装,点击重新安装'>己安装,点击重新安装</font></a>";
+				$ReDownload = "<a href=?".base64_encode("action=ExecRemoteFileServer&FileName=$fileName&RemoteHostName=".$RemoteHostName."")."><font color=003399 title='已安装,点击重新安装'>已安装,点击重新安装</font></a>";
 			}
 			else    {
 				if($INSTALL_PACKET_NAME==$fileName)		{
@@ -516,7 +516,7 @@ function ExactFile($fileName)        {
         if(is_file($goalfile))    {
         unlink($goalfile);
         }
-        $string ="本更新包己经更新";
+        $string ="本更新包已经更新";
         @!$handle = fopen($goalfile, 'w');
         if (!fwrite($handle, $string)) {
         exit;
