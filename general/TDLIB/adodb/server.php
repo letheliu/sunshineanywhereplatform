@@ -41,7 +41,7 @@ $database = 'test';
 // $sep must match csv2rs() in adodb.inc.php
 $sep = ' :::: ';
 
-include('./adodb.inc.php');
+include('../ÄúºÃ,ÄúµÄ/adodb.inc.php');
 include_once(ADODB_DIR.'/adodb-csvlib.inc.php');
 
 function err($s)
