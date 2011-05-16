@@ -315,7 +315,7 @@ for($i=0;$i<sizeof($rs_a);$i++)			{
 	$当前日期 = date("Y-m-d");
 
 	if($毕业日期<$当前日期)		{
-		$AddInfor = "[己经毕业]";
+		$AddInfor = "[已经毕业]";
 		if($FILENAME=="")		{
 			$PARA_URL2 = "edu_student_customer_newai.php";
 		}

@@ -703,8 +703,23 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 		//JUMPUSERINFOR,弹出窗口的用户名和用户ID
 		case 'usertoname':
 			$colspan = 2;
+			//print_R($_GET);;
 			switch($mode)	{
 				case 'add':
+					$fieldValue = $_GET[$fieldname];
+					$showtext	= $html_etc[$tablename][$fieldname];
+					$fieldnameID = $fieldname."_ID";
+					$fieldValueName = returntablefield("user","USER_NAME",$fieldValue,"USER_ID");
+					print "<TR>";
+					print "<TD class=TableData noWrap>".$showtext."</TD>\n";
+					print "<TD class=TableData noWrap colspan=\"$colspan\">\n";
+					print "<input type=\"hidden\" name=\"$fieldnameID\" value=\"$fieldValueName\">\n";
+					print "<input type=\"text\" name=\"$fieldname\" value=\"$fieldValue\" readonly class=\"SmallStatic\" size=\"20\">\n";
+					print "<a href=\"javascript:;\" class=\"orgAdd\" onClick=\"SelectTeacherSingle('','$fieldnameID', '$fieldname')\">选择</a>\n";
+					print "<a href=\"#\" class=\"orgClear\" onClick=\"ClearUser('$fieldnameID', '$fieldname')\" title=\"清空\">清空</a>";
+					//print $addtext = FilterFieldAddText($addtext,$fieldname);
+					print "</TD></TR>\n";
+					break;
 				case 'edit':
 					$fieldValue = $fields['value'][$fieldname];
 					$showtext	= $html_etc[$tablename][$fieldname];
@@ -793,6 +808,21 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 			$colspan = 2;
 			switch($mode)	{
 				case 'add':
+					//print_R($_GET);
+					$fieldValue			= $_GET[$fieldname];
+					$fieldValueName		= returntablefield("department","DEPT_NAME",$fieldValue,"DEPT_ID");
+					$fieldnameID		= $fieldname."_ID";
+					$showtext			= $html_etc[$tablename][$fieldname];
+					print "<TR>";
+					print "<TD class=TableData noWrap>".$showtext."</TD>\n";
+					print "<TD class=TableData noWrap colspan=\"$colspan\">\n";
+					print "<input type=\"hidden\" name=\"$fieldnameID\" value=\"$fieldValueName\">\n";
+					print "<input type=\"text\" name=\"$fieldname\" value=\"$fieldValue\" readonly class=\"SmallStatic\" size=\"20\">\n";
+					print "<a href=\"javascript:;\" class=\"orgAdd\" onClick=\"SelectDeptSingle('','$fieldnameID', '$fieldname')\">选择</a>\n";
+					print "<a href=\"#\" class=\"orgClear\" onClick=\"ClearUser('$fieldnameID', '$fieldname')\" title=\"清空\">清空</a>";
+					//print $addtext = FilterFieldAddText($addtext,$fieldname);
+					print "</TD></TR>\n";
+					break;
 				case 'edit':
 					$fieldValue = $fields['value'][$fieldname];
 					$showtext	= $html_etc[$tablename][$fieldname];
@@ -1575,7 +1605,7 @@ print "</td></tr>";
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;
 	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
+	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前已经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
 
 	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
 	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;

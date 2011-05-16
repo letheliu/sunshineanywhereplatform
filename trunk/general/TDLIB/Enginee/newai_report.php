@@ -6,7 +6,7 @@
  *@函数作者：王纪云
  *@建立日期：2005-10-16
  *@更新日期：2005-10-26
- *@状态说明：己经过测试
+ *@状态说明：已经过测试
  */
 function newaiReport($fields,$list,$mode)		{
 global $html_etc,$tablename,$common_html,$custom_type;
@@ -179,7 +179,7 @@ print "<BR>";
  *@函数作者：王纪云
  *@建立日期：2005-10-16
  *@更新日期：2005-10-26
- *@状态说明：己经过测试
+ *@状态说明：已经过测试
  */
 function newaiReportSearch($fields,$list)		{
 global $html_etc,$tablename,$common_html;

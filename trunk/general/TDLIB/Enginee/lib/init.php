@@ -315,7 +315,7 @@ function SYSTEM_PRIV_CONTROL()		{
 			$MiddleName = $SCRIPT_NAME_ARRAY[$sizeof-1];
 		}
 		//print $MiddleName;
-	//得到己知字符数据
+	//得到已知字符数据
 	$sql = "select FUNC_ID from sys_function where FUNC_LINK ='$MiddleName'";
 	$rs = $db ->CacheExecute(150,$sql);
 	$USER_PRIV_ARRAY_TEXT = $rs->GetArray();
@@ -366,7 +366,7 @@ function SYSTEM_PRIV_CONTROL_MYDESKTOP($fileName,$Type="Value")		{
 	//}
 	//else				{
 	$MiddleName = $fileName;
-	//得到己知字符数据
+	//得到已知字符数据
 	$substr = substr($MiddleName,strlen($MiddleName)-1,strlen($MiddleName));
 	if($substr == '/')	{
 		$MiddleName1 = substr($MiddleName,0,strlen($MiddleName)-1);
@@ -779,7 +779,7 @@ if($rs_a[0]['字段']!="")			{
 	$NewArrayTEXT['LIST']	= join(',',$NewArray['LIST']);;
 	$NewArrayTEXT['FILTER'] = join(',',$NewArray['FILTER']);;
 	$NewArrayTEXT['NULL']	= join(',',$NewArray['NULL']);;
-	$NewArrayTEXT['己配置信息'] = "[本页面己有自定义信息]";
+	$NewArrayTEXT['已配置信息'] = "[本页面已有自定义信息]";
 }
 else	{
 	$NewArrayTEXT['LIST']	= $LIST;
@@ -1041,7 +1041,7 @@ if (!file_exists($filename)) {
     //print "<font color=green>成功地将 $somecontent 写入到文件$filename</font><BR>";
     fclose($handle);
 } else {
-    //print "<font color=red>文件 $filename 己经存在</font><BR>";
+    //print "<font color=red>文件 $filename 已经存在</font><BR>";
 }
 
 }
