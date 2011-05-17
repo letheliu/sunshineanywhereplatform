@@ -15,7 +15,7 @@ session_start();
 
 $PrintText  = "<table  class=TableBlock align=center width=100%>";
 $PrintText .= "<TR class=TableHeader><td ><font color=green >
-课堂教学调查(评价)示意图
+课堂教学评价示意图
 </font></td></tr>";
 $PrintText .= "<TR class=TableData><td >
 <img src=\"flowgraph_pingjia.png\" border=0>
