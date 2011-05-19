@@ -27,6 +27,7 @@ $MenuArray[] = array('286','node_user','产品分组','crm_product_group_newai.php')
 $MenuArray[] = array('286','node_user','业务类型','crm_yewu_type_newai.php');
 $MenuArray[] = array('286','node_user','票据类型','crm_piaoju_type_newai.php');
 $MenuArray[] = array('286','node_user','所属分类','crm_suoshufenlei_sq_newai.php');
+$MenuArray[] = array('286','node_user','银行账户','crm_yinhangzh_newai.php');
 
 $DateY = Date("Y");
 $DateM = Date("m");
