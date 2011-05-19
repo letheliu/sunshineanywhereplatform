@@ -1,1 +1,117 @@
-<? $RewriteFileHash = "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" ; $RewriteFileHash = call_user_func(call_user_func("returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetFunction3")."inf".call_user_func("returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetFunction4"),call_user_func(call_user_func("returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetText1")."E".call_user_func("returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetNumber").call_user_func("returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetText2")."ode",$RewriteFileHash)); eval($RewriteFileHash); function returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetNumber()	{return 6*4+5*8+4*4/2-8;}function returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetText1()	{return "BAS";}function returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetFunction4()	{return "late";} function returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetText2()	{return "_DEC";} function returnSystem8670673cdd4f8f492e1d94922eed808df3ae744937wwwdandiannetFunction3()	{return "gz";} ?>
+<?
+ini_set('display_errors', 1);
+ini_set('error_reporting', E_ALL);
+
+// display warnings and errors
+error_reporting(E_WARNING | E_ERROR);
+
+
+require_once('general/EDU/smarty/Smarty.class.php');
+$smarty = new Smarty;
+$smarty->compile_dir="theme/templates_c";
+require_once('general/EDU/config.inc.php');
+require_once('general/EDU/lib.inc.php');
+$OA_PRODUCT_NAME=$IE_TITLE;
+$IE_TITLE=$IE_TITLE;
+
+//phpinfo();
+if(is_file("update/1.php")&&$_GET['action']!='UPDATE')		{
+	print "<a href=\"?action=UPDATE\">开始升级,务必用管理员进行操作</a>";
+	exit;
+}
+if($_GET['action']=='UPDATE')			{
+	print "开始升级中....<BR>";
+	include("update/1.php");
+	@unlink("update/1.php");
+	echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?'>\n";
+	exit;
+}
+
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE><?=$IE_TITLE?></TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META name=description content="单点科技,通达OA教育管理组件,数字化校园">
+<META name=keywords content="单点科技,通达OA教育管理组件,数字化校园">
+<META name=GENERATOR content="MSHTML 8.00.6001.18904">
+<LINK rel=stylesheet href="images/style.css"></HEAD>
+<BODY class=bodycolor2 onload=javascript:form1.username.focus(); scroll=no>
+<SCRIPT language=JavaScript>
+//-------------------- 防止出错 ---------------------------
+function killErrors()
+{
+  return true;
+}
+window.onerror = killErrors;
+
+//------------------- 窗口最大化 --------------------------
+self.moveTo(0,0);                                  <!-- 将当前窗口缩小为 -->
+self.resizeTo(screen.availWidth,screen.availHeight); <!-- 将当前窗口设置为屏幕大小 -->
+self.focus();
+
+// 状态栏显示文字
+window.defaultStatus="";
+
+function Login()
+{
+
+
+lang_str = "";
+for(i=0;i<document.all("language").length;i++)
+{
+el=document.all("language").item(i);
+if(el.checked)
+{
+	val=el.value;
+        lang_str = val;
+}
+}
+
+
+strURL = "logincheck.php?sessionKey=8248932dc4eec2e5e6529ae953fa9d47%53bfddfa068178a275d00f058fbcdb65&username=" + document.form1.username.value + "&password=" + document.form1.password.value + "&language=" + lang_str + "";
+URL = strURL;
+}
+
+
+</SCRIPT>
+
+<STYLE type=text/css>BODY {
+	BACKGROUND-IMAGE: none
+}
+</STYLE>
+
+<FORM method=post name=form1 action=logincheck.php>
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%" align=center
+height="100%">
+  <TBODY>
+  <TR>
+    <TD vAlign=center align=middle>
+      <TABLE class=small border=0 cellSpacing=0 cellPadding=0 width=542
+      align=center height=285>
+        <TBODY>
+        <TR>
+          <TD vAlign=top
+          background=images/login.gif
+          align=right>
+            <DIV class=login><BR><B><FONT color=#0077b2>用户名:</FONT></B> <INPUT
+            onkeydown=if(event.keyCode==13)event.keyCode=9 class=SmallInput
+            maxLength=30 size=12 name=username><BR><BR><B><FONT
+            color=#0077b2>密&nbsp;&nbsp;&nbsp;码:</FONT></B> <INPUT
+            class=SmallInput maxLength=30 size=12 type=password name=password>
+            <BR><BR><INPUT class=SmallButton value=" 登录 " type=submit name=Submit>
+            &nbsp;&nbsp;&nbsp;<INPUT class=SmallButton value=" 重填 " type=reset name=Submit>
+            </DIV><BR><BR></TD></TR></TBODY></TABLE><BR></TD></TR></TBODY></TABLE>
+<TABLE class=small border=0 cellSpacing=0 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD width=80 noWrap><A style="CURSOR: hand"
+      onClick="this.style.behavior='url(#default#homepage)';this.setHomePage(self.location);return false;" ><FONT
+      color=#0077b2>设为首页</FONT></A></TD>
+    <TD width=80><A
+      href="javascript:window.external.AddFavorite(self.location,'<?=$IE_TITLE?>')"
+      target=_self><FONT color=#0077b2>收藏地址</FONT></A> </TD>
+    <TD width=80><A href="http://www.sndg.net/" target=_blank><FONT
+      color=#0077b2>官方主站</FONT></A></TD>
+    <TD>
+      <DIV align=right><FONT color=#999999>欢迎使用<?=$IE_TITLE?><FONT
+      color=#0077b2><B><?=$VERSION_INFO?></B></FONT>，本系统推荐运行在IE6.0下。</FONT></DIV></TD></TR></TBODY></TABLE></FORM></BODY></HTML>

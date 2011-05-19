@@ -28,8 +28,7 @@ CREATE TABLE `crm_piaoju_type` (
 
 INSERT INTO `crm_piaoju_type` (`编号`, `票据类型`) VALUES 
 (1, '增值'),
-(2, '收据'),
-(3, '');
+(2, '收据');
 
 -- phpMyAdmin SQL Dump
 -- version 2.9.1.1

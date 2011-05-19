@@ -1,0 +1,4 @@
+<?
+include("../EDU/systemprivateinc.php");
+
+?>

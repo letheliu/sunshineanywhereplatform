@@ -240,7 +240,7 @@ if($_GET['sectionName']=="sectionName_data")							{
 					else if(substr($fieldName_grouphidden_group_filter,-6)=="hidden"&&!$fieldName_grouphidden)  {
 						$fieldName_grouphidden_group_filter = substr($fieldName_grouphidden_group_filter,0,-7);
 					}
-					//己经存在基础上面的修改和更新
+					//已经存在基础上面的修改和更新
 					array_push($groupList,$fieldName_index.":".$fieldName_grouphidden_group_filter);
 				}
 				else	{
@@ -671,12 +671,37 @@ if($_GET['sectionName']=="html_etc")			{
 	array_push($columnsList,"report".strtolower($Tablename));
 	array_push($columnsList,"statistics".strtolower($Tablename));
 
+	$sql	= "SHOW TABLE STATUS FROM td_edu LIKE '".strtolower($Tablename)."%'";
+	$rs		= $db->CacheExecute(150,$sql);
+	$Comment = $rs->fields['Comment'];
+	//print $Comment;
+
+	$NewArray2[strtolower($Tablename)]['chinese']			= $Comment;
+	$NewArray2["list".strtolower($Tablename)]['chinese']	= $Comment."列表";
+	$NewArray2["new".strtolower($Tablename)]['chinese']		= "新增".$Comment;
+	$NewArray2["edit".strtolower($Tablename)]['chinese']	= "编辑".$Comment;
+	$NewArray2["view".strtolower($Tablename)]['chinese']	= "查阅".$Comment;
+	$NewArray2["import".strtolower($Tablename)]['chinese']	= $Comment."导入";
+	$NewArray2["export".strtolower($Tablename)]['chinese']	= $Comment."导出";
+	$NewArray2["report".strtolower($Tablename)]['chinese']	= $Comment."报表";
+	$NewArray2["statistics".strtolower($Tablename)]['chinese'] = $Comment."统计";
+
+	//$MetaColumns = $db->MetaColumns(strtolower($Tablename));
+	//print_R($NewArray);
+
 	for($i=0;$i<sizeof($columnsList);$i++)		{
 		$indexName = $columnsList[$i];
 		if($NewArray[$indexName]['chinese']=="")	{
-			$NewArray[$indexName]['chinese'] = $indexName;
+
+			if($NewArray2[$indexName]['chinese']!="") {
+				$indexName2 = $NewArray2[$indexName]['chinese'];
+			}
+			else	{
+				$indexName2 = $indexName;
+			}
+			$NewArray[$indexName]['chinese'] = $indexName2;
 			//默认插入数据库部分
-			$sql = "insert into systemlang values('','$indexName','$Tablename','$indexName','$indexName','');";
+			$sql = "insert into systemlang values('','$indexName','$Tablename','$indexName2','$indexName2','');";
 			$db->Execute($sql);
 			//print $sql;
 		}
@@ -792,7 +817,7 @@ if($_GET['action']=="doUserInterfaceData"&&$_GET['Tablename']!=""&&$_GET['sectio
 if($_GET['action']=="deleteModule"&&$Tablerealname!="")	{
 	if(file_exists($filename))
 		unlink($filename);
-	print_infor("你己经注销此对象!");
+	print_infor("你已经注销此对象!");
 	echo "<META HTTP-EQUIV=REFRESH CONTENT='1;URL=?'> \n";
 }
 
@@ -867,15 +892,4 @@ if(in_array($_GET['action'],$ACTION_ARRAY)&&$_GET['Tablename']!="")	{
 	exit;
 
 }
-?><?
-/*
-	版权归属:郑州单点科技软件有限公司;
-	联系方式:0371-69663266;
-	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
-
-	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
-	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
-	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
 ?>
