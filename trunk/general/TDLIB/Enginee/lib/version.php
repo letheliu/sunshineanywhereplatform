@@ -8,6 +8,9 @@
 //海南职业技术学院
 //$SYSTEM_VERSION_CONTENT = "HCVT";
 
+//福建化工学校
+//$SYSTEM_VERSION_CONTENT = "FJHG";
+
 //实际应用
 $SYSTEM_VERSION_CONTENT = "TONGDA";
 
