@@ -79,7 +79,10 @@
 	if($_GET['action']==''||$_GET['action']=='init_default'||$_GET['action']=='init_customer')		{
 			$PrintText .= "<BR><table  class=TableBlock align=center width=100%>";
 			$PrintText .= "<TR class=TableContent><td ><font color=green >
-			说明：<BR>
+			说明：<br>
+			&nbsp;&nbsp;&nbsp;1、新增开票单后，在没有通过审核之前可以进行修改操作。<BR>
+			&nbsp;&nbsp;&nbsp;2、审核和作废是有总经理进行操作的，只有总经理有审核和作废的权限。<BR>
+			&nbsp;&nbsp;&nbsp;3、单子作废后，系统不允许再对其进行操作,审核人和作废人的信息会显示在备注栏里面。<BR>
 			</font></td></table>";
 			print $PrintText;
 		}
