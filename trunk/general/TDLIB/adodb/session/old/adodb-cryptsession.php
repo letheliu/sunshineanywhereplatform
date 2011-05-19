@@ -18,9 +18,9 @@ wrapper library.
  Example
  =======
  
-	include('../../../您好,您的/session/old/adodb.inc.php');
+	include('adodb.inc.php');
 	#---------------------------------#
-	include('../../../您好,您的/session/old/adodb-cryptsession.php'); 
+	include('adodb-cryptsession.php'); 
 	#---------------------------------#
 	session_start();
 	session_register('AVAR');
@@ -58,7 +58,7 @@ session bugs in earlier versions of PHP.
 */
 
 
-include_once('../../../您好,您的/session/old/crypt.inc.php');
+include_once('crypt.inc.php');
 
 if (!defined('_ADODB_LAYER')) {
 	include (dirname(__FILE__).'/adodb.inc.php');

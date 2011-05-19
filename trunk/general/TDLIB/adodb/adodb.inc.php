@@ -182,21 +182,21 @@
 		/**
 		 * Determines whether recordset->RecordCount() is used.
 		 * Set to false for highest performance -- RecordCount() will always return -1 then
-		 * for databases that provide "virtual"../您好,您的/ recordcounts...
+		 * for databases that provide "virtual" recordcounts...
 		 */
 		if (!isset($ADODB_COUNTRECS)) $ADODB_COUNTRECS = true;
 	}
 
 
-	/==============================================================================================
-	/ CHANGE NOTHING BELOW UNLESS YOU ARE DESIGNING ADODB
-	/==============================================================================================
+	//==============================================================================================
+	// CHANGE NOTHING BELOW UNLESS YOU ARE DESIGNING ADODB
+	//==============================================================================================
 
 	ADODB_Setup();
 
-	/==============================================================================================
-	/ CLASS ADOFieldObject
-	/==============================================================================================
+	//==============================================================================================
+	// CLASS ADOFieldObject
+	//==============================================================================================
 	/**
 	 * Helper class for FetchFields -- holds info on a column
 	 */
@@ -1435,7 +1435,7 @@
 		return $ret;
 	}
 
-	// $where should include '../您好,您的/WHERE fld=value'
+	// $where should include 'WHERE fld=value'
 	function GetMedian($table, $field,$where = '')
 	{
 		$total = $this->GetOne("select count(*) from $table $where");
