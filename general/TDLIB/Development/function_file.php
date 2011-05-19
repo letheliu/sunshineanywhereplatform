@@ -15,7 +15,7 @@ function pageHeader()				{
 	//}
 	print "</B></font></td>
 	<td nowrap align=left colspan=1 width=25%><a href=\"?actionAction=phpide\">模型初始化表(所有数据表)</a></td>
-	<td nowrap align=left colspan=1 width=25%><a href=\"?action=action_init\">己经生成的模型(当前模型:$SYSTEM_MODE_DIR)</a></td>
+	<td nowrap align=left colspan=1 width=25%><a href=\"?action=action_init\">已经生成的模型(当前模型:$SYSTEM_MODE_DIR)</a></td>
 	<td nowrap align=left colspan=1 width=25%><a href=\"../Framework/systemlang_newai.php\" target=_blank>打开系统界面编辑器</a></td>
 	<td nowrap align=left colspan=1 width=25%><a href=\"../../../phpmyadmin/tbl_properties_structure.php?db=TD_OA&table=$Tablename\" target=_blank>在PHPMYADMIN里面打开当前表</a></td>
 	</tr></table><BR>
@@ -131,7 +131,7 @@ function returnFUNC_NAME($fieldname,$tablename)			{
 
 
 
-//判断是否己经完成接口服务
+//判断是否已经完成接口服务
 function InterfaceService($Name,$ObjectName)				 {
 	global $SystemModelName;
 	switch($Name)				{
@@ -280,7 +280,7 @@ function FormString($Name,$ObjectName)				 {
 
 	print "<table border=1 cellspacing=0 class=small bordercolor=#000000 cellpadding=3 align=center width=100% style='border-collapse:collapse'>\n";
 	print "<TR><TD class=TableHeader align=left colSpan=10>&nbsp;提示：</TD></TR>\n";
-	print "<TR><TD class=TableContent align=left colSpan=10>&nbsp;第一步：接口部分己经完成!</TD></TR>\n";
+	print "<TR><TD class=TableContent align=left colSpan=10>&nbsp;第一步：接口部分已经完成!</TD></TR>\n";
 	print "</table><br>";
 
 	print "<FORM name=form1 action=\"?Tablename=".$_GET['Tablename']."&action=doUserInterfaceData&sectionName=".$_GET['sectionName']."\" method=post encType=multipart/form-data>";
@@ -341,15 +341,4 @@ function FormTextFile($goalfile,$filetext)					{
 	}
 	fclose($handle);
 }
-?><?
-/*
-	版权归属:郑州单点科技软件有限公司;
-	联系方式:0371-69663266;
-	公司地址:河南郑州经济技术开发区第五大街经北三路通信产业园四楼西南;
-	公司简介:郑州单点科技软件有限公司位于中国中部城市-郑州,成立于2007年1月,致力于把基于先进信息技术（包括通信技术）的最佳管理与业务实践普及到教育行业客户的管理与业务创新活动中，全面提供具有自主知识产权的教育管理软件、服务与解决方案，是中部最优秀的高校教育管理软件及中小学校管理软件提供商。目前己经有多家高职和中职类院校使用通达中部研发中心开发的软件和服务;
-
-	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
-	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
-	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
 ?>
