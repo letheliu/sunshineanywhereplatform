@@ -15,8 +15,8 @@
  Example
  =======
  
-	include('../../../您好,您的/session/old/adodb.inc.php');
-	include('../../../您好,您的/session/old/adodb-session.php');
+	include('adodb.inc.php');
+	include('adodb-session.php');
 	session_start();
 	session_register('AVAR');
 	$_SESSION['AVAR'] += 1;
@@ -25,8 +25,8 @@
 	
 To force non-persistent connections, call adodb_session_open first before session_start():
 
-	include('../../../您好,您的/session/old/adodb.inc.php');
-	include('../../../您好,您的/session/old/adodb-session.php');
+	include('adodb.inc.php');
+	include('adodb-session.php');
 	adodb_session_open(false,false,false);
 	session_start();
 	session_register('AVAR');
