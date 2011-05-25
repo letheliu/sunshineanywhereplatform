@@ -8,7 +8,7 @@ print '<TITLE>数据语言</TITLE>
 	<STYLE>@media print{input{display:none}}</STYLE>
 	<BODY class=bodycolor topMargin=5 >';
 
-$sql	= "select * from td_edu.systemprivate where ID='1'";
+$sql	= "select * from td_crm.systemprivatetdlib where ID='1'";
 $rs		= $db->CacheExecute(15,$sql);
 $rs_a	= $rs->GetArray();
 $CONTENT	= $rs_a[0]['CONTENT'];
@@ -21,6 +21,29 @@ print "update systemprivate set CONTENT='$CONTENT' where ID='1';";
 //$CONTENT	= $rs_a[0]['CONTENT'];
 //print "<BR>systemprivate CONTENT权限##################################################################################################<BR>";
 //print "update systemprivate set CONTENT='$CONTENT' where ID='1';";
+/*
+//强制过滤CRM中缺失的语言信息
+$sql	= "select * from td_crm.systemlang where tablename like 'crm%' order by systemlangid ";
+$rs		= $db->Execute($sql);
+$rs_a	= $rs->GetArray();
+for($i=0;$i<sizeof($rs_a);$i++)		{
+	$Element  = $rs_a[$i];
+	$sql = "select COUNT(*) AS NUM FROM td_edu.systemlang where fieldname='".$Element['fieldname']."' and tablename='".$Element['tablename']."'";
+	$rsx = $db->Execute($sql);
+	if($rsx->fields['NUM']==0)			{
+		$Element['systemlangid'] = '';
+		$sql = 数组转SQL($Element,"td_edu.systemlang");
+		//$db->Execute($sql);
+		//print $sql."<BR>";
+	}
+	else	{
+		$sql = "delete from td_crm.systemlang where systemlangid = '".$Element['systemlangid']."'";
+		$db->Execute($sql);
+		print $sql."<BR>";
+	}
+}
+exit;
+*/
 
 print "<BR>";
 
