@@ -14,15 +14,15 @@ function customerlink_Value($fieldvalue,$fields,$i)		{
 	$Text = "";
 	$客户名称 = strip_tags($fields['value'][$i]['客户名称']);
 	$客户简称 = strip_tags($fields['value'][$i]['客户简称']);
-	
-	$Text .= $客户名称."(";
-	
+
+	$Text .= $客户简称."(";
+
 	$Text .= "<a class=OrgAdd href=\"crm_expense_newai.php?".base64_encode("action=add_default&客户名称=$客户名称&客户名称_NAME=客户名称&客户名称_disabled=disabled")."\">费用</a> ";
 	$Text .= "<a class=OrgAdd href=\"crm_service_newai.php?".base64_encode("action=add_default&客户名称=$客户名称&客户名称_NAME=客户名称&客户名称_disabled=disabled")."\">服务</a> ";
 	$Text .= "<a class=OrgAdd href=\"crm_order_newai.php?".base64_encode("action=add_default&客户名称=$客户名称&客户名称_NAME=客户名称&客户名称_disabled=disabled")."\">订单</a> ";
 	$Text .= "<a class=OrgAdd href=\"crm_contract_newai.php?".base64_encode("action=add_default&客户名称=$客户名称&客户名称_NAME=客户名称&客户名称_disabled=disabled")."\">合同</a> ";
 
-	
+
 
 	$Text .= ")";
 

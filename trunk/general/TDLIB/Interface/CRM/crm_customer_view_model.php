@@ -30,12 +30,14 @@
 
 function CustomerInforView($编号)		{
 	global $db,$smarty;
-	global $sessionkey,$学校名称;
+	global $sessionkey,$学校名称,$SYTEM_CONFIG_TABLE;
 
 	$sql = "select * from crm_customer where (编号='$编号')";
-	$rs = $db->Execute($sql);
+	$rs = $db->CacheExecute(5,$sql);
 	$rs_a = $rs->GetArray();
 
+	$html_etc = returnsystemlang("crm_customer",$SYTEM_CONFIG_TABLE);
+	$html_etc = $html_etc['crm_customer'];
 
 ?>
 <table class=TableBlock  align=center width=80% >
@@ -43,8 +45,8 @@ function CustomerInforView($编号)		{
 &nbsp;<?=$UnitName?>客户基本信息汇总&nbsp &nbsp </TD>
 </TR>
 	<TR>
-    <td nowrap  colspan=6><B>客户编码</B> <B><font color='#FF0000'><?=$rs_a[0]['客户编码']?></font></B>
-  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp <B>   客户名称<?=$rs_a[0]['客户名称']?> &nbsp &nbsp &nbsp &nbsp&nbsp简称:<?=$rs_a[0]['客户简称']?></B></td>
+    <td nowrap  colspan=6><B>客户编码:</B><B><font color='#FF0000'><?=$rs_a[0]['客户编码']?></font></B>
+  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp <B>客户名称:</B><B><font color='#FF0000'><?=$rs_a[0]['客户名称']?></font></B> &nbsp &nbsp &nbsp &nbsp&nbsp简称:<B><font color='#FF0000'><?=$rs_a[0]['客户简称']?></font></B></td>
   </tr>
 
 <tr class=TableHeader>
@@ -119,18 +121,18 @@ function CustomerInforView($编号)		{
 <tr>
 <td nowrap class="TableContent"  >其它付款账户:</td>
 <td class="TableData" colspan=1 nowrap>&nbsp;<?=$rs_a[0]['其它付款账户']?></td>
-<td nowrap class="TableContent"  >自定义字段一:</td>
+<td nowrap class="TableContent"  ><?=$html_etc['自定义字段一']?>:</td>
 <td class="TableData" colspan=1 nowrap>&nbsp;<?=$rs_a[0]['自定义字段一']?> </td>
-<td nowrap class="TableContent"  >自定义字段二:</td>
+<td nowrap class="TableContent"  ><?=$html_etc['自定义字段二']?>:</td>
 <td class="TableData" colspan=1 nowrap>&nbsp;<?=$rs_a[0]['自定义字段二']?> </td>
 </tr>
 
 <tr>
-<td nowrap class="TableContent"  >自定义字段三:</td>
+<td nowrap class="TableContent"  ><?=$html_etc['自定义字段三']?>:</td>
 <td class="TableData" colspan=1 nowrap>&nbsp;<?=$rs_a[0]['自定义字段三']?></td>
-<td nowrap class="TableContent"  >自定义字段四:</td>
+<td nowrap class="TableContent"  ><?=$html_etc['自定义字段四']?>:</td>
 <td class="TableData" colspan=1 nowrap>&nbsp;<?=$rs_a[0]['自定义字段四']?> </td>
-<td nowrap class="TableContent"  >自定义字段五:</td>
+<td nowrap class="TableContent"  ><?=$html_etc['自定义字段五']?>:</td>
 <td class="TableData" colspan=1 nowrap>&nbsp;<?=$rs_a[0]['自定义字段五']?> </td>
 </tr>
 
