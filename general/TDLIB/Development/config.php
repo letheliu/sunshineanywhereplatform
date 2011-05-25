@@ -1,1 +1,1 @@
-<? $SYSTEM_MODE_DIR = "fixedasset" ; ?>
+<? $SYSTEM_MODE_DIR = "CRM" ; ?>

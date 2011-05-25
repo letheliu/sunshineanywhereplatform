@@ -362,20 +362,23 @@ function newai_import_XLS($Columns)				{
 		$uniquekey_KEY			=	$uniquekey_array[$i];
 		if($uniquekey_KEY!="")						{
 			$uniquekey_KEY_ADD	=	explode(':',$uniquekey_KEY);
-			if($uniquekey_KEY_ADD[1]=="userid")			{
+			if($uniquekey_KEY_ADD[1]=="userid")				{
 				$用户默认值				=	$columns["".$uniquekey_KEY_ADD[0].""];
 				$用户默认值NOCHECK		=	$uniquekey_KEY_ADD[2];
+				$唯一性判断字段列表USERIDNAME['USERID']	=	$columns["".$uniquekey_KEY_ADD[0].""];
 			}
 			else if($uniquekey_KEY_ADD[1]=="username")		{
 				$用户默认值NAME			=	$columns["".$uniquekey_KEY_ADD[0].""];
 				$用户默认值NAMENOCHECK	=	$uniquekey_KEY_ADD[2];
+				$唯一性判断字段列表USERIDNAME['USERNAME']	=	$columns["".$uniquekey_KEY_ADD[0].""];
+
 			}
 			else if($uniquekey_KEY_ADD[1]=="datetime")		{
 				$时间默认值				=	$columns["".$uniquekey_KEY_ADD[0].""];
 				$时间默认值NOCHECK		=	$uniquekey_KEY_ADD[2];
 			}
 			else	{
-				$唯一性判断字段列表[]		=	$columns["".$uniquekey_KEY_ADD[0].""];
+				$唯一性判断字段列表[]	=	$columns["".$uniquekey_KEY_ADD[0].""];
 			}
 		}
 
@@ -588,6 +591,20 @@ function newai_import_XLS($Columns)				{
 						}
 					}
 
+					if($唯一性判断字段列表USERIDNAME['USERID']!='')			{
+						$唯一性判断字段列表USERIDNAME_SQL_TEXT .= " and ".$唯一性判断字段列表USERIDNAME['USERID']."='".$_SESSION['LOGIN_USER_ID']."'";
+					}
+					if($唯一性判断字段列表USERIDNAME['USERNAME']!='')			{
+						$唯一性判断字段列表USERIDNAME_SQL_TEXT .= " and ".$唯一性判断字段列表USERIDNAME['USERNAME']."='".$_SESSION['LOGIN_USER_NAME']."'";
+					}
+
+					if(sizeof($唯一性判断字段列表SQL)>0)			{
+						$唯一性判断字段列表USERIDNAME_SQL_TEXT = " ".$唯一性判断字段列表USERIDNAME_SQL_TEXT;
+					}
+					else		{
+						$唯一性判断字段列表USERIDNAME_SQL_TEXT = " 1=1 ".$唯一性判断字段列表USERIDNAME_SQL_TEXT;
+					}
+
 					//加入nocheck参数以后,不再进行SQL判断,但是其值要加进去
 					if($用户默认值!="")		{
 						$newline_array[]	= $_SESSION['LOGIN_USER_ID'];
@@ -603,15 +620,15 @@ function newai_import_XLS($Columns)				{
 					}
 
 					//print_R($update_sql);exit;
-					$update_sql_text="update $tablename set ".join(',',$update_sql)." where ".join(" and ",$唯一性判断字段列表SQL)."";
-					//print_R($update_sql_text);exit;
+					$update_sql_text="update $tablename set ".join(',',$update_sql)." where ".join(" and ",$唯一性判断字段列表SQL)." $唯一性判断字段列表USERIDNAME_SQL_TEXT";
+					//print_R($update_sql_text);//exit;
 					//print "<BR>";
 
 					$insert_sql_text="insert into ".$tablename."(".join(',',$result).") values('".join("','",$newline_array)."')";
 					//print $insert_sql_text."<BR>";exit;
 
-					$exists_sql_text="select count(*) as num from $tablename where ".join(" and ",$唯一性判断字段列表SQL)."";
-					//print $exists_sql_text."<BR>";//exit;
+					$exists_sql_text="select count(*) as num from $tablename where ".join(" and ",$唯一性判断字段列表SQL)." $唯一性判断字段列表USERIDNAME_SQL_TEXT";
+					//print $exists_sql_text."<BR>";exit;
 
 
 					//print $exists_sql_text;
@@ -620,11 +637,11 @@ function newai_import_XLS($Columns)				{
 					$rs_a = $rs->GetArray();
 					//print_R($rs_a);exit;
 					if($IsDoSQL)								{//允许执行;
-						if($rs_a[0]['num']==0)			{
+						if($rs_a[0]['num']==0)					{
 							$rs = $db->Execute($insert_sql_text);
 							$EOF = $rs->EOF;
 							if($EOF)		$Insert_RIGHT += 1;
-							else			$Insert_ERROR += 1 ;
+							else			$Insert_ERROR += 1;
 							//insert_sql_text
 							//print "<font color=green>插入:1 ".$insert_sql_text." 的数据：导入成功<BR></font>";
 						}
