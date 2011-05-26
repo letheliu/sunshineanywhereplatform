@@ -3,7 +3,7 @@ require_once('lib.inc.php');//
 
 $GLOBAL_SESSION=returnsession();
 require_once("systemprivateinc.php");
-CheckSystemPrivate("人力资源-行政考勤-我的考勤");
+//CheckSystemPrivate("人力资源-行政考勤-我的考勤");
 //print_R($_SESSION);
 $_GET['人员'] = $_SESSION['LOGIN_USER_NAME'];
 $_GET['人员用户名'] = $_SESSION['LOGIN_USER_ID'];

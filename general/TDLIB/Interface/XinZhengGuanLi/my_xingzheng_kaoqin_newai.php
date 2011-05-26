@@ -11,7 +11,7 @@ require_once("lib.inc.php");
 
 $GLOBAL_SESSION=returnsession();
 require_once("systemprivateinc.php");
-CheckSystemPrivate("人力资源-行政考勤-我的考勤");
+//CheckSystemPrivate("人力资源-行政考勤-我的考勤");
 //######################教育组件-权限较验部分##########################
 
 //print_R($_GET);
