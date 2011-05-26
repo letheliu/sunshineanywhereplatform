@@ -3,7 +3,7 @@
 
 	$GLOBAL_SESSION=returnsession();
 require_once("systemprivateinc.php");
-CheckSystemPrivate("人力资源-行政考勤-我的考勤");
+//CheckSystemPrivate("人力资源-行政考勤-我的考勤");
 page_css('加班补休');
 
 $当前学期 = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
@@ -113,13 +113,13 @@ if($_GET['action']=='BuXiuDataDeal')				{
 if($_GET['action']=='buxiuaction')
 {
 	?>
-	
+
 
 <form name=form1>
 <table class="TableList" width="100%" style="border:0px">
     <tr class="TableData">
 			<td nowrap align=center colspan=8>
-		
+
 			<input type=button accesskey='c' name='cancel' value=' 返回 ' class=SmallButton onClick="location='?'">
 			</td>
 		</tr>
@@ -207,7 +207,7 @@ if($_GET['action']=='buxiuaction')
 
     <tr class="TableData">
 			<td nowrap align=center colspan=8>
-		
+
 			<input type=button accesskey='c' name='cancel' value=' 返回 ' class=SmallButton onClick="location='?'">
 			</td>
 		</tr>
@@ -299,7 +299,7 @@ if($_GET['action']=='add_default')
 <table class="TableList" width="100%" style="border:0px">
 		<tr class="TableData">
 			<td nowrap align=center colspan=8>
-		
+
 			<input type=button accesskey='c' name='cancel' value=' 返回 ' class=SmallButton onClick="location='?'">
 			</td>
 		</tr>
@@ -326,7 +326,7 @@ if($_GET['action']=='add_default')
 	$rs=$db->CaCheExecute(30,$sql);
     $ROW=$rs->GetArray();
     $COUNT=sizeof($ROW);
-	
+
 	  for($i=0;$i<sizeof($ROW);$i++) {
 		//while($ROW = mysql_fetch_array($cursor))			{
 		$班次数组[]= $ROW[$i]["班次名称"];
@@ -391,7 +391,7 @@ if($_GET['action']=='add_default')
 				$ROW=$rs->GetArray();
 				$通过编号= $ROW[0]["编号"];
 
-	
+
 			   if($通过编号!="")	{
 				   print "<a><font color=red>已申请通过<font></a>";
 				   $补休时间 = $日期;
@@ -420,13 +420,13 @@ if($_GET['action']=='add_default')
 				";
 	}
 
-	
+
 
 ?>
 
 		<tr class="TableData">
 			<td nowrap align=center colspan=8>
-		
+
 			<input type=button accesskey='c' name='cancel' value=' 返回 ' class=SmallButton onClick="location='?'">
 			</td>
 		</tr>

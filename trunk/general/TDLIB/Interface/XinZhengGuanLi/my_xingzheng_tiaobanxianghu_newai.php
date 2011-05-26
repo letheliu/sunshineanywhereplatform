@@ -3,7 +3,7 @@
 
 	$GLOBAL_SESSION=returnsession();
 require_once("systemprivateinc.php");
-CheckSystemPrivate("人力资源-行政考勤-我的考勤");
+//CheckSystemPrivate("人力资源-行政考勤-我的考勤");
 page_css('相互调班申请');
 
 $当前学期 = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
@@ -167,13 +167,13 @@ if($_GET['action']=='TiaoKe')				{
 
 
 
-	if($_GET['action']=="add_default")			
+	if($_GET['action']=="add_default")
 	{
 	 //print_R($_GET);
 	 ?>
-	 
-	 
-	 
+
+
+
 <form name=form1>
 <table class="TableList" width="100%" style="border:0px">
     <tr class="TableData" align="right">
@@ -262,7 +262,7 @@ if($_GET['action']=='TiaoKe')				{
    print "<input size=6 type=hidden class=SmallInput name='NAME_".$LINE_COUNTER."_VALUE' value='1'/>";
    print "<a href=\"?action=TiaoKe&RUN_ID=$RUN_ID&班次=$班次&星期=$星期&班次=$班次&日期=$日期&部门=$部门\" >进行相互调班</a>";
 
-   
+
    if($新上班时间!="")		print "&nbsp;<a href=\"?action=TiaoKeDelete&RUN_ID=$RUN_ID&班次=$班次&星期=$星期&班次=$班次&日期=$日期&编号=$编号\" >删除</a>";
    print "
    <input size=6  type=hidden class=SmallInput name='NAME_".$LINE_COUNTER."_ID' value='$编号'/>
@@ -295,8 +295,8 @@ if($_GET['action']=='TiaoKe')				{
 </table>
 <div id=HTMLSHOW></div>
 </form>
-	 
-	 
+
+
 	 <?
 	 exit;
 	}

@@ -3,7 +3,7 @@
 
 	$GLOBAL_SESSION=returnsession();
 require_once("systemprivateinc.php");
-CheckSystemPrivate("人力资源-行政考勤-我的考勤");
+//CheckSystemPrivate("人力资源-行政考勤-我的考勤");
 page_css('调休申请');
 
 $当前学期 = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
@@ -188,7 +188,7 @@ if($_GET['action']=='add_default')
 <form name=form1>
 <table class="TableList" width="100%" style="border:0px">
     <tr class="TableData" align="right">
-      <td nowrap colspan=5 align=center>	 
+      <td nowrap colspan=5 align=center>
 	  <input type="button" class="SmallButton" onclick=location='?' <?=$Disabled?> value="返回">
 	</td>
     </tr>
@@ -277,7 +277,7 @@ else	{
 
     <tr class="TableData" align="right">
       <td nowrap colspan=5 align=center>
-	 
+
 	  <input type="button" class="SmallButton" onclick=location='?' <?=$Disabled?> value="返回">
 	</td>
     </tr>

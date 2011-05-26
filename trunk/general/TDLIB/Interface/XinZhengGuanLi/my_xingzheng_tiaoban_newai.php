@@ -3,7 +3,7 @@
 
 	$GLOBAL_SESSION=returnsession();
 require_once("systemprivateinc.php");
-CheckSystemPrivate("人力资源-行政考勤-我的考勤");
+//CheckSystemPrivate("人力资源-行政考勤-我的考勤");
 page_css('调班申请');
 $当前学期 = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
 if($_GET['学期']=="") $_GET['学期'] = $当前学期;
@@ -164,7 +164,7 @@ if($_GET['action']=='TiaoBan')				{
 if($_GET['action']=='add_default')
 {
 	?>
-	
+
 <form name=form1>
 <table class="TableList" width="100%" style="border:0px">
 <tr class="TableData" align="right">
@@ -262,7 +262,7 @@ else	{
 </table>
 <div id=HTMLSHOW></div>
 </form>
-	
+
 	<?
 exit;
 }

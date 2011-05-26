@@ -3,7 +3,7 @@ require_once('lib.inc.php');//
 
 $GLOBAL_SESSION=returnsession();
 require_once("systemprivateinc.php");
-CheckSystemPrivate("人力资源-行政考勤-我的考勤");
+//CheckSystemPrivate("人力资源-行政考勤-我的考勤");
 page_css('请假外出');
 $当前学期 = returntablefield("edu_xueqiexec","当前学期",'1',"学期名称");
 if($_GET['学期']=="") $_GET['学期'] = $当前学期;
@@ -84,14 +84,14 @@ if($_GET['action']=='KaoQinBudeng')				{
 
 			 //$教室key=$i."_JIAOSHI";
 			 $部门key=$i."_BANJI";
-			 $班次key=$i."_KECHENG";			 
+			 $班次key=$i."_KECHENG";
 			 $日期key=$i."_OLDDATE";
 			 //$人员key=$i."_OLDTEACHER";
 			 $请假类型key=$i."qingjialeixing";
 			 $请假状态key="CHECK_1_".$i."_VALUE";
-			
-			 
-			
+
+
+
 			   $部门 = $请假外出array[$部门key];
 			   $班次 = $请假外出array[$班次key];
 			   $日期 = $请假外出array[$日期key];
@@ -100,17 +100,17 @@ if($_GET['action']=='KaoQinBudeng')				{
 			   $请假类型 = $请假外出array[$请假类型key];
 
 			//print   $人员 = $请假外出array[$人员key];
-			  
+
 				if($请假状态=='on')
 				{
-					
+
 
 					$query = "insert into td_edu.edu_xingzheng_qingjia values('','$学期名称','$部门','$人员','$日期','$周次','$班次','$请假类型','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
 					  $db->Execute($query);
 					// print $sql;exit;
-					 
+
 				}
-		
+
 		}
 
 //exit;
@@ -140,8 +140,8 @@ if($_GET['action']=='add_default')
 {
 // print_R($_GET);exit;
  ?>
- 
- 
+
+
 <form    name=form1 action='?action=KaoQinBudeng' method=post >
 <table class="TableList" width="100%">
     <tr class="TableHeader">
@@ -150,7 +150,7 @@ if($_GET['action']=='add_default')
 	  <td nowrap align="center">上班时间</td>
       <td nowrap align="center">班次</td>
       <td nowrap align="center">请假类型</td>
-	  
+
 	  <td nowrap align="center">请假外出</td>
     </tr>
 <?
@@ -205,7 +205,7 @@ $已申请 = "<input type=checkbox name='CHECK_2_".$LINE_COUNTER."_VALUE' disabled 
 	   <td nowrap align=\"center\">$班次</td>
 	   <td nowrap align=\"center\" width='100'%>
 	   <input class=SmallInput  name= ".$LINE_COUNTER."qingjialeixing  value=''></td>
-	   
+
 ";
    print "<input size=6 type=hidden class=SmallInput name='NAME_".$LINE_COUNTER."_VALUE' value='1'/>";
 
@@ -226,7 +226,7 @@ $已申请 = "<input type=checkbox name='CHECK_2_".$LINE_COUNTER."_VALUE' disabled 
 		   print "<td nowrap align=\"center\">$请假外出</td>";
 		   $新上班时间 = '';
 	   }
-  
+
    }
 
    print "
@@ -261,7 +261,7 @@ else	{
 </table>
 <div id=HTMLSHOW></div>
 </form>
- 
+
  <?
 	 exit;
 }
