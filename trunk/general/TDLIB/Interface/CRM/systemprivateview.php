@@ -17,6 +17,7 @@ require_once('lib.inc.php');
 
 $GLOBAL_SESSION=returnsession();
 
+//$_SESSION['SYSTEM_IS_TD_OA'] = 0;
 
 if($_SESSION['SYSTEM_EDU_CRM_WUYE']=="TDLIB")		{
 	$systemprivateDirName = "systemprivatetdlib";
@@ -30,39 +31,42 @@ elseif($_SESSION['SYSTEM_EDU_CRM_WUYE']=="WUYE")		{
 
 $MetaDatabases = $db->MetaDatabases();
 if(@in_array("TD_OA",$MetaDatabases))		{
-	$SYSTEM_PRE_TABLE = "TD_OA.";
+	$SYSTEM_PRE_TABLE = "TD_OA.";//
 }
 else	{
 	$SYSTEM_PRE_TABLE = "";
 }
 
 
-//判断数据表的第一个字段是否是主键
-$MetaColumns	= $db->MetaColumns('user');
-$array_shift	= @array_shift($MetaColumns);
-if($array_shift->primary_key!=1)			{
-	$sql = "ALTER TABLE `user` ADD PRIMARY KEY ( `UID` ) ";										$db->Execute($sql);
-	$sql = "ALTER TABLE `user` CHANGE `UID` `UID` INT( 11 ) NOT NULL AUTO_INCREMENT ";			$db->Execute($sql);
-}
 
-//判断数据表的第一个字段是否是主键
-$MetaColumns	= $db->MetaColumns('user_priv');
-$array_shift	= @array_shift($MetaColumns);
-if($array_shift->primary_key!=1)			{
-	$sql = "ALTER TABLE `user_priv` ADD PRIMARY KEY ( `USER_PRIV` ) ";										$db->Execute($sql);
-	$sql = "ALTER TABLE `user_priv` CHANGE `USER_PRIV` `USER_PRIV` INT( 11 ) NOT NULL AUTO_INCREMENT ";		$db->Execute($sql);
-}
-
-//判断数据表的第一个字段是否是主键
-$MetaColumns	= $db->MetaColumns('department');
-$array_shift	= @array_shift($MetaColumns);
-if($array_shift->primary_key!=1)			{
-	$sql = "ALTER TABLE `department` ADD PRIMARY KEY ( `DEPT_ID` ) ";										$db->Execute($sql);
-	$sql = "ALTER TABLE `department` CHANGE `DEPT_ID` `DEPT_ID` INT( 11 ) NOT NULL AUTO_INCREMENT ";		$db->Execute($sql);
-}
 
 
 if($_GET['action']=="")						{
+
+
+	//判断数据表的第一个字段是否是主键
+	$MetaColumns	= $db->MetaColumns('user');
+	$array_shift	= @array_shift($MetaColumns);
+	if($array_shift->primary_key!=1)			{
+		$sql = "ALTER TABLE `user` ADD PRIMARY KEY ( `UID` ) ";										$db->Execute($sql);
+		$sql = "ALTER TABLE `user` CHANGE `UID` `UID` INT( 11 ) NOT NULL AUTO_INCREMENT ";			$db->Execute($sql);
+	}
+
+	//判断数据表的第一个字段是否是主键
+	//$MetaColumns	= $db->MetaColumns($SYSTEM_PRE_TABLE."user_priv");
+	//$array_shift	= @array_shift($MetaColumns);
+	//if($array_shift->primary_key!=1)			{
+	//	$sql = "ALTER TABLE `user_priv` ADD PRIMARY KEY ( `USER_PRIV` ) ";										$db->Execute($sql);
+	//	$sql = "ALTER TABLE `user_priv` CHANGE `USER_PRIV` `USER_PRIV` INT( 11 ) NOT NULL AUTO_INCREMENT ";		$db->Execute($sql);
+	//}
+
+	//判断数据表的第一个字段是否是主键
+	$MetaColumns	= $db->MetaColumns('department');
+	$array_shift	= @array_shift($MetaColumns);
+	if($array_shift->primary_key!=1)			{
+		$sql = "ALTER TABLE `department` ADD PRIMARY KEY ( `DEPT_ID` ) ";										$db->Execute($sql);
+		$sql = "ALTER TABLE `department` CHANGE `DEPT_ID` `DEPT_ID` INT( 11 ) NOT NULL AUTO_INCREMENT ";		$db->Execute($sql);
+	}
 
 	page_css("系统角色权限信息管理");
 	$sql = "select USER_PRIV,PRIV_NAME,PRIV_NO,FUNC_ID_STR from ".$SYSTEM_PRE_TABLE."user_priv order by PRIV_NO";
@@ -174,7 +178,7 @@ if($_GET['action']=="edit_default_data")						{
 	$角色名称	= $_POST['角色名称'];
 	$排序号		= $_POST['排序号'];
 	$USER_PRIV	= $_POST['USER_PRIV'];
-	$sql		= "update user_priv set PRIV_NAME='$角色名称',PRIV_NO='$排序号' where USER_PRIV='$USER_PRIV'";
+	$sql		= "update ".$SYSTEM_PRE_TABLE."user_priv set PRIV_NAME='$角色名称',PRIV_NO='$排序号' where USER_PRIV='$USER_PRIV'";
 	if($角色名称!="")	$db->Execute($sql);
 	print_infor("角色名称修改成功,系统返回中!",'',"location='?'",'?');
 	exit;
@@ -188,22 +192,23 @@ if($_GET['action']=="add_default_data")						{
 	//print_R($_POST);
 	$角色名称	= $_POST['角色名称'];
 	$排序号		= $_POST['排序号'];
-	$sql		= "select COUNT(*) AS NUM from user_priv where PRIV_NAME='$角色名称'";
+	$sql		= "select COUNT(*) AS NUM from ".$SYSTEM_PRE_TABLE."user_priv where PRIV_NAME='$角色名称'";
 	$rs			= $db->Execute($sql);
 	$rs_a		= $rs->GetArray();
 	$NUM		= $rs_a[0]['NUM'];
 	if($NUM==0&&$角色名称!='')					{
-		$sql = "insert into user_priv value('','$角色名称','$排序号','');";
+		$sql = "insert into ".$SYSTEM_PRE_TABLE."user_priv(USER_PRIV,PRIV_NAME,PRIV_NO,FUNC_ID_STR) value('','$角色名称','$排序号','');";
 		$db->Execute($sql);
 		//$USER_PRIV = $db->InsertID();
 		//print $角色名称;
-	}
-	else	{
-		print_infor("您输入的角色名称已经存在,请换用其它名称!",'',"location='?'",'?');
+		print_infor("角色名称增加成功,系统返回中!",'',"location='?'",'?',1);
 		exit;
 	}
-	print_infor("角色名称增加成功,系统返回中!",'',"location='?'",'?');
-	exit;
+	else	{
+		print_infor("您输入的角色名称已经存在,请换用其它名称!",'',"location='?'",'?',1);
+		exit;
+	}
+
 }
 
 
@@ -212,10 +217,10 @@ if($_GET['action']=="DeletePrivName")						{
 	page_css("角色权限删除");
 	//table_begin("80%");
 	//print_title("系统角色权限信息管理");
-	print_R($_POST);
+	//print_R($_POST);
 	$USER_PRIV		= $_GET['USER_PRIV'];
 	$PRIV_NAME		= $_GET['PRIV_NAME'];
-	$sql		= "delete from user_priv where PRIV_NAME='$PRIV_NAME' and USER_PRIV='$USER_PRIV' ";
+	$sql		= "delete from ".$SYSTEM_PRE_TABLE."user_priv where PRIV_NAME='$PRIV_NAME' and USER_PRIV='$USER_PRIV' ";
 	$db->Execute($sql);
 	print_infor("角色名称删除成功,系统返回中!",'',"location='?'",'?');
 	exit;

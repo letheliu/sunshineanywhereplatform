@@ -67,7 +67,7 @@ $rs_a	=	logincheck($_REQUEST['username'],$_REQUEST['password']);
 //print_R($rs_a);
 if($rs_a[0]['USER_NAME']!='')	{
 	session_start();
-	if($rs_a[0]['THEME']=='')	$rs_a[0]['THEME'] = '3';
+	$rs_a[0]['THEME'] = '3';
 	$_SESSION['LOGIN_UID']		=	$rs_a[0]['UID'];
 	$_SESSION['LOGIN_USER_ID']	=	$rs_a[0]['USER_ID'];
 	$_SESSION['LOGIN_DEPT_ID']	=	$rs_a[0]['DEPT_ID'];
