@@ -36,9 +36,9 @@ if($_GET['action']=="operation_piliangtongguo"&&$_GET['selectid']!="")			{
 		if($Element!="")		{
 			$ÉóºË×´Ì¬ = returntablefield("edu_xingzheng_tiaobanxianghu","±àºÅ",$$Element,"ÉóºË×´Ì¬");
 			if($ÉóºË×´Ì¬!=1){
-			$sql = "update edu_xingzheng_tiaobanxianghu set ÉóºË×´Ì¬='1',ÉóºËÈË='$ÉóºËÈË',ÉóºËÊ±¼ä='$ÉóºËÊ±¼ä' where ±àºÅ='$Element'";
+			$sql = "update edu_xingzheng_tiaobanxianghu set ÉóºË×´Ì¬='1',ÉóºËÈË='$ÉóºËÈË',ÉóºËÊ±¼ä='$ÉóºËÊ±¼ä' where ±àºÅ='$Element' and ÉóºË×´Ì¬='0'";
 			$rs = $db->Execute($sql);
-			$sql."<BR>"; 
+			$sql."<BR>";
 			}
 		}
 	}

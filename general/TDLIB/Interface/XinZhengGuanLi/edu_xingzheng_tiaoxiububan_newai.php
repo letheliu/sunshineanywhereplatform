@@ -32,9 +32,9 @@ if($_GET['action']=="operation_tiaoxiutongguo"&&$_GET['selectid']!="")			{
 		if($Element!="")		{
 			$ÉóºË×´Ì¬ = returntablefield("edu_xingzheng_tiaoxiububan","±àºÅ",$$Element,"ÉóºË×´Ì¬");
 			if($ÉóºË×´Ì¬!=1){
-			$sql = "update edu_xingzheng_tiaoxiububan set µ÷ÐÝÉóºË×´Ì¬='1',µ÷ÐÝÉóºËÈË='$ÉóºËÈË',µ÷ÐÝÉóºËÊ±¼ä='$ÉóºËÊ±¼ä' where ±àºÅ='$Element'";
+			$sql = "update edu_xingzheng_tiaoxiububan set µ÷ÐÝÉóºË×´Ì¬='1',µ÷ÐÝÉóºËÈË='$ÉóºËÈË',µ÷ÐÝÉóºËÊ±¼ä='$ÉóºËÊ±¼ä' where ±àºÅ='$Element' and µ÷ÐÝÉóºË×´Ì¬='0'";
 			$rs = $db->Execute($sql);
-			$sql."<BR>"; 
+			$sql."<BR>";
 			}
 		}
 	}
@@ -62,9 +62,9 @@ if($_GET['action']=="operation_bubantongguo"&&$_GET['selectid']!="")			{
 		if($Element!="")		{
 			$ÉóºË×´Ì¬ = returntablefield("edu_xingzheng_tiaoxiububan","±àºÅ",$$Element,"ÉóºË×´Ì¬");
 			if($ÉóºË×´Ì¬!=1){
-			$sql = "update edu_xingzheng_tiaoxiububan set µ÷ÐÝÉóºË×´Ì¬='0',²¹°àÉóºË×´Ì¬='1',²¹°àÉóºËÈË='$ÉóºËÈË',²¹°àÉóºËÊ±¼ä='$ÉóºËÊ±¼ä' where ±àºÅ='$Element'";
+			$sql = "update edu_xingzheng_tiaoxiububan set ²¹°àÉóºË×´Ì¬='1',²¹°àÉóºËÈË='$ÉóºËÈË',²¹°àÉóºËÊ±¼ä='$ÉóºËÊ±¼ä' where ±àºÅ='$Element' and µ÷ÐÝÉóºË×´Ì¬='1' and ²¹°àÉóºË×´Ì¬='0'";
 			$rs = $db->Execute($sql);
-			$sql."<BR>"; 
+			$sql."<BR>";
 			}
 		}
 	}
