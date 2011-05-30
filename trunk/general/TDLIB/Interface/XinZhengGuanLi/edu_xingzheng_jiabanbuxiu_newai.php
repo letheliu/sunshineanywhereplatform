@@ -32,9 +32,9 @@ if($_GET['action']=="operation_piliangjiaban"&&$_GET['selectid']!="")			{
 		if($Element!="")		{
 			$ÉóºË×´Ì¬ = returntablefield("edu_xingzheng_jiabanbuxiu","±àºÅ",$$Element,"ÉóºË×´Ì¬");
 			if($ÉóºË×´Ì¬!=1){
-			$sql = "update edu_xingzheng_jiabanbuxiu set ¼Ó°àÉóºË×´Ì¬='1',¼Ó°àÉóºËÈË='$ÉóºËÈË',¼Ó°àÉóºËÊ±¼ä='$ÉóºËÊ±¼ä' where ±àºÅ='$Element'";
+			$sql = "update edu_xingzheng_jiabanbuxiu set ¼Ó°àÉóºË×´Ì¬='1',¼Ó°àÉóºËÈË='$ÉóºËÈË',¼Ó°àÉóºËÊ±¼ä='$ÉóºËÊ±¼ä' where ±àºÅ='$Element' and ¼Ó°àÉóºË×´Ì¬='0'";
 			$rs = $db->Execute($sql);
-			$sql."<BR>"; 
+			$sql."<BR>";
 			}
 		}
 	}
@@ -64,7 +64,7 @@ if($_GET['action']=="operation_piliangbuxiu"&&$_GET['selectid']!="")			{
 			if($ÉóºË×´Ì¬!=1){
 			$sql = "update edu_xingzheng_jiabanbuxiu set ¼Ó°àÉóºË×´Ì¬='0',²¹ÐÝÉóºË×´Ì¬='1',²¹ÐÝÉóºËÈË='$ÉóºËÈË',²¹ÐÝÉóºËÊ±¼ä='$ÉóºËÊ±¼ä' where ±àºÅ='$Element'";
 			$rs = $db->Execute($sql);
-			$sql."<BR>"; 
+			$sql."<BR>";
 			}
 		}
 	}
