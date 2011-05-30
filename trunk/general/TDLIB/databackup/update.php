@@ -25,20 +25,20 @@ $PHP_SELF_ARRAY = explode('/',$_SERVER['PHP_SELF']);
 array_pop($PHP_SELF_ARRAY);
 array_shift($PHP_SELF_ARRAY);
 if(in_array("TDLIB",$PHP_SELF_ARRAY))		{
-	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacketcrm";
-	$RemoteHostNameURL = "http://".$RemoteHostName."/hostlist2010.php";
+	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/download/down.php?action=updatepacketcrm&filename=";
+	$RemoteHostNameURL = "http://down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacketcrm/hostlist2010.php";
 	$通达数字化校园 = "单点CRM系统";
 	$本次更新内容 = "http://edu.tongda2000.com/crm/updatelog.php";
 }
 elseif(in_array("WUYE",$PHP_SELF_ARRAY))		{
-	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacketwuye";
-	$RemoteHostNameURL = "http://".$RemoteHostName."/hostlist2010.php";
+	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/download/down.php?action=updatepacketwuye&filename=";
+	$RemoteHostNameURL = "http://down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacketwuye/hostlist2010.php";
 	$通达数字化校园 = "单点物业系统";
 	$本次更新内容 = "http://edu.tongda2000.com/wuye/updatelog.php";
 }
 else	{
-	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacket";
-	$RemoteHostNameURL = "http://".$RemoteHostName."/hostlist2010.php";
+	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/download/down.php?action=updatepacket&filename=";
+	$RemoteHostNameURL = "http://down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacket/hostlist2010.php";
 	$通达数字化校园 = "通达数字化校园";
 	$本次更新内容 = "http://edu.tongda2000.com/product/updatelog.php";
 }
@@ -190,11 +190,9 @@ if($_GET['action']=="")                                {
 			$fileDate = $fileURL[0];
 		}
 
-		if($fileName>$fileDate)                        {
-		//形成URL
-		$URL = "http://$RemoteHostName/".$fileName.".zip";
+		if($fileName>$fileDate)								{
 
-		if(@in_array($fileName,$PacketNameArray))        {
+		if(@in_array($fileName,$PacketNameArray))			{
 			$Status = "<font color=green>文件已下载</font>";
 			$LocalSize = $PacketNameSize[$fileName];
 			//print $RemoteSize."||".$LocalSize."<HR>";
@@ -244,7 +242,6 @@ if($_GET['action']=="")                                {
 		</tr>\n";
 		$text .= "<script>ElementStatus".$i.".innerHTML=\"状态:$Status\";</script>\n";
 		$text .= "<script>ElementReDownload".$i.".innerHTML=\"$ReDownload\";</script>\n";
-		$GLOBAL_URL[$fileName] = $URL;
 		}//日期比较结束
 	}
 	if($text=="")            {
@@ -339,9 +336,8 @@ if($_GET['action']=="phpinfo")                {
 if($_GET['action']=="downloadRemoteFile"&&$_GET['FileName']!="")        {
 
 	$FILENAME = $_GET['FileName'];
-	$URL = $GLOBAL_URL[$FILENAME];
-	$URL = "http://$RemoteHostName/".$FILENAME.".zip";
-	//print $URL;
+	$URL = "http://".$RemoteHostName."".$FILENAME."";
+	//print $URL;exit;
 	if($_GET['SYSTEM_WGET_DOWNLOAD']=="1")		{
 		//unlink($FILENAME.".zip");
 		//exec("wget.exe -q $URL");
