@@ -15,6 +15,7 @@ function jineinput_add($fields,$i)		{
 	$单价 = $fields['value']['单价'];
 	$金额 = $fields['value']['金额'];
 	$showtext  = $html_etc[$tablename][$fieldname];
+	if($数量=='') $数量 = 1;
 	print "
 	<script>
 	function DoItInforJinEr()		{
@@ -28,13 +29,13 @@ function jineinput_add($fields,$i)		{
 	</script>
 <TR>
 <TD class=TableData noWrap width=20%>单价:</TD>
-<TD class=TableData noWrap colspan=\"2\"><INPUT type=\"text\" title='' onkeydown=\"if(event.keyCode==13)event.keyCode=9\" accesskey='7' class=\"SmallInput\"  maxLength=200 size=\"30\" name=\"单价\" value=\"$单价\" onkeyup=\"check_input_num('MONEY');DoItInforJinEr();\"
+<TD class=TableData noWrap colspan=\"2\"><INPUT type=\"text\" title='' onkeydown=\"if(event.keyCode==13)event.keyCode=9\" accesskey='7' class=\"SmallInput\"  maxLength=200 size=\"30\" name=\"单价\" value=\"$单价\" onkeypress=\"check_input_num('MONEY');\" onkeyup=\"DoItInforJinEr();\"
 >&nbsp;
 </TD></TR>
 <TR>
 <TD class=TableData noWrap width=20%>数量:</TD>
-<TD class=TableData noWrap colspan=\"2\"><INPUT type=\"text\" title='' onkeydown=\"if(event.keyCode==13)event.keyCode=9\" accesskey='6' class=\"SmallInput\"  maxLength=200 size=\"30\" name=\"数量\" value=\"$数量\"  onkeyup=\"value=value.replace(/[^\d]/g,'');DoItInforJinEr();\"  onbeforepaste=\"clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''));DoItInforJinEr();\"  >&nbsp;
-(注:如果需要精确到人,此处设为1,不需要精确到人的资产可以设>1的值)</TD></TR>
+<TD class=TableData noWrap colspan=\"2\"><INPUT type=\"text\" title='' onkeydown=\"if(event.keyCode==13)event.keyCode=9\" accesskey='6' class=\"SmallStatic\" readonly  maxLength=200 size=\"30\" name=\"数量\" value=\"$数量\"  onkeyup=\"value=value.replace(/[^\d]/g,'');DoItInforJinEr();\"  onbeforepaste=\"clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''));DoItInforJinEr();\"  >&nbsp;
+<BR>新建时数量只能是1,如超过1,请执行采购或入库操作;<BR>一条信息做为一个整体参与针对一个人的借用和归还记录;</TD></TR>
 
 <TR><TD class=TableData noWrap>金额:</TD>
 <TD class=TableData noWrap colspan=\"2\">
