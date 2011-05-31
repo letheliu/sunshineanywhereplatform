@@ -190,6 +190,17 @@ $PRIVATE_SYSTEM['后勤管理']['公物维修']['类型设置'] = array("../WuYeGuanLi/MAIN_
 $PRIVATE_SYSTEM['后勤管理']['公物维修']['楼房设置'] = array("../WuYeGuanLi/MAIN_BUILDING.php","楼房设置");
 
 
+$PRIVATE_SYSTEM['后勤管理']['图书管理']['PARENT']		= array("../TuShuGuanLi/MAIN_BOOKSSET.php","图书管理");
+$PRIVATE_SYSTEM['后勤管理']['图书管理']['图书管理']		= array("../TuShuGuanLi/booksset_newai.php","图书管理");
+$PRIVATE_SYSTEM['后勤管理']['图书管理']['部门级管理']	= array("../TuShuGuanLi/booksset_department_newai.php","图书部门级管理");
+$PRIVATE_SYSTEM['后勤管理']['图书管理']['操作明细']		= array("../TuShuGuanLi/admin_booksset.php","图书操作明细");
+$PRIVATE_SYSTEM['后勤管理']['图书管理']['部门总括统计'] = array("../TuShuGuanLi/booksset_tongjijianjie.php","图书部门总括统计");
+$PRIVATE_SYSTEM['后勤管理']['图书管理']['部门明细统计'] = array("../TuShuGuanLi/booksset_tongji.php","图书部门明细统计");
+$PRIVATE_SYSTEM['后勤管理']['图书管理']['图书类别']		= array("../TuShuGuanLi/bookssetleibie_newai.php","图书类别设置");
+$PRIVATE_SYSTEM['后勤管理']['图书管理']['部门权限']		= array("../TuShuGuanLi/inc_booksset_priv.php","图书部门权限管理");
+$PRIVATE_SYSTEM['后勤管理']['图书管理']['图书状态']		= array("../TuShuGuanLi/bookszhuangtai_newai.php","图书状态");
+
+
 //$PRIVATE_SYSTEM['在线报名考试']['题库卷库']['PARENT']		= array("../ZAIXIANKAOSHI/MAIN_TIKUJUANKU.php","题库卷库");
 //$PRIVATE_SYSTEM['在线报名考试']['题库卷库']['所属课程信息']	= array("../ZAIXIANKAOSHI/tiku_kecheng_newai.php","所属课程信息");
 //$PRIVATE_SYSTEM['在线报名考试']['题库卷库']['试题信息管理'] = array("../ZAIXIANKAOSHI/tiku_shiti_newai.php","试题信息管理");
