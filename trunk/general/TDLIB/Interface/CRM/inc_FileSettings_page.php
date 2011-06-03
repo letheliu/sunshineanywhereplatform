@@ -28,6 +28,23 @@ $MenuArray[] = array('286','node_user','业务类型','crm_yewu_type_newai.php');
 $MenuArray[] = array('286','node_user','票据类型','crm_piaoju_type_newai.php');
 $MenuArray[] = array('286','node_user','所属分类','crm_suoshufenlei_sq_newai.php');
 $MenuArray[] = array('286','node_user','银行账户','crm_yinhangzh_newai.php');
+$MenuArray[] = array('286','node_user','桌面显示属性','crm_mytable_xssx_newai.php');
+$MenuArray[] = array('286','node_user','桌面显示位置','crm_mytable_wz_newai.php');
+
+
+
+
+$MenuArray[] = array('286','node_user','测试***1','crm_notes.php');
+$MenuArray[] = array('286','node_user','测试***2','crm_google.php');
+$MenuArray[] = array('286','node_user','测试***3','crm_mytable_kehugaishu.php');
+$MenuArray[] = array('286','node_user','测试***4','crm_kehu_birthday.php');
+$MenuArray[] = array('286','node_user','测试***5','kehu_chaxun.php');
+$MenuArray[] = array('286','node_user','测试***6','crm_mytable_hetong.php');
+$MenuArray[] = array('286','node_user','测试***7','crm_mytable_fuwu.php');
+$MenuArray[] = array('286','node_user','测试***8','crm_mytable_feiyong.php');
+$MenuArray[] = array('286','node_user','测试***9','crm_mytable_dingdan.php');
+$MenuArray[] = array('286','node_user','测试***10','crm_mytable_tongzhi.php');
+
 
 $DateY = Date("Y");
 $DateM = Date("m");

@@ -19,7 +19,28 @@
 	*/
 
 	CRM系统过滤个人权限();
-
+    
+    if($_GET['action']==''||$_GET['action']=='init_default'||$_GET['action']=='init_customer'){
+      
+      //print_r($_GET);
+			
+	}
+	if($_GET['action1']=='today')		{
+		$date = $_GET['date'];
+		$SYSTEM_ADD_SQL = "and 创建时间>='$date'";
+	}
+	if($_GET['action1']=='week')        {
+		$date = $_GET['date'];
+		$SYSTEM_ADD_SQL = "and 创建时间>='$date'";
+	}
+	if($_GET['action1']=='month')       {
+		$date = $_GET['date'];
+	    $SYSTEM_ADD_SQL = "and 创建时间>='$date'";
+	}
+	if($_GET['action1']=='year')        {
+	    $date = $_GET['date'];
+	    $SYSTEM_ADD_SQL = "and 创建时间>='$date'";
+	}
 
 
 	//查看客户数据
@@ -33,7 +54,9 @@
 	$filetablename		=	'crm_customer';
 	$parse_filename		=	'crm_customer_person';
 	require_once('include.inc.php');
-	?><?
+	?>
+	
+	<?
 /*
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;
