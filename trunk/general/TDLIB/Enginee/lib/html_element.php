@@ -1108,10 +1108,16 @@ function print_tr_auto_incrementdate($showtext,$var,$var_value='',$colspan=1,$ad
 function returnDateAutoIncrement($FieldName,$tablename,$value="",$addText="")		{
 	global $db;
 	global $primarykey_index;
-	$sql = "select max($primarykey_index) as NUM from $tablename";//print $sql;
+	if($primarykey_index!="")		{
+		$MAX_FIELD = $primarykey_index;
+	}
+	else	{
+		$MAX_FIELD = $FieldName;
+	}
+	$sql = "select max($MAX_FIELD) as NUM from $tablename";//print $sql;
 	$rs = $db->Execute($sql);
 	$number = $rs->fields['NUM'];
-	$sql = "select $FieldName from $tablename where $primarykey_index='$number'";//print $sql;
+	$sql = "select $FieldName from $tablename where $MAX_FIELD='$number'";//print $sql;
 	$rs = $db->Execute($sql);
 	$PKNAME = $rs->fields[$FieldName];
 	$substr = substr($PKNAME,-4);

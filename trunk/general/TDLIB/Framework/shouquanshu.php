@@ -29,7 +29,7 @@ if(@is_file($_SERVER['WINDIR']."/Fonts/simhei.ttf"))			{
 	$showChinaText_font			= $_SERVER['WINDIR']."/Fonts/simhei.ttf";
 }
 else	{
-	$showChinaText_font			= "images/FZYTK.TTF";
+	$showChinaText_font			= "images/simhei.ttf";
 }
 
 //print_R($showChinaText_font);
@@ -47,7 +47,7 @@ $showChinaText->授权软件版本		= $ini_file['SOFTWARE_TYPE'];
 $showChinaText->授权时间			= $ini_file['SOFTWARE_DATE'];
 $showChinaText->授权使用域名		= $ini_file['SERVER_NAME'];
 $showChinaText->font				= $showChinaText_font;
-
+$showChinaText->授权软件名称	    = $SYSTEM_SOFTWARE_NAME;
 $showChinaText->show();
 
 
