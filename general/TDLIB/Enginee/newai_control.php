@@ -1311,24 +1311,8 @@ else	{
 }
 
 
-/*
-if($SYSTEM_VERSION_CONTENT=="LIYE")		{
-	include_once($_SERVER['DOCUMENT_ROOT']."/inc/td_core.php");
-	if(!function_exists("tdoa_edu"))  {
-		function tdoa_edu()	{
-			return false;
-		}
-	}
-	if(tdoa_edu())		{
-	}
-	else	{
-		print "<BR><div align=center><input type=button class=SmallButton title='注册过后此信息消失' value=' 未注册立业公信版本 ' readonly /></div>";
-	}
-}
-*/
-
 if(!is_file("../../Framework/license.ini"))					{
-	if(is_dir("../../Framework")&&(is_dir("../../../EDU")||is_dir("../../../TDLIB"))&&$FileDirName!="PGSQL")		{
+	if(is_dir("../../Framework")&&(is_dir("../../../EDU")||is_dir("../../../ERP")||is_dir("../../../TDLIB"))&&$FileDirName!="PGSQL")		{
 		if($_GET['action']=="init_default"||$_GET['action']=="init_customer")		{
 				print "<BR><div align=center><a href=\"$SHOW2\" title='$SHOW3' target=_blank><font color=gray>$SHOW1</font></a></div>";
 		}

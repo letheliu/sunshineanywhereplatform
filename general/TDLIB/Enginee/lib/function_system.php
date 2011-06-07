@@ -73,7 +73,7 @@ return $c;
 }// end of function
 
 //系统帮助文档说明表格形成部分
-function systemhelpContent($title,$width='85%')		{
+function systemhelpContent($title,$width='100%')		{
 	global $db,$_GET;
 	$sql = "select text from systemhelp where systemhelpname='$title'";
 	$rs = $db->cacheExecute(15,$sql);
@@ -82,7 +82,7 @@ function systemhelpContent($title,$width='85%')		{
 	if($_GET['action']=="init_default"||$_GET['action']=="init_customer")				{
 	print "
 		<BR>
-		<table border='0' cellspacing='1' width='$width' align=center class='small' bgcolor='#000000' cellpadding='3'>
+		<table width='$width' align=center class=TableBlock>
 			<tr class='TableContent'>
 				<td  align='left'>$title</td>
 			</tr>
@@ -394,6 +394,9 @@ function page_css($add="",$title="Sunshine20",$相对路径="1")	{
 	}
 	elseif(in_array("WUYE",$PHP_SELF_ARRAY))		{
 		$DIRNAME = "WUYE";
+	}
+	elseif(in_array("ERP",$PHP_SELF_ARRAY))		{
+		$DIRNAME = "ERP";
 	}
 	else	{
 		$DIRNAME = "EDU";

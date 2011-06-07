@@ -971,6 +971,20 @@ function machinecode_sunshine_512_2000($code)		{
 		$string=substr($newstring1,5,6);//print $string;print "<BR>";
 		$string=$string.substr($newstring2,12,6);//print substr($newstring2,4,8);print "<BR>";
 	}
+	elseif(in_array("ERP",$PHP_SELF_ARRAY))		{
+		$temp1=substr($code,0,1);
+		$temp2=substr($code,1,2);
+		$temp3=substr($code,2,3);
+		$temp4=substr($code,3,4);
+		$temp5=substr($code,4,5);
+		$temp6=substr($code,5,6);
+		$temp7=substr($code,6,7);
+		$temp8=substr($code,7,8);
+		$newstring1=md5($temp4.$temp1.$temp2.$temp3);
+		$newstring2=md5($temp8.$temp7.$temp5.$temp6);
+		$string=substr($newstring1,5,6);//print $string;print "<BR>";
+		$string=$string.substr($newstring2,12,6);//print substr($newstring2,4,8);print "<BR>";
+	}
 	else	{
 		$temp1=substr($code,0,1);
 		$temp2=substr($code,1,2);
@@ -1180,7 +1194,10 @@ $PHP_SELF_ARRAY = explode('/',$_SERVER['PHP_SELF']);
 array_pop($PHP_SELF_ARRAY);
 array_shift($PHP_SELF_ARRAY);
 if(in_array("TDLIB",$PHP_SELF_ARRAY))		{
-	$SYSTEM_SOFTWARE_NAME = "通达软件实验室";
+	$SYSTEM_SOFTWARE_NAME = "单点开源CRM";
+}
+elseif(in_array("ERP",$PHP_SELF_ARRAY))		{
+	$SYSTEM_SOFTWARE_NAME = "单点开源ERP";
 }
 else	{
 	$SYSTEM_SOFTWARE_NAME = "通达数字化校园";
