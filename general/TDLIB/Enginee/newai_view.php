@@ -204,7 +204,7 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 	//$ShowElement = returnPrivateTwoArray($SYSTEM_FILTER_ARRAY,$USER_PRIV,$fieldname,$fields['value'][$fieldname],$fields['value'][$RecordDEPT],$fields['value'][$RecordUser]);
 	//if($ShowElement!="***")					{
 	if(1)										{	//2010-6-14 11:20替换以前旧的判断方式
-	switch($fieldfilter)		{
+	switch(TRIM($fieldfilter))		{
 		case '':
 		case 'input':
 			switch($mode)	{
@@ -214,6 +214,24 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 					$inputsize = $fields['inputsize'][$fieldname];
 					if($inputsize==""||$inputsize==0)	$inputsize = $fields['other']['inputsize'];
 					print_tr($html_etc[$tablename][$fieldname].":",$fieldname,trim($fields['value'][$fieldname]),$inputsize,$fields['other']['inputcols'],$fields['other']['class'],$notnulltext,'text','',$i+1);
+					//exit;
+					break;
+				case 'view':
+					$i<5?$colspan=2:$colspan=2;
+					$i==1?'':$system_picture_line='';
+					print_text_tr($html_etc[$tablename][$fieldname].":",trim($fields['value'][$fieldname]),$colspan,$system_picture_line,$notnulltext);
+					break;
+			}
+			break;
+		case 'nowshow':
+		case 'notshow':
+			switch($mode)	{
+				case 'add':
+				case 'edit':
+					//print_R($fields['inputsize']);exit;
+					$inputsize = $fields['inputsize'][$fieldname];
+					if($inputsize==""||$inputsize==0)	$inputsize = $fields['other']['inputsize'];
+					print_notshow($html_etc[$tablename][$fieldname].":",$fieldname,trim($fields['value'][$fieldname]),$inputsize,$fields['other']['inputcols'],$fields['other']['class'],$notnulltext,'text','',$i+1);
 					//exit;
 					break;
 				case 'view':
@@ -1275,13 +1293,16 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 			global $SUNSHINE_USER_NAME_VAR,$SUNSHINE_USER_DEPT_VAR,$SUNSHINE_USER_DEPT_VAR,$SUNSHINE_USER_ID_VAR,$_SESSION,$SUNSHINE_USER_DEPT_VAR;
 			switch($fields['hidden_field'][$i]['hiddentype'])		{
 				case 'dept':
-					$fields['value'][$fieldname]=$_SESSION[$SUNSHINE_USER_DEPT_VAR];
+					$fields['value'][$fieldname]=$_SESSION['USER_DEPT'];
 					break;
 				case 'name':
-					$fields['value'][$fieldname]=$_SESSION[$SUNSHINE_USER_NAME_VAR];
+					$fields['value'][$fieldname]=$_SESSION['LOGIN_USER_ID'];
+					break;
+				case 'realname':
+					$fields['value'][$fieldname]=$_SESSION['LOGIN_USER_NAME'];
 					break;
 				case 'id':
-					$fields['value'][$fieldname]=$_SESSION[$SUNSHINE_USER_ID_VAR];
+					$fields['value'][$fieldname]=$_SESSION['LOGIN_USER_ID'];
 					break;
 				case 'value':
 					$fields['value'][$fieldname]=$hiddenid;
@@ -1296,6 +1317,8 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 					//$fields['value'][$fieldname]=$fields['value'][$fieldname];
 					break;
 			}
+			//print $SUNSHINE_USER_NAME_VAR;
+			//print $fields['value'][$fieldname];
 			switch($mode)	{
 				case 'add':
 				case 'edit':
@@ -1370,8 +1393,6 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 				case 'view':
 					break;
 			}
-			break;
-		case 'nowshow':
 			break;
 		case 'userdefine':
 			switch($mode)	{
