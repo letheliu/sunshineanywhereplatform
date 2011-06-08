@@ -7,6 +7,7 @@ require_once('../../../adodb/session/adodb-session2.php');
 
 $GLOBAL_SESSION=returnsession();
 
+
 ?>
 <head>
 <title></title>

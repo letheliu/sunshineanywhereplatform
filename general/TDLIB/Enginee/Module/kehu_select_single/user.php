@@ -7,13 +7,14 @@ require_once('../../../adodb/session/adodb-session2.php');
 $GLOBAL_SESSION=returnsession();
 
 
+
 ?>
 <head>
 <title></title>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <link rel="stylesheet" type="text/css" href="/theme/<?=$LOGIN_THEME?>/style.css" />
 <link rel="stylesheet" type="text/css" href="/theme/<?=$LOGIN_THEME?>/menu_left.css" />
-<script src="/inc/js/hover_tr.js"></script>
+<script src="hover_tr.js"></script>
 <script type="text/javascript">
 var $ = function(id) {return document.getElementById(id);};
 var CUR_ID="2";
@@ -54,19 +55,19 @@ function CheckSend()
 	var kword=$("kword");
 	if(kword.value=="按客户名称搜索...")
 	   kword.value="";
-  if(kword.value=="" && $('search_icon').src.indexOf("/images/quicksearch.gif")==-1)
+  if(kword.value=="" && $('search_icon').src.indexOf("../../../Framework/images/quicksearch.gif")==-1)
 	{
-	   $('search_icon').src="/images/quicksearch.gif";
+	   $('search_icon').src="../../../Framework/images/quicksearch.gif";
 	}
 	if(key!=kword.value && kword.value!="")
 	{
      key=kword.value;
 	   parent.user.location="user.php?action=SEARCH&TO_ID=<?=$_GET['TO_ID']?>&TO_NAME=<?=$_GET['TO_NAME']?>&FORM_NAME=<?=$_GET['FORM_NAME']?>&KEYVALUE="+kword.value;
-	   if($('search_icon').src.indexOf("/images/quicksearch.gif")>=0)
+	   if($('search_icon').src.indexOf("../../../Framework/images/quicksearch.gif")>=0)
 	   {
-	   	   $('search_icon').src="/images/closesearch.gif";
+	   	   $('search_icon').src="../../../Framework/images/closesearch.gif";
 	   	   $('search_icon').title="清除关键字";
-	   	   $('search_icon').onclick=function(){kword.value='按客户名称搜索...';$('search_icon').src="/images/quicksearch.gif";$('search_icon').title="";$('search_icon').onclick=null;};
+	   	   $('search_icon').onclick=function(){kword.value='按客户名称搜索...';$('search_icon').src="../../../Framework/images/quicksearch.gif";$('search_icon').title="";$('search_icon').onclick=null;};
 	   }
   }
   ctroltime=setTimeout(CheckSend,100);
@@ -97,9 +98,7 @@ echo $TO_NAME;
 echo ".value=user_name;\r\n  }\r\n  parent.close();\r\n}\r\n</script>\r\n</head>\r\n\r\n<body class=\"bodycolor\" topmargin=\"1\" leftmargin=\"0\" >\r\n\r\n";
 
 if($_GET['客户类型']!="")		{
-
 	$AddSql = " where 客户类型='".$_GET['客户类型']."'";
-
 }
 
 //得到区域名称
@@ -107,7 +106,7 @@ if($_GET['客户类型']!="")		{
 
 if($_GET['action']=="SEARCH")	{
 	$KEYVALUE = $_GET['KEYVALUE'];
-	$AddSql = " where 客户类型 like '%$KEYVALUE%'";
+	$AddSql = " where 客户名称 like '%$KEYVALUE%'";
 }//print_R($_GET);
 
 //print $AddSql;
@@ -121,8 +120,8 @@ $rs_a = $rs->GetArray();
 if(sizeof($rs_a)>0){
 for($i=0;$i<sizeof($rs_a);$i++)			{
 	$客户名称 = $rs_a[$i]['客户名称'];
-   
-    
+
+
 	$a = $客户名称;
 
 	echo "\r\n<tr class=\"TableData\">\r\n  <td class=\"menulines\" align=\"center\" onclick=\"javascript:add_user('";
