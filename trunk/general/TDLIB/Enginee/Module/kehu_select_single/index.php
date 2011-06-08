@@ -8,6 +8,7 @@ require_once('../../../adodb/session/adodb-session2.php');
 $GLOBAL_SESSION=returnsession();
 //print_R($db);exit;
 
+
 if ( $TO_ID == "" || $TO_ID == "undefined" )
 {
 	$TO_ID = "TO_ID";
