@@ -470,6 +470,13 @@ function print_tr($showtext,$var,$var_value="",$size="25",$colspan=1,$class="Sma
 	 unset($custom_type);
 }
 
+function print_notshow($showtext,$var,$var_value="",$size="25",$colspan=1,$class="SmallInput",$addtext="",$type='text',$readonly='',$i='',$fieldtype='')	{
+	 global $custom_type;
+	 global $common_html,$tablename;
+	 global $uniquekey,$columns;
+	 print "<INPUT type=hidden maxLength=200 size=\"$size\" name='$var' value=\"$var_value\" >";
+}
+
 //实时更新字段的界面语言-定义部分
 function FilterFieldName($showtext,$var)		{
 	global $sessionkey,$tablename;
