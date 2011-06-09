@@ -5,7 +5,7 @@
 	require_once('lib.inc.php');
 	$GLOBAL_SESSION=returnsession();
 
-	include("crm_config_mytable.php");
+	include("crm_mytable/crm_config_mytable.php");
 ?>
 
 <link rel="stylesheet" type="text/css" href="/theme/3/style.css">
