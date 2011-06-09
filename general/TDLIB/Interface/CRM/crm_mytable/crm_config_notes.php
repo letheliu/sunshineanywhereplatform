@@ -9,6 +9,7 @@ $GLOBAL_SESSION=returnsession();
 
 $user_id = $_SESSION['LOGIN_USER_ID'];
 $CONTENT = urldecode( $_POST['CONTENT'] );
+$CONTENT = iconv( "utf-8", ini_get( "default_charset" ), $CONTENT );
 
 //returntablefield(表名,字段名,字段值,所要查询的字段);
 

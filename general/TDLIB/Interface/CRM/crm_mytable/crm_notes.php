@@ -15,12 +15,12 @@ $module_desc = "CRM桌面便签";
 $module_body = "";
 //if ( $MODULE_FUNC_ID == "" || find_id( $USER_FUNC_ID_STR, $MODULE_FUNC_ID ) )
 //{
-				$query = "select * from crm_mytable_notes where 创建人ID='".$user_id."';";
+				$query = "select * from crm_mytable_notes where 创建人ID='".$user_id."'";
 				$rs = $db->CacheExecute(150,$query);
 				$rs_a = $rs->GetArray();
                 if(count($rs_a)>0){
 					for($i=0;$i<count($rs_a);$i++){
-						$MY_NOTES .= $rs_a[$i]['便签内容'];
+						$MY_NOTES .= "·".$rs_a[$i]['便签内容'];
 						$MY_NOTES .= "[";
 						$MY_NOTES .= $rs_a[$i]['创建时间'];
 						$MY_NOTES .= "]";
@@ -31,7 +31,7 @@ $module_body = "";
                 $module_body .= "<table border=\"0\" class=\"TableBlock\" width=\"100%\">";
 				$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 				$module_body .= "</table>";
-				$module_body .= ( "<textarea id=\"update\" onblur=\"save_notes()\" style=\"overflow-y:auto;width:100%;height:".( $MAX_COUNT * 20 - 15 ) )."px;background:ccFFFF;padding:5px;border:0px;\">·".htmlspecialchars( $MY_NOTES )."</textarea>
+				$module_body .= ( "<textarea id=\"update\" onblur=\"save_notes()\" style=\"overflow-y:auto;width:100%;height:".( $MAX_COUNT * 20 - 15 ) )."px;background:ccFFFF;padding:5px;border:0px;\">".htmlspecialchars( $MY_NOTES )."</textarea>
 				<script language=\"JavaScript\">
                 var timeout=60000;
                 function save_notes()
@@ -50,7 +50,7 @@ $module_body = "";
 							    }
 								if (s == 200){
 								   if(req.responseText.substr(0,3)!=\"+OK\"){
-										alert(\"保存便签内容错误，错误信息：\\n\"+req.responseText);
+										alert(\"保存便签内容错误，错误信息：\"+req.responseText);
 										window.setTimeout(\"save_notes()\", timeout);
 										timeout = timeout*2;
 									}
