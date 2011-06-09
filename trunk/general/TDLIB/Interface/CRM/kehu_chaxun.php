@@ -10,21 +10,29 @@ $module_desc = "CRM客户查询";
 $module_body = "";
 page_css("CRM客户查询");
 
+$module_body .= "<table border=0 class=TableBlock width=100%>";
+$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 
-				$module_body .= "<form action=\"kehu_search.php?check=crmkehu\" name=\"form1\" method=\"post\">
-				                客户名称：<input type=\"text\" name=\"kehu_name\" class=\"SmallInput\" size=\"26.5\" maxlength=\"25\"><br>
-				                客户类型：<select name=\"kehu_type\" class=\"SmallSelect\" style=\"width:128pt\">
-				                          <option value=\"\" selected></option>";
-
+				$module_body .= "<form action=\"kehu_search.php?check=crmkehu\" name=\"form1\" method=\"post\">";
+				$module_body .= "<tr class=TableBlock>
+						<td valign=Middle align=left>&nbsp;客户名称：<input type=\"text\" name=\"kehu_name\" class=\"SmallInput\" size=\"26.5\" maxlength=\"25\"></td></tr>";
+				$module_body .= "<tr class=TableBlock>
+						<td valign=Middle align=left>&nbsp;客户类型：<select name=\"kehu_type\" class=\"SmallSelect\" style=\"width:128pt\">
+				                          <option value=\"\" selected></option>";               
 								$sql = "select 客户类型 from crm_customer_type order by 客户类型";
 								$rs = $db->Execute($sql);
 								$rs_a = $rs->GetArray();
 								for($i=0;$i<sizeof($rs_a);$i++)			{
-								    $module_body .= "<option value=".$rs_a[$i]['客户类型'].">".$rs_a[$i]['客户类型']."</option>";
+				$module_body .= "<option value=".$rs_a[$i]['客户类型'].">".$rs_a[$i]['客户类型']."</option>";
 								}
-				                $module_body .= "</select><br>
-								<input type=\"submit\" value=\"查询\" class=\"SmallButton\" title=\"模糊查询\" name=\"button\">
-								</form>";
+				$module_body .= "</select></td></tr>";
+				$module_body .= "<tr class=TableBlock>
+						        <td valign=Middle align=left>&nbsp;&nbsp;<input type=\"submit\" value=\"查询\" class=\"SmallButton\" title=\"模糊查询\" name=\"button\">&nbsp;<input type=\"reset\" value=\"清空\" class=\"SmallButton\" title=\"清空数据\" name=\"button1\">
+						        </td></tr>";
+			    $module_body .= "<tr class=TableBlock><td valign=Middle align=left>&nbsp;</td></tr>";
+				$module_body .= "</form>";
+
+$module_body .= "</table>";
 
 echo $module_body;
 
