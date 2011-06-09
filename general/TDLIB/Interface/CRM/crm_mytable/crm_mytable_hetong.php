@@ -17,23 +17,23 @@ $rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs->GetArray();
 $count = $max_count-count($rs_a);
 $module_body .= "<table border=0 class=TableBlock width=100%>";
-$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;<a href=\"crm_contract_person_newai.php\" title=\"CRM合同管理\">".$module_desc."</a></td></tr>";
+$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;<a href=\"../crm_contract_person_newai.php\" title=\"CRM合同管理\">".$module_desc."</a></td></tr>";
 if(count($rs_a)>0){
    for($i=0;$i<count($rs_a);$i++){
        if($rs_a[$i]['是否审核'] == "是"){
-	      $boolen = "<img src=\"images/right.gif\" align=\"absmiddle\">";
+	      $boolen = "<img src=\"../images/right.gif\" align=\"absmiddle\">";
 	   }
 	   if($rs_a[$i]['是否审核'] == "否" or $rs_a[$i]['是否审核'] == ""){
-	      $boolen = "<img src=\"images/error.gif\" align=\"absmiddle\">";
+	      $boolen = "<img src=\"../images/error.gif\" align=\"absmiddle\">";
 	   }
 
 	   $编号     = $rs_a[$i]['编号'];
 	   $合同编号 = '单号：'.$rs_a[$i]['合同编号'];
 	   $module_body .= "<tr class=\"TableBlock\">
 						<td valign=\"Middle\" align=\"left\">
-						<img src=\"images/arrow_r.gif\">&nbsp;
+						<img src=\"../images/arrow_r.gif\">&nbsp;
                         ".$boolen."&nbsp;".$rs_a[$i]['客户名称']."</td>
-						<td valign=\"Middle\" align=\"left\"><a href=crm_contract_person_newai.php?action=view_default&编号=$编号; title=".$合同编号.">".$rs_a[$i]['服务类型']."</a></font></td>
+						<td valign=\"Middle\" align=\"left\"><a href=../crm_contract_person_newai.php?action=view_default&编号=$编号; title=".$合同编号.">".$rs_a[$i]['服务类型']."</a></font></td>
 						<td valign=\"Middle\" align=left><font color=\"green\">[金额：".$rs_a[$i]['合同总金额']."]</font></td>
 						<td valign=\"Middle\" align=\"right\">".$rs_a[$i]['合同签订时间']."</td></tr>";
 
@@ -50,7 +50,7 @@ if(count($rs_a)>0){
 if(count($rs_a)==0){
    $module_body .= "<tr class=\"TableBlock\">
 						<td valign=\"Middle\" align=\"left\"><font color=\"red\">
-						<img src=\"images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
+						<img src=\"../images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
                         暂无服务记录!</font></td>";
 }
 $module_body .= "</table>";

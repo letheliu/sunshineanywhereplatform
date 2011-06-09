@@ -6,7 +6,7 @@
 	$GLOBAL_SESSION=returnsession();
     
 	//将crm_mytable_cs.php传递过来的参数写到crm_config_mytable.php文件中
-	$goalfile = "crm_config_mytable.php";
+	$goalfile = "crm_mytable/crm_config_mytable.php";
 	
     if($_GET['check'] == "upd"){
 		    page_css("桌面参数设置");

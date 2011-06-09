@@ -30,7 +30,7 @@ $MODULE_BODY = $MODULE_OP = "";
 								$BIRTHDAY  = $ROW[$i]['客户生日'];
 								//echo $BIRTHDAY;
 								$XIANXIREN = $ROW[$i]['第一联系人'];
-								$USER_NAME1 = $USER_NAME."<a href=crm_customer_view_model.php?编号=$ID; title=客户详细信息><font color=green>[".$XIANXIREN."]</font></a>";
+								$USER_NAME1 = $USER_NAME."<a href=../crm_customer_view_model.php?编号=$ID; title=客户详细信息><font color=green>[".$XIANXIREN."]</font></a>";
 
 								if ( "01-01" <= substr( $BIRTHDAY, 5, 5 ) && substr( $BIRTHDAY, 5, 5 ) <= "01-31" )
 								{
@@ -54,12 +54,12 @@ $MODULE_BODY = $MODULE_OP = "";
 								if ( $CUR_DATE == $DATA )
 								{
 												++$COUNT1;
-												$PERSON_STR1 .= "<td valign=Middle align=left><img src='images/cake.jpg' align='absmiddle'>&nbsp;".$USER_NAME1."，";
+												$PERSON_STR1 .= "<td valign=Middle align=left><img src='../images/cake.jpg' align='absmiddle'>&nbsp;".$USER_NAME1."，";
 								}
 								else
 								{
 												++$COUNT2;
-												$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='images/cake.jpg' align=absmiddle>&nbsp;".$USER_NAME1."(".date( "m-d", strtotime($DATA) ).")</td></tr>";
+												$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='../images/cake.jpg' align=absmiddle>&nbsp;".$USER_NAME1."(".date( "m-d", strtotime($DATA) ).")</td></tr>";
 												if ( date( "m", time( ) ) == 12 )
 												{
 																$M_D = date( "m-d", strtotime( $DATA ) );
@@ -82,14 +82,14 @@ $MODULE_BODY = $MODULE_OP = "";
 								{
 												foreach ( $BIRTHDAY_ARRAY1 as $key => $value )
 												{
-														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='images/cake.jpg' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
+														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='../images/cake.jpg' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
 												}
 								}
 								if ( is_array( $BIRTHDAY_ARRAY2 ) && !empty( $BIRTHDAY_ARRAY2 ) )
 								{
 												foreach ( $BIRTHDAY_ARRAY2 as $key => $value )
 												{
-														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='images/cake.jpg' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
+														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='../images/cake.jpg' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
 												}
 								}
 				}
