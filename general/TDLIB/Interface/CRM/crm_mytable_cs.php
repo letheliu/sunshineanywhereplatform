@@ -68,7 +68,7 @@ function CheckForm()
 <body class="bodycolor" topmargin="5">
 <table border="0" width="100%" cellspacing="0" cellpadding="3" class="small">
   <tr>
-    <td class="Big"><img src="images/foldericon1.gif" align="absmiddle"><span class="big3">&nbsp;CRM桌面参数设置</span>
+    <td class="Big"><span class="big3">&nbsp;CRM桌面参数设置</span>
     </td>
   </tr>
 </table>
@@ -82,7 +82,7 @@ function CheckForm()
     <td>
       <input type="checkbox" name="mokuaiweizhi" id="mokuaiweizhi" checked/><label for="mokuaiweizhi">允许用户调整各桌面模块位置</label><br>
 	  <input type="checkbox" name="xianshitiaoshu" id="xianshitiaoshu" checked/><label for="xianshitiaoshu">允许用户调整各桌面模块显示条数</label><br>
-      <input type="checkbox" name="lanmukuandu" id="lanmukuandu" <?if($左右栏目宽度 == 'on'){ echo "checked";}?>/><label for="lanmukuandu">允许用户调整左右栏目宽度</label><br> 
+      <input type="checkbox" name="lanmukuandu" id="lanmukuandu" <?if($左右栏目宽度 == 'on'){ echo "checked";}?>/><label for="lanmukuandu">允许用户调整左右栏目宽度</label><br>
       <input type="checkbox" name="shangxiagundong" id="shangxiagundong" <?if($上下滚动显示 == 'on'){ echo "checked";}?>/><label for="shangxiagundong">允许用户设置列表上下滚动显示</label><br>
       <input type="checkbox" name="zhankaizhedie" id="zhankaizhedie" <?if($展开折叠模块 == 'on'){ echo "checked";}?>/><label for="zhankaizhedie">允许用户展开/折叠桌面模块</label><br>
     </td>
@@ -97,7 +97,7 @@ function CheckForm()
    </tr>
    <tr class="TableData">
     <td width="130">桌面模块默认值<br>批量设置</td>
-    <td>      
+    <td>
       <input type="checkbox" name="gongdun" id="gongdun" <?if($列表上下滚动显示 == 'on'){ echo "checked";}?>/><label for="gongdun">列表上下滚动显示</label><br>
       <input type="checkbox" name="hanshu_gundong_all" id="hanshu_gundong_all" <?if($批量应用 == 'on'){ echo "checked";}?>/><label for="hanshu_gundong_all">确认把每模块显示行数、滚动显示设置批量应用到所有模块</label><br>
     </td>
@@ -112,7 +112,7 @@ function CheckForm()
   </form>
 
 
-<!-- 隐藏帧，用我的设置更新其他用户时使用 by dq 090617 
+<!-- 隐藏帧，用我的设置更新其他用户时使用 by dq 090617
 <iframe name="hiddenFrame" id="hiddenFrame" width=0 height=0 frameborder=0 scrolling=no></iframe>
 -->
 
