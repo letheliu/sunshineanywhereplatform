@@ -1,5 +1,4 @@
 <?php
-
 ini_set('display_errors', 1);
 ini_set('error_reporting', E_ALL);
 error_reporting(E_WARNING | E_ERROR);
@@ -9,17 +8,19 @@ page_css('CRM客户生日');
 
 
 $user_id = $_SESSION['LOGIN_USER_ID'];
-$module_func_id = "";
+//$module_func_id = "";
 $module_desc = "CRM客户生日提醒";
 $MODULE_BODY = $MODULE_OP = "";
-if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
-{
+//if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
+//{
 				$CUR_DATE = date( "Y-m-d", time( ) );
 				$END_DATE = date( "Y-m-d", strtotime( "+30 days" ) );
 				$COUNT1 = 0;
 				$COUNT2 = 0;
 				$BIRTHDAY_ARRAY1 = $BIRTHDAY_ARRAY2 = array( );
 				$query = "SELECT 编号,客户名称,客户生日,第一联系人 from crm_customer where 创建人='$user_id' order by SUBSTRING(客户生日,6,5),客户名称 ASC";
+
+				//echo $query;
 				$rs = $db->Execute($query);
 				$ROW = $rs->GetArray();
 				for($i=0;$i<count($ROW);$i++)
@@ -27,6 +28,7 @@ if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
 					            $ID        = $ROW[$i]['编号'];
 								$USER_NAME = $ROW[$i]['客户名称'];
 								$BIRTHDAY  = $ROW[$i]['客户生日'];
+								//echo $BIRTHDAY;
 								$XIANXIREN = $ROW[$i]['第一联系人'];
 								$USER_NAME1 = $USER_NAME."<a href=crm_customer_view_model.php?编号=$ID; title=客户详细信息><font color=green>[".$XIANXIREN."]</font></a>";
                                 
@@ -52,12 +54,12 @@ if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
 								if ( $CUR_DATE == $DATA )
 								{
 												++$COUNT1;
-												$PERSON_STR1 .= "<td valign=Middle align=left><img src='images/cake.png' align='absMiddle'>&nbsp;".$USER_NAME1."，";
+												$PERSON_STR1 .= "<td valign=Middle align=left><img src='images/cake.jpg' align='absmiddle'>&nbsp;".$USER_NAME1."，";
 								}
 								else
 								{
 												++$COUNT2;
-												$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='images/cake.png' align='absMiddle'>&nbsp;".$USER_NAME1."(".date( "m-d", strtotime( $DATA ) ).")</td></tr>";
+												$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='images/cake.jpg' align=absmiddle>&nbsp;".$USER_NAME1."(".date( "m-d", strtotime($DATA) ).")</td></tr>";
 												if ( date( "m", time( ) ) == 12 )
 												{
 																$M_D = date( "m-d", strtotime( $DATA ) );
@@ -80,29 +82,29 @@ if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
 								{
 												foreach ( $BIRTHDAY_ARRAY1 as $key => $value )
 												{
-																$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='images/cake.png' align='absMiddle'>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
+														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='images/cake.jpg' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
 												}
 								}
 								if ( is_array( $BIRTHDAY_ARRAY2 ) && !empty( $BIRTHDAY_ARRAY2 ) )
 								{
 												foreach ( $BIRTHDAY_ARRAY2 as $key => $value )
 												{
-																$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='images/cake.png' align='absMiddle'>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
+														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='images/cake.jpg' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
 												}
 								}
 				}
 				$PERSON_STR1 = substr( $PERSON_STR1, 0, -2 );
-				$PERSON_STR2 = substr( $PERSON_STR2, 0, -2 );
+				//$PERSON_STR2 = substr( $PERSON_STR2, 0, -2 );
                 
-				$MODULE_BODY .= "<table border=0 class=TableBlock width=50%>";
+				$MODULE_BODY .= "<table border=\"0\" class=\"TableBlock\" width=\"100%\">";
+				$MODULE_BODY .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 				if ( 0 < $COUNT1 )
 				{
 								$MODULE_BODY .= "<tr class=TableBlock><td valign=Middle align=left><font color=red>今天生日：</font></td>".$PERSON_STR1."，生日快乐!</td></tr>";
 				}
 				if ( 0 < $COUNT2 )
 				{
-								$MODULE_BODY .= $PERSON_STR2;
-								
+								$MODULE_BODY .= $PERSON_STR2;			
 				}
 				if ( $COUNT1 == 0 && $COUNT2 == 0 )
 				{
@@ -110,7 +112,7 @@ if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
 				}
                 $MODULE_BODY .= "</table>";
 echo $MODULE_BODY;
-}
+//}
 ?>
 
 <?

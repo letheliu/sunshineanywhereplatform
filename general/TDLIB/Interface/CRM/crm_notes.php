@@ -10,8 +10,8 @@ page_css("CRM◊¿√Ê±„«©");
 
 $user_id = $_SESSION['LOGIN_USER_ID'];
 
-$MAX_COUNT= "5";
-$module_desc = "±„«©";
+$MAX_COUNT= "6";
+$module_desc = "CRM◊¿√Ê±„«©";
 $module_body = "";
 //if ( $MODULE_FUNC_ID == "" || find_id( $USER_FUNC_ID_STR, $MODULE_FUNC_ID ) )
 //{
@@ -26,8 +26,10 @@ $module_body = "";
 						$MY_NOTES .= "]";
 					}
 				}
-
-				$module_body .= ( "<textarea id=\"update\" onblur=\"save_notes()\" style=\"overflow-y:auto;width:50%;height:".( $MAX_COUNT * 20 - 15 ) )."px;background:ccFFFF;padding:5px;border:0px;\">°§".htmlspecialchars( $MY_NOTES )."</textarea>
+                $module_body .= "<table border=\"0\" class=\"TableBlock\" width=\"100%\">";
+				$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
+				$module_body .= "</table>";
+				$module_body .= ( "<textarea id=\"update\" onblur=\"save_notes()\" style=\"overflow-y:auto;width:100%;height:".( $MAX_COUNT * 20 - 15 ) )."px;background:ccFFFF;padding:5px;border:0px;\">°§".htmlspecialchars( $MY_NOTES )."</textarea>
 				<script language=\"JavaScript\">
                 var timeout=60000;
                 function save_notes()

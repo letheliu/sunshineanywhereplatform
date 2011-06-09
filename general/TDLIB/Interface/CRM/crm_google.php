@@ -12,6 +12,7 @@ $module_func_id = "";
 $module_desc = "Google在线翻译";
 $SHOW_COUNT = '';
 $module_body = $module_op = "";
+
 $module_body .= "<script type=\"text/javascript\" src=\"http://www.google.com/jsapi\"></script>
                 <script type=\"text/javascript\">
                  google.load(\"language\", \"1\");
@@ -39,6 +40,8 @@ $module_body .= "<script type=\"text/javascript\" src=\"http://www.google.com/js
 												 });
 				}
 				 </script>
+				 <table border=0 class=TableBlock width=100%>
+				 <tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr></table>
 				 <select name=\"langpair\" id=\"langpair\" class=\"SmallSelect\">
 					 <option value=\"en|zh-TW\">英语到中文(繁体)</option>
 					 <option value=\"en|zh-CN\" selected>英语到中文(简体)</option>
@@ -71,10 +74,11 @@ $module_body .= "<script type=\"text/javascript\" src=\"http://www.google.com/js
 					 <option value=\"en|it\">英语到意大利语</option>
 				 </select>
 				 <input type=\"button\" class=\"SmallButton\" style=\"display:inline;\" value=\"翻译\" onClick=\"trans();\"></input><br>
-				 <textarea id=\"text\" class=\"SmallInput\" style=\"width:50%;height:".floor( ( $SHOW_COUNT * 20 - 40 ) / 2)."px;background:ccFFFF;\">
+				 <textarea id=\"text\" class=\"SmallInput\" style=\"width:100%;height:".floor( ( $SHOW_COUNT * 20 - 40 ) / 2)."px;background:ccFFFF;\">
 				 </textarea>
-				 <textarea id=\"translation\" class=\"SmallInput\" style=\"width:50%;height:".floor( ( $SHOW_COUNT * 20 - 40 ) / 2 )."px;background:ccFFFF;\">
+				 <textarea id=\"translation\" class=\"SmallInput\" style=\"width:100%;height:".floor( ( $SHOW_COUNT * 20 - 40 ) / 2 )."px;background:ccFFFF;\">
 				 </textarea>";
+
 
 echo $module_body;
 ?>

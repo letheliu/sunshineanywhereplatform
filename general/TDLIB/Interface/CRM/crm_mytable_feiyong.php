@@ -11,15 +11,17 @@ $user_id = $_SESSION['LOGIN_USER_ID'];
 //$user_name = $_SESSION['LOGIN_USER_NAME'];
 //$user_name = returntablefield(user,);
 $module_desc = "CRM桌面费用";
-$max_count = "3";
+$max_count = "4";
 $module_body = "";
 
 $sql = "select * from crm_expense where 创建人='$user_id' order by 创建时间 desc limit 0,$max_count";
 $rs = $db->Execute($sql);
 $rs_a = $rs->GetArray();
+$count = $max_count-count($rs_a);
 if(count($rs_a)>0){
 
-$module_body .= "<table border=0 class=TableBlock width=50%>";
+$module_body .= "<table border=0 class=TableBlock width=100%>";
+$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;<a href=\"crm_expense_person_newai.php\" title=\"CRM费用管理\">".$module_desc."</a></td></tr>";
   for($i=0;$i<count($rs_a);$i++){
 	 if($rs_a[$i]['是否审核'] == 1){
 	   $boolen = "<img src=\"images/right.gif\" align=\"absmiddle\">";
@@ -35,17 +37,31 @@ $module_body .= "<table border=0 class=TableBlock width=50%>";
 						<img src=\"images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
                         ".$boolen."&nbsp;".$rs_a[$i]['客户名称']."</td>
 						<td valign=Middle align=left><font color=green><a href=crm_expense_person_newai.php?action=view_default&编号=$编号; title=".$费用单号.">".$rs_a[$i]['费用沟通概述']."</a></font></td>
-						<td valign=Middle align=right><font color=green>[".$rs_a[$i]['费用类型']."]</font>&nbsp;".$rs_a[$i]['创建时间']."</td>
+						<td valign=Middle align=right><font color=green>[".$rs_a[$i]['费用类型']."]</font>&nbsp;</td>
+						<td valign=Middle align=right>".$rs_a[$i]['创建时间']."</td>
 					  </tr>";
 
      //$module_body .= "<li>".$boolen."&nbsp;".$rs_a[$i]['客户名称']."&nbsp;<font color=green><a href=crm_expense_person_newai.php?action=view_default&编号=$编号; title=".$费用单号.">".$rs_a[$i]['费用沟通概述']."</a></font>(".$rs_a[$i]['创建时间'].")</li>";
   }
-  $module_body .= "</table>";
-}
-if(count($rs_a) == 0){
-   $module_body .= "<li><font color=red>暂无费用</font></li>";
+
+	for($i=0;$i<$count;$i++){
+		$module_body .= "<tr class=TableBlock>
+					<td valign=Middle align=left>&nbsp;
+					</td>
+					</tr>";                    
+	}
 }
 
+if(count($rs_a) == 0){
+   $module_body .= "<tr class=TableBlock><td valign=Middle align=left><font color=red>暂无费用</font></td></tr>";
+   for($i=0;$i<3;$i++){
+	$module_body .= "<tr class=TableBlock>
+				<td valign=Middle align=left>&nbsp;
+				</td>
+				</tr>";                    
+}
+}
+ $module_body .= "</table>";
 /*
 $module_body .= "<ul>
 				<script>

@@ -4,18 +4,21 @@ ini_set('error_reporting',E_ALL);
 error_reporting(E_WARNING | E_ERROR);
 require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
-
 page_css('CRM桌面订单模块');
+
+
 
 $user_id = $_SESSION['LOGIN_USER_ID'];
 $module_desc = "CRM桌面订单";
-$MAX_COUNT = "5";
+$max_count = "4";
 $module_body = "";
 
-$sql = "select * from crm_order where 创建人='".$user_id."' order by 创建时间 desc limit 0 , $MAX_COUNT";
+$sql = "select * from crm_order where 创建人='".$user_id."' order by 创建时间 desc limit 0 , $max_count";
 $rs = $db->Execute($sql);
 $rs_a = $rs->GetArray();
-$module_body .= "<table border=0 class=TableBlock width=50%>";
+$count = $max_count-count($rs_a);
+$module_body .= "<table border=0 class=TableBlock width=100%>";
+$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;<a href=\"crm_order_person_newai.php\" title=\"CRM订单管理\">".$module_desc."</a></td></tr>";
 if(count($rs_a)>0){
    for($i=0;$i<count($rs_a);$i++){
        if($rs_a[$i]['是否审核'] == "是"){
@@ -35,15 +38,26 @@ if(count($rs_a)>0){
 						<td valign=Middle align=left><font color=green>[".$rs_a[$i]['销售部门']."]</font></td>
 						<td valign=Middle align=right>".$rs_a[$i]['销售日期']."</td>
 					  </tr>";
-
-       //$module_body .= "<li>".$boolen."&nbsp;".$rs_a[$i]['客户名称']."&nbsp;<font color=green><a href=crm_order_person_newai.php?action=view_default&编号=$编号; title=".$订单编号.">".$rs_a[$i]['产品名称']."</a></font>(<font color=green>[".$rs_a[$i]['销售部门']."]</font>".$rs_a[$i]['销售日期'].")</li>";
+   }
+   for($i=0;$i<$count;$i++){
+	 $module_body .= "<tr class=TableBlock>
+				<td valign=Middle align=left>&nbsp;
+				</td>
+				</tr>";                    
    }
 }
+
 if(count($rs_a)==0){
    $module_body .= "<tr class=TableBlock>
 						<td valign=Middle align=left><font color=red>
 						<img src=\"images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
                         暂无服务记录!</font></td>";
+   for($i=0;$i<3;$i++){
+	 $module_body .= "<tr class=TableBlock>
+				<td valign=Middle align=left>&nbsp;
+				</td>
+				</tr>";                    
+   }
 }
 $module_body .= "</table>";
 echo $module_body;

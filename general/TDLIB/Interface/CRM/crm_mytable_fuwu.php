@@ -9,13 +9,15 @@ page_css('CRM桌面服务模块');
 
 $user_id = $_SESSION['LOGIN_USER_ID'];
 $module_desc = "CRM桌面服务";
-$MAX_COUNT = "5";
+$max_count = "4";
 $module_body = "";
 
-$sql = "select * from crm_service where 创建人='".$user_id."' order by 创建时间 desc limit 0 , $MAX_COUNT";
+$sql = "select * from crm_service where 创建人='".$user_id."' order by 创建时间 desc limit 0 , $max_count";
 $rs = $db->Execute($sql);
 $rs_a = $rs->GetArray();
-$module_body .= "<table border=0 class=TableBlock width=50%>";
+$count = $max_count-count($rs_a);
+$module_body .= "<table border=\"0\" class=\"TableBlock\" width=\"100%\">";
+$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=\"10\">&nbsp;<a href=\"crm_service_person_newai.php\" title=\"CRM服务管理\">".$module_desc."</a></td></tr>";
 if(count($rs_a)>0){
    for($i=0;$i<count($rs_a);$i++){
        if($rs_a[$i]['是否审核'] == "是"){
@@ -27,28 +29,40 @@ if(count($rs_a)>0){
        
 	   $编号     = $rs_a[$i]['编号'];
 	   $服务编号 = '单号：'.$rs_a[$i]['服务编号'];
-	   $module_body .= "<tr class=TableBlock>
-						<td valign=Middle align=left>
+	   $module_body .= "<tr class=\"TableBlock\">
+						<td valign=\"Middle\" align=\"left\">
 						<img src=\"images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
                         ".$boolen."&nbsp;".$rs_a[$i]['客户名称']."</td>
-						<td valign=Middle align=left><font color=green><font color=green><a href=crm_service_person_newai.php?action=view_default&编号=$编号; title=".$服务编号.">".$rs_a[$i]['服务概述']."</a></font></td>
-						<td valign=Middle align=left><font color=green>[".$rs_a[$i]['服务阶段']."]</font></td>
-						<td valign=Middle align=right>".$rs_a[$i]['创建时间']."</td>
+						<td valign=\"Middle\" align=\"left\"><font color=\"green\"><font color=\"green\"><a href=crm_service_person_newai.php?action=view_default&编号=$编号; title=".$服务编号.">".$rs_a[$i]['服务概述']."</a></font></td>
+						<td valign=\"Middle\" align=\"left\"><font color=\"green\">[".$rs_a[$i]['服务阶段']."]</font></td>
+						<td valign=\"Middle\" align=\"right\">".$rs_a[$i]['创建时间']."</td>
 					  </tr>";
 
        //$module_body .= "<li>".$boolen."&nbsp;".$rs_a[$i]['客户名称']."&nbsp;<font color=green><a href=crm_service_person_newai.php?action=view_default&编号=$编号; title=".$服务编号.">".$rs_a[$i]['服务概述']."</a></font>(<font color=green>[".$rs_a[$i]['服务阶段']."]</font>".$rs_a[$i]['创建时间'].")</li>";
    }
+	
+	for($i=0;$i<$count;$i++){
+		$module_body .= "<tr class=\"TableBlock\">
+					<td valign=\"Middle\" align=\"left\">&nbsp;
+					</td>
+					</tr>";                    
+	}
 }
+
 if(count($rs_a)==0){
-   $module_body .= "<tr class=TableBlock>
-						<td valign=Middle align=left><font color=red>
-						<img src=\"images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
-                        暂无服务记录!</font></td>";
+   $module_body .= "<tr class=\"TableBlock\">
+					<td valign=\"Middle\" align=\"left\"><font color=\"red\">
+					<img src=\"images/arrow_r.gif\" align=\"absmiddle\">&nbsp;暂无服务记录!</font></td>";
+   	for($i=0;$i<$count;$i++){
+		$module_body .= "<tr class=\"TableBlock\">
+					<td valign=\"Middle\" align=\"left\">&nbsp;
+					</td>
+					</tr>";                    
+	}
 }
 $module_body .= "</table>";
 echo $module_body;
 ?>
-
 <?
 /*
 	版权归属:郑州单点科技软件有限公司;
@@ -59,5 +73,5 @@ echo $module_body;
 	软件名称:单点科技软件开发基础性架构平台,以及在其基础之上扩展的任何性软件作品;
 	发行协议:数字化校园产品为商业软件,发行许可为LICENSE方式;单点CRM系统即SunshineCRM系统为GPLV3协议许可,GPLV3协议许可内容请到百度搜索;
 	特殊声明:软件所使用的ADODB库,PHPEXCEL库,SMTARY库归原作者所有,余下代码沿用上述声明;
-	*/
+*/
 ?>

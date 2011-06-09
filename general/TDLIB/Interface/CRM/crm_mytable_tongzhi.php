@@ -11,6 +11,8 @@ $user_id = $_SESSION['LOGIN_USER_ID'];
 $module_func_id = "";
 $module_desc = "CRM紧急通知";
 $module_body = $module_op = "";
+$module_body .= "<table border=0 class=TableBlock width=100%>";
+$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
 {
 				$module_op = "";
@@ -26,15 +28,18 @@ if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
 												if (!($array[$i] == "" ))
 												{
 																$count++;
-																$module_body .= "<img src='images/wav.gif' align='absMiddle'>&nbsp;<font color=red><b>".htmlspecialchars( $array[$i] )."</b></font>";
+																$module_body .= "<tr class=TableBlock><td valign=Middle rowspan=3 align=left><img src='images/wav.gif' align='absMiddle'>&nbsp;<font color=red><b>".htmlspecialchars( $array[$i] )."</b></font></td></tr>";
 												}
 								}
 				}
 				if ( $count == 0 )
 				{
-								$module_body .= "<img src='images/wav.gif' align='absMiddle'>&nbsp;<font color=red><b>暂无紧急通知</b></font>";
+								$module_body .= "<tr class=TableBlock><td valign=Middle align=left><img src='images/wav.gif' align='absMiddle'>&nbsp;<font color=red><b>暂无紧急通知</b></font></td></tr>";
 				}
-				//$module_body .= "<ul>";
+				for($i=0;$i<4;$i++){
+			    $module_body .= "<tr class=TableBlock><td valign=Middle align=left>&nbsp;</td></tr>";  
+				}
+$module_body .= "</table>";
 
 echo $module_body;
 }
