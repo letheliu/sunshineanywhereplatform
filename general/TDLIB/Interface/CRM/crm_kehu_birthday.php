@@ -21,17 +21,17 @@ $MODULE_BODY = $MODULE_OP = "";
 				$query = "SELECT 编号,客户名称,客户生日,第一联系人 from crm_customer where 创建人='$user_id' order by SUBSTRING(客户生日,6,5),客户名称 ASC";
 
 				//echo $query;
-				$rs = $db->Execute($query);
+				$rs = $db->CacheExecute(150,$query);
 				$ROW = $rs->GetArray();
 				for($i=0;$i<count($ROW);$i++)
-				{               
+				{
 					            $ID        = $ROW[$i]['编号'];
 								$USER_NAME = $ROW[$i]['客户名称'];
 								$BIRTHDAY  = $ROW[$i]['客户生日'];
 								//echo $BIRTHDAY;
 								$XIANXIREN = $ROW[$i]['第一联系人'];
 								$USER_NAME1 = $USER_NAME."<a href=crm_customer_view_model.php?编号=$ID; title=客户详细信息><font color=green>[".$XIANXIREN."]</font></a>";
-                                
+
 								if ( "01-01" <= substr( $BIRTHDAY, 5, 5 ) && substr( $BIRTHDAY, 5, 5 ) <= "01-31" )
 								{
 												$DATA = substr( $END_DATE, 0, 4 ).substr( $BIRTHDAY, 4, 6 );
@@ -95,7 +95,7 @@ $MODULE_BODY = $MODULE_OP = "";
 				}
 				$PERSON_STR1 = substr( $PERSON_STR1, 0, -2 );
 				//$PERSON_STR2 = substr( $PERSON_STR2, 0, -2 );
-                
+
 				$MODULE_BODY .= "<table border=\"0\" class=\"TableBlock\" width=\"100%\">";
 				$MODULE_BODY .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 				if ( 0 < $COUNT1 )
@@ -104,7 +104,7 @@ $MODULE_BODY = $MODULE_OP = "";
 				}
 				if ( 0 < $COUNT2 )
 				{
-								$MODULE_BODY .= $PERSON_STR2;			
+								$MODULE_BODY .= $PERSON_STR2;
 				}
 				if ( $COUNT1 == 0 && $COUNT2 == 0 )
 				{

@@ -14,7 +14,7 @@ $max_count = "4";
 $module_body = "";
 
 $sql = "select * from crm_order where ´´½¨ÈË='".$user_id."' order by ´´½¨Ê±¼ä desc limit 0 , $max_count";
-$rs = $db->Execute($sql);
+$rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs->GetArray();
 $count = $max_count-count($rs_a);
 $module_body .= "<table border=0 class=TableBlock width=100%>";
@@ -27,7 +27,7 @@ if(count($rs_a)>0){
 	   if($rs_a[$i]['ÊÇ·ñÉóºË'] == "·ñ"){
 	      $boolen = "<img src=\"images/error.gif\" align=\"absmiddle\">";
 	   }
-       
+
 	   $±àºÅ     = $rs_a[$i]['±àºÅ'];
 	   $¶©µ¥±àºÅ = 'µ¥ºÅ£º'.$rs_a[$i]['¶©µ¥±àºÅ'];
        $module_body .= "<tr class=TableBlock>
@@ -43,7 +43,7 @@ if(count($rs_a)>0){
 	 $module_body .= "<tr class=TableBlock>
 				<td valign=Middle align=left>&nbsp;
 				</td>
-				</tr>";                    
+				</tr>";
    }
 }
 
@@ -56,7 +56,7 @@ if(count($rs_a)==0){
 	 $module_body .= "<tr class=TableBlock>
 				<td valign=Middle align=left>&nbsp;
 				</td>
-				</tr>";                    
+				</tr>";
    }
 }
 $module_body .= "</table>";

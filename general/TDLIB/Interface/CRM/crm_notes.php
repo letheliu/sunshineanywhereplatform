@@ -16,7 +16,7 @@ $module_body = "";
 //if ( $MODULE_FUNC_ID == "" || find_id( $USER_FUNC_ID_STR, $MODULE_FUNC_ID ) )
 //{
 				$query = "select * from crm_mytable_notes where ´´½¨ÈËID='".$user_id."';";
-				$rs = $db->Execute($query);
+				$rs = $db->CacheExecute(150,$query);
 				$rs_a = $rs->GetArray();
                 if(count($rs_a)>0){
 					for($i=0;$i<count($rs_a);$i++){
@@ -26,6 +26,8 @@ $module_body = "";
 						$MY_NOTES .= "]";
 					}
 				}
+				$module_body .= "<script type=\"text/javascript\" src=\"/inc/mytable.js\"></script>";
+				$module_body .= "<script type=\"text/javascript\" src=\"/inc/js/utility.js\"></script>";
                 $module_body .= "<table border=\"0\" class=\"TableBlock\" width=\"100%\">";
 				$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 				$module_body .= "</table>";
@@ -36,8 +38,8 @@ $module_body = "";
 				{
 					var req = getXMLHttpObj();
 					req.open(\"POST\", \"crm_config_notes.php\",true);
-					treq.setRequestHeader(\"Method\", \"POST crm_config_notes.php HTTP/1.1\");
-					treq.setRequestHeader(\"Content-Type\", \"application/x-www-form-urlencoded\");
+					req.setRequestHeader(\"Method\", \"POST crm_config_notes.php HTTP/1.1\");
+					req.setRequestHeader(\"Content-Type\", \"application/x-www-form-urlencoded\");
 					req.onreadystatechange = function() {
 						if (req.readyState == 4){
 							var s;
@@ -65,8 +67,8 @@ $module_body = "";
 								}
 						}
 					}
-					req.send(\"CONTENT=\"+encodeURIComponent(\$\"update\").value));
-                }          
+					req.send(\"CONTENT=\"+encodeURIComponent(\$(\"update\").value));
+                }
 				</script>";
 				//encodeURIComponent()
 

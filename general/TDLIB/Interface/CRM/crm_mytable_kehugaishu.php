@@ -19,27 +19,27 @@ $year_sta_date  = date('Y-m-d 0:0:0',mktime(0,0,0,date('m'),date('d'),date('Y')-
 
 $sql_con = "select COUNT(*) AS NUM from crm_customer where 创建人='".$user_id."'";
 //echo $sql_con."<br>";
-$rs = $db->Execute($sql_con);
+$rs = $db->CacheExecute(150,$sql_con);
 $rs_con = $rs->fields['NUM'];
 
 $sql_today = "select COUNT(*) AS NUM from crm_customer where 创建人='$user_id' and 创建时间>='$to_sta_date' and 创建时间<'$to_end_date'";
 //echo $sql_today."<br>";
-$rs = $db->Execute($sql_today);
+$rs = $db->CacheExecute(150,$sql_today);
 $rs_today = $rs->fields['NUM'];
 
 $sql_week = "select COUNT(*) AS NUM from crm_customer where 创建人='$user_id' and 创建时间>='$week_sta_date' and 创建时间<'$to_end_date'";
 //echo $sql_week."<br>";
-$rs = $db->Execute($sql_week);
+$rs = $db->CacheExecute(150,$sql_week);
 $rs_week = $rs->fields['NUM'];
 
 $sql_mon = "select COUNT(*) AS NUM from crm_customer where 创建人='$user_id' and 创建时间>='$month_sta_date' and 创建时间<'$to_end_date'";
 //echo $sql_mon."<br>";
-$rs = $db->Execute($sql_mon);
+$rs = $db->CacheExecute(150,$sql_mon);
 $rs_mon = $rs->fields['NUM'];
 
 $sql_year = "select COUNT(*) AS NUM from crm_customer where 创建人='$user_id' and 创建时间>='$year_sta_date' and 创建时间<'$to_end_date'";
 //echo $sql_year."<br>";
-$rs = $db->Execute($sql_year);
+$rs = $db->CacheExecute(150,$sql_year);
 $rs_year = $rs->fields['NUM'];
 
 $module_body .= "<table border=0 class=TableBlock width=100%>";

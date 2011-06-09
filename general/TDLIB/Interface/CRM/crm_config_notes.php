@@ -18,16 +18,15 @@ $rs = $db->Execute($query);
 $rs_a = $rs->GetArray();
 if (count($rs_a)>0)
 {
-				$query = "update crm_mytable_notes set 便签内容='".$CONTENT."',创建时间='".$date."' where 创建人ID='".$user_id."';";				
+				$query = "update crm_mytable_notes set 便签内容='".$CONTENT."',创建时间='".$date."' where 创建人ID='".$user_id."';";
 }
 else
 {
-				$query = "insert into crm_mytable_notes(便签内容,创建人ID,创建时间) values('".$CONTENT."','".$user_id."','".$date."');";				
+				$query = "insert into crm_mytable_notes(便签内容,创建人ID,创建时间) values('".$CONTENT."','".$user_id."','".$date."');";
 }
 $db->Execute($query);
-echo "update +OK";
-?>
-<?
+echo "+OK";
+
 /*
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;

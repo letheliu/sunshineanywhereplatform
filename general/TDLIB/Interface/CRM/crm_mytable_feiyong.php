@@ -15,7 +15,7 @@ $max_count = "4";
 $module_body = "";
 
 $sql = "select * from crm_expense where 创建人='$user_id' order by 创建时间 desc limit 0,$max_count";
-$rs = $db->Execute($sql);
+$rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs->GetArray();
 $count = $max_count-count($rs_a);
 if(count($rs_a)>0){
@@ -31,7 +31,7 @@ $module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;<
 	 }
 	 $编号     = $rs_a[$i]['编号'];
 	 $费用单号 = '单号：'.$rs_a[$i]['费用单号'];
-     
+
 	 $module_body .= "<tr class=TableBlock>
 						<td valign=Middle align=left>
 						<img src=\"images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
@@ -48,7 +48,7 @@ $module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;<
 		$module_body .= "<tr class=TableBlock>
 					<td valign=Middle align=left>&nbsp;
 					</td>
-					</tr>";                    
+					</tr>";
 	}
 }
 
@@ -58,7 +58,7 @@ if(count($rs_a) == 0){
 	$module_body .= "<tr class=TableBlock>
 				<td valign=Middle align=left>&nbsp;
 				</td>
-				</tr>";                    
+				</tr>";
 }
 }
  $module_body .= "</table>";
