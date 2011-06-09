@@ -13,7 +13,7 @@ $max_count = "4";
 $module_body = "";
 
 $sql = "select * from crm_contract where 创建人='".$user_id."' order by 创建时间 desc limit 0 , $max_count";
-$rs = $db->Execute($sql);
+$rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs->GetArray();
 $count = $max_count-count($rs_a);
 $module_body .= "<table border=0 class=TableBlock width=100%>";
@@ -26,7 +26,7 @@ if(count($rs_a)>0){
 	   if($rs_a[$i]['是否审核'] == "否" or $rs_a[$i]['是否审核'] == ""){
 	      $boolen = "<img src=\"images/error.gif\" align=\"absmiddle\">";
 	   }
-       
+
 	   $编号     = $rs_a[$i]['编号'];
 	   $合同编号 = '单号：'.$rs_a[$i]['合同编号'];
 	   $module_body .= "<tr class=\"TableBlock\">
@@ -39,12 +39,12 @@ if(count($rs_a)>0){
 
        //$module_body .= "<li>".$boolen."&nbsp;".$rs_a[$i]['客户名称']."&nbsp;<font color=green><a href=crm_contract_person_newai.php?action=view_default&编号=$编号; title=".$合同编号.">".$rs_a[$i]['服务类型']."</a></font>(<font color=green>[金额：".$rs_a[$i]['合同总金额']."]</font>".$rs_a[$i]['合同签订时间'].")</li>";
    }
-	
+
 	for($i=0;$i<$count;$i++){
 		$module_body .= "<tr class=\"TableBlock\">
 					<td valign=\"Middle\" align=\"left\">&nbsp;
 					</td>
-					</tr>";                    
+					</tr>";
 	}
 }
 if(count($rs_a)==0){

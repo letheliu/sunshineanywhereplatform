@@ -13,14 +13,17 @@ page_css("CRM客户查询");
 $module_body .= "<table border=0 class=TableBlock width=100%>";
 $module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 
-				$module_body .= "<form action=\"kehu_search.php?check=crmkehu\" name=\"form1\" method=\"post\">";
+				$module_body .= "<form action=\"crm_customer_person_newai.php\" name=\"form1\" method=\"get\">";
 				$module_body .= "<tr class=TableBlock>
-						<td valign=Middle align=left>&nbsp;客户名称：<input type=\"text\" name=\"kehu_name\" class=\"SmallInput\" size=\"26.5\" maxlength=\"25\"></td></tr>";
+						<td valign=Middle align=left>&nbsp;客户名称：<input type=\"text\" name=\"searchvalue\" class=\"SmallInput\" size=\"26.5\" maxlength=\"25\"></td></tr>";
 				$module_body .= "<tr class=TableBlock>
-						<td valign=Middle align=left>&nbsp;客户类型：<select name=\"kehu_type\" class=\"SmallSelect\" style=\"width:128pt\">
-				                          <option value=\"\" selected></option>";               
+						<td valign=Middle align=left>
+							<input type=hidden name='action' value='init_default_search'>
+							<input type=hidden name='searchfield' value='客户名称'>
+							&nbsp;客户类型：<select name=\"客户类型\" class=\"SmallSelect\" style=\"width:128pt\">
+				                          <option value=\"\" selected></option>";
 								$sql = "select 客户类型 from crm_customer_type order by 客户类型";
-								$rs = $db->Execute($sql);
+								$rs = $db->CacheExecute(150,$sql);
 								$rs_a = $rs->GetArray();
 								for($i=0;$i<sizeof($rs_a);$i++)			{
 				$module_body .= "<option value=".$rs_a[$i]['客户类型'].">".$rs_a[$i]['客户类型']."</option>";

@@ -25,7 +25,7 @@ $mytable_arr = array();
 $count1 = 0;
 $count2 = 0;
 $sql = "select * from crm_mytable where 创建人='".$user_id."' order by 模块编号 ASC";
-$rs = $db->Execute($sql);
+$rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs->GetArray();
 for($i=0;$i<count($rs_a);$i++){
    $模块名称 = $rs_a[$i]['模块名称'];
@@ -54,7 +54,7 @@ foreach($mytable_arr as $key => $value){
 		   include("$key");
 		   print "</td></tr>";
 	   }
-	} 
+	}
 }
 print "</table>";
 print   "</td><td valign=\"top\" align=\"left\" width=\"50%\">";
@@ -69,7 +69,7 @@ foreach($mytable_arr as $key => $value){
 		   include("$key");
 		   print "</td></tr>";
 	   }
-	} 
+	}
 }
 print "</table>";
 
