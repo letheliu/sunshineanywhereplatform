@@ -110,12 +110,21 @@ function CheckForm()
     </td>
    </tr>
   </form>
-
-
-<!-- 隐藏帧，用我的设置更新其他用户时使用 by dq 090617
-<iframe name="hiddenFrame" id="hiddenFrame" width=0 height=0 frameborder=0 scrolling=no></iframe>
--->
-
+<<<<<<< .mine  <form action="crm_mytable_jinjitongzhi.php?check=jinjitongzhi"  method="post" name="form2">
+        <tr class="TableData">
+			<td width="130"><font color=red>紧急通知发布：</font></td>
+			<td>  
+			<textarea id="tongzhi" name="jinjitongzhi" style=\"overflow-y:auto;width:100%;height:100%px;background:ccFFFF;padding:5px;border:0px;\"></textarea>
+			</td>
+	   </tr>
+	   <tr>
+		   <td nowrap  class="TableControl" colspan="2" align="center">
+		   <input type="submit" value="发送" class="BigButton">&nbsp;&nbsp;
+		   <input type="reset" value="重置" class="BigButton"><br><a href="javascript:;" onClick="set_mine_to_others();">向用户发送紧急通知</a>
+		   </td>
+       </tr>
+  </form>
+</table>
 </body>
 </html>
 
