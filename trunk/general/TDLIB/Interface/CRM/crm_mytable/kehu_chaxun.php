@@ -10,7 +10,7 @@ $module_desc = "CRM客户查询";
 $module_body = "";
 page_css("CRM客户查询");
 
-$module_body .= "<table border=0 class=TableBlock width=100%>";
+$module_body .= "<table border=0 class=TableBlock width=100% hight=100%>";
 $module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 
 				$module_body .= "<form action=\"../crm_customer_person_newai.php\" name=\"form1\" method=\"get\">";

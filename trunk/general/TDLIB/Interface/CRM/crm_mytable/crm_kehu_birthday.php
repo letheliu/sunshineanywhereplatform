@@ -13,22 +13,68 @@ $module_desc = "CRM客户生日提醒";
 $MODULE_BODY = $MODULE_OP = "";
 //if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
 //{
-				$CUR_DATE = date( "Y-m-d", time( ) );
-				$END_DATE = date( "Y-m-d", strtotime( "+30 days" ) );
+	/*
+                $CUR_DATE = date( "Y-m-d", mktime(1,1,1,date('m'),date('d')-1,date('Y')));
+				$END_DATE = date( "Y-m-d", mktime(1,1,1,date('m'),date('d')+7,date('Y')));
 				$COUNT1 = 0;
 				$COUNT2 = 0;
 				$BIRTHDAY_ARRAY1 = $BIRTHDAY_ARRAY2 = array( );
-				$query = "SELECT 编号,客户名称,客户生日,第一联系人 from crm_customer where 创建人='$user_id' order by SUBSTRING(客户生日,6,5),客户名称 ASC";
+				$query = "
+				SELECT 编号,客户名称,第一联系人,DATE_FORMAT(客户生日,'%m-%d') AS 客户生日
+				from crm_customer
+				where 创建人='$user_id'
+				and DATE_FORMAT(客户生日,'%Y-%m-%d')>='$CUR_DATE'
+				and DATE_FORMAT(客户生日,'%Y-%m-%d')<='$END_DATE'
+				order by 客户名称 ASC";
+    */
 
+				$CUR_DATE = date( "Y-m-d", time( ) );
+				$END_DATE = date( "Y-m-d", strtotime( "+7 days" ) );
+				$COUNT1 = 0;
+				$COUNT2 = 0;
+				$BIRTHDAY_ARRAY1 = $BIRTHDAY_ARRAY2 = array( );
+				//$query = "SELECT 编号,客户名称,客户生日,第一联系人 from crm_customer where 创建人='$user_id' order by SUBSTRING(客户生日,6,5),客户名称 ASC";
+
+				$query = "SELECT 编号,客户名称,第一联系人,DATE_FORMAT(客户生日,'%Y-%m-%d') AS 客户生日 from crm_customer where 创建人='$user_id'
+				and DATE_FORMAT(客户生日,'%Y-%m-%d')>='$CUR_DATE' and DATE_FORMAT(客户生日,'%Y-%m-%d')<='$END_DATE' order by 客户名称 ASC";
+
+                
 				//echo $query;
 				$rs = $db->CacheExecute(150,$query);
 				$ROW = $rs->GetArray();
+
+				if(count($ROW)<=4){
+				  $xh = 4-count($ROW);
+				  $sum = 0;
+				  for($m=0;$m<count($ROW);$m++){
+				     if($ROW[$m]['客户生日'] == date("Y-m-d")){
+					    $sum++;
+					 }
+				  }
+				  if($sum>1){
+				    $xh = $xh+$sum-1;
+				  }
+                }
+				/*
+				if(count($ROW)>4){
+				  for($s=0;$s<count($ROW);$s++){
+				     $birthday_arr[] = $ROW[$s]['客户生日'];
+				  }
+				  sort($birthday_arr);
+
+				  for($n=0;$n<4;$n++){
+                     $birthday_arr1[] = $birthday_arr[$n];
+				  }
+
+				  $yz = "aaa";
+                  //print_r($birthday_arr1);
+				}
+				*/
 				for($i=0;$i<count($ROW);$i++)
 				{
 					            $ID        = $ROW[$i]['编号'];
 								$USER_NAME = $ROW[$i]['客户名称'];
 								$BIRTHDAY  = $ROW[$i]['客户生日'];
-								//echo $BIRTHDAY;
 								$XIANXIREN = $ROW[$i]['第一联系人'];
 								$USER_NAME1 = $USER_NAME."<a href=../crm_customer_view_model.php?编号=$ID; title=客户详细信息><font color=green>[".$XIANXIREN."]</font></a>";
 
@@ -54,12 +100,12 @@ $MODULE_BODY = $MODULE_OP = "";
 								if ( $CUR_DATE == $DATA )
 								{
 												++$COUNT1;
-												$PERSON_STR1 .= "<td valign=Middle align=left><img src='../images/cake.jpg' align='absmiddle'>&nbsp;".$USER_NAME1."，";
+												$PERSON_STR1 .= "<img src='../images/cake.png' align='absmiddle'>&nbsp;".$USER_NAME1."，";
 								}
 								else
 								{
 												++$COUNT2;
-												$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='../images/cake.jpg' align=absmiddle>&nbsp;".$USER_NAME1."(".date( "m-d", strtotime($DATA) ).")</td></tr>";
+												$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：<img src='../images/cake.png' align=absmiddle>&nbsp;".$USER_NAME1."(".date( "m-d", strtotime($DATA) ).")</td><td valign=Middle align=left>&nbsp;</td></tr>";
 												if ( date( "m", time( ) ) == 12 )
 												{
 																$M_D = date( "m-d", strtotime( $DATA ) );
@@ -74,7 +120,9 @@ $MODULE_BODY = $MODULE_OP = "";
 																}
 												}
 								}
+
 				}
+
 				if ( date( "m", time( ) ) == 12 )
 				{
 								$PERSON_STR2 = "";
@@ -82,14 +130,14 @@ $MODULE_BODY = $MODULE_OP = "";
 								{
 												foreach ( $BIRTHDAY_ARRAY1 as $key => $value )
 												{
-														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='../images/cake.jpg' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
+														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：<img src='../images/cake.png' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></td><td valign=Middle align=left>&nbsp;</td></tr>";
 												}
 								}
 								if ( is_array( $BIRTHDAY_ARRAY2 ) && !empty( $BIRTHDAY_ARRAY2 ) )
 								{
 												foreach ( $BIRTHDAY_ARRAY2 as $key => $value )
 												{
-														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：</td><td valign=Middle align=left><img src='../images/cake.jpg' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></tr>";
+														$PERSON_STR2 .= "<tr class=TableBlock><td valign=Middle align=left>近期生日：<img src='../images/cake.png' align=absmiddle>&nbsp;".$value."(".substr( $key, 1, 5 ).")</td></td><td valign=Middle align=left>&nbsp;</td></tr>";
 												}
 								}
 				}
@@ -100,7 +148,7 @@ $MODULE_BODY = $MODULE_OP = "";
 				$MODULE_BODY .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 				if ( 0 < $COUNT1 )
 				{
-								$MODULE_BODY .= "<tr class=TableBlock><td valign=Middle align=left><font color=red>今天生日：</font></td>".$PERSON_STR1."，生日快乐!</td></tr>";
+								$MODULE_BODY .= "<tr class=TableBlock><td valign=Middle align=left><font color=red>今天生日：</font>".$PERSON_STR1."，生日快乐!</td></td><td valign=Middle align=left>&nbsp;</td></tr>";
 				}
 				if ( 0 < $COUNT2 )
 				{
@@ -108,8 +156,13 @@ $MODULE_BODY = $MODULE_OP = "";
 				}
 				if ( $COUNT1 == 0 && $COUNT2 == 0 )
 				{
-								$MODULE_BODY .= "<tr class=TableBlock><td valign=Middle align=left>近期没有客户生日</td></tr>";
+								$MODULE_BODY .= "<tr class=TableBlock><td valign=Middle align=left>近期没有客户生日</td></td><td valign=Middle align=left></td>&nbsp;</tr>";
 				}
+				
+				for($n=0;$n<$xh;$n++){
+				                $MODULE_BODY .= "<tr class=TableBlock><td valign=Middle align=left>&nbsp;</td></tr>";
+				}
+
                 $MODULE_BODY .= "</table>";
 echo $MODULE_BODY;
 //}

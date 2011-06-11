@@ -13,7 +13,7 @@ $CONTENT = iconv( "utf-8", ini_get( "default_charset" ), $CONTENT );
 
 //returntablefield(表名,字段名,字段值,所要查询的字段);
 
-$date = date("Y-m-d H:i");
+//$date = date("Y-m-d H:i");
 $query = "select * from crm_mytable_notes where 创建人ID='".$user_id."';";
 $rs = $db->Execute($query);
 $rs_a = $rs->GetArray();

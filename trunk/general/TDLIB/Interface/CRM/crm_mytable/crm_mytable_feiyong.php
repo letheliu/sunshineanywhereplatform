@@ -20,8 +20,8 @@ $rs_a = $rs->GetArray();
 $count = $max_count-count($rs_a);
 if(count($rs_a)>0){
 
-$module_body .= "<table border=0 class=TableBlock width=100%>";
-$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;<a href=\"../crm_expense_person_newai.php\" title=\"CRM费用管理\">".$module_desc."</a></td></tr>";
+$module_body .= "<table border=0 class=TableBlock width=100% hight=100%>";
+$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
   for($i=0;$i<count($rs_a);$i++){
 	 if($rs_a[$i]['是否审核'] == 1){
 	   $boolen = "<img src=\"../images/right.gif\" align=\"absmiddle\">";
@@ -31,14 +31,14 @@ $module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;<
 	 }
 	 $编号     = $rs_a[$i]['编号'];
 	 $费用单号 = '单号：'.$rs_a[$i]['费用单号'];
-
+     $费用创建时间 = $rs_a[$i]['创建时间'];
+     $费用创建时间1 = substr($费用创建时间,5,5);
 	 $module_body .= "<tr class=TableBlock>
 						<td valign=Middle align=left>
 						<img src=\"../images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
                         ".$boolen."&nbsp;".$rs_a[$i]['客户名称']."</td>
 						<td valign=Middle align=left><font color=green><a href=../crm_expense_person_newai.php?action=view_default&编号=$编号; title=".$费用单号.">".$rs_a[$i]['费用沟通概述']."</a></font></td>
-						<td valign=Middle align=right><font color=green>[".$rs_a[$i]['费用类型']."]</font>&nbsp;</td>
-						<td valign=Middle align=right>".$rs_a[$i]['创建时间']."</td>
+						<td valign=Middle align=right><font color=green>[".$rs_a[$i]['费用类型']."]</font>&nbsp;".$费用创建时间1."</td>
 					  </tr>";
 
      //$module_body .= "<li>".$boolen."&nbsp;".$rs_a[$i]['客户名称']."&nbsp;<font color=green><a href=crm_expense_person_newai.php?action=view_default&编号=$编号; title=".$费用单号.">".$rs_a[$i]['费用沟通概述']."</a></font>(".$rs_a[$i]['创建时间'].")</li>";

@@ -1,1 +1,1 @@
-紧急通知请在TDLIB\Interface\CRM\crm_mytable\notify.txt中进行填写！
+CRM紧急通知在左面参数设置里面进行设置！

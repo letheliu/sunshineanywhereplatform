@@ -20,10 +20,10 @@ $module_body = "";
 				$rs_a = $rs->GetArray();
                 if(count($rs_a)>0){
 					for($i=0;$i<count($rs_a);$i++){
-						$MY_NOTES .= "·".$rs_a[$i]['便签内容'];
-						$MY_NOTES .= "[";
-						$MY_NOTES .= $rs_a[$i]['创建时间'];
-						$MY_NOTES .= "]";
+						$MY_NOTES .= $rs_a[$i]['便签内容'];
+						//$MY_NOTES .= "[";
+						//$MY_NOTES .= $rs_a[$i]['创建时间'];
+						//$MY_NOTES .= "]";
 					}
 				}
 				$module_body .= "<script type=\"text/javascript\" src=\"/inc/mytable.js\"></script>";
