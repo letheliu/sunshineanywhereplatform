@@ -9,8 +9,9 @@ if($_SESSION['SYSTEM_IS_TD_OA']=="0")									{
 	$PRIVATE_SYSTEM['我的部门事务']['行政考勤部门级管理']		= array("../XinZhengGuanLi/my_bumen_xingzheng.php","行政考勤部门级管理");
 }
 
-$PRIVATE_SYSTEM['CRM界面设置']['桌面模块'] = array("crm_mytable_newai.php","桌面模块设置");
-$PRIVATE_SYSTEM['CRM界面设置']['桌面参数设置'] = array("crm_mytable_cs.php","桌面模块设置");
+$PRIVATE_SYSTEM['CRM界面设置']['CRM系统桌面模块'] = array("crm_mytable_newai.php","CRM系统桌面模块");
+$PRIVATE_SYSTEM['CRM界面设置']['桌面参数设置'] = array("crm_mytable_cs.php","桌面参数设置");
+$PRIVATE_SYSTEM['CRM界面设置']['CRM桌面模块'] = array("crm_mytable_cs.php","CRM桌面模块");
 
 
 //$PRIVATE_SYSTEM['总经理权限']['日程'] = array("crm_clendar_newai.php","日程");
