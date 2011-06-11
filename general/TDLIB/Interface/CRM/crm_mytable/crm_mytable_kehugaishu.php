@@ -42,9 +42,9 @@ $sql_year = "select COUNT(*) AS NUM from crm_customer where 创建人='$user_id' an
 $rs = $db->CacheExecute(150,$sql_year);
 $rs_year = $rs->fields['NUM'];
 
-$module_body .= "<table border=0 class=TableBlock width=100%>";
+$module_body .= "<table border=0 class=TableBlock width=100% hight=100%>";
 $module_body .= "<tr align=\"left\" class=\"TableHeader\">
-                 <td colspan=10>&nbsp;<a href=\"../crm_customer_person_newai.php\" title=\"CRM客户管理\">".$module_desc."</a></td></tr>";
+                 <td colspan=10>&nbsp;".$module_desc."</td></tr>";
 $module_body .= "<tr class=TableBlock>
 				<td valign=bottom align=left>
 				<img src=\"../images/node_user.gif\" align=\"absmiddle\">&nbsp;<a href=\"../crm_customer_person_newai.php?action=init_default&创建人=$user_id\" title=\"全部客户\">客户总量 (&nbsp;".number_format($rs_con,'','',',')."&nbsp;)&nbsp;个</a>

@@ -10,8 +10,8 @@ page_css('CRM紧急通知');
 $user_id = $_SESSION['LOGIN_USER_ID'];
 $module_func_id = "";
 $module_desc = "CRM紧急通知";
-$module_body = $module_op = "";
-$module_body .= "<table border=0 class=TableBlock width=100%>";
+$module_body = "";
+$module_body .= "<table border=0 class=TableBlock width=100% hight=100%>";
 $module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
 if ( $module_func_id == "" || find_id( $user_func_id_str, $module_func_id ) )
 {
