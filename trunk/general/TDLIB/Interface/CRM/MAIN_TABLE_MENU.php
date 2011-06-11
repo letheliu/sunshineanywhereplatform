@@ -50,8 +50,9 @@ window.onload=function()
 <?
 require_once('systemprivateinc.php');
 
-$MenuArray[] = array("crm_mytable_newai.php","桌面模块设置");
+$MenuArray[] = array("crm_mytable_newai.php","系统桌面模块设置");
 $MenuArray[] = array("crm_mytable_cs.php","桌面参数设置");
+$MenuArray[] = array("crm_mytable_person_newai.php","桌面参数设置");
 
 
 

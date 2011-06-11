@@ -16,11 +16,25 @@
 		$_POST['出版社'] = returntablefield("edu_jiaocai","教材编号",$教材编号,"出版社");
 		//print  "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?'>";
 	}
-	*/
 
-	//数据表模型文件,对应Model目录下面的crm_mytable_newai.ini文件
-	//如果是需要复制此模块,则需要修改$parse_filename参数的值,然后对应到Model目录 新文件名_newai.ini文件
+    	if($_GET['action']==''||$_GET['action']=='init_default'||$_GET['action']=='init_customer')		{
+			$PrintText .= "<BR><table  class=TableBlock align=center width=100%>";
+			$PrintText .= "<TR class=TableContent><td>请点击按钮初始化桌面模块数据：
+			               <input type=button name=csh class=SmallButton value=初始化>
+			               </td></table>";
+			print $PrintText;
+		}
+		*/
 	$filetablename		=	'crm_mytable';
 	$parse_filename		=	'crm_mytable';
 	require_once('include.inc.php');
+
+	if($_GET['action']==''||$_GET['action']=='init_default'||$_GET['action']=='init_customer')		{
+			$PrintText .= "<BR><table  class=TableBlock align=center width=100%>";
+			$PrintText .= "<TR class=TableContent><td>说明：<br>
+                            &nbsp;&nbsp;&nbsp;1、此模块是管理使用的，具有管理所有用户桌面模块设置的权限。<br>
+			                &nbsp;&nbsp;&nbsp;2、如果是第一次登录系统，系统将对CRM桌面模块进行初始化。<br>        
+			               </td></table>";
+			print $PrintText;
+		}
 	?>
