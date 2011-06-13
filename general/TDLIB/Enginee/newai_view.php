@@ -223,8 +223,7 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 					break;
 			}
 			break;
-		case 'nowshow':
-		case 'notshow':
+		case 'hidden':
 			switch($mode)	{
 				case 'add':
 				case 'edit':
@@ -241,6 +240,10 @@ for($i=0;$i<sizeof($fields['name']);$i++)		{
 					break;
 			}
 			break;
+		case 'nowshow':
+		case 'notshow':
+			break;
+
 		case 'bigrmb':
 			switch($mode)	{
 				case 'add':

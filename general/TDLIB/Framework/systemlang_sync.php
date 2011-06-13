@@ -8,7 +8,8 @@ print '<TITLE>Êı¾İÓïÑÔ</TITLE>
 	<STYLE>@media print{input{display:none}}</STYLE>
 	<BODY class=bodycolor topMargin=5 >';
 
-$sql	= "select * from td_crm.systemprivatetdlib where ID='1'";
+$sql	= "select * from td_edu.systemprivate where ID='1'";
+//$sql	= "select * from td_crm.systemprivatetdlib where ID='1'";
 $rs		= $db->CacheExecute(15,$sql);
 $rs_a	= $rs->GetArray();
 $CONTENT	= $rs_a[0]['CONTENT'];
