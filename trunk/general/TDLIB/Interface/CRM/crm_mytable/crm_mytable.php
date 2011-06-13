@@ -39,9 +39,7 @@ for($IXXXX=0;$IXXXX<count($rs_a);$IXXXX++){
 //得到左右两边模块的个数，然后计算出有应该非配多少行
 $CCCCC = $CCCCC1>$CCCCC2?$CCCCC1:$CCCCC2;
 $n = 0;
-
 print "<table id=\"tblContainer\" border=\"0\"  width=\"100%\">";
-
 for($IXXXX=0;$IXXXX<$CCCCC;$IXXXX++)				{
 	print "<tr>";
 	$模块名称	= $NewArray1[$IXXXX];

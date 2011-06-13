@@ -6,7 +6,6 @@ require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
 page_css('CRM客户生日');
 
-
 $user_id = $_SESSION['LOGIN_USER_ID'];
 //$module_func_id = "";
 $module_desc = "CRM客户生日提醒";
@@ -166,9 +165,7 @@ $MODULE_BODY = $MODULE_OP = "";
                 $MODULE_BODY .= "</table>";
 echo $MODULE_BODY;
 //}
-?>
 
-<?
 /*
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;

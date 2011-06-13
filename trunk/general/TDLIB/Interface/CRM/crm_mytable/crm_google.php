@@ -6,13 +6,11 @@ $GLOBAL_SESSION=returnsession();
 page_css('CRM在线翻译');
 
 $user_id = $_SESSION['LOGIN_USER_ID'];
-
 echo "<!--=============== Google在线翻译 =====================-->\r\n";
 $module_func_id = "";
 $module_desc = "Google在线翻译";
 $SHOW_COUNT = '';
 $module_body = $module_op = "";
-
 $module_body .= "<script type=\"text/javascript\" src=\"http://www.google.com/jsapi\"></script>
                 <script type=\"text/javascript\">
                  google.load(\"language\", \"1\");
@@ -78,12 +76,8 @@ $module_body .= "<script type=\"text/javascript\" src=\"http://www.google.com/js
 				 </textarea>
 				 <textarea id=\"translation\" class=\"SmallInput\" style=\"width:100%;height:".floor( ( $SHOW_COUNT * 20 - 40 ) / 2 )."px;background:ccFFFF;\">
 				 </textarea>";
-
-
 echo $module_body;
-?>
 
-<?
 /*
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;

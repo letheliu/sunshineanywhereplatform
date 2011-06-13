@@ -5,25 +5,22 @@ error_reporting(E_WARNING | E_ERROR);
 require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
 
-
-
 $user_id = $_SESSION['LOGIN_USER_ID'];
 $CONTENT = urldecode( $_POST['CONTENT'] );
 $CONTENT = iconv( "utf-8", ini_get( "default_charset" ), $CONTENT );
 
 //returntablefield(表名,字段名,字段值,所要查询的字段);
-
-//$date = date("Y-m-d H:i");
+$date = date("Y-m-d H:i");
 $query = "select * from crm_mytable_notes where 创建人ID='".$user_id."';";
 $rs = $db->Execute($query);
 $rs_a = $rs->GetArray();
 if (count($rs_a)>0)
 {
-				$query = "update crm_mytable_notes set 便签内容='".$CONTENT."',创建时间='".$date."' where 创建人ID='".$user_id."';";
+	$query = "update crm_mytable_notes set 便签内容='".$CONTENT."',创建时间='".$date."' where 创建人ID='".$user_id."';";
 }
 else
 {
-				$query = "insert into crm_mytable_notes(便签内容,创建人ID,创建时间) values('".$CONTENT."','".$user_id."','".$date."');";
+    $query = "insert into crm_mytable_notes(便签内容,创建人ID,创建时间) values('".$CONTENT."','".$user_id."','".$date."');";
 }
 $db->Execute($query);
 echo "+OK";

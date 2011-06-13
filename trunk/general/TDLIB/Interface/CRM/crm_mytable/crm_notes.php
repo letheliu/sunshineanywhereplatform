@@ -6,33 +6,28 @@ require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
 page_css("CRM桌面便签");
 
-
-
 $user_id = $_SESSION['LOGIN_USER_ID'];
-
 $MAX_COUNT= "6";
 $module_desc = "CRM桌面便签";
 $module_body = "";
-//if ( $MODULE_FUNC_ID == "" || find_id( $USER_FUNC_ID_STR, $MODULE_FUNC_ID ) )
-//{
-				$query = "select * from crm_mytable_notes where 创建人ID='".$user_id."'";
-				$rs = $db->CacheExecute(150,$query);
-				$rs_a = $rs->GetArray();
-                if(count($rs_a)>0){
-					for($i=0;$i<count($rs_a);$i++){
-						$MY_NOTES .= $rs_a[$i]['便签内容'];
-						//$MY_NOTES .= "[";
-						//$MY_NOTES .= $rs_a[$i]['创建时间'];
-						//$MY_NOTES .= "]";
-					}
-				}
-				$module_body .= "<script type=\"text/javascript\" src=\"/inc/mytable.js\"></script>";
-				$module_body .= "<script type=\"text/javascript\" src=\"/inc/js/utility.js\"></script>";
-                $module_body .= "<table border=\"0\" class=\"TableBlock\" width=\"100%\">";
-				$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
-				$module_body .= "</table>";
-				$module_body .= ( "<textarea id=\"update\" onblur=\"save_notes()\" style=\"overflow-y:auto;width:100%;height:".( $MAX_COUNT * 20 - 15 ) )."px;background:ccFFFF;padding:5px;border:0px;\">".htmlspecialchars( $MY_NOTES )."</textarea>
-				<script language=\"JavaScript\">
+$query = "select * from crm_mytable_notes where 创建人ID='".$user_id."'";
+$rs = $db->CacheExecute(150,$query);
+$rs_a = $rs->GetArray();
+if(count($rs_a)>0){
+	for($i=0;$i<count($rs_a);$i++){
+		$MY_NOTES .= $rs_a[$i]['便签内容'];
+		//$MY_NOTES .= "[";
+		//$MY_NOTES .= $rs_a[$i]['创建时间'];
+		//$MY_NOTES .= "]";
+	}
+}
+$module_body .= "<script type=\"text/javascript\" src=\"/inc/mytable.js\"></script>";
+$module_body .= "<script type=\"text/javascript\" src=\"/inc/js/utility.js\"></script>";
+$module_body .= "<table border=\"0\" class=\"TableBlock\" width=\"100%\">";
+$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
+$module_body .= "</table>";
+$module_body .= ( "<textarea id=\"update\" onblur=\"save_notes()\" style=\"overflow-y:auto;width:100%;height:".( $MAX_COUNT * 20 - 15 ) )."px;background:ccFFFF;padding:5px;border:0px;\">".htmlspecialchars( $MY_NOTES )."</textarea>
+                <script language=\"JavaScript\">
                 var timeout=60000;
                 function save_notes()
 				{
@@ -70,13 +65,8 @@ $module_body = "";
 					req.send(\"CONTENT=\"+encodeURIComponent(\$(\"update\").value));
                 }
 				</script>";
-				//encodeURIComponent()
-
 echo $module_body;
-//}
-?>
 
-<?
 /*
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;
