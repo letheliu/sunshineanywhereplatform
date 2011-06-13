@@ -4,7 +4,6 @@
 	error_reporting(E_WARNING | E_ERROR);
 	require_once('lib.inc.php');
 	$GLOBAL_SESSION=returnsession();
-	
 
 	if($_GET['action']=="add_default_data")		{
 	   page_css('显示行数限制');
@@ -23,8 +22,6 @@
 			";
 		   exit;
 	   }
-	
-
     }
 
 	if($_GET['action']=="edit_default_data")    {
@@ -44,7 +41,6 @@
 			";
 		   exit;
 	   }
-
 	}
 
 	$filetablename		=	'crm_mytable';
