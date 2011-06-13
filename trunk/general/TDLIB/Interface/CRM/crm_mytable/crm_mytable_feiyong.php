@@ -11,7 +11,7 @@ $user_id = $_SESSION['LOGIN_USER_ID'];
 //$user_name = $_SESSION['LOGIN_USER_NAME'];
 //$user_name = returntablefield(user,);
 $module_desc = "CRM桌面费用";
-$max_count = "4";
+//$max_count = "4";
 $module_body = "";
 
 $sql = "select * from crm_expense where 创建人='$user_id' order by 创建时间 desc limit 0,$max_count";
@@ -73,9 +73,7 @@ $module_body .= "<ul>
 				</script>";
 */
 echo $module_body;
-?>
 
-<?
 /*
 	版权归属:郑州单点科技软件有限公司;
 	联系方式:0371-69663266;
