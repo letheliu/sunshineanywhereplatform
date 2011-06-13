@@ -603,10 +603,21 @@ foreach($fields['value'] as $list)		{
 					print "没有相应文件,文件名：$fileName";
 				}
 				//用户权限定义部分
-				if(function_exists("userdefine_priv"))		{
-					//print_R($fields['edit_priv']);
-					$fields['edit_priv'][$counter] = userdefine_priv($fields['value'][$counter][$list_index],$fields,$counter);
-					$fields['delete_priv'][$counter] = userdefine_priv($fields['value'][$counter][$list_index],$fields,$counter);
+				//print_R($functionName."_PRIV");print_R("<BR>");
+				if(function_exists($functionName."_PRIV"))		{
+					$NewFunctionNamePriv = $functionName."_PRIV";
+					$userdefine_priv_Infor = $NewFunctionNamePriv($fields['value'][$counter][$list_index],$fields,$counter);
+					if(sizeof($userdefine_priv_Infor)==2)			{
+						//新的返回结果
+						$fields['edit_priv'][$counter] = $userdefine_priv_Infor['edit_priv'];
+						$fields['delete_priv'][$counter] = $userdefine_priv_Infor['delete_priv'];
+					}
+					else	{
+						//兼容旧的返回结果
+						$fields['edit_priv'][$counter] = $userdefine_priv_Infor;
+						$fields['delete_priv'][$counter] = $userdefine_priv_Infor;
+					}
+					//print_R($userdefine_priv_Infor);
 				}
 				break;
 		}
@@ -918,7 +929,7 @@ function newaiinit_view($fields)	{
 		}
 		//下面权限增加为外部分权限系统调用，在外部控制这一部分权限的调用
 		//一般情况下为用户自定义文件中定义相关的权限信息，调用方法为:"主体_PRIV"的格式
-		//print_R($fields['edit_priv']);
+		//print_R($fields['delete_priv']);
 		if($fields['edit_priv'][$row_element_counter]==1)		{
 			$SYSTEM_RECORD_EDIT_PRIV = 0 ;
 			$disabled = "disabled";
@@ -934,7 +945,7 @@ function newaiinit_view($fields)	{
 
 		//print $list_index;
 		//print_R($fields['userdefine']);
-		//print $SYSTEM_RECORD_EDIT_PRIV;
+		//print $SYSTEM_RECORD_DELETE_PRIV;
 		////SYSTEM_RECORD_EDIT_PRIV  为0时不显示选项，为1时显示选项
 		//############################################################
 

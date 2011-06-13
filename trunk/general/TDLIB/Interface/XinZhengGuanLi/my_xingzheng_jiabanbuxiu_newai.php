@@ -27,9 +27,9 @@ if($_GET['action']=='BuXiuDelete')				{
 	$班次 = $_GET['班次'];
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
-	//$query = "delete from td_edu.edu_xingzheng_jiabanbuxiu where 编号='$编号' and 班次='$班次' and 学期='$学期名称' and 加班审核状态='0'";
+	//$query = "delete from edu_xingzheng_jiabanbuxiu where 编号='$编号' and 班次='$班次' and 学期='$学期名称' and 加班审核状态='0'";
 	$编号 = $_GET['编号'];
-	$query = "update td_edu.edu_xingzheng_jiabanbuxiu set 补休时间='0000-00-00' where 编号='$编号'";
+	$query = "update edu_xingzheng_jiabanbuxiu set 补休时间='0000-00-00' where 编号='$编号'";
 	//print_R($_POST);
 	//print $query;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -45,7 +45,7 @@ if($_GET['action']=='BuXiu')				{
   $结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
   $班次= $_GET["班次"];
   // and 班次='$班次'
-  $query = "select 星期,班次,部门,班次,日期,人员,编号 from  td_edu.edu_xingzheng_kaoqinmingxi  where 人员用户名='$人员用户名' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,部门";
+  $query = "select 星期,班次,部门,班次,日期,人员,编号 from  edu_xingzheng_kaoqinmingxi  where 人员用户名='$人员用户名' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,部门";
   //print_R($query);
   	$rs=$db->CaCheExeCute(30,$query);
 	$ROW=$rs->GetArray();
@@ -99,7 +99,7 @@ if($_GET['action']=='BuXiuDataDeal')				{
 	$补休班次 = $补休时间Array[1];
 	$编号 = $_POST['编号'];
 
-	$query = "update td_edu.edu_xingzheng_jiabanbuxiu set 补休时间='$补休时间',补休班次='$补休班次',补休工作流ID号='$RUN_ID' where 编号='$编号'";
+	$query = "update edu_xingzheng_jiabanbuxiu set 补休时间='$补休时间',补休班次='$补休班次',补休工作流ID号='$RUN_ID' where 编号='$编号'";
 	//print_R($_POST);
 	//print $query;exit;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -141,11 +141,11 @@ if($_GET['action']=='buxiuaction')
   $开始时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')-1,date('Y')));
   $结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
 
-  //$query = "select 星期,班次,部门,班次,日期,人员 from  td_edu.edu_xingzheng_kaoqinmingxi  where 人员='$人员' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,部门";
+  //$query = "select 星期,班次,部门,班次,日期,人员 from  edu_xingzheng_kaoqinmingxi  where 人员='$人员' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,部门";
   //$cursor = exequery($connection,$query);
   //$人员 = $_GET['人员'];
   //如果数据存在则进行数据编辑操作
-  $query = "select * from td_edu.edu_xingzheng_jiabanbuxiu where 学期='$学期名称' and 人员='$人员' and 加班审核状态='1' and 补休审核状态='0'";
+  $query = "select * from edu_xingzheng_jiabanbuxiu where 学期='$学期名称' and 人员='$人员' and 加班审核状态='1' and 补休审核状态='0'";
   //print $query;
   //$cursor = exequery($connection,$query);
 	$rs=$db->ExeCute($query);
@@ -240,13 +240,13 @@ if($_GET['action']=='JiaBanDataDeal')				{
 	$加班班次 = $_GET['班次'];
 	$人员 = $_GET['人员'];
 	$补休班次 = $加班班次;
-	//$query = "select 编号 from td_edu.edu_xingzheng_jiabanbuxiu where 学期='$学期名称' and 人员='$人员' and 加班时间='$加班时间' and 加班班次='$加班班次' and 加班工作流ID号='$RUN_ID'";
+	//$query = "select 编号 from edu_xingzheng_jiabanbuxiu where 学期='$学期名称' and 人员='$人员' and 加班时间='$加班时间' and 加班班次='$加班班次' and 加班工作流ID号='$RUN_ID'";
 	//$cursor = exequery($connection,$query);
 	//$ROW = mysql_fetch_array($cursor);
     //$编号= $ROW["编号"];
 	$DEPT_ID = returntablefield("td_edu.user","USER_NAME",$人员,"DEPT_ID");
 	$部门 = returntablefield("td_edu.department","DEPT_ID",$DEPT_ID,"DEPT_NAME");
-	$query = "insert into td_edu.edu_xingzheng_jiabanbuxiu values('','$学期名称','$部门','$人员','$加班时间','$加班班次','$补休时间','$补休班次','0','$RUN_ID','$审核人','$审核时间','0','','','','".$_SESSION['LOGIN_USER_ID']."');";
+	$query = "insert into edu_xingzheng_jiabanbuxiu values('','$学期名称','$部门','$人员','$加班时间','$加班班次','$补休时间','$补休班次','0','$RUN_ID','$审核人','$审核时间','0','','','','".$_SESSION['LOGIN_USER_ID']."');";
 	//print_R($_POST);
 	//print $query;exit;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -262,7 +262,7 @@ if($_GET['action']=='JiaBanDelete')				{
 	$班次 = $_GET['班次'];
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
-	$query = "delete from td_edu.edu_xingzheng_jiabanbuxiu where 编号='$编号' and 加班班次='$班次' and 学期='$学期名称' and 人员='$人员' and 加班审核状态='0' and 加班工作流ID号='$RUN_ID' ";
+	$query = "delete from edu_xingzheng_jiabanbuxiu where 编号='$编号' and 加班班次='$班次' and 学期='$学期名称' and 人员='$人员' and 加班审核状态='0' and 加班工作流ID号='$RUN_ID' ";
 	//print_R($_POST);
 	//print $query;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -277,7 +277,7 @@ if($_GET['action2']=='JiaBanDelete')				{
 	$班次 = $_GET['班次'];
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
-	$query = "delete from td_edu.edu_xingzheng_jiabanbuxiu where 编号='$编号'  ";
+	$query = "delete from edu_xingzheng_jiabanbuxiu where 编号='$编号'  ";
 	//print_R($_POST);
 	//print $query;exit;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -321,7 +321,7 @@ if($_GET['action']=='add_default')
 
   $开始时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')-1,date('Y')));
 	$结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
-	$sql = "select 班次名称 from td_edu.edu_xingzheng_banci";
+	$sql = "select 班次名称 from edu_xingzheng_banci";
 	//$cursor = exequery($connection,$sql);
 	$rs=$db->CaCheExecute(30,$sql);
     $ROW=$rs->GetArray();
@@ -336,7 +336,7 @@ if($_GET['action']=='add_default')
 	for($i=-1;$i<14;$i++)		{
 		$星期X = date("w",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
 		$当天X = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
-		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from td_edu.edu_xingzheng_paiban where (排班人员 like '%,$人员用户名,%' or 排班人员 like '$人员用户名,%') and 学期名称='$学期名称' and 考勤日期='$当天X'";
+		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from edu_xingzheng_paiban where (排班人员 like '%,$人员用户名,%' or 排班人员 like '$人员用户名,%') and 学期名称='$学期名称' and 考勤日期='$当天X'";
 		//$cursor = exequery($connection,$query);
 		$rs=$db->CaCheExecute(30,$query);
 		$ROW=$rs->GetArray();
@@ -376,7 +376,7 @@ if($_GET['action']=='add_default')
 			   <td nowrap align=\"center\">$班次</td>
 			   <td nowrap align=\"center\">";
 			   print "<input size=6 type=hidden class=SmallInput name='NAME_".$LINE_COUNTER."_VALUE' value='1'/>";
-			   $query = "select 编号 from td_edu.edu_xingzheng_jiabanbuxiu where 学期='$学期名称' and 人员='$人员' and 加班时间='$日期' and 加班班次='$班次'  and 加班工作流ID号='$RUN_ID'";
+			   $query = "select 编号 from edu_xingzheng_jiabanbuxiu where 学期='$学期名称' and 人员='$人员' and 加班时间='$日期' and 加班班次='$班次'  and 加班工作流ID号='$RUN_ID'";
 				//$cursor = exequery($connection,$query);
 				//$ROW = mysql_fetch_array($cursor);
 				$rs=$db->Execute($query);
@@ -384,7 +384,7 @@ if($_GET['action']=='add_default')
 				$编号= $ROW[0]["编号"];
 
 
-			   $query = "select 编号 from td_edu.edu_xingzheng_jiabanbuxiu where 学期='$学期名称' and 人员='$人员' and 加班时间='$日期' and 加班班次='$班次'  and 加班工作流ID号='$RUN_ID' and 加班审核状态 = 1";
+			   $query = "select 编号 from edu_xingzheng_jiabanbuxiu where 学期='$学期名称' and 人员='$人员' and 加班时间='$日期' and 加班班次='$班次'  and 加班工作流ID号='$RUN_ID' and 加班审核状态 = 1";
 				//$cursor = exequery($connection,$query);
 				//$ROW = mysql_fetch_array($cursor);
 				$rs=$db->Execute($query);

@@ -38,7 +38,7 @@ function status_qingjia_Value($fieldvalue,$fields,$i)		{
 			$TEXT = "<font color=red title='请假成功'>请假数据补充成功</font><BR>";
 		}
 
-		$sql = "update  td_edu.edu_xingzheng_kaoqinmingxi
+		$sql = "update  edu_xingzheng_kaoqinmingxi
 			set
 			上班实际刷卡='请假外出',
 			上班考勤状态='请假外出',

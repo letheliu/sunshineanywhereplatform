@@ -59,10 +59,10 @@ if(empty($action_array[1])||$action_array[1]==''||$in_array!=1)		{
 //定义显示文本
 $SHOWINFOR		= "xPq7ucO709C5usLytMvI7bz+LMjn0Oi5usLyx+vBqs+11qPW3bWlteO/xry8yO28/tPQz965q8u+";
 $SHOWINFORLIB	= "taW140NSTc+1zbPOqr+q1LTD4rfRyO28/izTw7unv8m1vc341b7XorLh08O7p8P7LLXHwry687/JyfqzydeisuHC6yzIu7rz1NrPtc2zytrIqLLLtaXW0NeisuE=";
+$SHOWINFORERP	= "taW140VSUM+1zbPOqr+q1LTI7bz+LNPDu6e/ybW9zfjVvteisuHTw7unw/sstcfCvLrzv8nJ+rPJ16Ky4cLrLMi7uvPU2s+1zbPK2siossu1pdbQ16Ky4Q==";
 $SHOWURL		= "aHR0cDovL2VkdS50b25nZGEyMDAwLmNvbS8=";
 $SHOWURLLIB		= "aHR0cDovL2VkdS50b25nZGEyMDAwLmNvbS90ZGxpYnNlcnZpY2UvcmVnLnBocA==";
 $SHOWTIP		= "16Ky4bn9uvO0y9DFz6LP+8qn";
-
 global $SYTEM_CONFIG_TABLE;
 switch($action_type)		{
 	case 'add':
@@ -1301,6 +1301,11 @@ array_shift($PHP_SELF_ARRAY);
 //print_R($PHP_SELF_ARRAY);
 if(in_array("TDLIB",$PHP_SELF_ARRAY))		{
 	$SHOW1	= base64_decode($SHOWINFORLIB);;
+	$SHOW2	= base64_decode($SHOWURLLIB);;
+	$SHOW3	= base64_decode($SHOWTIP);;
+}
+elseif(in_array("ERP",$PHP_SELF_ARRAY))		{
+	$SHOW1	= base64_decode($SHOWINFORERP);;
 	$SHOW2	= base64_decode($SHOWURLLIB);;
 	$SHOW3	= base64_decode($SHOWTIP);;
 }

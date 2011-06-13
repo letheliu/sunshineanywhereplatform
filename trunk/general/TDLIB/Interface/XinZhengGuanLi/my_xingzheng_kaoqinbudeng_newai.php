@@ -72,7 +72,7 @@ if($_GET['action']=='KaoQinBudeng')
 
 if($_GET['action']=='DataDeal')
 	{
-	$query = "delete from td_edu.edu_xingzheng_kaoqinbudeng where 编号='$编号'  and 审核状态=0 ";
+	$query = "delete from edu_xingzheng_kaoqinbudeng where 编号='$编号'  and 审核状态=0 ";
 	//print_R($_POST);
 	//print $query;exit;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -85,7 +85,7 @@ if($_GET['action']=='DataDeal')
 
 if($_GET['action2']=='DataDeal')
 	{
-	$query = "delete from td_edu.edu_xingzheng_kaoqinbudeng where 编号='$编号'  and 审核状态=0 ";
+	$query = "delete from edu_xingzheng_kaoqinbudeng where 编号='$编号'  and 审核状态=0 ";
 	//print_R($_POST);
 	//print $query;exit;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -129,7 +129,7 @@ if($_GET['action']=='add_default')
   $开始时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')-1,date('Y')));
   $结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
 
-  $query = "select 编号,星期,班次,部门,班次,日期,人员,人员用户名,上班考勤状态,下班考勤状态 from  td_edu.edu_xingzheng_kaoqinmingxi  where 学期='$学期名称' and 人员用户名='$人员用户名' and 日期<='$开始时间' and (上班考勤状态='上班缺打卡' or 下班考勤状态='下班缺打卡') order by 日期,班次,部门";
+  $query = "select 编号,星期,班次,部门,班次,日期,人员,人员用户名,上班考勤状态,下班考勤状态 from  edu_xingzheng_kaoqinmingxi  where 学期='$学期名称' and 人员用户名='$人员用户名' and 日期<='$开始时间' and (上班考勤状态='上班缺打卡' or 下班考勤状态='下班缺打卡') order by 日期,班次,部门";
   $rs=$db->CacheExecute(30,$query);
   $ROW=$rs->GetArray();
   $COUNT=sizeof($ROW);
@@ -150,7 +150,7 @@ if($_GET['action']=='add_default')
 	$日期= $ROW[$i]["日期"];
 
 	//如果数据存在则进行数据编辑操作
-	//$query		= "select 新人员,编号 from td_edu.edu_xingzheng_paibandaike where 学期='$学期名称' and 原人员='$人员' and 上班时间='$日期' and 班次='$班次'  and 工作流ID号='$RUN_ID'";
+	//$query		= "select 新人员,编号 from edu_xingzheng_paibandaike where 学期='$学期名称' and 原人员='$人员' and 上班时间='$日期' and 班次='$班次'  and 工作流ID号='$RUN_ID'";
 	//$cursorX	= exequery($connection,$query);
 	//$ROWX		= mysql_fetch_array($cursorX);
     //$新人员		= $ROWX["新人员"];

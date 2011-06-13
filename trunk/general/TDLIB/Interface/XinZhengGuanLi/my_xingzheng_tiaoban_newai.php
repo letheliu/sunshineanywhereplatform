@@ -20,7 +20,7 @@ if($_GET['action']=='TiaoBanDelete')				{
 	$班次 = $_GET['班次'];
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
-	$query = "delete from td_edu.edu_xingzheng_tiaoban where 编号='$编号' and 原班次='$班次' and 学期='$学期名称' and 审核状态='0'";
+	$query = "delete from edu_xingzheng_tiaoban where 编号='$编号' and 原班次='$班次' and 学期='$学期名称' and 审核状态='0'";
 	//print_R($_POST);
 	//print $query;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -35,7 +35,7 @@ if($_GET['action2']=='TiaoBanDelete')				{
 	$班次 = $_GET['班次'];
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
-	$query = "delete from td_edu.edu_xingzheng_tiaoban where 编号='$编号'  and 审核状态='0'";
+	$query = "delete from edu_xingzheng_tiaoban where 编号='$编号'  and 审核状态='0'";
 	//print_R($_POST);
 	//print $query;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -60,19 +60,19 @@ if($_GET['action']=='TiaoBanDataDeal')				{
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
 
-	$query = "select 编号 from td_edu.edu_xingzheng_tiaoban where 学期='$学期名称' and 人员='$人员' and 原上班时间='$原上班时间' and 原班次='$原班次' and 工作流ID号='$RUN_ID'";
+	$query = "select 编号 from edu_xingzheng_tiaoban where 学期='$学期名称' and 人员='$人员' and 原上班时间='$原上班时间' and 原班次='$原班次' and 工作流ID号='$RUN_ID'";
 	$rs=$db->Execute($query);
 	$ROW=$rs->GetArray();
 	//$cursor = exequery($connection,$query);
 	//$ROW = mysql_fetch_array($cursor);
     $编号= $ROW[0]["编号"];
 	if($编号!="")		{
-		$query = "update td_edu.edu_xingzheng_tiaoban set 新上班时间='$新上班时间',新班次='$新班次' where 编号='$编号'";
+		$query = "update edu_xingzheng_tiaoban set 新上班时间='$新上班时间',新班次='$新班次' where 编号='$编号'";
 	}
 	else	{
 		$DEPT_ID = returntablefield("td_edu.user","USER_NAME",$人员,"DEPT_ID");
 		$部门 = returntablefield("td_edu.department","DEPT_ID",$DEPT_ID,"DEPT_NAME");
-		$query = "insert into td_edu.edu_xingzheng_tiaoban values('','$学期名称','$部门','$人员','$原上班时间','$原班次','$新上班时间','$新班次','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
+		$query = "insert into edu_xingzheng_tiaoban values('','$学期名称','$部门','$人员','$原上班时间','$原班次','$新上班时间','$新班次','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
 	}
 	//print_R($_POST);
 	//print $query;exit;
@@ -100,7 +100,7 @@ if($_GET['action']=='TiaoBan')				{
 	//$结束时间 = date("Y-m-d",mktime(1,1,1,$日期Array[1],$日期Array[2]+14,$日期Array[0]));
 	$开始时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')-1,date('Y')));
 	$结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
-	$sql = "select 班次名称 from td_edu.edu_xingzheng_banci";
+	$sql = "select 班次名称 from edu_xingzheng_banci";
 	//$cursor = exequery($connection,$sql);
 	//while($ROW = mysql_fetch_array($cursor))			{
 	$rs = $db->CacheExecute(30,$sql);
@@ -113,7 +113,7 @@ if($_GET['action']=='TiaoBan')				{
 		$星期X = date("w",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
 		$当天X = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+$i,date('Y')));
 		$returnCurWeekIndex = returnCurWeekIndex($当天X);
-		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from td_edu.edu_xingzheng_paiban where (排班人员 like '%,$人员用户名,%' or 排班人员 like '$人员用户名,%') and 学期名称='$学期名称' and 考勤日期='$当天X'";
+		$query = "select 班次名称 AS 班次,排班人员 AS 人员 from edu_xingzheng_paiban where (排班人员 like '%,$人员用户名,%' or 排班人员 like '$人员用户名,%') and 学期名称='$学期名称' and 考勤日期='$当天X'";
 		//$cursor = exequery($connection,$query);
 		$rs=$db->Execute($query);
 		$ROW=$rs->GetArray();
@@ -189,7 +189,7 @@ if($_GET['action']=='add_default')
   $开始时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')-1,date('Y')));
   $结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
 
-  $query = "select 星期,班次,人员,班次,日期 from  td_edu.edu_xingzheng_kaoqinmingxi  where 人员='$人员' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,人员";
+  $query = "select 星期,班次,人员,班次,日期 from  edu_xingzheng_kaoqinmingxi  where 人员='$人员' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,人员";
     //$cursor = exequery($connection,$query);
  // while($ROW = mysql_fetch_array($cursor)) {
   $rs = $db->CaCheExecute(30,$query);
@@ -206,7 +206,7 @@ if($_GET['action']=='add_default')
 
 
 	//如果数据存在则进行数据编辑操作
-	$query = "select 新上班时间,新班次,编号 from td_edu.edu_xingzheng_tiaoban where 学期='$学期名称' and 人员='$人员' and 原上班时间='$日期' and 原班次='$班次'  and 工作流ID号='$RUN_ID'";
+	$query = "select 新上班时间,新班次,编号 from edu_xingzheng_tiaoban where 学期='$学期名称' and 人员='$人员' and 原上班时间='$日期' and 原班次='$班次'  and 工作流ID号='$RUN_ID'";
 	$rs = $db->Execute($query);
 	$ROWX = $rs->GetArray();
 	//	$cursorX = exequery($connection,$query);

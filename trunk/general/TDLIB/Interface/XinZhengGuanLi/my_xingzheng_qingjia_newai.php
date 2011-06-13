@@ -26,7 +26,7 @@ if($_GET['action']=='QingJiaDataDeal')				{
 	$新上班时间 = $新上班时间Array[0];
 	$新班次 = $新上班时间Array[1];
 	$编号 = $_POST['编号'];
-	$query = "insert into td_edu.edu_xingzheng_qingjia values('','$学期名称','$部门','$人员','$日期','$周次','$班次','','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
+	$query = "insert into edu_xingzheng_qingjia values('','$学期名称','$部门','$人员','$日期','$周次','$班次','','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
 	//print_R($_GET);
 	//print $query;exit;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -42,9 +42,9 @@ if($_GET['action']=='QingJiaDelete')				{
 	$班次 = $_GET['班次'];
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
-	//$query = "delete from td_edu.edu_xingzheng_qingjia where 编号='$编号' and 班次='$班次' and 学期='$学期名称' and 调休审核状态='0'";
+	//$query = "delete from edu_xingzheng_qingjia where 编号='$编号' and 班次='$班次' and 学期='$学期名称' and 调休审核状态='0'";
 	$编号 = $_GET['编号'];
-	$query = "delete from td_edu.edu_xingzheng_qingjia where 编号='$编号'  and 审核状态='0'";
+	$query = "delete from edu_xingzheng_qingjia where 编号='$编号'  and 审核状态='0'";
 	//print $query;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	//exequery($connection,$query);
@@ -58,9 +58,9 @@ if($_GET['action2']=='QingJiaDelete')				{
 	$班次 = $_GET['班次'];
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
-	//$query = "delete from td_edu.edu_xingzheng_qingjia where 编号='$编号' and 班次='$班次' and 学期='$学期名称' and 调休审核状态='0'";
+	//$query = "delete from edu_xingzheng_qingjia where 编号='$编号' and 班次='$班次' and 学期='$学期名称' and 调休审核状态='0'";
 	$编号 = $_GET['编号'];
-	$query = "delete from td_edu.edu_xingzheng_qingjia where 编号='$编号'  and 审核状态='0'";
+	$query = "delete from edu_xingzheng_qingjia where 编号='$编号'  and 审核状态='0'";
 	//print $query;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
 	//exequery($connection,$query);
@@ -73,7 +73,7 @@ if($_GET['action']=='KaoQinBudeng')				{
 //print_R($_POST);
 //print_R($_GET);
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
-//Array ( [0qingjialeixing] => [CHECK_1_0_VALUE] => on [NAME_0_VALUE] => 1 [NAME_0_ID] => [NAME_0_BANJI] => 系统管理员 [NAME_0_KECHENG] => 升旗 [NAME_0_OLDDATE] => 2011-04-27 [NAME_0_OLDJIECI] => 升旗 [NAME_0_NEWDATE] => [1qingjialeixing] => [CHECK_1_1_VALUE] => on [NAME_1_VALUE] => 1 [NAME_1_ID] => [NAME_1_BANJI] => 系统管理员 [NAME_1_KECHENG] => 升旗 [NAME_1_OLDDATE] => 2011-04-28 [NAME_1_OLDJIECI] => 升旗 [NAME_1_NEWDATE] => )  insert into td_edu.edu_xingzheng_qingjia values('','2010-2011-第二学期','','系统管理员','','','','','0','','','','admin');
+//Array ( [0qingjialeixing] => [CHECK_1_0_VALUE] => on [NAME_0_VALUE] => 1 [NAME_0_ID] => [NAME_0_BANJI] => 系统管理员 [NAME_0_KECHENG] => 升旗 [NAME_0_OLDDATE] => 2011-04-27 [NAME_0_OLDJIECI] => 升旗 [NAME_0_NEWDATE] => [1qingjialeixing] => [CHECK_1_1_VALUE] => on [NAME_1_VALUE] => 1 [NAME_1_ID] => [NAME_1_BANJI] => 系统管理员 [NAME_1_KECHENG] => 升旗 [NAME_1_OLDDATE] => 2011-04-28 [NAME_1_OLDJIECI] => 升旗 [NAME_1_NEWDATE] => )  insert into edu_xingzheng_qingjia values('','2010-2011-第二学期','','系统管理员','','','','','0','','','','admin');
 
 		$请假外出array=$_POST;
 		$条=$_POST['COUNT'];
@@ -105,7 +105,7 @@ if($_GET['action']=='KaoQinBudeng')				{
 				{
 
 
-					$query = "insert into td_edu.edu_xingzheng_qingjia values('','$学期名称','$部门','$人员','$日期','$周次','$班次','$请假类型','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
+					$query = "insert into edu_xingzheng_qingjia values('','$学期名称','$部门','$人员','$日期','$周次','$班次','$请假类型','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
 					  $db->Execute($query);
 					// print $sql;exit;
 
@@ -123,7 +123,7 @@ if($_GET['action']=='KaoQinBudeng')				{
 	$新上班时间 = $新上班时间Array[0];
 	$新班次 = $新上班时间Array[1];
 	$编号 = $_POST['编号'];
-	$query = "insert into td_edu.edu_xingzheng_qingjia values('','$学期名称','$部门','$人员','$日期','$周次','$班次','','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
+	$query = "insert into edu_xingzheng_qingjia values('','$学期名称','$部门','$人员','$日期','$周次','$班次','','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."');";
 	//print_R($_GET);
 	print $query;exit;
 	*/
@@ -162,7 +162,7 @@ if($_GET['action']=='add_default')
   $开始时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')-1,date('Y')));
   $结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
 
-  $query = "select 星期,班次,人员,班次,日期,部门,编号,周次 from  td_edu.edu_xingzheng_kaoqinmingxi  where 人员='$人员' and 日期>='$开始时间' and 日期<='$结束时间' and 下班考勤状态!='请假外出' order by 日期,班次,人员";
+  $query = "select 星期,班次,人员,班次,日期,部门,编号,周次 from  edu_xingzheng_kaoqinmingxi  where 人员='$人员' and 日期>='$开始时间' and 日期<='$结束时间' and 下班考勤状态!='请假外出' order by 日期,班次,人员";
   //print $query;
  // $cursor = exequery($connection,$query);
 	$rs=$db->CaCheExecute(30,$query);
@@ -182,14 +182,14 @@ if($_GET['action']=='add_default')
 
 
 	//如果数据存在则进行数据编辑操作
-	$query = "select 编号 from td_edu.edu_xingzheng_qingjia where 学期='$学期名称' and 人员='$人员' and 时间='$日期' and 班次='$班次' and  工作流ID号='$RUN_ID'";
+	$query = "select 编号 from edu_xingzheng_qingjia where 学期='$学期名称' and 人员='$人员' and 时间='$日期' and 班次='$班次' and  工作流ID号='$RUN_ID'";
 	//$cursorX = exequery($connection,$query);
 	//$ROWX	 = mysql_fetch_array($cursorX);
 	$rs=$db->Execute($query);
 	$ROWX=$rs->GetArray();
 	$请假编号		= $ROWX[0]["编号"];
 
-	$query = "select 编号 from td_edu.edu_xingzheng_qingjia where 学期='$学期名称' and 人员='$人员' and 时间='$日期' and 班次='$班次' and  工作流ID号='$RUN_ID' and  审核状态=1";
+	$query = "select 编号 from edu_xingzheng_qingjia where 学期='$学期名称' and 人员='$人员' and 时间='$日期' and 班次='$班次' and  工作流ID号='$RUN_ID' and  审核状态=1";
 	$rs=$db->Execute($query);
 	$ROWXX=$rs->GetArray();
 	$通过编号		= $ROWXX[0]["编号"];

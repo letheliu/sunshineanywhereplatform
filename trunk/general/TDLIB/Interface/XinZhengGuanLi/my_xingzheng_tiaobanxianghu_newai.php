@@ -34,19 +34,19 @@ if($_GET['action']=='TiaoKeDataDeal')				{
 	$原人员 = $_SESSION['LOGIN_USER_NAME'];
 	//print_R($_POST);exit;
 	//如果数据存在则进行数据编辑操作
-	$query = "select 编号 from td_edu.edu_xingzheng_tiaobanxianghu where 学期='$学期名称'  and 原上班时间='$原上班时间' and 原人员='$人员' and 原班次='$原班次' and 工作流ID号='$RUN_ID'";
+	$query = "select 编号 from edu_xingzheng_tiaobanxianghu where 学期='$学期名称'  and 原上班时间='$原上班时间' and 原人员='$人员' and 原班次='$原班次' and 工作流ID号='$RUN_ID'";
 	$rs = $db->Execute($query);
 	$ROW = $rs->GetArray();
     $编号= $ROW[0]["编号"];
 	if($编号!="")		{
-		$query = "update td_edu.edu_xingzheng_tiaobanxianghu set 新上班时间='$新上班时间',新班次='$新班次',新人员='$新人员',新班次='$新班次' where 编号='$编号'";
+		$query = "update edu_xingzheng_tiaobanxianghu set 新上班时间='$新上班时间',新班次='$新班次',新人员='$新人员',新班次='$新班次' where 编号='$编号'";
 	}
 	else	{
 		$DEPT_ID = returntablefield("td_edu.user","USER_NAME",$原人员,"DEPT_ID");
 		$原部门 = returntablefield("td_edu.department","DEPT_ID",$DEPT_ID,"DEPT_NAME");
 		$DEPT_ID = returntablefield("td_edu.user","USER_NAME",$新人员,"DEPT_ID");
 		$新部门 = returntablefield("td_edu.department","DEPT_ID",$DEPT_ID,"DEPT_NAME");
-		$query = "insert into td_edu.edu_xingzheng_tiaobanxianghu values('','$学期名称','$原部门','$原人员','$原上班时间','$原班次','$新部门','$新人员','$新上班时间','$新班次','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."','$新人员用户名');";
+		$query = "insert into edu_xingzheng_tiaobanxianghu values('','$学期名称','$原部门','$原人员','$原上班时间','$原班次','$新部门','$新人员','$新上班时间','$新班次','0','$RUN_ID','$审核人','$审核时间','".$_SESSION['LOGIN_USER_ID']."','$新人员用户名');";
 	}
 	//print_R($_POST);
 	//print $query;exit;
@@ -63,7 +63,7 @@ if($_GET['action']=='TiaoKeDelete')				{
 	$班次 = $_GET['班次'];
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
-	$query = "delete from td_edu.edu_xingzheng_tiaobanxianghu where 编号='$编号' and 原班次='$班次' and 学期='$学期名称' and 审核状态='0'";
+	$query = "delete from edu_xingzheng_tiaobanxianghu where 编号='$编号' and 原班次='$班次' and 学期='$学期名称' and 审核状态='0'";
 	//print_R($_POST);
 	//print $query;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -78,7 +78,7 @@ if($_GET['action2']=='TiaoKeDelete')				{
 	$班次 = $_GET['班次'];
 	$人员 = $_SESSION['LOGIN_USER_NAME'];
 	//如果数据存在则进行数据编辑操作
-	$query = "delete from td_edu.edu_xingzheng_tiaobanxianghu where 编号='$编号'  and 审核状态='0'";
+	$query = "delete from edu_xingzheng_tiaobanxianghu where 编号='$编号'  and 审核状态='0'";
 	//print_R($_POST);
 	//print $query;
 	print "<BR><BR><div align=center><font color=green>你的操作已经处理!</font></div>";
@@ -110,7 +110,7 @@ if($_GET['action']=='TiaoKe')				{
 	  $开始时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')-1,date('Y')));
 	  $结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
 
-	  $query = "select 星期,班次,日期,人员,部门,人员用户名 from  td_edu.edu_xingzheng_kaoqinmingxi  where 人员用户名!='$人员用户名' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,人员用户名";
+	  $query = "select 星期,班次,日期,人员,部门,人员用户名 from  edu_xingzheng_kaoqinmingxi  where 人员用户名!='$人员用户名' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,人员用户名";
 	  $rs = $db->Execute($query);
 	  $ROW = $rs->GetArray();
 	  //行计数器
@@ -199,7 +199,7 @@ if($_GET['action']=='TiaoKe')				{
   $开始时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')-1,date('Y')));
   $结束时间 = date("Y-m-d",mktime(1,1,1,date('m'),date('d')+14,date('Y')));
 
-  $query = "select 星期,班次,部门,班次,日期,编号 from  td_edu.edu_xingzheng_kaoqinmingxi  where 人员用户名='$人员用户名' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,部门";
+  $query = "select 星期,班次,部门,班次,日期,编号 from  edu_xingzheng_kaoqinmingxi  where 人员用户名='$人员用户名' and 日期>='$开始时间' and 日期<='$结束时间' order by 日期,班次,部门";
 
    // $cursor = exequery($connection,$query);
   //行计数器
@@ -221,7 +221,7 @@ if($_GET['action']=='TiaoKe')				{
 
 
 	//如果数据存在则进行数据编辑操作
-	$query = "select * from td_edu.edu_xingzheng_tiaobanxianghu where 学期='$学期名称' and 原人员用户名='$人员用户名' and 原上班时间='$日期' and 原班次='$班次'  and 审核状态='0'  and 工作流ID号='$RUN_ID'";
+	$query = "select * from edu_xingzheng_tiaobanxianghu where 学期='$学期名称' and 原人员用户名='$人员用户名' and 原上班时间='$日期' and 原班次='$班次'  and 审核状态='0'  and 工作流ID号='$RUN_ID'";
 	$rs=$db->Execute($query);
 	$ROWX=$rs->GetArray();
 	//cursorX = exequery($connection,$query);
@@ -239,7 +239,7 @@ if($_GET['action']=='TiaoKe')				{
 
 	//得到替换后人员考勤的ID值
 	if($新人员!="")			{
-		$query = "select 编号 from  td_edu.edu_xingzheng_kaoqinmingxi  where 学期='$学期名称' and 人员用户名='$新人员用户名' and 日期='$新上班时间' and 班次='$新班次' and 班次='$新班次'";
+		$query = "select 编号 from  edu_xingzheng_kaoqinmingxi  where 学期='$学期名称' and 人员用户名='$新人员用户名' and 日期='$新上班时间' and 班次='$新班次' and 班次='$新班次'";
 		$cursorXX = $db->Execute($query);
 		$ROWXX	 = $rs->GetArray();
 		$编号X2	= $ROWXX[0]["编号"];
