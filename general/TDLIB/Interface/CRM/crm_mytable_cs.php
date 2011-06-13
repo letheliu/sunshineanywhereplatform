@@ -110,7 +110,7 @@ function CheckForm()
     </td>
    </tr>
   </form>
-<<<<<<< .mine  <form action="crm_mytable_jinjitongzhi.php?check=jinjitongzhi"  method="post" name="form2">
+<form action="crm_mytable_jinjitongzhi.php?check=jinjitongzhi"  method="post" name="form2">
         <tr class="TableData">
 			<td width="130"><font color=red>紧急通知发布：</font></td>
 			<td>  

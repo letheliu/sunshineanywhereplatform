@@ -34,16 +34,16 @@ $MenuArray[] = array('286','node_user','×ÀÃæÏÔÊ¾Î»ÖÃ','crm_mytable_wz_newai.php'
 
 
 
-$MenuArray[] = array('286','node_user','²âÊÔ***1','crm_notes.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***2','crm_google.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***3','crm_mytable_kehugaishu.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***4','crm_kehu_birthday.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***5','kehu_chaxun.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***6','crm_mytable_hetong.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***7','crm_mytable_fuwu.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***8','crm_mytable_feiyong.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***9','crm_mytable_dingdan.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***10','crm_mytable_tongzhi.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***1','crm_mytable/crm_notes.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***2','crm_mytable/crm_google.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***3','crm_mytable/crm_mytable_kehugaishu.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***4','crm_mytable/crm_kehu_birthday.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***5','crm_mytable/kehu_chaxun.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***6','crm_mytable/crm_mytable_hetong.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***7','crm_mytable/crm_mytable_fuwu.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***8','crm_mytable/crm_mytable_feiyong.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***9','crm_mytable/crm_mytable_dingdan.php');
+$MenuArray[] = array('286','node_user','²âÊÔ***10','crm_mytable/crm_mytable_tongzhi.php');
 
 
 $DateY = Date("Y");
