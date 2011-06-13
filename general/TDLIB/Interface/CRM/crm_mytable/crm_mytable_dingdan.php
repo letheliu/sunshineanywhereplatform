@@ -6,13 +6,10 @@ require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
 page_css('CRM桌面订单模块');
 
-
-
 $user_id = $_SESSION['LOGIN_USER_ID'];
 $module_desc = "CRM桌面订单";
 //$max_count = "4";
 $module_body = "";
-
 $sql = "select * from crm_order where 创建人='".$user_id."' order by 创建时间 desc limit 0 , $max_count";
 $rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs->GetArray();
@@ -27,7 +24,6 @@ if(count($rs_a)>0){
 	   if($rs_a[$i]['是否审核'] == "否"){
 	      $boolen = "<img src=\"../images/error.gif\" align=\"absmiddle\">";
 	   }
-
 	   $编号     = $rs_a[$i]['编号'];
 	   $订单编号 = '单号：'.$rs_a[$i]['订单编号'];
        $销售日期 = $rs_a[$i]['销售日期'];
@@ -41,23 +37,16 @@ if(count($rs_a)>0){
 					  </tr>";
    }
    for($i=0;$i<$count;$i++){
-	 $module_body .= "<tr class=TableBlock>
-				<td valign=Middle align=left>&nbsp;
-				</td>
-				</tr>";
+	 $module_body .= "<tr class=TableBlock><td valign=Middle align=left>&nbsp;</td></tr>";
    }
 }
-
 if(count($rs_a)==0){
    $module_body .= "<tr class=TableBlock>
 						<td valign=Middle align=left><font color=red>
 						<img src=\"../images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
                         暂无服务记录!</font></td>";
    for($i=0;$i<3;$i++){
-	 $module_body .= "<tr class=TableBlock>
-				<td valign=Middle align=left>&nbsp;
-				</td>
-				</tr>";
+	 $module_body .= "<tr class=TableBlock><td valign=Middle align=left>&nbsp;</td></tr>";
    }
 }
 $module_body .= "</table>";

@@ -4,14 +4,12 @@ ini_set('error_reporting',E_ALL);
 error_reporting(E_WARNING | E_ERROR);
 require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
-
 page_css('CRM桌面服务模块');
 
 $user_id = $_SESSION['LOGIN_USER_ID'];
 $module_desc = "CRM桌面服务";
 //$max_count = "4";
 $module_body = "";
-
 $sql = "select * from crm_service where 创建人='".$user_id."' order by 创建时间 desc limit 0 , $max_count";
 $rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs->GetArray();
@@ -26,7 +24,6 @@ if(count($rs_a)>0){
 	   if($rs_a[$i]['是否审核'] == "否"){
 	      $boolen = "<img src=\"../images/error.gif\" align=\"absmiddle\">";
 	   }
-
 	   $编号     = $rs_a[$i]['编号'];
 	   $服务编号 = '单号：'.$rs_a[$i]['服务编号'];
 	   $服务创建时间 = $rs_a[$i]['创建时间'];
@@ -35,14 +32,10 @@ if(count($rs_a)>0){
 						<img src=\"../images/arrow_r.gif\" align=\"absmiddle\">&nbsp;
                         ".$boolen."&nbsp;".$rs_a[$i]['客户名称']."</td><td valign=\"Middle\" align=\"left\"><font color=\"green\"><font color=\"green\"><a href=../crm_service_person_newai.php?action=view_default&编号=$编号; title=".$服务编号.">".$rs_a[$i]['服务概述']."</a></font></td><td valign=\"Middle\" align=\"right\"><font color=\"green\">[".$rs_a[$i]['服务阶段']."]</font>&nbsp;".$服务创建时间1."</td>
 					  </tr>";
-
-       //$module_body .= "<li>".$boolen."&nbsp;".$rs_a[$i]['客户名称']."&nbsp;<font color=green><a href=crm_service_person_newai.php?action=view_default&编号=$编号; title=".$服务编号.">".$rs_a[$i]['服务概述']."</a></font>(<font color=green>[".$rs_a[$i]['服务阶段']."]</font>".$rs_a[$i]['创建时间'].")</li>";
    }
-
-	for($i=0;$i<$count;$i++){
-		$module_body .= "<tr class=\"TableBlock\">
-					<td valign=\"Middle\" align=\"left\">&nbsp;</td></tr>";
-	}
+   for($i=0;$i<$count;$i++){
+		$module_body .= "<tr class=\"TableBlock\"><td valign=\"Middle\" align=\"left\">&nbsp;</td></tr>";
+   }
 }
 
 if(count($rs_a)==0){

@@ -4,7 +4,6 @@ ini_set('error_reporting', E_ALL);
 error_reporting(E_WARNING | E_ERROR);
 require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
-
 page_css('CRM½ô¼±Í¨Öª');
 
 $user_id = $_SESSION['LOGIN_USER_ID'];

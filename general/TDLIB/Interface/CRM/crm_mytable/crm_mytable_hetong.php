@@ -4,14 +4,12 @@ ini_set('error_reporting',E_ALL);
 error_reporting(E_WARNING | E_ERROR);
 require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
-
 page_css('CRM桌面合同模块');
 
 $user_id = $_SESSION['LOGIN_USER_ID'];
 $module_desc = "CRM桌面合同";
 //$max_count = "4";
 $module_body = "";
-
 $sql = "select * from crm_contract where 创建人='".$user_id."' order by 创建时间 desc limit 0 , $max_count";
 $rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs->GetArray();
@@ -26,7 +24,6 @@ if(count($rs_a)>0){
 	   if($rs_a[$i]['是否审核'] == "否" or $rs_a[$i]['是否审核'] == ""){
 	      $boolen = "<img src=\"../images/error.gif\" align=\"absmiddle\">";
 	   }
-
 	   $编号     = $rs_a[$i]['编号'];
 	   $合同编号 = '单号：'.$rs_a[$i]['合同编号'];
 	   $合同签订时间 = $rs_a[$i]['创建时间'];
@@ -37,16 +34,10 @@ if(count($rs_a)>0){
                         ".$boolen."&nbsp;".$rs_a[$i]['客户名称']."</td>
 						<td valign=\"Middle\" align=\"left\"><a href=../crm_contract_person_newai.php?action=view_default&编号=$编号; title=".$合同编号.">".$rs_a[$i]['服务类型']."</a></font></td>
 						<td valign=\"Middle\" align=\"right\"><font color=\"green\">[金额：".$rs_a[$i]['合同总金额']."]</font>&nbsp;".$合同签订时间1."</td></tr>";
-
-       //$module_body .= "<li>".$boolen."&nbsp;".$rs_a[$i]['客户名称']."&nbsp;<font color=green><a href=crm_contract_person_newai.php?action=view_default&编号=$编号; title=".$合同编号.">".$rs_a[$i]['服务类型']."</a></font>(<font color=green>[金额：".$rs_a[$i]['合同总金额']."]</font>".$rs_a[$i]['合同签订时间'].")</li>";
    }
-
-	for($i=0;$i<$count;$i++){
-		$module_body .= "<tr class=\"TableBlock\">
-					<td valign=\"Middle\" align=\"left\">&nbsp;
-					</td>
-					</tr>";
-	}
+   for($i=0;$i<$count;$i++){
+		$module_body .= "<tr class=\"TableBlock\"><td valign=\"Middle\" align=\"left\">&nbsp;</td></tr>";
+   }
 }
 if(count($rs_a)==0){
    $module_body .= "<tr class=\"TableBlock\">

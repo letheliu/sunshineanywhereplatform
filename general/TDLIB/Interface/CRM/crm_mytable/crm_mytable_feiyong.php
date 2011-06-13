@@ -4,24 +4,19 @@ ini_set('error_reporting', E_ALL);
 error_reporting(E_WARNING | E_ERROR);
 require_once('lib.inc.php');
 $GLOBAL_SESSION=returnsession();
-
 page_css("CRM桌面费用模块");
 
 $user_id = $_SESSION['LOGIN_USER_ID'];
-//$user_name = $_SESSION['LOGIN_USER_NAME'];
-//$user_name = returntablefield(user,);
 $module_desc = "CRM桌面费用";
 //$max_count = "4";
 $module_body = "";
-
 $sql = "select * from crm_expense where 创建人='$user_id' order by 创建时间 desc limit 0,$max_count";
 $rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs->GetArray();
 $count = $max_count-count($rs_a);
 if(count($rs_a)>0){
-
-$module_body .= "<table border=0 class=TableBlock width=100% hight=100%>";
-$module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
+  $module_body .= "<table border=0 class=TableBlock width=100% hight=100%>";
+  $module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;".$module_desc."</td></tr>";
   for($i=0;$i<count($rs_a);$i++){
 	 if($rs_a[$i]['是否审核'] == 1){
 	   $boolen = "<img src=\"../images/right.gif\" align=\"absmiddle\">";
@@ -40,31 +35,21 @@ $module_body .= "<tr align=\"left\" class=\"TableHeader\"><td colspan=10>&nbsp;"
 						<td valign=Middle align=left><font color=green><a href=../crm_expense_person_newai.php?action=view_default&编号=$编号; title=".$费用单号.">".$rs_a[$i]['费用沟通概述']."</a></font></td>
 						<td valign=Middle align=right><font color=green>[".$rs_a[$i]['费用类型']."]</font>&nbsp;".$费用创建时间1."</td>
 					  </tr>";
-
-     //$module_body .= "<li>".$boolen."&nbsp;".$rs_a[$i]['客户名称']."&nbsp;<font color=green><a href=crm_expense_person_newai.php?action=view_default&编号=$编号; title=".$费用单号.">".$rs_a[$i]['费用沟通概述']."</a></font>(".$rs_a[$i]['创建时间'].")</li>";
   }
-
-	for($i=0;$i<$count;$i++){
-		$module_body .= "<tr class=TableBlock>
-					<td valign=Middle align=left>&nbsp;
-					</td>
-					</tr>";
-	}
+  for($i=0;$i<$count;$i++){
+	 $module_body .= "<tr class=TableBlock><td valign=Middle align=left>&nbsp;</td></tr>";
+  }
 }
-
 if(count($rs_a) == 0){
    $module_body .= "<tr class=TableBlock><td valign=Middle align=left><font color=red>暂无费用</font></td></tr>";
    for($i=0;$i<3;$i++){
-	$module_body .= "<tr class=TableBlock>
-				<td valign=Middle align=left>&nbsp;
-				</td>
-				</tr>";
+	  $module_body .= "<tr class=TableBlock><td valign=Middle align=left>&nbsp;</td></tr>";
 }
 }
- $module_body .= "</table>";
+
+$module_body .= "</table>";
 /*
-$module_body .= "<ul>
-				<script>
+$module_body .= "<script>
 					function plan_detail(编号)
 					{
 						URL='crm_expense_person_newai.php?action=view_default&编号='+编号;
