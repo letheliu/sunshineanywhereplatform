@@ -314,6 +314,7 @@ switch($action_type)		{
 			//通达格式上传文件处理结束
 
 			require_once('newai.php');
+
 			if(sizeof($selectid_array)>2)		{
 				for($i=0;$i<sizeof($selectid_array);$i++)		{
 					$var=$selectid_array[$i];
@@ -852,11 +853,13 @@ switch($action_type)		{
 		print_hidden($tablename,'tablename');
 		break;
 	case 'init':
+
 		if(sizeof($action_array)>=3)	{
 			$action=$action_array[0]."_".$action_array[1];
 			$action_add=$action_array[2];
 		}
 		$location_title='sunshine_inside';
+
 		$tablename=$file_ini[$action]['tablename'];
 		$SYTEM_CONFIG_TABLE!="" ? $tablename = $SYTEM_CONFIG_TABLE : '';
 		$tablewidth=$file_ini[$action]['tablewidth'];
@@ -961,6 +964,7 @@ switch($action_type)		{
 		global $NEWAIINIT_VALUE_SYSTEM;
 		global $NEWAIINIT_VALUE_SYSTEM_NUM;
 		global $NEWAIINIT_VALUE_SYSTEM_SUM;
+
 		if(strlen($NEWAIINIT_VALUE_SYSTEM)>10)			{
 			$USER_DEFINE_SQL_ARRAY = explode('from',$NEWAIINIT_VALUE_SYSTEM);
 			$USER_DEFINE_SQL_ARRAY = explode('select',$USER_DEFINE_SQL_ARRAY[0]);
@@ -1011,6 +1015,7 @@ switch($action_type)		{
 		page_css($IE_TITLE);
 
 		require_once('newai.php');
+
 		newaiinit($fields,$mode);
 		//在显示弹出明细窗口时下面出现的关闭按钮
 		if($_GET['action_close']=="close")		{

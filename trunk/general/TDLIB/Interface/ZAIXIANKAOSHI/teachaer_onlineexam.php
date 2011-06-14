@@ -4,6 +4,7 @@ session_start();
 //	header("Location: index.html");
 //}
 require_once('lib.inc.php');
+page_css("OA在线考试");
 //require_once('page.class.php');
 
 	//--计算用于分页显示
@@ -16,20 +17,16 @@ require_once('lib.inc.php');
 
 //require_once("header.php");
 
-?><DIV id=main>
-<DIV id=title>
-<DIV id=title_l></DIV>
-<DIV id=title_m>在线考试</DIV>
-<DIV id=title_r></DIV></DIV>
-<DIV id=content>
+?>
 
-<table width="100%" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#b3d7fb">
+<Table class=TableBlock width=100%>
 
 
 <?
-	$学号 = $_SESSION['sunshine_student_code']; 
-	$姓名 = $_SESSION['sunshine_student_name']; 
-	$班级 = $_SESSION['sunshine_student_class'];
+//print_R($_SESSION);
+	$学号 = $_SESSION['LOGIN_USER_ID']; //用户名
+	$姓名 = $_SESSION['LOGIN_USER_NAME']; //姓名
+	$班级 = $_SESSION['LOGIN_DEPT_ID'];//部门ID
 
 
 if($_GET['action']=="ApplyExamDataFinished")					{
@@ -134,12 +131,13 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 		$sql = "select distinct 题型 from tiku_shijuanku where 试卷名称='".$_GET['考试试卷']."'";
 		$rs = $db->CacheExecute(30,$sql);
 		$rs_a = $rs->GetArray();
+
 		print "<tr>";
 		for($i=0;$i<sizeof($rs_a);$i++)			{
 			$题型 = $rs_a[$i]['题型'];
 			print "<td height='26' align='center' bgcolor='#E4EFF8'  nowrap>
 			<a href=\"?".base64_encode("action=ApplyExam&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}&题型=$题型")."\">
-			<font color=green><B>$题型</B></font></a>
+			<font color=red><B>$题型</B></font></a>
 			</td>";
 		}
 		print "</tr>";
@@ -254,14 +252,25 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 		print "<input type=hidden name=题型 value='".$题型."'>";
 		print "<input type=hidden name=考试名称 value='".$_GET['考试名称']."'>";
 		print "<input type=hidden name=MaxValue value='".sizeof($rs_a)."'>";
-		
+
+		$sql = "select count( 编号 ) as 总题数 from tiku_shijuanku where 试卷名称='".$_GET['考试试卷']."'";
+		$rs = $db->CacheExecute(30,$sql);
+		$rs_a = $rs->GetArray();
+		$总题数 = $rs_a[0]['总题数'];
+
+	    $sql = "select count( 编号 ) as 提交数 from tiku_examdata where 试卷名称='".$_GET['考试试卷']."' and 学号='$学号'";
+		$rs = $db->Execute($sql);
+		$rs_a = $rs->GetArray();
+		$提交数 = $rs_a[0]['提交数'];
 
 		print "<tr  bgcolor='#FFFFFF'>
-              <td colspan=8 height='26' align='center' ><input type=\"submit\" name=\"button\" class=\"button\" value=\"提交该部分题目\" ></td>
+              <td colspan=8 height='26' align='center' >
+			  <font color=red>一共有【".$总题数."】小题,您已经提交【".$提交数."】题</font>
+			  <input type=\"submit\" name=\"button\" class=\"button\" value=\"提交该部分题目\" ></td>
             </tr>";
 		print "</table></form>";
 		
-		print "<BR><table width=100% border=0 align=center cellpadding=0 cellspacing=1 bgcolor=\"#b3d7fb\"><FORM name=form1 action=\"?".base64_encode("action=ApplyExamDataFinished&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}")."\" method=post encType=multipart/form-data>";
+		print "<BR><table width=100% border=0 align=center cellpadding=0 cellspacing=1 ><FORM name=form1 action=\"?".base64_encode("action=ApplyExamDataFinished&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}")."\" method=post encType=multipart/form-data>";
 		print "<tr  bgcolor='#FFFFFF'>
               <td colspan=8 height='26' align='center' ><input type=\"button\" name=\"button\" class=\"button\" onClick=\"javascript:if(confirm('试卷提交后不能再进行本次考试的答题,你确实要提交你的试卷么,')) location='?".base64_encode("action=ApplyExamDataFinished&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}")."'\" value=\"点击提交来完成本次考试\" ></td>
             </tr>";
@@ -269,18 +278,19 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 		//print "<meta http-equiv=\"REFRESH\" content=\"0;URL=?\">";
 		exit;
 }
-
+//<Table class=TableBlock width=100%>
 ?>
-			<tr>       
-                <td height="26" align="center" bgcolor="#E4EFF8"  nowrap>编号</td>
-				<td height="26" align="center" bgcolor="#E4EFF8" >考试名称</td>
-				<td height="26" align="center" bgcolor="#E4EFF8"  nowrap>考试试卷</td>
-				<td height="26" align="center" bgcolor="#E4EFF8" >考试日期</td>
-                <td height="26" align="center" bgcolor="#E4EFF8"  nowrap>参加考试班级</td>				
-				<td height="26" align="center" bgcolor="#E4EFF8"  nowrap>操作</td>
+
+			<Tr class=TableHeader>      
+                <td align="center"  nowrap>编号</td>
+				<td  align="center" nowrap>考试名称</td>
+				<td  align="center"  nowrap>考试试卷</td>
+				<td align="center"  nowrap>考试日期</td>
+                <td  align="center"  nowrap>参加考试班级</td>				
+				<td  align="center" nowrap>操作</td>
               </tr>
 <?
-		$学号 = $_SESSION['sunshine_student_code']; 
+		//$学号 = $_SESSION['sunshine_student_code']; 
 
 		if($_GET['action']=="CancelWork"&&$_GET['实习单位']!="")					{
 			
@@ -296,7 +306,8 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 		$考试日期 = date("Y-m-d");
 		//$sql = "select * from tiku_kaoshi where 考试日期='$考试日期' and 参加考试班级='$ClassName'";
 		//稍候判断部门或者人员
-		$sql = "select * from tiku_kaoshi where 考试日期='$考试日期' ";
+		//print $学号;
+		$sql = "select * from tiku_kaoshi where 考试日期='$考试日期' and 参加考试人员 like '%$学号,%'";
 		$rs = $db->CacheExecute(30,$sql);
 		$rs_a = $rs->GetArray();
 		for($i=0;$i<sizeof($rs_a);$i++)			{
@@ -317,11 +328,11 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 
 			if($i%2==1)	$AddText = "bgcolor='#E4EFF8'";
 			else	$AddText = "";
-			print "<tr  bgcolor='#FFFFFF'>
-                <td width='5%' height='26' align='center'  >".($i+1)."</td>
-                <td width='30%'  nowrap>$考试名称</td>
-				<td width='30%'  nowrap>$考试试卷</td>
-				<td width='10%'  >$考试日期</td>
+			print "<tr class=TableData>
+                <td width='5%' align=center nowrap>".($i+1)."</td>
+                <td width='30%'  align=center nowrap>$考试名称</td>
+				<td width='30%'  align=center nowrap>$考试试卷</td>
+				<td width='10%'  align=center nowrap>$考试日期</td>
 				<td  width='10%' align=center nowrap>$参加考试班级</td>
 				<td width='15%'  align=center nowrap>$申请</td>
               </tr>";
@@ -331,12 +342,4 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 
               
             </table>
-              <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td height="50" align="center" >
-
-			</td>
-                </tr>
-              </table>
-
-</DIV></DIV>
+             

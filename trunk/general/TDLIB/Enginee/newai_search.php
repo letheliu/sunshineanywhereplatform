@@ -230,7 +230,7 @@ function newai_search_sql($fields)			{
 		$listLangName = $html_etc[$tablename][$listIndexName];
 		$fieldfilter_array=explode(':',$fieldfilter);
 		$fieldfilter=trim($fieldfilter_array[0]);
-
+	
 		switch($fieldfilter)		{
 			case '':
 			default:
@@ -303,6 +303,6 @@ function newai_search_sql($fields)			{
 	//return $FileName;
 	//print_R($_GET);
 	//print $SYSTEM_ADD_SQL;exit;
-
+	
 }
 ?>

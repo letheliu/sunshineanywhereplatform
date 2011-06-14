@@ -12,9 +12,9 @@ $GLOBAL_SESSION=returnsession();
 
 require_once('systemprivateinc.php');
 
-$TARGET_TITLE = "后勤管理-图书管理";
+$TARGET_TITLE = "数字化图书馆-图书管理";
 
-$TARGET_ARRAY = $PRIVATE_SYSTEM['后勤管理']['图书管理'];
+$TARGET_ARRAY = $PRIVATE_SYSTEM['数字化图书馆']['图书管理'];
 
 $MenuArray = SystemPrivateInc($TARGET_ARRAY,$TARGET_TITLE);
 
