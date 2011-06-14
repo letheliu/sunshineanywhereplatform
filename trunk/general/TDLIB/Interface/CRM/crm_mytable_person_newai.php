@@ -45,18 +45,12 @@
 
        $db->Execute($ins_sql);
 
-print "<div align=\"center\" title=\"初始化CRM左面模块\">
-			<table class=\"MessageBox\" align=\"center\" width=\"650\"><tr><td class=\"msg info\">
-			<div class=\"content\" style=\"font-size:12pt\">&nbsp;&nbsp;您的桌面模块已经进行初始化，请使用.</div>
-			</td></tr></table>
-			<br>
-			<div align=center>
-			";
-			  print "<input type=button  value=\"返回\" class=\"SmallButton\" onClick=\"history.go(-2);\">
-			</div>
-			";
-		   exit;
-
+    print "<div align=\"center\" title=\"初始化CRM左面模块\">
+		   <table class=\"MessageBox\" align=\"center\" width=\"650\"><tr><td class=\"msg info\">
+		   <div class=\"content\" style=\"font-size:12pt\">&nbsp;&nbsp;您的桌面模块已经完成初始化，请使用.</div>
+		   </td></tr></table><br><div align=center>";
+	print "<input type=button  value=\"返回\" class=\"SmallButton\" onClick=\"history.go(-2);\"></div>";
+	exit;
 	}
 
 
@@ -64,20 +58,13 @@ print "<div align=\"center\" title=\"初始化CRM左面模块\">
 	   page_css('显示行数限制');
 	   $显示行数 = $_POST['显示行数'];
 	   if($显示行数 > 4){
-	     print "
-			<div align=\"center\" title=\"显示行数限制提醒\">
-			<table class=\"MessageBox\" align=\"center\" width=\"650\"><tr><td class=\"msg info\">
-			<div class=\"content\" style=\"font-size:12pt\">&nbsp;&nbsp;为了保持桌面模块的整齐一致，显示行数不能大于4，请重新设置.</div>
-			</td></tr></table>
-			<br>
-			<div align=center>
-			";
-			  print "<input type=button  value=\"返回\" class=\"SmallButton\" onClick=\"history.go(-1);\">
-			</div>
-			";
-		   exit;
+	     print "<div align=\"center\" title=\"显示行数限制提醒\">
+			    <table class=\"MessageBox\" align=\"center\" width=\"650\"><tr><td class=\"msg info\">
+			    <div class=\"content\" style=\"font-size:12pt\">&nbsp;&nbsp;为了保持桌面模块的整齐一致，显示行数不能大于4，请重新设置.</div>
+			    </td></tr></table><br><div align=center>";
+	     print "<input type=button  value=\"返回\" class=\"SmallButton\" onClick=\"history.go(-1);\"></div>";
+		 exit;
 	   }
-
 	}
 
 
@@ -92,7 +79,7 @@ print "<div align=\"center\" title=\"初始化CRM左面模块\">
 			$PrintText .= "<TR class=TableContent><td>说明：<br>
 			&nbsp;&nbsp;&nbsp;1、如果是第一次登录系统，系统将对CRM桌面模块进行初始化。<br>
 			&nbsp;&nbsp;&nbsp;2、初始化完成后，用户可以自定义桌面模块的显示。        
-			               </td></table>";
+			               </td></TR></table>";
 			print $PrintText;
 		}
 
