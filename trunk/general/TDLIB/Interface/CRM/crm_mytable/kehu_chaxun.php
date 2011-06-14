@@ -17,8 +17,8 @@ $module_body .= "<tr class=TableBlock>
 $module_body .= "<tr class=TableBlock>
 				<td valign=Middle align=left>
 					<input type=hidden name='action' value='init_default_search'>
-					<input type=hidden name='searchfield' value='客户名称'>&nbsp;
-					客户类型：<select name=\"客户类型\" class=\"SmallSelect\" style=\"width:128pt\">
+					<input type=hidden name='searchfield' value='客户名称'>
+					&nbsp;客户类型：<select name=\"客户类型\" class=\"SmallSelect\" style=\"width:128pt\">
 				                <option value=\"\" selected></option>";
 								$sql = "select 客户类型 from crm_customer_type order by 客户类型";
 								$rs = $db->CacheExecute(150,$sql);
