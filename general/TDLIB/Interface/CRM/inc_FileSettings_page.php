@@ -31,29 +31,22 @@ $MenuArray[] = array('286','node_user','ÒøĞĞÕË»§','crm_yinhangzh_newai.php');
 $MenuArray[] = array('286','node_user','×ÀÃæÏÔÊ¾ÊôĞÔ','crm_mytable_xssx_newai.php');
 $MenuArray[] = array('286','node_user','×ÀÃæÏÔÊ¾Î»ÖÃ','crm_mytable_wz_newai.php');
 
-
-
-
-$MenuArray[] = array('286','node_user','²âÊÔ***1','crm_mytable/crm_notes.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***2','crm_mytable/crm_google.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***3','crm_mytable/crm_mytable_kehugaishu.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***4','crm_mytable/crm_kehu_birthday.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***5','crm_mytable/kehu_chaxun.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***6','crm_mytable/crm_mytable_hetong.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***7','crm_mytable/crm_mytable_fuwu.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***8','crm_mytable/crm_mytable_feiyong.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***9','crm_mytable/crm_mytable_dingdan.php');
-$MenuArray[] = array('286','node_user','²âÊÔ***10','crm_mytable/crm_mytable_tongzhi.php');
-
+//$MenuArray[] = array('286','node_user','²âÊÔ***1','crm_mytable/crm_notes.php');
+//$MenuArray[] = array('286','node_user','²âÊÔ***2','crm_mytable/crm_google.php');
+//$MenuArray[] = array('286','node_user','²âÊÔ***3','crm_mytable/crm_mytable_kehugaishu.php');
+//$MenuArray[] = array('286','node_user','²âÊÔ***4','crm_mytable/crm_kehu_birthday.php');
+//$MenuArray[] = array('286','node_user','²âÊÔ***5','crm_mytable/kehu_chaxun.php');
+//$MenuArray[] = array('286','node_user','²âÊÔ***6','crm_mytable/crm_mytable_hetong.php');
+//$MenuArray[] = array('286','node_user','²âÊÔ***7','crm_mytable/crm_mytable_fuwu.php');
+//$MenuArray[] = array('286','node_user','²âÊÔ***8','crm_mytable/crm_mytable_feiyong.php');
+//$MenuArray[] = array('286','node_user','²âÊÔ***9','crm_mytable/crm_mytable_dingdan.php');
+//$MenuArray[] = array('286','node_user','²âÊÔ***10','crm_mytable/crm_mytable_tongzhi.php');
 
 $DateY = Date("Y");
 $DateM = Date("m");
 $U = $_GET['PRIV_NO_FLAG'];
 
 $DEPT_PARENT = $_GET['DEPT_PARENT'];
-
-
-
 page_css($UNIT_NAME);
 print "
 <link rel=\"stylesheet\" type=\"text/css\" href=\"/theme/$LOGIN_THEME/menu_left.css\" />\n
@@ -72,23 +65,17 @@ print "
    <li>\n
    <span>$UNIT_NAME</span></li>\n
    <div id=module_1 class=moduleContainer style=\"display:;\">\n
-	   <table class=\"TableBlock trHover\" width=100% align=center>\n
-	   ";
+	   <table class=\"TableBlock trHover\" width=100% align=center>\n";
 
 for($i=0;$i<sizeof($MenuArray);$i++)			{
 	$²Ëµ¥´úÂë = $MenuArray[$i][1];
 	$²Ëµ¥Ãû³Æ = $MenuArray[$i][2];
 	$²Ëµ¥µØÖ· = $MenuArray[$i][3];
 	if(1)		{
-		print "
-		 <tr class=TableData align=left><td nowrap onclick=\"parent.edu_main.location='".$²Ëµ¥µØÖ·."'\" style=\"cursor:pointer;\">&nbsp;&nbsp;$²Ëµ¥Ãû³Æ</td>
-		   </tr>
-		   ";
+		print "<tr class=TableData align=left><td nowrap onclick=\"parent.edu_main.location='".$²Ëµ¥µØÖ·."'\" style=\"cursor:pointer;\">&nbsp;&nbsp;$²Ëµ¥Ãû³Æ</td></tr>";
 	}
 }
-print "</table>
-   </div>";
-
+print "</table></div>";
 print "</ul>";
 
 

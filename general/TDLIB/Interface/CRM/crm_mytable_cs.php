@@ -93,7 +93,7 @@ function CheckForm()
    </tr>
    <tr class="TableData">
     <td>各模块显示行数：</td>
-    <td><input type="text" name="hanshu" class="BigInput" size="5" <?if($各模块显示行数 != ''){ echo "value='".$各模块显示行数."'";}else{echo "value=5";}?>>行 注：不要>4</td>
+    <td><input type="text" name="hanshu" class="BigInput" size="5" <?if($各模块显示行数 != ''){ echo "value='".$各模块显示行数."'";}else{echo "value=5";}?>>行</td>
    </tr>
    <tr class="TableData">
     <td width="130">桌面模块默认值<br>批量设置</td>

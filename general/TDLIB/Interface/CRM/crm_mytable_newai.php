@@ -9,18 +9,12 @@
 	   page_css('显示行数限制');
 	   $显示行数 = $_POST['显示行数'];
 	   if($显示行数 > 4){
-	     print "
-			<div align=\"center\" title=\"显示行数限制提醒\">
-			<table class=\"MessageBox\" align=\"center\" width=\"650\"><tr><td class=\"msg info\">
-			<div class=\"content\" style=\"font-size:12pt\">&nbsp;&nbsp;为了保持桌面模块的整齐一致，显示行数不能大于4，请重新设置.</div>
-			</td></tr></table>
-			<br>
-			<div align=center>
-			";
-			  print "<input type=button  value=\"返回\" class=\"SmallButton\" onClick=\"history.go(-1);\">
-			</div>
-			";
-		   exit;
+	     print "<div align=\"center\" title=\"显示行数限制提醒\">
+			    <table class=\"MessageBox\" align=\"center\" width=\"650\"><tr><td class=\"msg info\">
+			    <div class=\"content\" style=\"font-size:12pt\">&nbsp;&nbsp;为了保持桌面模块的整齐一致，显示行数不能大于4，请重新添加.</div>
+			    </td></tr></table><br><div align=center>";
+		 print "<input type=button  value=\"返回\" class=\"SmallButton\" onClick=\"history.go(-1);\"></div>";
+		 exit;
 	   }
     }
 
@@ -28,18 +22,12 @@
 	   page_css('显示行数限制');
 	   $显示行数 = $_POST['显示行数'];
 	   if($显示行数 > 4){
-	     print "
-			<div align=\"center\" title=\"显示行数限制提醒\">
-			<table class=\"MessageBox\" align=\"center\" width=\"650\"><tr><td class=\"msg info\">
-			<div class=\"content\" style=\"font-size:12pt\">&nbsp;&nbsp;为了保持桌面模块的整齐一致，显示行数不能大于4，请重新设置.</div>
-			</td></tr></table>
-			<br>
-			<div align=center>
-			";
-			  print "<input type=button  value=\"返回\" class=\"SmallButton\" onClick=\"history.go(-1);\">
-			</div>
-			";
-		   exit;
+	     print "<div align=\"center\" title=\"显示行数限制提醒\">
+			    <table class=\"MessageBox\" align=\"center\" width=\"650\"><tr><td class=\"msg info\">
+			    <div class=\"content\" style=\"font-size:12pt\">&nbsp;&nbsp;为了保持桌面模块的整齐一致，显示行数不能大于4，请重新设置.</div>
+			    </td></tr></table><br><div align=center>";
+		 print "<input type=button  value=\"返回\" class=\"SmallButton\" onClick=\"history.go(-1);\"></div>";
+		 exit;
 	   }
 	}
 
@@ -52,7 +40,7 @@
 			$PrintText .= "<TR class=TableContent><td>说明：<br>
                             &nbsp;&nbsp;&nbsp;1、此模块是管理使用的，具有管理所有用户桌面模块设置的权限。<br>
 			                &nbsp;&nbsp;&nbsp;2、如果是第一次登录系统，系统将对CRM桌面模块进行初始化。<br>        
-			               </td></table>";
+			               </td></TR></table>";
 			print $PrintText;
 		}
 /*
