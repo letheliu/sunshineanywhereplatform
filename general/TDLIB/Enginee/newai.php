@@ -1,6 +1,7 @@
 <?
 require_once('newai.lib.inc.php');
 //生成全局变量
+
 $fields=returnfields($tablename,$showlistfieldlist,$showlistfieldfilter,$showlistnull,$showlistfieldprivate);
 //处理对SYSTEM_ADD_SQL的支持,用于高级搜索部分支持
 newai_search_sql($fields);
@@ -32,18 +33,19 @@ $filterarray=explode(',',$showlistfieldfilter);
 $privaterarray=explode(',',$showlistfieldprivate);
 $nullarray=explode(',',$showlistnull);
 $fields['tablename']=$tablename;
+
 for($i=0;$i<sizeof($listarray);$i++)		{
 	$index=$listarray[$i];
 	$fields['name'][$i]=$columns[$index];
+	
 	$FieldNameIndex = $columns[$index];
-
 	$fields['null'][$i]['inputname']=$columns[$index];
 	$fields['null'][$i]['inputtype']=$nullarray[$i];
 	//得到INPUT　NOTNULL过滤类型
 	$filterArrayFilter = explode(":",$filterarray[$i]);
 	$fields['null'][$i]['inputfilter']=$filterArrayFilter[0];
 	$fields['null'][$i]['inputtext']=$html_etc[$tablename][(string)$columns[$index]]."".$common_html['common_html'][(string)$nullarray[$i]];
-
+	
     //######################################################
 	//判断是否要进行用户定义的非角色只读非编辑选项 -- 开始
 	/*
@@ -442,16 +444,20 @@ $fields['table']['colspan']=sizeof($fields['name'])+2;
 $fields['table']['primarykey']=$primarykey;
 $fields['table']['uniquekey']=$uniquekey;
 $fields['table']['primarykeyindex']=$columns[$primarykey];
+
 return $fields;
 }
 
 function newai_merge($fields,$merge)						{
 	$name=$fields['name'];
+	
 	array_pop($fields['name']);
 	$array_pop=array_pop($name);
 	for($i=0;$i<sizeof($fields['value']);$i++)		{
 		$attachmentname=$array_pop;
+		
 		$attachmentid=$name[sizeof($name)-1];
+		
 		//array_pop($fields['value'][$i]);
 		$value_id=$fields['value'][$i][$attachmentid];
 		$value_name=$fields['value'][$i][$attachmentname];
@@ -723,16 +729,21 @@ function show_search_element($mark)	{
 		$index_name=$value[$i];
 		$name[$i]=$html_etc[$tablename][$index_name];
 	}
+	
 	if($group_filter!='')								{
 	$group_filter_array=explode(',',$group_filter);
+	
 	for($i=0;$i<sizeof($group_filter_array);$i++)		{
 		$temp_array=explode(':',$group_filter_array[$i]);
+		
 		$index_name=$columns["".$temp_array[0].""];
-
+		
 		//得到实际用到的字段值列表－－开始
 		$sql_parent = "select DISTINCT $index_name from $tablename order by $index_name";
+		
 		//增加对老师GROUP_FILTER的支持
 		$markSQL = $temp_array[4];
+		
 		if($markSQL=="teachersession")	{
 			//print_R($_SESSION);
 			$sunshine_teacher_code = $_SESSION['sunshine_teacher_code'];
@@ -752,6 +763,7 @@ function show_search_element($mark)	{
 		global $_GET权限限制变量值;//2010-9-25定义权限限制变量名称
 		$GET参数值_权限限制变量值 = explode(',',$_GET权限限制变量值[$index_name]);
 		//如果GET的值只有一个,则沿用GET的值,如果GET的值为两个及以上,则用系统值
+		
 		if($GET参数值[1]!="")			{
 			$附加判断条件Array = explode(',',$_GET[$index_name]);
 			$附加判断条件 = "'".join("','",$附加判断条件Array)."'";
@@ -764,21 +776,24 @@ function show_search_element($mark)	{
 		}
 		//print $sql_parent."<BR>";
 		//以下数据形成从已经有的数据里面生成
+		
 		$rs_parent = $db->CacheExecute(150,$sql_parent);
 		$rs_parent_Array = $rs_parent->GetArray();
 
 
 		//得到实际用到的字段值列表－－结束
-		//print_R($rs_parent_Array);
-		//print $fieldname_add;
+		//print_R($temp_array);
+		
 		$tablename2=$temp_array[1];
 		$attribute=$temp_array[4];//exit;
 		$columns_=returntablecolumn($tablename2);
 		$fieldid=$columns_["".$temp_array[2].""];
 		$fieldname=$columns_["".$temp_array[3].""];
+		
 		//##############################################################################
 		//2008-10-30$temp_array[4]和$temp_array[5]的使用用途已经遗忘,记起来时则补回来.
 		//##############################################################################
+		
 		if($temp_array[4]!=""&&$temp_array[5]!=""&&strlen($temp_array[5])>3)		{
 			$columns_add = returntablecolumn($temp_array[5]);
 			$fieldname_add = $columns_add[(string)$temp_array[6]];
@@ -789,15 +804,18 @@ function show_search_element($mark)	{
 		}
 		else
 			$sql="select distinct $fieldid,$fieldname from $tablename2";
+		
+			
 		//print $sql."<BR>";
 
 		//##############################################################################
 		//2008-10-30追加代码----------开始  KEY4优先级应比KEY5优级级高
 		//##############################################################################
 		//print_R($columns_);
+		
 		if($temp_array[4]!="")										{
 			$fieldname_add4 = $columns_[(string)$temp_array[4]];
-			/*
+			
 			if($temp_array[5]!=""&&strlen($temp_array[5])<=3)	{
 				//5值不为空,并且不代表数据表名称,代表KEY索引时
 				$fieldname_add4 = $columns_[(string)$temp_array[4]];
@@ -817,7 +835,7 @@ function show_search_element($mark)	{
 			}
 			else	{
 				$sql="select $fieldid,$fieldname from $tablename2";
-			}*/
+			}
 			if($_GET[$fieldname_add4]!="")		{
 				$sql="select distinct $fieldid,$fieldname from $tablename2 where ".$fieldname_add4."='".$_GET[$fieldname_add4]."' order by $fieldname";
 			}
@@ -827,13 +845,14 @@ function show_search_element($mark)	{
 		}
 		else
 			$sql="select distinct $fieldid,$fieldname from $tablename2 order by $fieldname";
+		
 		//print "<BR>".$sql."<BR>";
 		//########################################################################
 		//2008-10-30追加代码----------结束
 		//########################################################################
 		$rs=$db->CacheExecute(150,$sql);		$j=0;
 		$rs_a = $rs->GetArray();
-
+		
 		//其它信息列表
 		$affixation[$i]['tablename']=$tablename2;
 		$affixation[$i]['index_name']=$index_name;

@@ -2,8 +2,6 @@
 
 	ini_set('display_errors', 1);
 	ini_set('error_reporting', E_ALL);
-
-	// display warnings and errors
 	error_reporting(E_WARNING | E_ERROR);
 
 
@@ -11,13 +9,12 @@
 
 	$GLOBAL_SESSION=returnsession();
 
-	page_css("网络学习系统-在线报名-在线报名统计管理");
+	page_css("网络学习系统-在线考试-考试成绩");
 
-	//*******************画表查询*******************//
 
 	if($_GET['action'] == "")
 	{
-	$sql = "select 名称  from edu_baomingname";
+	$sql = "select 考试名称 as 名称  from tiku_kaoshi where 参加考试人员!=''";
 	$rs = $db->CacheExecute(150,$sql);
 	$rs_a = $rs -> GetArray();
 	$名称 = $rs_a;
@@ -27,17 +24,16 @@ if($_GET['名称']=="") {
 	$选择名称 = $名称[0]['名称'];
 }
 
-	//*******************画表查询*******************//
 				//********条件检索********//
 	print "<Table class=TableBlock width=100%>
 			<Tr class=TableHeader>
-			 <Td colspan=60 align=left>网络学习系统统计条件</Td>
+			 <Td colspan=60 align=left>考试成绩统计条件</Td>
 			</Tr>";
 
 	print	"<Tr class=TableData>";
 	print	 "<Form name=factor>";
 
-	print	 "<Td align=center>名称</Td>";
+	print	 "<Td align=center>考试名称</Td>";
 	print	 "<Td align=center>";
 	print	 "<Select name='term' onChange=\"var jmpURL='?flag=1&名称=' + this.options[this.selectedIndex].value; if(jmpURL!='') {window.location=jmpURL;} else {this.selectedIndex=0;}\">";
 			   for($i=0;$i<sizeof($名称);$i++)
@@ -57,23 +53,35 @@ if($_GET['名称']=="") {
 
 		  //---------------------------------数据显示区----------------------------
 
-$sql ="SELECT 班级,count(*) as 人数 FROM `edu_baomingdetail` where 名称 = '".$选择名称."' group by `班级`";
+$sql ="SELECT  `考试名称`,`试卷名称`,`学号`,`姓名`,`班级`,sum(所得分值) as 成绩 FROM `tiku_examdata` where `考试名称` = '$选择名称' group by 考试名称,学号";
 $rs = $db->CacheExecute(150,$sql);
 $rs_a = $rs -> GetArray();
 
 	   	print "<Table class=TableBlock width=100%>
-			<Tr class=TableHeader><Td colspan=2 align=left>（".($选择名称)."）各班级报名情况统计</Td></Tr>";
+			<Tr class=TableHeader><Td colspan=6 align=left>（".($选择名称)."）考试成绩统计</Td></Tr>";
 		print  "<Tr class=TableData>
-		<td align=center  nowrap>班级</td><td align=center  nowrap>报名人数</td>";
+		<td align=center  nowrap>试卷名称</td>
+		<td align=center  nowrap>用户名</td><td align=center  nowrap>姓名</td>
+		<td align=center  nowrap>部门</td><td align=center  nowrap>成绩</td>
+		<td align=center  nowrap>操作</td>
+		</Tr>";
 
 	 for($i=0;$i<sizeof($rs_a);$i++)
 	 {
 		 if($i%2==0) $color="green"; else $color="red";
-		 //print_R($rs_a);
-		 $URL = "edu_baomingdetail_newai.php?action=init_customer&班级=".$rs_a[$i]['班级']."&名称=$选择名称&action_close=close";
+
+		 $URL = "tiku_examdata_newai.php?action=init_customer&学号=".$rs_a[$i]['学号']."&考试名称=$选择名称&action_close=close";
 		 print "<Tr class=TableData>";
-		 print "<Td nowrap align=center><font color=$color>".$rs_a[$i]['班级']."</font></Td>";
-		 print "<Td nowrap align=center><a href =\"$URL\" target=_blank><font color=$color>".$rs_a[$i]['人数']."</font></a></Td>";
+		 print "<Td nowrap align=center><font color=$color>".$rs_a[$i]['试卷名称']."</font></Td>";
+		 print "<Td nowrap align=center><font color=$color>".$rs_a[$i]['学号']."</font></Td>";
+		 print "<Td nowrap align=center><font color=$color>".$rs_a[$i]['姓名']."</font></Td>";
+		 $DEPT_ID = $rs_a[$i]['班级'];
+		 $部门名称 = returntablefield("department","DEPT_ID",$DEPT_ID,"DEPT_NAME");
+		 print "<Td nowrap align=center><font color=$color>".$部门名称."</font></Td>";
+		 print "<Td nowrap align=center><font color=$color>".$rs_a[$i]['成绩']."</font></Td>";
+
+
+		 print "<Td nowrap align=center><a href =\"$URL\" target=_blank><font color=$color>查看试卷</font></a></Td>";
 		 print "</Tr>";
 	 }
 	print "</table>";

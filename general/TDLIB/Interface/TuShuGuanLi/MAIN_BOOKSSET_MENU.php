@@ -49,9 +49,9 @@ window.onload=function()
 <?
 require_once('systemprivateinc.php');
 
-$TARGET_TITLE = "后勤管理-图书管理";
+$TARGET_TITLE = "数字化图书馆-图书管理";
 
-$TARGET_ARRAY = $PRIVATE_SYSTEM['后勤管理']['图书管理'];
+$TARGET_ARRAY = $PRIVATE_SYSTEM['数字化图书馆']['图书管理'];
 
 //print_R($PRIVATE_SYSTEM);
 

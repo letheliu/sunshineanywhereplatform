@@ -13,9 +13,9 @@ $GLOBAL_SESSION=returnsession();
 
 require_once('../Interface/EDU/systemprivateinc.php');
 
-$TARGET_TITLE = "在线报名考试-在线报名";
+$TARGET_TITLE = "网络学习系统-在线报名";
 
-$TARGET_ARRAY = $PRIVATE_SYSTEM['在线报名考试']['在线报名'];
+$TARGET_ARRAY = $PRIVATE_SYSTEM['网络学习系统']['在线报名'];
 
 $MenuArray = SystemPrivateInc($TARGET_ARRAY,$TARGET_TITLE);
 

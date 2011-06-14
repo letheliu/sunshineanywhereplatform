@@ -11,27 +11,22 @@ function print_select_countryCode($value="410100",$fields)		{
 	$field_name = "countryName";
 	$orderBy = $field_value;
 	$postCodeValue = $fields['value']['邮编'];
-	//print_R($fields['value']);
+	//print_R($value);
 
 	//##########################################################//增加对KEY-VALUE方式的支持
 	if($value!="")			{
-		$sql = "select count(*) AS NUM from dict_countrycode where $field_name='$value'";
-		$rs = $db->Execute($sql);
-		$记录条数 = $rs->fields['NUM'];
+		$sql = "select * from dict_countrycode where $field_name='$value'";
+		$rs  = $db->CacheExecute(1500,$sql);
+		$value = $rs->fields[$field_value];
+		$记录条数 = $rs->RecordCount();
+		//根据地市名称判断出唯一记录
 		if($记录条数>1)			{//则把邮编也计算入过滤条件
 			$sql = "select * from dict_countrycode where $field_name='$value' and $showfield3='$postCodeValue'";
-			$rs = $db->Execute($sql);
+			$rs  = $db->CacheExecute(1500,$sql);
 			$记录条数 = $rs->RecordCount();
 			$value = $rs->fields[$field_value];
 			//print $记录条数;
 		}
-		else	{				//根据地市名称即可判断出唯一记录
-			$sql = "select * from dict_countrycode where $field_name='$value'";
-			$rs = $db->Execute($sql);
-			$记录条数 = $rs->RecordCount();
-			//print $记录条数;
-		}
-
 	}
 	//##########################################################
 

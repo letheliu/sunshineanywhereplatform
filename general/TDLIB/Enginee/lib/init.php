@@ -95,9 +95,13 @@ function returnpath()	{
 }
 
 //判断GET变量是否为BASE64编码，不是很科学，需要进一步改进此函数
-function isBase64()		{
+function isBase64($参数='')		{
 	global $_SERVER;
-	$QUERY_STRING = $_SERVER['QUERY_STRING'];
+	//print_R($参数);
+	if($参数=='')				{
+		$参数 = $_SERVER['QUERY_STRING'];
+	}
+	$QUERY_STRING = $参数;
 	$QUERY_STRINGArray = explode('=',$QUERY_STRING);
 	//print_R($QUERY_STRING);
 	if(sizeof($QUERY_STRINGArray)>2&&$QUERY_STRINGArray[1]!=""&&$QUERY_STRINGArray[2]!="")		{
@@ -131,14 +135,29 @@ function CheckBase64()	{
 	$QUERY_STRING = base64_decode($QUERY_STRING);
 	$Array = explode('&',$QUERY_STRING);
 	$_GET = array();
+	//print_R($Array);
 	//形成新的_GET变量信息
 	$NewArray = array();
 	for($i=0;$i<sizeof($Array);$i++)		{
-		if($Array[$i]!="")		{
+		if(isBase64($Array[$i])==1)			{
+			$QUERY_STRING2 = base64_decode($Array[$i]);
+			//print $QUERY_STRING2;
+			$Array2 = explode('&',$QUERY_STRING2);
+			//print_R($Array2);
+			for($i2=0;$i2<sizeof($Array2);$i2++)		{
+				if($Array2[$i2]!="")		{
+					$ElementArray = explode('=',$Array2[$i2]);
+					$_GET[(String)$ElementArray[0]] = $ElementArray[1];
+					$_REQUEST[(String)$ElementArray[0]] = $ElementArray[1];
+					$NewArray[(String)$ElementArray[0]] = $ElementArray[0]."=".$ElementArray[1];
+				}
+			}
+		}
+		elseif($Array[$i]!="")		{
 			$ElementArray = explode('=',$Array[$i]);
 			$_GET[(String)$ElementArray[0]] = $ElementArray[1];
 			$_REQUEST[(String)$ElementArray[0]] = $ElementArray[1];
-			$NewArray[$i] = $ElementArray[0]."=".$ElementArray[1];
+			$NewArray[(String)$ElementArray[0]] = $ElementArray[0]."=".$ElementArray[1];
 		}
 	}
 	//附加GET变量形成部分
@@ -147,11 +166,12 @@ function CheckBase64()	{
 			$ElementArray = explode('=',$QUERY_STRING_ARRAY[$i]);
 			$_GET[(String)$ElementArray[0]] = $ElementArray[1];
 			$_REQUEST[(String)$ElementArray[0]] = $ElementArray[1];
-			$NewArray[$i] = $ElementArray[0]."=".$ElementArray[1];
+			$NewArray[(String)$ElementArray[0]] = $ElementArray[0]."=".$ElementArray[1];
 		}
 	}
+	//print_R($NewArray);
 	//形成新的_SERVER变量信息
-	$_SERVER['QUERY_STRING'] = join('&',$NewArray);
+	$_SERVER['QUERY_STRING'] = join('&',@array_keys($NewArray));
 	$_SERVER['REQUEST_URI'] = $_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'];
 }
 
@@ -1221,10 +1241,15 @@ function 设置变量($MODULE,$CONTENT)			{
 	$db->Execute($sql);
 }
 
-function 得到变量($MODULE,$FIELDNAME='CONTENT')					{
+function 得到变量($MODULE,$FIELDNAME='CONTENT',$Cache=0)					{
 	global $db;
 	$sql = "select $FIELDNAME FROM systemconfig where MODULE='$MODULE'";
-	$rs = $db->Execute($sql);
+	if($Cache==0)		{
+		$rs = $db->Execute($sql);
+	}
+	else	{
+		$rs = $db->CacheExecute($Cache,$sql);
+	}
 	return $rs->fields[$FIELDNAME];
 }
 

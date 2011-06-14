@@ -8,13 +8,18 @@ global $action_add,$action_model;
 global $_POST,$_GET,$ROWS_PAGE,$mark;
 global $merge,$childnums,$childsums,$child_filter;
 global $SYSTEM_ADD_SQL;
+
 $fields=newaiinit_value($fields);
+
 if($merge)
 $fields=newai_merge($fields,$merge);
+
 if($childnums)
 $fields=newai_childnums($fields,$childnums);
+
 if($childsums)
 $fields=newai_childsums($fields,$childsums);
+
 global $tablewidth;
 $tablewidth=$tablewidth!=""?$tablewidth:450;
 
@@ -22,6 +27,7 @@ $tablewidth=$tablewidth!=""?$tablewidth:450;
 if($_GET['actionadv']=="exportadv_default")		{
 	newai_search($fields);
 }
+
 table_begin($tablewidth);
 show_search_element($mark);
 newaiinit_view($fields);
@@ -45,9 +51,6 @@ global $sms_filter,$nullshow,$columns;
 global $primarykey_index;
 global $systemorder;
 global $tablename;
-//print $systemorder;
-
-
 
 
 //print $systemorder;
@@ -59,7 +62,7 @@ for($xx=0;$xx<sizeof($systemorderArray);$xx++)		{
 	$KeyOrderSqlIndexOrderDesc = $KeyOrderSqlIndexArray[1];
 	$OrderSQLARRAY[$xx] = $columns[$KeyOrderSqlIndexName]." ".$KeyOrderSqlIndexOrderDesc;
 }
-//print_R($OrderSQLARRAY);
+
 $OrderSQLText = join(' , ',$OrderSQLARRAY);
 if(TRIM($OrderSQLARRAY[0])!="")					{
 	$systemorderText = $OrderSQLText;
@@ -103,8 +106,7 @@ switch($db->databaseType)				{
 		break;
 }//end switch
 
-//print $addsql2;
-//print $addsql;
+
 //判断是否进行搜索设定 print $action_add;
 if($action_add=='search')		{
 	$SQL=$return_sql_line['uniquekey_sql_search']." ".$addsql;
@@ -121,6 +123,7 @@ else	{
 global $NEWAIINIT_VALUE_SYSTEM;
 global $NEWAIINIT_VALUE_SYSTEM_NUM;
 global $NEWAIINIT_VALUE_SYSTEM_SUM;
+
 if(strlen($NEWAIINIT_VALUE_SYSTEM)>10)			{
 	$SQL		=	$NEWAIINIT_VALUE_SYSTEM;
 	$SQL_NUM	=	$NEWAIINIT_VALUE_SYSTEM_NUM;
@@ -206,7 +209,7 @@ $from=($pageid-1)*$ROWS_PAGE;
 //print $SQL;print $SQL_NUM;
 global $SYSTEM_SQL;
 $SYSTEM_SQL = $SQL;
-//print_R($_GET);
+//print_r($SQL);
 $rsl=$db->SelectLimit($SQL,$ROWS_PAGE,$from);
 $rsa=$rsl->GetArray();
 //print_R($rsa[0]);
@@ -215,11 +218,11 @@ $fields['sql']['SQL']=$SQL;
 $fields['sql']['SQL_NUM']=$SQL_NUM;
 $fields['value']=$rsa;
 //print_R(array_keys($rsa[0]));
-//print_R($fields);
+//print_R($fields['value']);
 $counter=0;
 $fields['value2'] = $fields['value'];
 foreach($fields['value'] as $list)		{
-	//print_R($index);
+	//print_R($list);
 	//print $tablename;
 	$i=0;
 	foreach($fields['name'] as $list_index)	{
@@ -230,6 +233,7 @@ foreach($fields['value'] as $list)		{
 				$mode = 'input';//设置为INPUT则不会显示增加操作的连接
 			}
 		}
+		
 		switch($mode)		{
 			case '':
 			case 'input':
@@ -622,6 +626,7 @@ foreach($fields['value'] as $list)		{
 				break;
 		}
 		$fields['elementlink'][$counter][$list_index]=$fields['value'][$counter][$list_index];
+		
 		$fields['value'][$counter][$list_index]=$filtervalue;
 	}
 	$counter++;
@@ -629,6 +634,7 @@ foreach($fields['value'] as $list)		{
 $fields['other']['pageid']=$pageid;
 $fields['other']['pagenums']=$pagenums;
 $fields['other']['rc']=$rc;
+//print_r($fields['value']);
 return $fields;
 }
 
@@ -729,12 +735,14 @@ function newaiinit_view($fields)	{
 			$ordername = $_GET['ordername'];
 			//&&$ordername==$fieldname
 			//print_R($_GET);
-			//print $fieldname.$ordername;
-			if($doubletime%2==0&&$doubletime>1)		{
+			if($fieldname==$ordername)
+			{
+				if($doubletime%2==0&&$doubletime>1)		{
 				print "<a href=\"?$return\"><img alt=\"".$common_html['common_html']['order']." : ".$html_etc[$tablename][$fieldname]."\" src=\"images/arrow_down.gif\"  border=0></a>\n";
-			}
-			else if($doubletime%2==1&&$doubletime>1)		{
+				}
+				else if($doubletime%2==1&&$doubletime>1)		{
 				print "<a href=\"?$return\"><img alt=\"".$common_html['common_html']['order']." : ".$html_etc[$tablename][$fieldname]."\" src=\"images/arrow_up.gif\"  border=0></a>\n";
+				}
 			}
 
 		}
@@ -1203,7 +1211,7 @@ function newaiinit_view($fields)	{
 			else	{
 				$trnowrap = "noWrap";
 			}
-
+			
 			print "<TD $trnowrap class=$ClassHeader align=left $ondblclick_Text2 >".$ShowElement."</TD>\n";
 			switch($list_header)		{
 			case $row_userpriv_array[1]:

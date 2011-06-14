@@ -16,7 +16,7 @@ function return_sql_line_mysql($fields)	{
 	$uniquekey_array=explode(',',$uniquekey);
 	$columns=returntablecolumn($tablename);
 	$columnsInfor=returntablecolumnInfor($tablename);
-	//print_R($list);exit;
+	
 	$primarykey_index=$columns[$primarykey];
 	for($i=0;$i<sizeof($list);$i++)	{
 		$index=$list[$i];
@@ -54,6 +54,7 @@ function return_sql_line_mysql($fields)	{
 				$temp_post="'".htmlspecialchars($_POST[$list],ENT_QUOTES)."'";
 				//htmlentitiesUser($_POST[$list])
 		}
+		
 		array_push($temp_insert,$temp_post);
 	}
 	$temp_insert_text=join(',',$temp_insert);
@@ -428,7 +429,7 @@ function return_sql_line_mysql($fields)	{
 			$filter_foreign_index = "where 1=1 ".$SYSTEM_ADD_SQL." ";
 		}
 	}
-	//print $SYSTEM_ADD_SQL;exit;
+	//print $filter_foreign_index;exit;
 
 
 	//求和函数：开始
@@ -530,7 +531,7 @@ function return_sql_line_mysql($fields)	{
 	$return_sql_line['calendar_end_field']		=$calendar_end_field;
 	$return_sql_line['calendar_type_field']		=$calendar_type_field;
 	$return_sql_line['calendar_content_field']	=$calendar_content_field;
-
+	//print_r($return_sql_line);
 	return $return_sql_line;
 }
 

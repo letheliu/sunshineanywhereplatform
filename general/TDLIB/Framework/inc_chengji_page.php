@@ -4,23 +4,28 @@ ini_set('error_reporting', E_ALL);
 
 // display warnings and errors
 error_reporting(E_WARNING | E_ERROR);
-
-
-
 require_once('lib.inc.php');
 
 $GLOBAL_SESSION=returnsession();
 
-if($SYSTEM_SOFTWARE_NAME=="通达数字化校园")			{
-	require_once('../Interface/EDU/systemprivateinc.php');
+
+$filename = "../Interface/EDU/SCHOOL_MODEL.ini";
+if(is_file($filename))	{
+	$file = parse_ini_file($filename);			//print_R($file);
+	$SCHOOL_MODEL = $file['SCHOOL_MODEL'];
 }
 else	{
-	require_once('../Interface/CRM/systemprivateinc.php');
+	$SCHOOL_MODEL = 1;
 }
 
-$TARGET_TITLE = "网络学习系统-在线考试";
+//专业科科长,以及副科长权限时进行生成,所有系统只能有查看权限,所以不显示具有可操作性的菜单
+//样例:if($_SESSION['SUNSHINE_BANJI_LIST']=="")			XXXX
 
-$TARGET_ARRAY = $PRIVATE_SYSTEM['网络学习系统']['在线考试'];
+require_once('../Interface/EDU/systemprivateinc.php');
+
+$TARGET_TITLE = "教务管理-成绩";
+
+$TARGET_ARRAY = $PRIVATE_SYSTEM['教务管理']['成绩'];
 
 $MenuArray = SystemPrivateInc($TARGET_ARRAY,$TARGET_TITLE);
 
@@ -32,10 +37,16 @@ $U = $_GET['PRIV_NO_FLAG'];
 $DEPT_PARENT = $_GET['DEPT_PARENT'];
 
 
-//print_R($MenuArray);
-$UNIT_NAME = "在线考试";
 
-page_css("在线考试");
+$UNIT_NAME = "成绩管理模块";
+
+page_css("成绩管理模块");
+
+$提示信息设置['考试类型设置'] = "相关信息设置";
+$提示信息设置['补考成绩管理'] = "重修补考相关";
+$提示信息设置['成绩明细管理'] = "明细数据管理";
+$提示信息设置['考试类型设置'] = "相关信息设置";
+
 
 print "
 <link rel=\"stylesheet\" type=\"text/css\" href=\"/theme/$LOGIN_THEME/menu_left.css\" />\n
@@ -51,17 +62,23 @@ print "\n<style>\nli span{\n
 }</style>\n";
 print "
 <ul>\n
-   <li>\n
-   <span>在线考试管理</span></li>\n
    <div id=module_1 class=moduleContainer style=\"display:;\">\n
 	   <table class=\"TableBlock trHover\" width=100% align=center>\n
 	   ";
-
+print "<tr class=TableHeader align=left>
+				<td nowrap>&nbsp;&nbsp;成绩管理</td>
+				</tr>";
 for($i=0;$i<sizeof($MenuArray);$i++)			{
 	$菜单名称 = $MenuArray[$i][2];
 	$菜单地址 = $MenuArray[$i][0];
 	$returnPrivMenu = returnPrivMenu($菜单名称);
+
 	if($returnPrivMenu)		{
+		if($提示信息设置[$菜单名称]!="")			{
+			print "<tr class=TableHeader align=left>
+					<td nowrap>&nbsp;&nbsp;".$提示信息设置[$菜单名称]."</td>
+					</tr>";
+		}
 		print "
 		 <tr class=TableData align=left><td nowrap onclick=\"parent.edu_main.location='../Interface/EDU/".$菜单地址."'\" style=\"cursor:pointer;\">&nbsp;&nbsp;$菜单名称</td>
 		   </tr>
@@ -79,8 +96,6 @@ print "
 </li>";
 */
 print "</ul>";
-
-
 
 
 ?>

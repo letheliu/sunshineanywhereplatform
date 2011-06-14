@@ -18,9 +18,9 @@ else	{
 	require_once('../Interface/CRM/systemprivateinc.php');
 }
 
-$TARGET_TITLE = "在线报名考试-题库卷库";
+$TARGET_TITLE = "网络学习系统-题库卷库";
 
-$TARGET_ARRAY = $PRIVATE_SYSTEM['在线报名考试']['题库卷库'];
+$TARGET_ARRAY = $PRIVATE_SYSTEM['网络学习系统']['题库卷库'];
 
 $MenuArray = SystemPrivateInc($TARGET_ARRAY,$TARGET_TITLE);
 
