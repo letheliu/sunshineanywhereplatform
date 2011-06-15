@@ -205,7 +205,7 @@ $sql	= "select * from td_crm.systemprivatetdlib where ID='1'";
 $rs		= $db->CacheExecute(150,$sql);
 $rs_a	= $rs->GetArray();
 $CONTENT	= $rs_a[0]['CONTENT'];
-print "update systemprivate set CONTENT='$CONTENT' where ID='1';";
+print "update systemprivatetdlib set CONTENT='$CONTENT' where ID='1';";
 
 
 ?>

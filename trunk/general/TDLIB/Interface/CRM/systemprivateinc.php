@@ -226,7 +226,7 @@ $PRIVATE_SYSTEM['综合信息查询']['后勤管理查询']['固定资产'] = array("../InforSea
 $PRIVATE_SYSTEM['综合信息查询']['后勤管理查询']['物业管理'] = array("../InforSearch/my_wuyeguanli.php","物业管理");
 
 
-if($_SESSION['SYSTEM_IS_TD_OA']=="1")									{
+if($_SESSION['SYSTEM_IS_TD_OA']=="0")									{
    $PRIVATE_SYSTEM['系统信息设置']['组织机构设置']['PARENT'] = array("../Framework/MAIN_UNIT.php","组织机构设置");
    $PRIVATE_SYSTEM['系统信息设置']['组织机构设置']['单位管理'] = array("../Framework/unit_newai.php","单位管理");
    $PRIVATE_SYSTEM['系统信息设置']['组织机构设置']['部门管理'] = array("../Framework/DeptFramework.php","部门管理");
