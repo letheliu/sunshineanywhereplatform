@@ -5,17 +5,7 @@ session_start();
 //}
 require_once('lib.inc.php');
 page_css("OA在线考试");
-//require_once('page.class.php');
 
-	//--计算用于分页显示
-		if(!isset($PB_page)){
-			$PB_page=1;
-			}else{
-				$PB_page=$_GET['PB_page'];
-			}
-			$startpage = ($PB_page-1)*14;
-
-//require_once("header.php");
 
 ?>
 
@@ -36,7 +26,7 @@ if($_GET['action']=="ApplyExamDataFinished")					{
 	//print $sql;
 	//print_R($_GET);
 	$db->Execute($sql);
-	print "<BR><table width=100% border=0 align=center cellpadding=0 cellspacing=1 bgcolor=\"#b3d7fb\">";
+	print "<BR><Table class=TableBlock width=100%>";
 	print "<tr  bgcolor='#FFFFFF'>
               <td colspan=8 height='26' align='center' ><input type=\"button\" name=\"button\" class=\"button\" OnClick=\"location='?'\" value=\"你的试卷已经提交,点击返回\" ></td>
             </tr>";
@@ -132,10 +122,10 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 		$rs = $db->CacheExecute(30,$sql);
 		$rs_a = $rs->GetArray();
 
-		print "<tr>";
+		print "<tr class=TableHeader>";
 		for($i=0;$i<sizeof($rs_a);$i++)			{
 			$题型 = $rs_a[$i]['题型'];
-			print "<td height='26' align='center' bgcolor='#E4EFF8'  nowrap>
+			print "<td height='26' align='center' nowrap>
 			<a href=\"?".base64_encode("action=ApplyExam&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}&题型=$题型")."\">
 			<font color=red><B>$题型</B></font></a>
 			</td>";
@@ -155,7 +145,7 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 			$分值 = $rs_a[$i]['分值'];
 			//得到所選答案
 			$sql = "select 所选答案 from tiku_examdata where 考试名称='{$_GET['考试名称']}' and 试卷名称='{$_GET['考试试卷']}' and 学号='$学号' and 题目='$题目'";
-			$rsX = $db->CacheExecute(30,$sql);
+			$rsX = $db->Execute($sql);
 			$rs_aX = $rsX->GetArray();
 			$所选答案 = $rs_aX[0]['所选答案'];
 			if($题型=="填空")
@@ -227,12 +217,12 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 			print "<input type=hidden name=编号_".$i." value='$编号'>";
 			print "<input type=hidden name=题目_".$i." value='$题目'>";
 			print "<tr> ";
-			print "<td height='26' align='left' bgcolor='#E4EFF8' colspan=30  nowrap>&nbsp;&nbsp;".($i+1)."&nbsp;&nbsp;$题目(分值:$分值)</td>";
+			print "<td height='26' align='left' class=TableData colspan=30  nowrap>&nbsp;&nbsp;".($i+1)."&nbsp;&nbsp;$题目(分值:$分值)</td>";
 			print "</tr>";	
 			print "<tr> ";
 			if($题型=="填空")
 			{
-				print "<td height='26' align='left' bgcolor='#FFFFFF' colspan=30 >";
+				print "<td height='26' align='left' class=TableData colspan=30 >";
 				for($x=0;$x<sizeof($正确答案arr);$x++)
 				{
 					print "<input type=input name=备选答案_{$i}[$x] value=$所选答案arr[$x]> ";
@@ -241,7 +231,7 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 				print "</td></tr>";			
 			}else
 			{
-			print "<td height='26' align='left' bgcolor='#FFFFFF' colspan=30 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$DaAnText</td>";
+			print "<td height='26' align='left' class=TableData colspan=30 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$DaAnText</td>";
 			print "</tr>";	
 			}
 			
@@ -266,13 +256,14 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 		print "<tr  bgcolor='#FFFFFF'>
               <td colspan=8 height='26' align='center' >
 			  <font color=red>一共有【".$总题数."】小题,您已经提交【".$提交数."】题</font>
-			  <input type=\"submit\" name=\"button\" class=\"button\" value=\"提交该部分题目\" ></td>
+			  <input type=\"submit\" name=\"button\" class=\"smallbutton\" value=\"提交该部分题目\" ></td>
             </tr>";
 		print "</table></form>";
 		
-		print "<BR><table width=100% border=0 align=center cellpadding=0 cellspacing=1 ><FORM name=form1 action=\"?".base64_encode("action=ApplyExamDataFinished&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}")."\" method=post encType=multipart/form-data>";
+		print "<BR><Table class=TableBlock width=100%><FORM name=form1 action=\"?".base64_encode("action=ApplyExamDataFinished&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}")."\" method=post encType=multipart/form-data>";
 		print "<tr  bgcolor='#FFFFFF'>
-              <td colspan=8 height='26' align='center' ><input type=\"button\" name=\"button\" class=\"button\" onClick=\"javascript:if(confirm('试卷提交后不能再进行本次考试的答题,你确实要提交你的试卷么,')) location='?".base64_encode("action=ApplyExamDataFinished&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}")."'\" value=\"点击提交来完成本次考试\" ></td>
+              <td colspan=8 height='26' align='center' >
+			  <input type=\"button\" name=\"button\" class=\"smallbutton\" onClick=\"javascript:if(confirm('试卷提交后不能再进行本次考试的答题,你确实要提交你的试卷么,')) location='?".base64_encode("action=ApplyExamDataFinished&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}")."'\" value=\"点击提交来完成本次考试\" ></td>
             </tr>";
 		print "</table></form>";
 		//print "<meta http-equiv=\"REFRESH\" content=\"0;URL=?\">";

@@ -176,6 +176,7 @@ $ReadZipFileList .= ReadZipFileList("Interface/CRM/Model/",$TargetDatetime);
 $ReadZipFileList .= ReadZipFileList("Interface/CRM/images/",$TargetDatetime);
 $ReadZipFileList .= ReadZipFileList("Interface/CRM/userdefine/",$TargetDatetime);
 $ReadZipFileList .= ReadZipFileList("Interface/CRM/templates/",$TargetDatetime);
+$ReadZipFileList .= ReadZipFileList("Interface/CRM/crm_mytable/",$TargetDatetime);
 
 
 $ReadZipFileList .= ReadZipFileList("Interface/CONFIG/",$TargetDatetime);
