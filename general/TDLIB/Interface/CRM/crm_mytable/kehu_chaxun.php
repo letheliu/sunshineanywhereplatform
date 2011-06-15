@@ -20,11 +20,11 @@ $module_body .= "<tr class=TableBlock>
 					<input type=hidden name='searchfield' value='客户名称'>
 					&nbsp;客户类型：<select name=\"客户类型\" class=\"SmallSelect\" style=\"width:128pt\">
 				                <option value=\"\" selected></option>";
-								$sql = "select 客户类型 from crm_customer_type order by 客户类型";
+								$sql = "select 名称 from crm_customer_type order by 名称";
 								$rs = $db->CacheExecute(150,$sql);
 								$rs_a = $rs->GetArray();
 								for($i=0;$i<sizeof($rs_a);$i++)			{
-                                   $module_body .= "<option value=".$rs_a[$i]['客户类型'].">".$rs_a[$i]['客户类型']."</option>";
+                                   $module_body .= "<option value=".$rs_a[$i]['名称'].">".$rs_a[$i]['名称']."</option>";
 								}
 				$module_body .= "</select></td></tr>";
 $module_body .= "<tr class=TableBlock>

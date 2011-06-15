@@ -139,7 +139,7 @@ function CheckBase64()	{
 	//形成新的_GET变量信息
 	$NewArray = array();
 	for($i=0;$i<sizeof($Array);$i++)		{
-		if(isBase64($Array[$i])==1)			{
+		if(isBase64($Array[$i])==1&&$i==0)			{
 			$QUERY_STRING2 = base64_decode($Array[$i]);
 			//print $QUERY_STRING2;
 			$Array2 = explode('&',$QUERY_STRING2);
@@ -171,7 +171,7 @@ function CheckBase64()	{
 	}
 	//print_R($NewArray);
 	//形成新的_SERVER变量信息
-	$_SERVER['QUERY_STRING'] = join('&',@array_keys($NewArray));
+	$_SERVER['QUERY_STRING'] = join('&',@array_values($NewArray));
 	$_SERVER['REQUEST_URI'] = $_SERVER['PHP_SELF']."?".$_SERVER['QUERY_STRING'];
 }
 

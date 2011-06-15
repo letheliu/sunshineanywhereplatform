@@ -56,13 +56,20 @@ window.onload=function()
 <?
 require_once('systemprivateinc.php');
 
-//$TARGET_TITLE = "学生管理-班主任";
-//$TARGET_ARRAY = $PRIVATE_SYSTEM['学生管理']['班主任'];
+$TARGET_TITLE = "系统信息设置-组织机构设置";
+$TARGET_ARRAY = $PRIVATE_SYSTEM['系统信息设置']['组织机构设置'];
 
-//$MenuArray = SystemPrivateInc($TARGET_ARRAY,$TARGET_TITLE);
-$MenuArray[] = array("unit_newai.php","单位名称","单位名称设置");
-$MenuArray[] = array("DeptFramework.php","部门信息","部门信息设置");
-$MenuArray[] = array("UserFramework.php","用户信息","用户信息设置");
+$MenuArray = SystemPrivateInc($TARGET_ARRAY,$TARGET_TITLE);
+
+//$MenuArray[] = array("unit_newai.php","单位名称","单位名称设置");
+//$MenuArray[] = array("DeptFramework.php","部门信息","部门信息设置");
+//$MenuArray[] = array("UserFramework.php","用户信息","用户信息设置");
+
+
+
+
+
+
 if($_SESSION['SYSTEM_EDU_CRM_WUYE']=="TDLIB")			{
 	$MenuArray[] = array("../CRM/systemprivateview.php","用户角色权限","用户角色权限");
 }

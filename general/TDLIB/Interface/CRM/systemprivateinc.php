@@ -5,13 +5,11 @@ if($_SESSION['SYSTEM_IS_TD_OA']=="0")									{
 	$PRIVATE_SYSTEM['我的个人事务']['我的行政考勤'] = array("../XinZhengGuanLi/my_xingzheng.php","我的行政考勤");
 	$PRIVATE_SYSTEM['我的个人事务']['网上公物报修'] = array("../WuYeGuanLi/wygl_teacher.php","网上公物报修");
 	$PRIVATE_SYSTEM['我的个人事务']['申请管理']		= array("main_shenqing.php","申请管理");
+	$PRIVATE_SYSTEM['我的个人事务']['我的桌面']		= array("crm_mytable/crm_mytable.php","我的桌面");
 	$PRIVATE_SYSTEM['我的部门事务']['固定资产部门级管理']		= array("../fixedasset/fixedasset_department_newai.php","固定资产部门级管理");
 	$PRIVATE_SYSTEM['我的部门事务']['行政考勤部门级管理']		= array("../XinZhengGuanLi/my_bumen_xingzheng.php","行政考勤部门级管理");
 }
 
-$PRIVATE_SYSTEM['CRM界面设置']['CRM系统桌面模块'] = array("crm_mytable_newai.php","CRM系统桌面模块");
-$PRIVATE_SYSTEM['CRM界面设置']['桌面参数设置'] = array("crm_mytable_cs.php","桌面参数设置");
-$PRIVATE_SYSTEM['CRM界面设置']['CRM桌面模块'] = array("crm_mytable_cs.php","CRM桌面模块");
 
 
 //$PRIVATE_SYSTEM['总经理权限']['日程'] = array("crm_clendar_newai.php","日程");
@@ -228,8 +226,11 @@ $PRIVATE_SYSTEM['综合信息查询']['后勤管理查询']['固定资产'] = array("../InforSea
 $PRIVATE_SYSTEM['综合信息查询']['后勤管理查询']['物业管理'] = array("../InforSearch/my_wuyeguanli.php","物业管理");
 
 
-if($_SESSION['SYSTEM_IS_TD_OA']=="0")									{
-   $PRIVATE_SYSTEM['系统信息设置']['组织机构设置'] = array("../Framework/MAIN_UNIT.php","组织机构设置");
+if($_SESSION['SYSTEM_IS_TD_OA']=="1")									{
+   $PRIVATE_SYSTEM['系统信息设置']['组织机构设置']['PARENT'] = array("../Framework/MAIN_UNIT.php","组织机构设置");
+   $PRIVATE_SYSTEM['系统信息设置']['组织机构设置']['单位管理'] = array("../Framework/unit_newai.php","单位管理");
+   $PRIVATE_SYSTEM['系统信息设置']['组织机构设置']['部门管理'] = array("../Framework/DeptFramework.php","部门管理");
+   $PRIVATE_SYSTEM['系统信息设置']['组织机构设置']['用户管理'] = array("../Framework/UserFramework.php","用户管理");
 }
 $PRIVATE_SYSTEM['系统信息设置']['数据库管理'] = array("database_setting.php","数据库管理");
 $PRIVATE_SYSTEM['系统信息设置']['系统权限'] = array("systemprivateview.php","系统权限");
@@ -238,6 +239,11 @@ $PRIVATE_SYSTEM['系统信息设置']['在线升级'] = array("../../databackup/update.php
 $PRIVATE_SYSTEM['系统信息设置']['数据字典'] = array("FileSettings.php","数据字典");
 $PRIVATE_SYSTEM['系统信息设置']['消息中心'] = array("../DICT/crm_clendar.php","消息中心");
 $PRIVATE_SYSTEM['系统信息设置']['在线反馈'] = array("onlineguestbook.php","在线反馈");
+
+$PRIVATE_SYSTEM['系统信息设置']['桌面设置']['PARENT']			= array("MAIN_TABLE.php","桌面设置");
+$PRIVATE_SYSTEM['系统信息设置']['桌面设置']['CRM系统桌面模块']	= array("crm_mytable_newai.php","CRM系统桌面模块");
+$PRIVATE_SYSTEM['系统信息设置']['桌面设置']['桌面参数设置']		= array("crm_mytable_cs.php","桌面参数设置");
+$PRIVATE_SYSTEM['系统信息设置']['桌面设置']['CRM桌面模块']		= array("crm_mytable_cs.php","CRM桌面模块");
 
 
 //从现在权限信息中过滤出实际的权限,用于菜单部分限制
