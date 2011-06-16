@@ -228,6 +228,7 @@ function formcheck($formname,$infor)	{
 	print "<script language = \"JavaScript\"> \n";
 	print "function FormCheck() \n";
 	print "{\n";
+	//print_r($infor);
 	foreach ($infor as $list )	{
 		switch($list['inputtype'])	{
 			case 'notnull':
@@ -242,6 +243,8 @@ function formcheck($formname,$infor)	{
 					case 'number':
 					case 'userdefine':
 					case 'date0':
+					case 'textarea':
+					case 'money':
 					case 'select_input':
 						print "if (document.".$formname.".".$list['inputname'].".value == \"\") {\n";
 						print "alert(\"".$list['inputtext']."\");\n ";
