@@ -30,6 +30,12 @@ if(in_array("TDLIB",$PHP_SELF_ARRAY))		{
 	$通达数字化校园 = "单点CRM系统";
 	$本次更新内容 = "http://edu.tongda2000.com/crm/updatelog.php";
 }
+elseif(in_array("ERP",$PHP_SELF_ARRAY))		{
+	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacketerp";
+	$RemoteHostNameURL = "http://".$RemoteHostName."/hostlist2010.php";
+	$通达数字化校园 = "单点ERP系统";
+	$本次更新内容 = "http://edu.tongda2000.com/erp/updatelog.php";
+}
 elseif(in_array("WUYE",$PHP_SELF_ARRAY))		{
 	$RemoteHostName = "down.tongda2000.com/OA_train/通达OA可选组件/收费组件-试用版/通达OA教育管理组件/updatepacketwuye";
 	$RemoteHostNameURL = "http://".$RemoteHostName."/hostlist2010.php";
@@ -365,7 +371,7 @@ if($_GET['action']=="ExecRemoteFileServer"&&$_GET['FileName']!=""&&$RemoteHostNa
     $dir = '.';                //文件地址所在
     $key = '../';            //解压文件目录
 
-    print "<table width=100% border=0 ><tr><td><div align=center>\n";
+    print "<table width=100% border=0 align=center ><tr><td wrap width=100%>\n";
 
     $FileName = $_GET['FileName'];
     if(file_exists($FileName.".zip"))    ExactFile($FileName.".zip");
@@ -404,11 +410,15 @@ if($_GET['action']=="ExecRemoteFileServer"&&$_GET['FileName']!=""&&$RemoteHostNa
 				$rs = $db->Execute($sql);
 			}
 			print $i."&nbsp;";
+			if($i>0&&$i%20==0)		print "<BR>";
             //print $rs->EOF;
         }
     }
+	if(file_exists($key.$FileName.".sql"))				{
+		unlink($key.$FileName.".sql");
+	}
     print "<font color=red>文件解压完成</font>";
-    print "</div></td></tr></table>\n";
+    print "</td></tr></table>\n";
 
 	//加载执行新的执行语句
 	if(@is_file("autoexec.php")&&@is_file("autoexec.php"))			{
@@ -419,7 +429,7 @@ if($_GET['action']=="ExecRemoteFileServer"&&$_GET['FileName']!=""&&$RemoteHostNa
 
 	//重写菜单文件
 	include "make_sys_function_file.php";
-    echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?'>\n";
+    echo "<META HTTP-EQUIV=REFRESH CONTENT='2;URL=?'>\n";
 
     exit;
 }
@@ -503,26 +513,33 @@ function ExactFile($fileName)        {
             else $br = '　　';
             print "<font color=green size=1>".$i.$br."</font>";
         }
-        if($i==$f+$d)    {
+        if($i==($f+$d)&&$i>0)    {
             echo "<BR><font color=green size=1>$fileName 解压成功<br>($f 个文件 $d 个目录)</font><BR>";
+			$goalfile = $fileName.".txt";
+			if(is_file($goalfile))    {
+				unlink($goalfile);
+			}
+			$string ="本更新包已经更新";
+			@!$handle = fopen($goalfile, 'w');
+			if (!fwrite($handle, $string)) {
+				exit;
+			}
+			fclose($handle);
+			print "<BR><font color=orange size=1>$string</font>";
         }
-        elseif($f==0)    {
-            echo "<BR><font color=red size=1>$fileName 解压失败</font><BR>";
+        elseif(($f+$d)==0)    {
+			$goalfile = $fileName.".txt";
+			if(is_file($goalfile))    {
+				unlink($goalfile);
+			}
+            echo "<BR><font color=red size=1>$fileName 解压失败,如果出现错误,请与你的空间商联系,核实是否有相关权限.</font><BR>";
         }
-        else echo "<BR><font color=orange size=1>$fileName 未解压完整<br>(已解压 $f 个文件 $d 个目录)</font><BR>";
+        else		{
+			echo "<BR><font color=orange size=1>$fileName 未解压完整<br>(已解压 $f 个文件 $d 个目录)</font><BR>";
+		}
         //echo "<META HTTP-EQUIV=REFRESH CONTENT='0;URL=?action=setting&RemoteHostName=".$RemoteHostName."'>\n";
         //确定更新记录######################################################
-        $goalfile = $fileName.".txt";
-        if(is_file($goalfile))    {
-        unlink($goalfile);
-        }
-        $string ="本更新包已经更新";
-        @!$handle = fopen($goalfile, 'w');
-        if (!fwrite($handle, $string)) {
-        exit;
-        }
-        fclose($handle);
-        print "<BR><font color=orange size=1>$string</font>";
+
 }
 
 //#####################################################################################

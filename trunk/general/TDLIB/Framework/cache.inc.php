@@ -32,8 +32,8 @@ elseif($_SESSION['SYSTEM_EDU_CRM_WUYE']=="WUYE")		{
 	$首页BANNER系统注销 = "../LOGIN/logout.php?USER_NAME=".$_SESSION['LOGIN_USER_ID'];;
 }
 elseif($_SESSION['SYSTEM_EDU_CRM_WUYE']=="ERP")		{
-	$IE_TITLE		= "单点开源ERP - 单点科技发行";
-	$首页BANNER标题 = "单点开源ERP - 单点科技";
+	$IE_TITLE		= "单点ERP系统 - 单点科技发行";
+	$首页BANNER标题 = "单点ERP系统 - 单点科技";
 	$首页BANNER我的桌面 = "/general/TDLIB/Interface/CRM/crm_clendar_person_newai.php";
 	$首页BANNER修改密码 = "/general/TDLIB/Interface/Framework/user_password.php";
 	$首页BANNER系统注销 = "../LOGIN/logout.php?USER_NAME=".$_SESSION['LOGIN_USER_ID'];;

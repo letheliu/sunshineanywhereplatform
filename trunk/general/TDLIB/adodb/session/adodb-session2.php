@@ -58,8 +58,14 @@ function returnsession()			{
 	elseif(in_array("EDU",$PHP_SELF_ARRAY))		{
 		$_SESSION['SYSTEM_EDU_CRM_WUYE']		=	"EDU";
 	}
+	elseif(in_array("ERP",$PHP_SELF_ARRAY))		{
+		$_SESSION['SYSTEM_EDU_CRM_WUYE']		=	"ERP";
+	}
 	elseif(in_array("WUYE",$PHP_SELF_ARRAY))		{
 		$_SESSION['SYSTEM_EDU_CRM_WUYE']		=	"WUYE";
+	}
+	else		{
+		$_SESSION['SYSTEM_EDU_CRM_WUYE']		=	"NOSETTING";
 	}
 
 	if(
@@ -151,9 +157,9 @@ function returnsession()			{
 	$_SESSION['SUNSHINE_USER_NICK_NAME']=$_SESSION['LOGIN_USER_NAME'];
 	if($_SESSION['SUNSHINE_COPY_TIME']=="")	$_SESSION['SUNSHINE_COPY_TIME']=time();
 
-	$sql = "select USER_PRIV_OTHER from ".$SYSTEM_PRE_TABLE."user where USER_ID='".TRIM($_SESSION['LOGIN_USER_ID'])."'";
-	$rsXX = $db->CacheExecute(15,$sql);
-	$_SESSION['LOGIN_USER_PRIV_OTHER']	= $rsXX->fields['USER_PRIV_OTHER'];
+	//$sql = "select USER_PRIV_OTHER from ".$SYSTEM_PRE_TABLE."user where USER_ID='".TRIM($_SESSION['LOGIN_USER_ID'])."'";
+	//$rsXX = $db->CacheExecute(15,$sql);
+	//$_SESSION['LOGIN_USER_PRIV_OTHER']	= $rsXX->fields['USER_PRIV_OTHER'];
 
 
 	//print_R($_COOKIE);print_R($_SESSION);exit;
