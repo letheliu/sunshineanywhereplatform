@@ -21,7 +21,7 @@ page_css("OA在线考试");
 
 if($_GET['action']=="ApplyExamDataFinished")					{
 	$考试试卷 = $_GET['考试试卷'];
-	$考试名称 = $_GET['考试名称'];	
+	$考试名称 = $_GET['考试名称'];
 	$sql = "update tiku_examdata set 是否提交='1' where 考试名称='$考试名称' and 试卷名称='$考试试卷' and 学号='$学号'";
 	//print $sql;
 	//print_R($_GET);
@@ -39,7 +39,7 @@ if($_GET['action']=="ApplyExamDataFinished")					{
 
 if($_GET['action']=="ApplyExamData")					{
 	//print_R($_POST);
-	//Array ( [题目_0] => 编号 [题目_1] => 编号 [题目_2] => 编号 [题目_3] => 编号 [题目_4] => 编号 [题目_5] => 编号 [题目_6] => 编号 [题目_7] => 编号 [题目_8] => 编号 [题目_9] => 编号 [题目_10] => 编号 [题目_11] => 编号 [题目_12] => 编号 [题目_13] => 编号 [题目_14] => 编号 [题目_15] => 编号 [题目_16] => 编号 [题目_17] => 编号 [题目_18] => 编号 [题目_19] => 编号 [考试试卷] => 2008级新视野英语大二考试试卷 [题型] => 单选 [button] => 提交该部分题目 ) 
+	//Array ( [题目_0] => 编号 [题目_1] => 编号 [题目_2] => 编号 [题目_3] => 编号 [题目_4] => 编号 [题目_5] => 编号 [题目_6] => 编号 [题目_7] => 编号 [题目_8] => 编号 [题目_9] => 编号 [题目_10] => 编号 [题目_11] => 编号 [题目_12] => 编号 [题目_13] => 编号 [题目_14] => 编号 [题目_15] => 编号 [题目_16] => 编号 [题目_17] => 编号 [题目_18] => 编号 [题目_19] => 编号 [考试试卷] => 2008级新视野英语大二考试试卷 [题型] => 单选 [button] => 提交该部分题目 )
 //	print_R($_POST);exit;
 
 	$考试试卷 = $_POST['考试试卷'];
@@ -74,7 +74,7 @@ if($_GET['action']=="ApplyExamData")					{
 		}
 		else
 		{
-		sort($所选答案);		
+		sort($所选答案);
 		$所选答案 = join('',$所选答案);
 		$正确答案 = returntablefield("tiku_shijuanku","编号",$编号,"正确答案");
 		$答题时间 = date("Y-m-d H:i:s");
@@ -87,7 +87,7 @@ if($_GET['action']=="ApplyExamData")					{
 			$所得分值 = '0';
 		}
 		}
-		
+
 		$sql = "select 编号 from tiku_examdata where 考试名称='$考试名称' and 试卷名称='$试卷名称' and 学号='$学号' and 题目='$题目'";
 		$rs = $db->CacheExecute(30,$sql);
 		$rs_a = $rs->GetArray();
@@ -95,12 +95,12 @@ if($_GET['action']=="ApplyExamData")					{
 			$sql = "update tiku_examdata set 题目='$题目',正确答案='$正确答案',所选答案='$所选答案',答题状态='$答题状态',答题时间='$答题时间',所得分值='$所得分值' where 编号='{$rs_a[0]['编号']}'";
 		}
 		else	{
-			$sql = "insert into tiku_examdata values('','$考试名称','$试卷名称','$答题时间','$学号','$姓名','$班级','$题目','$正确答案','$所选答案','$答题状态','$所得分值','是否提交');";
+			$sql = "insert into tiku_examdata values('','$考试名称','$试卷名称','$答题时间','$学号','$姓名','','$题目','$正确答案','$所选答案','$答题状态','$所得分值','是否提交','$班级');";
 		}
 		//$sql = "insert into tiku_examdata values('','$考试名称','$考试试卷','$答题时间','$学号','$姓名','$班级','$题目','$正确答案','$所选答案','$答题状态','$所得分值');";
 		//print $sql."<BR>";
 		if($所选答案!="")		$db->Execute($sql);
-		
+
 	}
 	print "<div align=center>你的答案已经提交,请返回....</div>";
 	print "<meta http-equiv=\"REFRESH\" content=\"0;URL=?action=ApplyExam&考试试卷=$考试试卷&考试名称=$考试名称&题型=$题型\">";
@@ -131,18 +131,38 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 			</td>";
 		}
 		print "</tr>";
-		
+
 		if($_GET['题型']!="")	$题型 = $_GET['题型']; else $题型 = "单选";
 
 		$sql = "select * from tiku_shijuanku where 试卷名称='".$_GET['考试试卷']."' and 题型='$题型'";
 		$rs = $db->CacheExecute(30,$sql);
 		$rs_a = $rs->GetArray();
-		
+
 		for($i=0;$i<sizeof($rs_a);$i++)					{
 			$编号 = $rs_a[$i]['编号'];
 			$题目 = $rs_a[$i]['题目'];
 			$题型 = $rs_a[$i]['题型'];
 			$分值 = $rs_a[$i]['分值'];
+
+
+
+			if($rs_a[$i]['题目图片']!="")		{
+				//图片处理
+				$PHP_SELF_ARRAY = explode('/',$rs_a[$i]['题目图片']);
+				$FileNameIndex = sizeof($PHP_SELF_ARRAY)-1;
+				$DirNameIndex = sizeof($PHP_SELF_ARRAY)-2;
+				$FileName2 = $PHP_SELF_ARRAY[$FileNameIndex];
+				$DirName2 = $PHP_SELF_ARRAY[$DirNameIndex];
+				$rs_a[$i]['题目图片'] = "../../Framework/download.php?action=picturefile&sessionkey=$sessionkey&attachmentid=$DirName2&attachmentname=$FileName2";
+				$题目图片IMG = "<img src=".$rs_a[$i]['题目图片']." border=0 width=130>";
+			}
+			else	{
+				$题目图片IMG = "";
+			}
+
+
+
+
 			//得到所選答案
 			$sql = "select 所选答案 from tiku_examdata where 考试名称='{$_GET['考试名称']}' and 试卷名称='{$_GET['考试试卷']}' and 学号='$学号' and 题目='$题目'";
 			$rsX = $db->Execute($sql);
@@ -183,7 +203,7 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 				case 'F':
 					$CheckedResult['F'] = 'checked';
 					break;
-				
+
 			}//end switch
 			}
 			//处理多选
@@ -198,7 +218,7 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 			$DaAnText = "";
 			//print $题型;
 			//print_R($CheckedResult);
-			
+
 			$备选答案A = $rs_a[$i]['备选答案A']; if($备选答案A!="")	$DaAnText .= "&nbsp;<input type=$INPUTTYPE name=备选答案_{$i}[] value=A {$CheckedResult['A']}> A:$备选答案A&nbsp;";
 			$备选答案B = $rs_a[$i]['备选答案B']; if($备选答案B!="")	$DaAnText .= "&nbsp;<input type=$INPUTTYPE name=备选答案_{$i}[] value=B {$CheckedResult['B']}> B:$备选答案B&nbsp;";
 			$备选答案C = $rs_a[$i]['备选答案C']; if($备选答案C!="")	$DaAnText .= "&nbsp;<input type=$INPUTTYPE name=备选答案_{$i}[] value=C {$CheckedResult['C']}> C:$备选答案C&nbsp;";
@@ -209,16 +229,16 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 			if($题型=="填空")
 			{
 				//print_R($正确答案);
-			$正确答案arr = explode("#",$正确答案);
-			//print_R($正确答案arr);
+				$正确答案arr = explode("#",$正确答案);
+				//print_R($正确答案arr);
 			}
 			$备选答案A = $rs_a[$i]['备选答案A'];
 			$备选答案A = $rs_a[$i]['备选答案A'];
 			print "<input type=hidden name=编号_".$i." value='$编号'>";
 			print "<input type=hidden name=题目_".$i." value='$题目'>";
 			print "<tr> ";
-			print "<td height='26' align='left' class=TableData colspan=30  nowrap>&nbsp;&nbsp;".($i+1)."&nbsp;&nbsp;$题目(分值:$分值)</td>";
-			print "</tr>";	
+			print "<td align='left' class=TableData colspan=30  nowrap>&nbsp;&nbsp;".($i+1)."&nbsp;&nbsp;$题目(分值:$分值) $题目图片IMG</td>";
+			print "</tr>";
 			print "<tr> ";
 			if($题型=="填空")
 			{
@@ -226,16 +246,17 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 				for($x=0;$x<sizeof($正确答案arr);$x++)
 				{
 					print "<input type=input name=备选答案_{$i}[$x] value=$所选答案arr[$x]> ";
-					
+
 				}
-				print "</td></tr>";			
-			}else
-			{
-			print "<td height='26' align='left' class=TableData colspan=30 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$DaAnText</td>";
-			print "</tr>";	
+				print "</td></tr>";
 			}
-			
-			
+			else
+			{
+				print "<td height='26' align='left' class=TableData colspan=30 >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$DaAnText</td>";
+				print "</tr>";
+			}
+
+
 		}
 
 		print "<input type=hidden name=考试试卷 value='".$_GET['考试试卷']."'>";
@@ -259,7 +280,7 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 			  <input type=\"submit\" name=\"button\" class=\"smallbutton\" value=\"提交该部分题目\" ></td>
             </tr>";
 		print "</table></form>";
-		
+
 		print "<BR><Table class=TableBlock width=100%><FORM name=form1 action=\"?".base64_encode("action=ApplyExamDataFinished&考试试卷={$_GET['考试试卷']}&考试名称={$_GET['考试名称']}")."\" method=post encType=multipart/form-data>";
 		print "<tr  bgcolor='#FFFFFF'>
               <td colspan=8 height='26' align='center' >
@@ -272,19 +293,19 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 //<Table class=TableBlock width=100%>
 ?>
 
-			<Tr class=TableHeader>      
+			<Tr class=TableHeader>
                 <td align="center"  nowrap>编号</td>
 				<td  align="center" nowrap>考试名称</td>
 				<td  align="center"  nowrap>考试试卷</td>
 				<td align="center"  nowrap>考试日期</td>
-                <td  align="center"  nowrap>参加考试班级</td>				
+                <td  align="center"  nowrap>参加考试班级</td>
 				<td  align="center" nowrap>操作</td>
               </tr>
 <?
-		//$学号 = $_SESSION['sunshine_student_code']; 
+		//$学号 = $_SESSION['sunshine_student_code'];
 
 		if($_GET['action']=="CancelWork"&&$_GET['实习单位']!="")					{
-			
+
 			print "<tr  bgcolor='#FFFFFF'>
                 <td colspan=8 height='26' align='center' ><font color=red>取消岗位成功</font></td>
               </tr>";
@@ -328,9 +349,9 @@ if($_GET['action']=="ApplyExam"&&$_GET['考试试卷']!=""&&$_GET['考试名称']!="")		
 				<td width='15%'  align=center nowrap>$申请</td>
               </tr>";
 		}
-		
+
 ?>
 
-              
+
             </table>
-             
+

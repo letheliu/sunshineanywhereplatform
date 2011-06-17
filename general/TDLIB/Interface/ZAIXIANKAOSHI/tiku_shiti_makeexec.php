@@ -75,7 +75,7 @@ if($_GET['action2']=="MakeShiJuan"&&$_GET['试卷标题']!='')			{
 	if($题目个数九>0&&$单题分值九>0)MakeShiJuan($_GET['试卷标题'],$所属课程库,$题目类型九,$题目个数九,$单题分值九);
 
 
-	print_nouploadfile("试卷已经生成完成");
+	print_infor("试卷已经生成完成",'',"location='?'",'?',0);
 
 	exit;
 }
@@ -109,6 +109,7 @@ function MakeShiJuan($试卷标题,$课程库,$题型,$个数,$分值)			{
 		$Elmenet['正确答案'] = $rs_a[$i]['正确答案'];
 		$Elmenet['解释'] = $rs_a[$i]['解释'];
 		$Elmenet['题型'] = $rs_a[$i]['题型'];
+		$Elmenet['题目图片'] = $rs_a[$i]['题目图片'];
 		$ElementValue = @array_values($Elmenet);
 		$sql = "insert into tiku_shijuanku values('','".join("','",$ElementValue)."');";
 		$db->Execute($sql);
