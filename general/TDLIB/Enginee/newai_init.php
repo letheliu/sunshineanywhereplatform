@@ -219,21 +219,52 @@ $fields['sql']['SQL_NUM']=$SQL_NUM;
 $fields['value']=$rsa;
 //print_R(array_keys($rsa[0]));
 //print_R($fields['value']);
-$counter=0;
+$counter=0;//行数增加
 $fields['value2'] = $fields['value'];
-foreach($fields['value'] as $list)		{
+foreach($fields['value'] as $list)							{
 	//print_R($list);
 	//print $tablename;
 	$i=0;
-	foreach($fields['name'] as $list_index)	{
-		$mode=$fields['filter'][$i];	$i++;
+	//
+	global $showlistfieldstopedit;
+	$showlistfieldstopeditArray = explode(',',$showlistfieldstopedit);
+	global $showlistfieldstopdelete;
+	$showlistfieldstopdeleteArray = explode(',',$showlistfieldstopdelete);
+
+	foreach($fields['name'] as $list_index)				{
+		$mode=$fields['filter'][$i];
 		//在此判断是否在专业科科长权限,如果是,则不显示USER_DEFINE字段
 		if($_SESSION['SUNSHINE_BANJI_LIST']!="")		{
 			if($mode=='userdefine')					{
 				$mode = 'input';//设置为INPUT则不会显示增加操作的连接
 			}
 		}
-		
+
+		//2011-06-20 处理针对行的编辑和删除按钮的禁用权限处理,兼容用户自定义部分的权限控制
+		//用户权限定义部分
+		//得到X列Y行的值
+		$filtervalue = $fields['value'][$counter][$list_index];
+		$showlistfieldstopeditArrayCheckArray = explode(':',$showlistfieldstopeditArray[$i]);
+		//print_R($showlistfieldstopeditArrayCheckArray);
+		if(in_array($filtervalue,$showlistfieldstopeditArrayCheckArray)&&$filtervalue!="")		{
+			$fields['edit_priv'][$counter] = 1;
+		}
+		else	{
+			//兼容旧的返回结果
+			$fields['edit_priv'][$counter] = 0;
+		}
+		$filtervalue = $fields['value'][$counter][$list_index];
+		$showlistfieldstopdeleteArrayCheckArray = explode(':',$showlistfieldstopdeleteArray[$i]);
+		if(in_array($filtervalue,$showlistfieldstopdeleteArrayCheckArray)&&$filtervalue!="")		{
+			$fields['delete_priv'][$counter] = 1;
+		}
+		else	{
+			//兼容旧的返回结果
+			$fields['delete_priv'][$counter] = 0;
+		}
+
+		$i++;//列数增加
+
 		switch($mode)		{
 			case '':
 			case 'input':
@@ -625,8 +656,9 @@ foreach($fields['value'] as $list)		{
 				}
 				break;
 		}
+
 		$fields['elementlink'][$counter][$list_index]=$fields['value'][$counter][$list_index];
-		
+
 		$fields['value'][$counter][$list_index]=$filtervalue;
 	}
 	$counter++;
@@ -1211,7 +1243,7 @@ function newaiinit_view($fields)	{
 			else	{
 				$trnowrap = "noWrap";
 			}
-			
+
 			print "<TD $trnowrap class=$ClassHeader align=left $ondblclick_Text2 >".$ShowElement."</TD>\n";
 			switch($list_header)		{
 			case $row_userpriv_array[1]:

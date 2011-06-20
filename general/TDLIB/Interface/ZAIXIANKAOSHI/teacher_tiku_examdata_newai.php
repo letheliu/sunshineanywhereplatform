@@ -1,6 +1,6 @@
 <?
 
-$SYSTEM_ADD_SQL = " and  ²¿ÃÅ±àºÅ != ''";
+$SYSTEM_ADD_SQL = " and  °à¼¶ = ''";
 
 
 $parse_filename='teacher_tiku_examdata';
