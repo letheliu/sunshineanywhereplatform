@@ -99,9 +99,11 @@ if($_GET['action']=="ApplyExamData")					{
 		}
 		//$sql = "insert into tiku_examdata values('','$考试名称','$考试试卷','$答题时间','$学号','$姓名','$班级','$题目','$正确答案','$所选答案','$答题状态','$所得分值');";
 		//print $sql."<BR>";
+	
 		if($所选答案!="")		$db->Execute($sql);
 
 	}
+	//exit;
 	print "<div align=center>你的答案已经提交,请返回....</div>";
 	print "<meta http-equiv=\"REFRESH\" content=\"0;URL=?action=ApplyExam&考试试卷=$考试试卷&考试名称=$考试名称&题型=$题型\">";
 	exit;

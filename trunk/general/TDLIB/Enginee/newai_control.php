@@ -901,6 +901,10 @@ switch($action_type)		{
 		$showlistfieldlist	= $file_ini[$action]['showlistfieldlist'];
 		$showlistnull		= $file_ini[$action]['showlistnull'];
 		$showlistfieldfilter= $file_ini[$action]['showlistfieldfilter'];
+
+		$showlistfieldstopedit= $file_ini[$action]['showlistfieldstopedit'];
+		$showlistfieldstopdelete= $file_ini[$action]['showlistfieldstopdelete'];
+
 		$returnsystemprivateconfig = returnsystemprivateconfig($showlistfieldlist,$showlistfieldfilter,$showlistnull,$action_model,$row_element,$bottom_element,$systemorder,$action_search);
 		$showlistfieldlist	= $returnsystemprivateconfig['LIST'];;
 		$showlistnull		= $returnsystemprivateconfig['NULL'];;
